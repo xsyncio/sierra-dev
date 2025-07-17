@@ -1,0 +1,47 @@
+[tool.ruff]
+# Paths and exclusions
+extend-exclude = ["examples/*", ".venv/*"]
+line-length = 79
+
+# Strict PEP8 conformity with linting
+[tool.ruff.lint]
+select = [
+    "E",  # Pycodestyle errors (PEP8)
+    "F",  # Pyflakes (errors like undefined names)
+    "I",  # isort (import ordering)
+    "TCH",  # Type-checking violations
+    "C",  # Complexity (Cyclomatic, McCabe)
+    "N",  # Naming conventions
+    "D2",  # Pydocstyle: blank lines after summary
+    "D3",  # Pydocstyle: multi-line docstring formatting
+    "D415",  # Pydocstyle: sections should end with a colon
+    "D417",  # Pydocstyle: arguments in docstring match signature
+    "D418",  # Pydocstyle: section capitalization
+    "D419",  # Pydocstyle: final newline in docstring
+    "ASYNC",  # async-specific linting
+    "Q",  # Quotes consistency
+    "RSE",  # Raise statement correctness
+    "SIM",  # Simplification rules
+    "RUF"  # Ruff-specific rules
+]
+ignore = [
+    "F405",  # Allow imported names via wildcard for internal purposes only
+    "F403",  # Allow 'from module import *' but only internally, not externally
+    "E501",  # Disable strict line-length enforcement (handled separately)
+    "D205",  # Disable 1 blank line between summary and description
+    "D417",  # Allow some mismatches in argument names
+    "C901"   # Allow higher complexity temporarily for legacy code
+]
+fixable = ["I", "TCH", "D"]
+
+# Pydocstyle settings for strict NumPy docstring compliance
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+# isort strict single-line imports
+[tool.ruff.lint.isort]
+force-single-line = true
+
+# Formatter settings
+[tool.ruff.format]
+docstring-code-format = true
