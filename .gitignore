@@ -205,3 +205,4 @@ default_env
 test.py
 venv
 push.py
+git.py
