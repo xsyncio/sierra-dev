@@ -250,4 +250,4 @@ def create_error_result(message: str) -> ErrorResult:
     return {
         "Type": "Error",
         "message": message,
-    }  # Fixed: Create as dict, not class instance
+    }
