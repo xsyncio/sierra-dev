@@ -1,0 +1,14 @@
+- [x] Complete the invoker implementation.
+- [ ] Implement the decorator for dependency function consideration.
+- [ ] Create an internal function to fetch imports within the invoker scripts.
+- [ ] Start working on the compiler upon receiving the command config flag (Sunday).
+- [ ] Use a factory to return results to maintain framework procedure:
+  - [TreeResult]
+    - Add TypedDict structure with "Tree" type and results list.
+  - [NetworkResult]
+    - Add TypedDict structure with "Network" type, origins, nodes, and edges lists.
+  - [ErrorResult]
+    - Add TypedDict structure with "Error" type and message.
+- [ ] Decide on providing a client using DI or allowing users to create their own.
+- [ ] Plan to create a checker using mypy.
+- [ ] Work on dependencies and improving invoker if possible.

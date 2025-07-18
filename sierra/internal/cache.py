@@ -538,33 +538,31 @@ class CacheManager:
             Statistics dictionary.
         """
         with self._lock and sqlite3.connect(self._db_path) as conn:
-                # Total entries
-                cursor = conn.execute("SELECT COUNT(*) FROM cache_entries")
-                total_entries = cursor.fetchone()[0]
+            # Total entries
+            cursor = conn.execute("SELECT COUNT(*) FROM cache_entries")
+            total_entries = cursor.fetchone()[0]
 
-                # Total size
-                cursor = conn.execute(
-                    "SELECT SUM(size_bytes) FROM cache_entries"
-                )
-                total_size = cursor.fetchone()[0] or 0
+            # Total size
+            cursor = conn.execute("SELECT SUM(size_bytes) FROM cache_entries")
+            total_size = cursor.fetchone()[0] or 0
 
-                # Expired entries
-                now = self._now()
-                cursor = conn.execute(
-                    "SELECT COUNT(*) FROM cache_entries WHERE expires_at IS NOT NULL AND expires_at <= ?",
-                    (now,),
-                )
-                expired_entries = cursor.fetchone()[0]
+            # Expired entries
+            now = self._now()
+            cursor = conn.execute(
+                "SELECT COUNT(*) FROM cache_entries WHERE expires_at IS NOT NULL AND expires_at <= ?",
+                (now,),
+            )
+            expired_entries = cursor.fetchone()[0]
 
-                return {
-                    "total_entries": total_entries,
-                    "memory_entries": len(self._memory_cache),
-                    "expired_entries": expired_entries,
-                    "total_size_bytes": total_size,
-                    "cache_directory": str(self._base_dir),
-                    "last_cleanup": self._last_cleanup,
-                    "database_path": str(self._db_path),
-                }
+            return {
+                "total_entries": total_entries,
+                "memory_entries": len(self._memory_cache),
+                "expired_entries": expired_entries,
+                "total_size_bytes": total_size,
+                "cache_directory": str(self._base_dir),
+                "last_cleanup": self._last_cleanup,
+                "database_path": str(self._db_path),
+            }
 
     def get_entry_info(
         self, key: str
