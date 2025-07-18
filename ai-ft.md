@@ -83,7 +83,7 @@ The AI assistant must fully comply with the following rules in every response. N
 
 Derived from pyproject.toml:
 
-toml
+```toml
 [tool.ruff]
 extend-exclude = ["examples/*", ".venv/*"]
 line-length = 79
@@ -125,4 +125,5 @@ convention = "numpy"
 force-single-line = true
 
 [tool.ruff.format]
-docstring-code-format = true 
+docstring-code-format = true
+```
