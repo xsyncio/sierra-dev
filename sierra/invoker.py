@@ -10,33 +10,6 @@ import sierra.options as sierra_options
 _TCallable = typing.Callable[..., typing.Any]
 
 
-class TreeResult(typing.TypedDict):
-    """Tree type result structure."""
-
-    Type: typing.Literal["Tree"]
-    results: list[typing.Union[str, dict[str, list[str]]]]
-
-
-class NetworkResult(typing.TypedDict):
-    """Network type result structure."""
-
-    Type: typing.Literal["Network"]
-    origins: list[str]
-    nodes: list[dict[str, str]]
-    edges: list[dict[str, str]]
-
-
-class ErrorResult(typing.TypedDict):
-    """Error type result structure."""
-
-    Type: typing.Literal["Error"]
-    message: str
-
-
-# Union type for all possible results
-SierraInvokerResult = typing.Union[TreeResult, NetworkResult, ErrorResult]
-
-
 class InvokerScript:
     """
     A wrapper for creating Sierra invoker scripts that generates config.yaml and argparse-compatible scripts.
@@ -58,7 +31,7 @@ class InvokerScript:
         Optional HTTP client used for external requests.
     logger : UniversalLogger
         Logger instance for capturing script activity.
-    _registered_func : _TCallable | None
+    _entry_point : _TCallable | None
         The registered Python function.
     _output_dir : Path | None
         Directory to output generated files.
@@ -83,9 +56,11 @@ class InvokerScript:
                 level=sierra_internal_logger.LogLevel.BASIC,
             )
         )
-        self._registered_func: _TCallable | None = None
+        self._entry_point: _TCallable
         self.deps: list[_TCallable] = []
         self.requirements: list[str] = []
+        self.command: str = ""
+        self.filename = ""
 
     @staticmethod
     def verify_signature(func: _TCallable) -> None:
@@ -119,7 +94,7 @@ class InvokerScript:
                     f"Parameter '{name}' is missing SierraOption metadata."
                 )
 
-    def register(self, func: _TCallable) -> _TCallable:
+    def entry_point(self, func: _TCallable) -> _TCallable:
         """
         Register a Python function as an invoker script.
 
@@ -135,9 +110,9 @@ class InvokerScript:
         _TCallable
             The original function (unchanged).
         """
+        self.filename = inspect.getfile(func)
         self.verify_signature(func)
-        self._registered_func = func
-
+        self._entry_point = func
         # Extract parameter metadata
         sig = inspect.signature(func)
         for name, param in sig.parameters.items():
@@ -162,92 +137,9 @@ class InvokerScript:
 
         return func
 
-    def handle_internal_error(
-        self,
-        e: Exception,
-        logger: sierra_internal_logger.UniversalLogger,
-    ) -> None:
-        """
-        Handle and log internal errors.
+    def dependancy(self, func: _TCallable) -> _TCallable:
+        self.deps.append(func)
+        return func
 
-        Parameters
-        ----------
-        e : Exception
-            The caught exception.
-        logger : UniversalLogger
-            Logger instance for reporting.
-        """
-        logger.log(f"Internal error: {e}", "error")
-
-
-# Convenience functions for creating result types (for use in generated scripts)
-def create_tree_result(
-    results: list[typing.Union[str, dict[str, list[str]]]],
-) -> TreeResult:
-    """
-    Create a Tree type result.
-
-    Parameters
-    ----------
-    results : list[Union[str, dict[str, list[str]]]]
-        The tree results.
-
-    Returns
-    -------
-    TreeResult
-        The formatted tree result.
-    """
-    return {
-        "Type": "Tree",
-        "results": results,
-    }  # Fixed: Create as dict, not class instance
-
-
-def create_network_result(
-    origins: list[str],
-    nodes: list[dict[str, str]],
-    edges: list[dict[str, str]],
-) -> NetworkResult:
-    """
-    Create a Network type result.
-
-    Parameters
-    ----------
-    origins : list[str]
-        List of origin node IDs.
-    nodes : list[dict[str, str]]
-        List of node definitions.
-    edges : list[dict[str, str]]
-        List of edge definitions.
-
-    Returns
-    -------
-    NetworkResult
-        The formatted network result.
-    """
-    return {
-        "Type": "Network",
-        "origins": origins,
-        "nodes": nodes,
-        "edges": edges,
-    }  # Fixed: Create as dict, not class instance
-
-
-def create_error_result(message: str) -> ErrorResult:
-    """
-    Create an Error type result.
-
-    Parameters
-    ----------
-    message : str
-        The error message.
-
-    Returns
-    -------
-    ErrorResult
-        The formatted error result.
-    """
-    return {
-        "Type": "Error",
-        "message": message,
-    }
+    def requirement(self, requirement: list[str]) -> None:
+        self.requirements.extend(requirement)

@@ -44,6 +44,10 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         Path to the Python virtual environment directory.
     scripts_path : pathlib.Path
         Path to the `scripts` directory inside the config folder.
+    sierra_env_path : pathlib.Path
+        Path to the sierra environment directory inside the config folder.
+    invokers_path : pathlib.Path
+        Path to the `invokers` directory inside the sierra_env_path.
     os_type : str
         Lowercase platform identifier (e.g., 'windows', 'linux', 'darwin').
     """
@@ -54,7 +58,6 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         **kwrags: typing.Unpack[sierra_abc_parameters.Environment],
     ) -> None:
         self.client = client
-        self.client.logger.name = "Sierra.DevelopmentEnvironment"
         self.name: str = kwrags.get("name", "sierra_config")
         self.client.logger.log(
             "Initializing Sierra development environment", "debug"
@@ -74,6 +77,14 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         self.scripts_path: pathlib.Path = self.config_path / "scripts"
         self.client.logger.log(
             f"Scripts directory path: {self.scripts_path}", "debug"
+        )
+        self.sierra_env_path: pathlib.Path = self.config_path
+        self.client.logger.log(
+            f"Sierra environment path: {self.sierra_env_path}", "debug"
+        )
+        self.invokers_path: pathlib.Path = self.sierra_env_path / "invokers"
+        self.client.logger.log(
+            f"Invokers directory path: {self.invokers_path}", "debug"
         )
         self.os_type: str = sys.platform.lower()
         self.client.logger.log(
@@ -103,6 +114,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         else:
             self.config_path.mkdir(parents=True, exist_ok=False)
         self._create_scripts_dir()
+        self._create_sierra_env_dir()
         self._create_virtualenv()
 
     def _create_scripts_dir(self) -> None:
@@ -120,10 +132,32 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
             self.scripts_path.mkdir(parents=False, exist_ok=True)
             (self.config_path / "config.yaml").touch(exist_ok=True)
             self.scripts_path.mkdir(parents=False, exist_ok=True)
-            (self.config_path / "source").touch(exist_ok=True)
+            with (self.config_path / "source").open("w") as source_file:
+                source_file.write(
+                    "https://api.github.com/repos/xsyncio/sierra-source/contents\n"
+                )
         except Exception as error:
             raise sierra_internal_errors.SierraExecutionError(
                 f"Failed to create scripts directory: {error}"
+            )
+
+    def _create_sierra_env_dir(self) -> None:
+        """
+        Create the `sierra_env` subdirectory and `invokers` folder inside it.
+
+        This folder will be used to store sierra environment files and invokers.
+
+        Raises
+        ------
+        SierraExecutionError
+            If the directory creation fails.
+        """
+        try:
+            self.sierra_env_path.mkdir(parents=False, exist_ok=True)
+            self.invokers_path.mkdir(parents=False, exist_ok=True)
+        except Exception as error:
+            raise sierra_internal_errors.SierraExecutionError(
+                f"Failed to create sierra environment directory: {error}"
             )
 
     def _create_virtualenv(self) -> None:

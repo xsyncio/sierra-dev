@@ -49,9 +49,6 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
             self.client.logger.log(
                 f"Source file is empty: {source_path}", "warning"
             )
-            raise sierra_internal_errors.SierraPathError(
-                f"File {source_path} is empty."
-            )
 
         with open(source_path, "r", encoding="utf-8") as f:
             self.sources: typing.List[str] = [
@@ -112,6 +109,14 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
     def populate(self) -> None:
         """Pulls new files from all sources and caches all valid `.py` scripts."""
         self.client.logger.log("Starting population from sources...", "info")
+
+        # Check if sources list is empty and handle gracefully
+        if not self.sources:
+            self.client.logger.log(
+                "No sources configured. Nothing to populate.", "warning"
+            )
+            return
+
         total_cached = 0
         total_skipped = 0
 
