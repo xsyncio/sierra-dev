@@ -1,10 +1,7 @@
 import inspect
 import typing
 
-import httpx
-
 import sierra.abc.sierra as sierra_abc_sierra
-import sierra.internal.logger as sierra_internal_logger
 import sierra.options as sierra_options
 
 _TCallable = typing.Callable[..., typing.Any]
@@ -41,21 +38,10 @@ class InvokerScript:
         self,
         name: str,
         description: str | None = None,
-        use_httpx_client: httpx.Client | None = None,
-        logger: sierra_internal_logger.UniversalLogger | None = None,
     ) -> None:
         self.name = name
         self.description = description
         self.params: list[sierra_abc_sierra.SierraInvokerParam] = []
-        self.http_client: httpx.Client | None = use_httpx_client
-        self.logger: sierra_internal_logger.UniversalLogger = (
-            logger
-            if logger is not None
-            else sierra_internal_logger.UniversalLogger(
-                name=self.name,
-                level=sierra_internal_logger.LogLevel.BASIC,
-            )
-        )
         self._entry_point: _TCallable
         self.deps: list[_TCallable] = []
         self.requirements: list[str] = []
@@ -143,3 +129,6 @@ class InvokerScript:
 
     def requirement(self, requirement: list[str]) -> None:
         self.requirements.extend(requirement)
+
+    def set_command(self, command_string: str) -> None:
+        setattr(self, "command", command_string)

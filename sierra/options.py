@@ -4,7 +4,16 @@ _T = typing.TypeVar("_T")
 
 
 class SierraOption(typing.Generic[_T]):
-    """Wrapper for marking a function parameter as a Sierra option."""
+    """
+    Wrapper for marking a function parameter as a Sierra option.
+
+    Parameters
+    ----------
+    description : str, default ""
+        A short description of the parameter.
+    mandatory : typing.Literal["MANDATORY"] | None, default None
+        Flags the parameter as mandatory.
+    """
 
     def __init__(
         self,
@@ -16,11 +25,4 @@ class SierraOption(typing.Generic[_T]):
         self.mandatory = mandatory
 
 
-# alias to typing.Annotated
 Param = typing.Annotated
-
-
-"""Example
-def example(name: Param[str, SierraOption(description="lingam")]):
-    print("radnom lmao", name)
-"""

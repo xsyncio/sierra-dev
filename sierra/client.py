@@ -5,6 +5,7 @@ import typing
 import httpx
 
 import sierra.core.builder as sierra_core_builder
+import sierra.core.compiler as sierra_core_compiler
 import sierra.core.environment as sierra_core_environment
 import sierra.core.loader as sierra_core_loader
 import sierra.internal.cache as sierra_internal_cache
@@ -14,10 +15,44 @@ import sierra.invoker as sierra_invoker
 
 
 class InvokerWithLoad(typing.Protocol):
-    def load(self, client: "SierraDevelopmentClient") -> None: ...
+    """
+    Protocol for invoker scripts with a load method.
+
+    Parameters
+    ----------
+    client : SierraDevelopmentClient
+        The client instance to use for loading the invoker script.
+    """
+
+    def load(self, client: "SierraDevelopmentClient") -> None:
+        """
+        Load the invoker script.
+
+        Parameters
+        ----------
+        client : SierraDevelopmentClient
+            The client instance to use for loading the invoker script.
+        """
+        client.logger.log("Loading invoker script", "debug")
 
 
 class ClientParams(typing.TypedDict, total=False):
+    """
+    A typed dictionary for passing client parameters.
+
+    Attributes
+    ----------
+    logger : UniversalLogger, optional
+        The logger instance for capturing client activity.
+    cache : CacheManager, optional
+        The cache manager instance for handling caching operations.
+
+    Notes
+    -----
+    This TypedDict structure is used to encapsulate optional client parameters
+    that can be provided to the SierraDevelopmentClient.
+    """
+
     logger: sierra_internal_logger.UniversalLogger
     cache: sierra_internal_cache.CacheManager
 
@@ -41,16 +76,14 @@ class SierraDevelopmentClient:
         **kwargs : ClientParams
             Optional: logger and cache manager.
         """
-        # Logger setup
         self.logger: sierra_internal_logger.UniversalLogger = kwargs.get(
             "logger", sierra_internal_logger.UniversalLogger()
         )
         self.logger.log("Logger initialized", "debug")
         self.logger.log(
-            "Sierra Development Client initialization started", "info"
+            "Starting Sierra Development Client initialization", "info"
         )
 
-        # Environment setup
         self.environment: sierra_core_environment.SierraDevelopmentEnvironment = sierra_core_environment.SierraDevelopmentEnvironment(
             client=self,
             name=environment_name,
@@ -60,10 +93,10 @@ class SierraDevelopmentClient:
             f"Environment created: name={self.environment.name}, path={self.environment.path}",
             "debug",
         )
+        self.logger.log("Initializing environment...", "debug")
         self.environment.init()
         self.logger.log("Environment initialized successfully", "debug")
 
-        # Cache manager setup
         self.cache: sierra_internal_cache.CacheManager = kwargs.get(
             "cache",
             sierra_internal_cache.CacheManager(
@@ -72,27 +105,32 @@ class SierraDevelopmentClient:
         )
         self.logger.log("Cache manager initialized", "debug")
 
-        # HTTP client setup
         self.http_client: httpx.Client = httpx.Client(
-            headers={"User-Agent": "Sierra-SDK/1.0"}
+            headers={"User-Agent": "Sierra-dev/1.0"}
         )
         self.logger.log("HTTP client initialized", "debug")
 
-        # Sideloader setup
         self.loader: sierra_core_loader.SierraSideloader = (
             sierra_core_loader.SierraSideloader(client=self)
         )
-        self.logger.log("Sideloader initialized", "debug")
+        self.logger.log("Initializing sideloader", "debug")
         self.loader.populate()
         self.logger.log(
-            f"Sideloader populated with sources {len(self.loader.sources)}",
+            f"sideloader populated with sources count={len(self.loader.sources)}",
             "debug",
         )
 
-        # Invokers list
         self.invokers: list[sierra_invoker.InvokerScript] = []
-        self.logger.log("Client ready to load invokers", "info")
+        self.logger.log("Preparing invokers list", "debug")
+
         self.builder = sierra_core_builder.SierraInvokerBuilder(client=self)
+        self.logger.log("Initializing invoker builder", "debug")
+        self.compiler = sierra_core_compiler.SierraCompiler(client=self)
+        self.logger.log("Initializing compiler", "debug")
+
+        self.logger.log(
+            "Sierra Development Client initialization complete", "info"
+        )
 
     def load_invoker(self, invoker: "sierra_invoker.InvokerScript") -> None:
         """
@@ -105,14 +143,21 @@ class SierraDevelopmentClient:
         """
         if invoker not in self.invokers:
             self.invokers.append(invoker)
-            self.logger.log(f"Invoker registered: {invoker.name}", "debug")
+            self.logger.log(f"Invoker {invoker.name} registered", "debug")
         else:
             self.logger.log(
-                f"Invoker already registered: {invoker.name}", "warning"
+                f"Invoker {invoker.name} already registered", "warning"
             )
 
     def unload_invoker(self, invoker: "sierra_invoker.InvokerScript") -> None:
-        """Unregister a single invoker instance from the client."""
+        """
+        Unregister a single invoker instance from the client.
+
+        Parameters
+        ----------
+        invoker : InvokerScript
+            An instance of an InvokerScript.
+        """
         if invoker in self.invokers:
             self.invokers.remove(invoker)
             self.logger.log(f"Invoker unregistered: {invoker.name}", "debug")
@@ -131,12 +176,16 @@ class SierraDevelopmentClient:
 
         if not script_dir.is_dir():
             raise sierra_internal_errors.SierraClientPathError(
-                f"Invalid scripts directory: {script_dir}"
+                f"scripts directory is not a valid directory: {script_dir}"
             )
 
         for file_path in script_dir.iterdir():
             if not file_path.is_file() or file_path.suffix != ".py":
+                self.logger.log(
+                    f"Skipping non-Python file: {file_path.name}", "debug"
+                )
                 continue
+
             self.logger.log(f"Processing file: {file_path.name}", "debug")
             try:
                 self._load_invoker_file(file_path)
@@ -150,18 +199,31 @@ class SierraDevelopmentClient:
         self, path_to_invoker: typing.Union[str, pathlib.Path]
     ) -> None:
         """
-        Import a module, automatically register its InvokerScript instances,
-        then invoke each's load() method for setup.
+        Load a Python module containing one or more InvokerScript instances.
+
+        Parameters
+        ----------
+        path_to_invoker : Union[str, Path]
+            Path to the Python file containing the InvokerScript instances.
+
+        Raises
+        ------
+        SierraClientPathError
+            If the file does not exist or is not a Python file.
+        SierraClientLoadError
+            If no InvokerScript instances are found in the module.
         """
         path_obj: pathlib.Path = pathlib.Path(path_to_invoker).resolve()
+
         self.logger.log(f"Importing module from: {path_obj}", "debug")
 
         if not path_obj.is_file() or path_obj.suffix != ".py":
             raise sierra_internal_errors.SierraClientPathError(
-                f"Invalid invoker file: {path_obj}"
+                f"Cannot load invoker file: {path_obj}"
             )
 
         spec = importlib.util.spec_from_file_location(path_obj.stem, path_obj)
+
         if not spec or not spec.loader:
             raise sierra_internal_errors.SierraClientPathError(
                 f"Cannot create spec for module: {path_obj}"
@@ -171,7 +233,6 @@ class SierraDevelopmentClient:
         spec.loader.exec_module(module)  # type: ignore
         self.logger.log(f"Module imported: {path_obj.name}", "debug")
 
-        # Discover all InvokerScript instances in module
         found: list[sierra_invoker.InvokerScript] = []
         for obj in vars(module).values():
             if isinstance(obj, sierra_invoker.InvokerScript):
@@ -182,7 +243,6 @@ class SierraDevelopmentClient:
                 f"No InvokerScript instance found in {path_obj.name}"
             )
 
-        # Register and load each invoker
         for inv in found:
             self.logger.log(f"Registering invoker: {inv.name}", "debug")
             self.load_invoker(inv)

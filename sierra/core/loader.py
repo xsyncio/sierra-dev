@@ -22,6 +22,19 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
     def __init__(
         self, client: "sierra_client.SierraDevelopmentClient"
     ) -> None:
+        """
+        Initialize the SierraSideloader.
+
+        Parameters
+        ----------
+        client : SierraDevelopmentClient
+            A reference to the Sierra development client.
+
+        Raises
+        ------
+        SierraPathError
+            If the configuration path or source file does not exist.
+        """
         self.client = client
         self.cache = self.client.cache
         self.path: pathlib.Path = self.client.environment.config_path
@@ -29,67 +42,100 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         self.client.logger.log("Initializing SierraSideloader...", "info")
 
         if not self.path.exists():
-            self.client.logger.log(
-                f"Missing config path: {self.path}", "error"
-            )
+            self.client.logger.log("Missing config path.", "error")
             raise sierra_internal_errors.SierraPathError(
                 f"Path {self.path} does not exist."
             )
 
         source_path = self.path / "source"
         if not source_path.exists():
-            self.client.logger.log(
-                f"Missing source file: {source_path}", "error"
-            )
+            self.client.logger.log("Missing source file.", "error")
             raise sierra_internal_errors.SierraPathError(
                 f"File {source_path} does not exist."
             )
 
         if source_path.stat().st_size == 0:
-            self.client.logger.log(
-                f"Source file is empty: {source_path}", "warning"
-            )
+            self.client.logger.log("Source file is empty.", "warning")
 
         with open(source_path, "r", encoding="utf-8") as f:
-            self.sources: typing.List[str] = [
+            self.sources: list[str] = [
                 line.strip() for line in f if line.strip()
             ]
 
         self.client.logger.log(
-            f"Loaded {len(self.sources)} sources from {source_path}", "debug"
+            f"Loaded {len(self.sources)} sources from {source_path}.", "debug"
         )
         super().__init__(client)
 
-    def _get_github_data(self, url: str) -> typing.Dict[str, typing.Any]:
-        """Fetch GitHub API data with proper error handling."""
-        self.client.logger.log(f"Fetching GitHub data: {url}", "debug")
+    def _get_github_data(self, url: str) -> dict[str, typing.Any]:
+        """
+        Fetch data from the GitHub API.
+
+        Parameters
+        ----------
+        url : str
+            The URL to fetch data from.
+
+        Returns
+        -------
+        dict[str, typing.Any]
+            The JSON response from the GitHub API.
+
+        Raises
+        ------
+        SierraHTTPError
+            If the request to the GitHub API fails.
+
+        Notes
+        -----
+        This function logs each step of the data-fetching process.
+        """
+        self.client.logger.log(
+            f"Fetching data from GitHub API: {url}", "debug"
+        )
         response = self.client.http_client.get(url)
         if response.status_code != 200:
             self.client.logger.log(
-                f"GitHub fetch failed [{response.status_code}]: {url}", "error"
+                f"Failed to fetch data from GitHub: {url}, Status Code: {response.status_code}",
+                "error",
             )
             raise sierra_internal_errors.SierraHTTPError(
                 f"Failed to fetch data from {url}: {response.status_code}"
             )
 
-        return typing.cast("typing.Dict[str, typing.Any]", response.json())
+        self.client.logger.log("GitHub data fetched successfully", "info")
+        return typing.cast("dict[str, typing.Any]", response.json())
 
     def _download_and_cache(self, name: str, url: str) -> None:
-        """Download a Python file and cache it using the new CacheManager."""
+        """
+        Download a Python file and cache it using the new CacheManager.
+
+        Parameters
+        ----------
+        name : str
+            The name of the file to cache.
+        url : str
+            The URL to download the file from.
+
+        Raises
+        ------
+        SierraHTTPError
+            If the request to `url` fails.
+        """
         self.client.logger.log(
-            f"Downloading .py file: {name} from {url}", "debug"
+            f"Downloading .py file: {name} from {url}", "info"
         )
         response = self.client.http_client.get(url)
         if response.status_code != 200:
             self.client.logger.log(
-                f"Failed to download {url} [{response.status_code}]", "error"
+                f"Failed to download {url}: {response.status_code}", "error"
             )
             raise sierra_internal_errors.SierraHTTPError(
                 f"Failed to download {url}: {response.status_code}"
             )
 
         # Use new CacheManager interface with proper typing
-        cache_data: typing.Dict[str, typing.Any] = {
+        cache_data: dict[str, typing.Any] = {
             "content": response.text,
             "type": "file",
             "source": url,
@@ -136,26 +182,24 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
 
             # Handle both direct file lists and nested file structures
             files = data if isinstance(data, list) else data.get("files", [])
-            files = typing.cast("typing.List[typing.Any]", files)
+            files = typing.cast("list[typing.Any]", files)
 
             for file_item in files:
                 # Check if file is a dictionary (expected format)
                 if not isinstance(file_item, dict):
                     self.client.logger.log(
-                        f"Unexpected file format, skipping: {file_item}",
+                        f"Skipping unexpected file format: {file_item}",
                         "warning",
                     )
                     continue
 
-                file_dict = typing.cast(
-                    "typing.Dict[str, typing.Any]", file_item
-                )
+                file_dict = typing.cast("dict[str, typing.Any]", file_item)
 
                 if file_dict.get("type") == "file":
                     file_path_str = file_dict.get("path")
                     if not file_path_str:
                         self.client.logger.log(
-                            f"Missing path in file object: {file_dict}",
+                            f"Skipping file without path: {file_dict}",
                             "warning",
                         )
                         continue
@@ -169,7 +213,8 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
                         # Check if already cached using the new CacheManager exists method
                         if self.cache.exists(name):
                             self.client.logger.log(
-                                f"'{name}' already cached, skipping", "debug"
+                                f"Skipping '{name}' as it is already cached",
+                                "debug",
                             )
                             total_skipped += 1
                             continue
@@ -180,7 +225,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
                         ) or file_dict.get("raw_url")
                         if not url_raw:
                             self.client.logger.log(
-                                f"Missing raw/download URL for: {file_dict}",
+                                f"Skipping file without raw/download URL: {file_dict}",
                                 "warning",
                             )
                             continue
@@ -203,6 +248,9 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
     def update(self) -> None:
         """Refreshes the sideloader by pulling from all sources again."""
         self.client.logger.log("Updating sideloader sources...", "info")
+        self.client.logger.log("Clearing cache for update...", "debug")
+        self.cache.clear()
+        self.client.logger.log("Populating sideloader sources...", "info")
         self.populate()
 
     def install(self, name: str) -> None:
@@ -224,19 +272,21 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
 
         if not entry_raw:
             self.client.logger.log(
-                f"Script '{name}' not found in cache.", "error"
+                f"Script '{name}' not found in cache. Raising SierraCacheError.",
+                "error",
             )
             raise sierra_internal_errors.SierraCacheError(
                 f"No cached package named '{name}' found."
             )
 
         # Type cast the cache entry to expected format
-        entry = typing.cast("typing.Dict[str, typing.Any]", entry_raw)
+        entry = typing.cast("dict[str, typing.Any]", entry_raw)
 
         # Validate that it's a file entry
         if entry.get("type") != "file":
             self.client.logger.log(
-                f"Cache entry for '{name}' is not a file type.", "error"
+                f"Cache entry for '{name}' is not a file type. Raising SierraCacheError.",
+                "error",
             )
             raise sierra_internal_errors.SierraCacheError(
                 f"Cached item '{name}' is not a file."
@@ -245,7 +295,8 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         content = entry.get("content")
         if not content:
             self.client.logger.log(
-                f"Cache entry for '{name}' has no content.", "error"
+                f"Cache entry for '{name}' has no content. Raising SierraCacheError.",
+                "error",
             )
             raise sierra_internal_errors.SierraCacheError(
                 f"Cached file '{name}' has no content."
@@ -266,7 +317,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
 
         self.client.logger.log(f"Installed '{name}' to {script_path}", "info")
 
-    def search(self, query: str) -> typing.List[str]:
+    def search(self, query: str) -> list[str]:
         """
         Searches for scripts in the cache by partial name match.
 
@@ -280,7 +331,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         List[str]
             Matching script names.
         """
-        results: typing.List[str] = []
+        results: list[str] = []
 
         # Use the new CacheManager's keys() method
         cache_keys = self.cache.keys(include_expired=False)
@@ -289,12 +340,17 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
             key_str = key
             if query.lower() in key_str.lower():
                 # Verify it's a file entry by checking the cache
+                self.client.logger.log(
+                    f"Checking if {key_str} is a file entry", "debug"
+                )
                 entry_raw = self.cache.get(key_str)
                 if entry_raw:
-                    entry = typing.cast(
-                        "typing.Dict[str, typing.Any]", entry_raw
-                    )
+                    entry = typing.cast("dict[str, typing.Any]", entry_raw)
                     if entry.get("type") == "file":
+                        self.client.logger.log(
+                            f"{key_str} is a file entry, adding to results",
+                            "debug",
+                        )
                         results.append(key_str)
 
         self.client.logger.log(
@@ -302,7 +358,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         )
         return results
 
-    def list_available(self) -> typing.List[str]:
+    def list_available(self) -> list[str]:
         """
         Lists all `.py` script packages currently cached (including from disk).
 
@@ -311,23 +367,30 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         List[str]
             Cached script names.
         """
-        available: typing.List[str] = []
+        available: list[str] = []
 
         # Use the new CacheManager's keys() method which handles both memory and disk
         cache_keys = self.cache.keys(include_expired=False)
 
         for key in cache_keys:
             key_str = key
+            self.client.logger.log(
+                f"Searching for '{key_str}' in cache.", "debug"
+            )
             entry_raw = self.cache.get(key_str)
             if entry_raw:
-                entry = typing.cast("typing.Dict[str, typing.Any]", entry_raw)
+                entry = typing.cast("dict[str, typing.Any]", entry_raw)
                 if entry.get("type") == "file":
+                    self.client.logger.log(
+                        f"Found '{key_str}' in cache, adding to results.",
+                        "debug",
+                    )
                     available.append(key_str)
 
         self.client.logger.log(f"Cached .py scripts: {available}", "debug")
         return available
 
-    def info(self, name: str) -> typing.Dict[str, typing.Any]:
+    def info(self, name: str) -> dict[str, typing.Any]:
         """
         Returns metadata about a cached script.
 
@@ -346,6 +409,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         SierraCacheError
             If script not found in cache.
         """
+        self.client.logger.log(f"Retrieving info for '{name}'...", "debug")
         entry_raw = self.cache.get(name)
         if not entry_raw:
             self.client.logger.log(f"No info found for '{name}'", "error")
@@ -353,7 +417,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
                 f"Package '{name}' not found in cache."
             )
 
-        entry = typing.cast("typing.Dict[str, typing.Any]", entry_raw)
+        entry = typing.cast("dict[str, typing.Any]", entry_raw)
 
         # Get detailed cache information using the new CacheManager's get_entry_info method
         cache_info_raw = self.cache.get_entry_info(name)
@@ -361,7 +425,7 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
             cache_info = cache_info_raw
 
             # Combine entry data with cache metadata
-            info_dict: typing.Dict[str, typing.Any] = {
+            info_dict: dict[str, typing.Any] = {
                 "name": name,
                 "type": entry.get("type"),
                 "source": entry.get("source"),
@@ -397,14 +461,13 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
         int
             Number of entries removed.
         """
-        self.client.logger.log("Cleaning up expired cache entries...", "info")
         removed_count = self.cache.cleanup()
         self.client.logger.log(
             f"Removed {removed_count} expired cache entries", "info"
         )
         return removed_count
 
-    def get_cache_stats(self) -> typing.Dict[str, typing.Any]:
+    def get_cache_stats(self) -> dict[str, typing.Any]:
         """
         Get comprehensive cache statistics.
 
@@ -414,21 +477,39 @@ class SierraSideloader(sierra_core_base.SierraCoreObject):
             Cache statistics including file counts and sizes.
         """
         stats_raw = self.cache.stats()
+        self.client.logger.log(
+            f"Retrieved cache statistics: {stats_raw}", "debug"
+        )
         stats = stats_raw
 
         # Add sideloader-specific stats
+        self.client.logger.log("Counting cached Python files", "debug")
         file_count = 0
         for key in self.cache.keys(include_expired=False):
+            self.client.logger.log(
+                f"Checking if '{key}' is a file entry", "debug"
+            )
             entry_raw = self.cache.get(key)
             if entry_raw:
-                entry = typing.cast("typing.Dict[str, typing.Any]", entry_raw)
+                self.client.logger.log(f"Checking type of '{key}'", "debug")
+                entry = typing.cast("dict[str, typing.Any]", entry_raw)
                 if entry.get("type") == "file":
+                    self.client.logger.log(
+                        f"Found '{key}' to be a file entry, incrementing count",
+                        "debug",
+                    )
                     file_count += 1
 
-        enhanced_stats: typing.Dict[str, typing.Any] = {
+        self.client.logger.log(
+            f"Counted {file_count} cached Python files", "debug"
+        )
+        enhanced_stats: dict[str, typing.Any] = {
             **stats,
             "python_files_cached": file_count,
             "sources_configured": len(self.sources),
         }
 
+        self.client.logger.log(
+            f"Returning enhanced cache statistics: {enhanced_stats}", "debug"
+        )
         return enhanced_stats
