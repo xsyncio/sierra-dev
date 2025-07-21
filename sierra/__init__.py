@@ -33,10 +33,13 @@ This package is designed to be used as a foundation for building complex Sierra 
 
 import typing
 
+from sierra._about import *
 from sierra.abc import *
 from sierra.client import *
 from sierra.core import *
 from sierra.internal import *
+from sierra.invoker import *
+from sierra.options import *
 
 
 def create_tree_result(
