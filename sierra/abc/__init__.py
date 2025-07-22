@@ -2,13 +2,13 @@
 Sierra ABCs.
 ============
 
-Abstract Base Classes (ABCs) for Sierra SDK components.
+Abstract Base Classes (ABCs) for Sierra Dev components.
 
 # Overview
 --------
 
 This package contains abstract base classes (ABCs) for components of the
-Sierra SDK framework.
+Sierra Dev framework.
 
 # Exposed Components
 -----------------

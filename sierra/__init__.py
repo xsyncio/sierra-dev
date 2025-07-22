@@ -1,5 +1,5 @@
 """
-sierra-sdk.
+sierra-dev.
 ==========
 
 A framework for building and managing invoker scripts that can be used across different nodes in Sierra during any investigation.

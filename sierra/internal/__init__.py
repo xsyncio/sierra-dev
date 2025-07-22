@@ -2,12 +2,12 @@
 Sierra Internal.
 ================
 
-🔒 Internal components of the Sierra SDK framework.
+🔒 Internal components of the Sierra Dev framework.
 
 # Overview
 --------
 
-This package contains internal components of the Sierra SDK framework, including
+This package contains internal components of the Sierra Dev framework, including
 cache management, error handling, logging, and utility functions.
 
 # Exposed Components
@@ -27,7 +27,7 @@ cache management, error handling, logging, and utility functions.
 # Integration Notes
 -----------------
 
-This package is a fundamental part of the Sierra SDK framework, providing internal
+This package is a fundamental part of the Sierra Dev framework, providing internal
 components for managing cache, errors, logging, and utility functions.
 """
 

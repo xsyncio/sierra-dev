@@ -25,7 +25,7 @@ Sierra‑SDK is a Python framework for building and managing invoker scripts tha
 
 You can install Sierra‑SDK using pip:
 ```bash
-pip install sierra-sdk
+pip install sierra-dev
 ```
 ### Installation from Source
 
@@ -178,8 +178,3 @@ Sierra‑SDK is licensed under the [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE).
 ### Authors
 
 *   [Xsyncio](https://github.com/xsyncio)
-
-🌟 **Get Started**
--------------------
-
-[![Get Started](https://img.shields.io/badge/Get%20Started-🚀-green.svg)](https://sierra-sdk.readthedocs.io/en/latest/getting_started.html)

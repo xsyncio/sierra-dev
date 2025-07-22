@@ -2,12 +2,12 @@
 Sierra Core.
 ============
 
-🔩 Core components of the Sierra SDK framework.
+🔩 Core components of the Sierra Dev framework.
 
 # Overview
 --------
 
-This package contains the core components of the Sierra SDK framework, including
+This package contains the core components of the Sierra Dev framework, including
 builders, compilers, environments, loaders, and base classes for Sierra objects.
 
 # Exposed Components
@@ -24,7 +24,7 @@ builders, compilers, environments, loaders, and base classes for Sierra objects.
 # Integration Notes
 -----------------
 
-This package is a fundamental part of the Sierra SDK framework, providing the core
+This package is a fundamental part of the Sierra Dev framework, providing the core
 components for building, compiling, and loading Sierra applications.
 """
 

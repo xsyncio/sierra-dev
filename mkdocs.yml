@@ -1,0 +1,245 @@
+site_name: "Sierra Dev"
+repo_url: https://github.com/xsyncio/sierra-dev
+theme:
+  favicon: assets/logo.png
+  logo: assets/logo.png
+  name: material
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: assets/logo.png
+    repo: fontawesome/brands/github-alt
+    edit: material/pencil
+    view: material/eye
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/light-bulb-16
+      success: octicons/check-circle-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
+  features:
+    # Content features
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.tooltips
+    
+    # Navigation features
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    
+    # Search features
+    - search.highlight
+    - search.share
+    - search.suggest
+    
+    # Table of contents
+    - toc.follow
+    - toc.integrate
+    
+    # Announcement
+    - announce.dismiss
+
+# Enhanced navigation structure with better organization
+nav:
+  - Home:
+      - "🏠 Overview": index.md
+      - "📦 Sierra Dev": sierra-dev.md
+      - "⚡ Invoker": invoker.md
+      - "🚀 Installation": installation.md
+  
+  - "🎯 Getting Started":
+      - "📚 Guides":
+          - "📖 Read First": guides/index.md
+          - "🏷️ Typing & Type Hints": guides/typing.md
+          - "📝 Documentation": guides/documentation.md
+          - "🎨 Linting & Formatting": guides/linting.md
+          - "🔌 Plugins": guides/plugins.md
+      - "⚡ Quick Start": quickstart.md
+      - "⚙️ Configuration": configuration.md
+  
+  - "📋 API Reference":
+      - "🔧 Core Components":
+          - "🌐 Sierra Client": sierra/client.md
+          - "⚡ Invoker": sierra/invoker.md
+          - "⚙️ Options": sierra/options.md
+      
+      - "🏗️ Core Architecture":
+          - "📂 Loader": sierra/core/loader.md
+          - "🌍 Environment": sierra/core/environment.md
+          - "⚙️ Compiler": sierra/core/compiler.md
+          - "🔨 Builder": sierra/core/builder.md
+          - "✅ Checker": sierra/core/checker.md
+      
+      - "🔒 Internal Systems":
+          - "💾 Cache": sierra/internal/cache.md
+          - "❌ Errors": sierra/internal/errors.md
+          - "📊 Logger": sierra/internal/logger.md
+      
+      - "🎭 Abstract Base Classes":
+          - "📱 Base ABC": sierra/abc/base.md
+          - "🌐 Sierra ABC": sierra/abc/sierra.md
+  
+  - "📊 Results": results.md
+
+# Enhanced markdown extensions for better rendering
+markdown_extensions:
+  # Core extensions
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "🔗"
+      baselevel: 2
+      separator: "-"
+      
+  # PyMdown extensions for enhanced features
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      auto_title: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: xsyncio
+      repo: sierra-dev
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+
+# Enhanced plugins configuration
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang: en
+  - privacy:
+      enabled: !ENV [CI, false]
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          inventories:
+            - https://docs.python.org/3.10/objects.inv
+          options:
+            # Documentation formatting
+            heading_level: 3
+            annotations_path: source
+            members_order: source
+            group_by_category: true
+            docstring_section_style: spacy
+            docstring_style: numpy
+            
+            # Display options
+            inherited_members: true
+            merge_init_into_class: true
+            separate_signature: true
+            show_signature_annotations: true
+            show_source: false
+            show_submodules: false
+            signature_crossrefs: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_category_heading: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_root_full_path: true
+            show_root_members_full_path: false
+            show_object_full_path: false
+            show_if_no_docstring: true
+            
+            # Extensions
+            extensions:
+              - griffe_inherited_docstrings
+            
+            # Filters to exclude private methods
+            filters:
+              - "!^_"
+              - "!^__init_subclass__"
+              - "!^__new__"
+              - "!^__class_getitem__"
+  
+  - termynal:
+      title: "Terminal"
+      buttons: macos
+      prompt_literal_start:
+        - "$"
+        - ">"
+        - ">>>"
+
+# Additional configuration for better performance and SEO
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/xsyncio/sierra-dev
+      name: GitHub Repository
+    - icon: fontawesome/solid/book
+      link: https://xsyncio.github.io/sierra-dev/
+      name: Documentation
+  
+  version:
+    provider: mike
+    default: latest
+  
+  generator: false
+
+# Custom CSS for pure black theme and bright colors
+extra_css:
+  - stylesheets/extra.css
+
+# JavaScript enhancements
+extra_javascript:
+  - javascripts/extra.js
