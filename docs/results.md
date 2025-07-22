@@ -65,6 +65,23 @@ After your Invoker script runs, SIERRA reads its JSON output and integrates it
 
 Yes, this kit supports internal dealing of it.
 
+### Tree Type Result
+
 :::sierra.create_tree_result
+<figure markdown="span", align="center">
+  ![Image title](assets/tree.jpg)
+  <figcaption>Example of tree type result.</figcaption>
+</figure>
+
+### Network Type Result
+
 :::sierra.create_network_result
+<figure markdown="span", align="center">
+  ![Image title](assets/network.jpg)
+  <figcaption>Example of network type result.</figcaption>
+</figure>
+
+### Manage Errrors
+
+
 :::sierra.create_error_result

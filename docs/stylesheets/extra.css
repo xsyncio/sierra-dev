@@ -213,13 +213,13 @@
 .md-typeset .highlight .nv { color: rgba(255, 255, 255, 0.9); }
 
 .md-typeset .highlight .c,
-.md-typeset .highlight .c1 { color: rgba(255, 255, 255, 0.6); }
+.md-typeset .highlight .c1 { color: rgba(253, 0, 0, 0.6); }
 
 .md-typeset .highlight .nb { color: #00ffff; }
 
 /* Inline code - more readable */
 .md-typeset code {
-  background: rgba(17, 17, 17, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   color: var(--sierra-green);
   border: 1px solid rgba(0, 255, 0, 0.2);
   padding: 0.2em 0.4em;

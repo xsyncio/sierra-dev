@@ -4,6 +4,10 @@ theme:
   favicon: assets/logo.png
   logo: assets/logo.png
   name: material
+  palette:
+    scheme: slate
+    primary: deep purple
+    accent: purple
   font:
     text: Inter
     code: JetBrains Mono
@@ -66,44 +70,44 @@ theme:
 # Enhanced navigation structure with better organization
 nav:
   - Home:
-      - "🏠 Overview": index.md
-      - "📦 Sierra Dev": sierra-dev.md
-      - "⚡ Invoker": invoker.md
-      - "🚀 Installation": installation.md
+      - "Overview": index.md
+      - "Sierra Dev": sierra-dev.md
+      - "Invoker": invoker.md
+      - "Installation": installation.md
   
-  - "🎯 Getting Started":
-      - "📚 Guides":
-          - "📖 Read First": guides/index.md
-          - "🏷️ Typing & Type Hints": guides/typing.md
-          - "📝 Documentation": guides/documentation.md
-          - "🎨 Linting & Formatting": guides/linting.md
-          - "🔌 Plugins": guides/plugins.md
-      - "⚡ Quick Start": quickstart.md
-      - "⚙️ Configuration": configuration.md
+  - "Getting Started":
+      - "Guides":
+          - "Read First": guides/index.md
+          - "Typing & Type Hints": guides/typing.md
+          - "Documentation": guides/documentation.md
+          - "Linting & Formatting": guides/linting.md
+          - "Plugins": guides/plugins.md
+      - "Quick Start": quickstart.md
+      - "Configuration": configuration.md
   
-  - "📋 API Reference":
-      - "🔧 Core Components":
-          - "🌐 Sierra Client": sierra/client.md
-          - "⚡ Invoker": sierra/invoker.md
-          - "⚙️ Options": sierra/options.md
+  - "API Reference":
+      - "Core Components":
+          - "Sierra Client": sierra/client.md
+          - "Invoker": sierra/invoker.md
+          - "Options": sierra/options.md
       
-      - "🏗️ Core Architecture":
-          - "📂 Loader": sierra/core/loader.md
-          - "🌍 Environment": sierra/core/environment.md
-          - "⚙️ Compiler": sierra/core/compiler.md
-          - "🔨 Builder": sierra/core/builder.md
-          - "✅ Checker": sierra/core/checker.md
+      - "Core Architecture":
+          - "Loader": sierra/core/loader.md
+          - "Environment": sierra/core/environment.md
+          - "Compiler": sierra/core/compiler.md
+          - "Builder": sierra/core/builder.md
+          - "Checker": sierra/core/checker.md
       
-      - "🔒 Internal Systems":
-          - "💾 Cache": sierra/internal/cache.md
-          - "❌ Errors": sierra/internal/errors.md
-          - "📊 Logger": sierra/internal/logger.md
+      - "Internal Systems":
+          - "Cache": sierra/internal/cache.md
+          - "Errors": sierra/internal/errors.md
+          - "Logger": sierra/internal/logger.md
       
-      - "🎭 Abstract Base Classes":
-          - "📱 Base ABC": sierra/abc/base.md
-          - "🌐 Sierra ABC": sierra/abc/sierra.md
+      - "Abstract Base Classes":
+          - "Base ABC": sierra/abc/base.md
+          - "Sierra ABC": sierra/abc/sierra.md
   
-  - "📊 Results": results.md
+  - "Results": results.md
 
 # Enhanced markdown extensions for better rendering
 markdown_extensions:
@@ -115,7 +119,7 @@ markdown_extensions:
   - md_in_html
   - tables
   - toc:
-      permalink: "🔗"
+      permalink: "Link"
       baselevel: 2
       separator: "-"
       
@@ -211,7 +215,20 @@ plugins:
               - "!^__init_subclass__"
               - "!^__new__"
               - "!^__class_getitem__"
-  
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: auto
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
+      background: white
+      shadow: true
+      manual: false
   - termynal:
       title: "Terminal"
       buttons: macos
