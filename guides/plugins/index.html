@@ -20,11 +20,14 @@
     
     
       
-        <title>🔌 Plugins - Sierra Dev</title>
+        <title>Plugins - Sierra Dev</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -109,7 +112,12 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -157,15 +165,15 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🔌 Plugins
+              Plugins
             
           </span>
         </div>
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -284,7 +292,7 @@
   
     
   
-  🎯 Getting Started
+  Getting Started
 
         </a>
       </li>
@@ -316,7 +324,7 @@
   
     
   
-  📋 API Reference
+  API Reference
 
         </a>
       </li>
@@ -339,7 +347,7 @@
   
     
   
-  📊 Results
+  Results
 
       </a>
     </li>
@@ -501,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    🎯 Getting Started
+    Getting Started
     
   </span>
   
@@ -512,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            🎯 Getting Started
+            Getting Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -566,7 +574,7 @@
   
   
   <span class="md-ellipsis">
-    📚 Guides
+    Guides
     
   </span>
   
@@ -583,7 +591,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
-            📚 Guides
+            Guides
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -601,7 +609,7 @@
   
   
   <span class="md-ellipsis">
-    🏷️ Typing & Type Hints
+    Typing & Type Hints
     
   </span>
   
@@ -624,7 +632,7 @@
   
   
   <span class="md-ellipsis">
-    📝 Documentation
+    Documentation
     
   </span>
   
@@ -647,7 +655,7 @@
   
   
   <span class="md-ellipsis">
-    🎨 Linting & Formatting
+    Linting & Formatting
     
   </span>
   
@@ -677,7 +685,7 @@
   
   
   <span class="md-ellipsis">
-    🔌 Plugins
+    Plugins
     
   </span>
   
@@ -690,7 +698,7 @@
   
   
   <span class="md-ellipsis">
-    🔌 Plugins
+    Plugins
     
   </span>
   
@@ -808,7 +816,7 @@
   
   
   <span class="md-ellipsis">
-    ⚡ Quick Start
+    Quick Start
     
   </span>
   
@@ -831,7 +839,7 @@
   
   
   <span class="md-ellipsis">
-    ⚙️ Configuration
+    Configuration
     
   </span>
   
@@ -895,7 +903,7 @@
   
   
   <span class="md-ellipsis">
-    📋 API Reference
+    API Reference
     
   </span>
   
@@ -925,7 +933,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -967,16 +975,16 @@
   
 
 
-  <h1>🔌 Plugins</h1>
+  <h1>Plugins</h1>
 
-<h2 id="plugin-development">Plugin Development<a class="headerlink" href="#plugin-development" title="Permanent link">🔗</a></h2>
+<h2 id="plugin-development">Plugin Development<a class="headerlink" href="#plugin-development" title="Permanent link">Link</a></h2>
 <p>Learn how to build and register a standalone invoker script using the Sierra‑SDK plugin system. This guide walks you through defining dependencies, input parameters, result outputs, and the plugin loader function.</p>
-<h3 id="step-1-import-sierra">Step 1 — Import Sierra<a class="headerlink" href="#step-1-import-sierra" title="Permanent link">🔗</a></h3>
+<h3 id="step-1-import-sierra">Step 1 — Import Sierra<a class="headerlink" href="#step-1-import-sierra" title="Permanent link">Link</a></h3>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sierra</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Use the core <code>sierra</code> module to access all plugin interfaces, decorators, parameter wrappers, and result constructors.</p>
 <hr />
-<h3 id="step-2-define-an-invokerscript">Step 2 — Define an <code>InvokerScript</code><a class="headerlink" href="#step-2-define-an-invokerscript" title="Permanent link">🔗</a></h3>
+<h3 id="step-2-define-an-invokerscript">Step 2 — Define an <code>InvokerScript</code><a class="headerlink" href="#step-2-define-an-invokerscript" title="Permanent link">Link</a></h3>
 <p>Start by creating an <code>InvokerScript</code> object. This acts as the root definition of your plugin logic.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
@@ -987,7 +995,7 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="step-3-register-dependencies">Step 3 — Register Dependencies<a class="headerlink" href="#step-3-register-dependencies" title="Permanent link">🔗</a></h3>
+<h3 id="step-3-register-dependencies">Step 3 — Register Dependencies<a class="headerlink" href="#step-3-register-dependencies" title="Permanent link">Link</a></h3>
 <p>You can define helper functions that are not exposed as command-line parameters but are needed by your entry point.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
@@ -1004,7 +1012,7 @@
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="step-4-define-the-entry-point">Step 4 — Define the Entry Point<a class="headerlink" href="#step-4-define-the-entry-point" title="Permanent link">🔗</a></h3>
+<h3 id="step-4-define-the-entry-point">Step 4 — Define the Entry Point<a class="headerlink" href="#step-4-define-the-entry-point" title="Permanent link">Link</a></h3>
 <p>Mark the main function using <code>@invoker.entry_point</code>. Input arguments should use <code>sierra.Param</code> and <code>sierra.SierraOption</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
@@ -1045,14 +1053,14 @@
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="step-5-load-the-plugin">Step 5 — Load the Plugin<a class="headerlink" href="#step-5-load-the-plugin" title="Permanent link">🔗</a></h3>
+<h3 id="step-5-load-the-plugin">Step 5 — Load the Plugin<a class="headerlink" href="#step-5-load-the-plugin" title="Permanent link">Link</a></h3>
 <p>The plugin must define a <code>load()</code> function. This hook is invoked by the Sierra plugin loader to register your invoker.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">sierra</span><span class="o">.</span><span class="n">SierraDevelopmentClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>    <span class="n">client</span><span class="o">.</span><span class="n">load_invoker</span><span class="p">(</span><span class="n">invoker</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">🔗</a></h3>
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">Link</a></h3>
 <table>
 <thead>
 <tr>
@@ -1129,7 +1137,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../linting/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🎨 Linting &amp; Formatting">
+          <a href="../linting/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Linting &amp; Formatting">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1139,20 +1147,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                🎨 Linting & Formatting
+                Linting & Formatting
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../quickstart/" class="md-footer__link md-footer__link--next" aria-label="Next: ⚡ Quick Start">
+          <a href="../../quickstart/" class="md-footer__link md-footer__link--next" aria-label="Next: Quick Start">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                ⚡ Quick Start
+                Quick Start
               </div>
             </div>
             <div class="md-footer__button md-icon">

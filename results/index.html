@@ -18,11 +18,14 @@
     
     
       
-        <title>📊 Results - Sierra Dev</title>
+        <title>Results - Sierra Dev</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -107,7 +110,12 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -155,15 +163,15 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📊 Results
+              Results
             
           </span>
         </div>
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -278,7 +286,7 @@
   
     
   
-  🎯 Getting Started
+  Getting Started
 
         </a>
       </li>
@@ -310,7 +318,7 @@
   
     
   
-  📋 API Reference
+  API Reference
 
         </a>
       </li>
@@ -335,7 +343,7 @@
   
     
   
-  📊 Results
+  Results
 
       </a>
     </li>
@@ -498,7 +506,7 @@
   
   
   <span class="md-ellipsis">
-    🎯 Getting Started
+    Getting Started
     
   </span>
   
@@ -562,7 +570,7 @@
   
   
   <span class="md-ellipsis">
-    📋 API Reference
+    API Reference
     
   </span>
   
@@ -599,7 +607,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -612,7 +620,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -783,12 +791,12 @@
   
 
 
-  <h1>📊 Results</h1>
+  <h1>Results</h1>
 
-<h2 id="result-processing">Result Processing<a class="headerlink" href="#result-processing" title="Permanent link">🔗</a></h2>
+<h2 id="result-processing">Result Processing<a class="headerlink" href="#result-processing" title="Permanent link">Link</a></h2>
 <p>After your Invoker script runs, SIERRA reads its JSON output and integrates it into the investigation graph according to the <code>type</code> field.</p>
 <hr />
-<h3 id="tree-results">Tree Results<a class="headerlink" href="#tree-results" title="Permanent link">🔗</a></h3>
+<h3 id="tree-results">Tree Results<a class="headerlink" href="#tree-results" title="Permanent link">Link</a></h3>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
@@ -814,7 +822,7 @@
 <li>Parent nodes can be expanded to reveal children.</li>
 </ul>
 <hr />
-<h3 id="network-results">Network Results<a class="headerlink" href="#network-results" title="Permanent link">🔗</a></h3>
+<h3 id="network-results">Network Results<a class="headerlink" href="#network-results" title="Permanent link">Link</a></h3>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -845,7 +853,7 @@
 <li>You can trace connections from each origin through the network.</li>
 </ul>
 <hr />
-<h3 id="error-results">Error Results<a class="headerlink" href="#error-results" title="Permanent link">🔗</a></h3>
+<h3 id="error-results">Error Results<a class="headerlink" href="#error-results" title="Permanent link">Link</a></h3>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <ul>
@@ -863,9 +871,9 @@
 </li>
 <li>Halts further result rendering for that invocation.</li>
 </ul>
-<h3 id="internal-hanlding-of-results">Internal hanlding of results?<a class="headerlink" href="#internal-hanlding-of-results" title="Permanent link">🔗</a></h3>
+<h3 id="internal-hanlding-of-results">Internal hanlding of results?<a class="headerlink" href="#internal-hanlding-of-results" title="Permanent link">Link</a></h3>
 <p>Yes, this kit supports internal dealing of it.</p>
-<h4 id="tree-type-result">Tree Type Result<a class="headerlink" href="#tree-type-result" title="Permanent link">🔗</a></h4>
+<h4 id="tree-type-result">Tree Type Result<a class="headerlink" href="#tree-type-result" title="Permanent link">Link</a></h4>
 
 
 <div class="doc doc-object doc-function">
@@ -875,7 +883,7 @@
 <code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">sierra.create_tree_result</span>
 
 
-<a href="#sierra.create_tree_result" class="headerlink" title="Permanent link">🔗</a></h3>
+<a href="#sierra.create_tree_result" class="headerlink" title="Permanent link">Link</a></h3>
 <div class="language-python doc-signature highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">create_tree_result</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">results</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><span title="sierra.options.typing">typing</span></span><span class="o">.</span><span class="n"><span title="sierra.options.typing.Union">Union</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">]]]],</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><span title="sierra.options.typing">typing</span></span><span class="o">.</span><span class="n"><span title="sierra.options.typing.Any">Any</span></span><span class="p">]</span>
@@ -945,7 +953,7 @@
 <br />
 <figcaption>Example of tree type result.</figcaption>
 </figure>
-<h4 id="network-type-result">Network Type Result<a class="headerlink" href="#network-type-result" title="Permanent link">🔗</a></h4>
+<h4 id="network-type-result">Network Type Result<a class="headerlink" href="#network-type-result" title="Permanent link">Link</a></h4>
 
 
 <div class="doc doc-object doc-function">
@@ -955,7 +963,7 @@
 <code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">sierra.create_network_result</span>
 
 
-<a href="#sierra.create_network_result" class="headerlink" title="Permanent link">🔗</a></h3>
+<a href="#sierra.create_network_result" class="headerlink" title="Permanent link">Link</a></h3>
 <div class="language-python doc-signature highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">create_network_result</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">origins</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">],</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">nodes</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">]],</span>
@@ -1059,7 +1067,7 @@
 <br />
 <figcaption>Example of network type result.</figcaption>
 </figure>
-<h4 id="manage-errrors">Manage Errrors<a class="headerlink" href="#manage-errrors" title="Permanent link">🔗</a></h4>
+<h4 id="manage-errrors">Manage Errrors<a class="headerlink" href="#manage-errrors" title="Permanent link">Link</a></h4>
 
 
 <div class="doc doc-object doc-function">
@@ -1069,7 +1077,7 @@
 <code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">sierra.create_error_result</span>
 
 
-<a href="#sierra.create_error_result" class="headerlink" title="Permanent link">🔗</a></h3>
+<a href="#sierra.create_error_result" class="headerlink" title="Permanent link">Link</a></h3>
 <div class="language-python doc-signature highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">create_error_result</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3.10/library/stdtypes.html#str">str</a></span><span class="p">]</span>
 </span></code></pre></div>
 
@@ -1170,7 +1178,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../sierra/abc/sierra/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🌐 Sierra ABC">
+          <a href="../sierra/abc/sierra/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sierra ABC">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1180,7 +1188,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                🌐 Sierra ABC
+                Sierra ABC
               </div>
             </div>
           </a>

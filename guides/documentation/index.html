@@ -20,11 +20,14 @@
     
     
       
-        <title>📝 Documentation - Sierra Dev</title>
+        <title>Documentation - Sierra Dev</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -109,7 +112,12 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -157,15 +165,15 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📝 Documentation
+              Documentation
             
           </span>
         </div>
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -284,7 +292,7 @@
   
     
   
-  🎯 Getting Started
+  Getting Started
 
         </a>
       </li>
@@ -316,7 +324,7 @@
   
     
   
-  📋 API Reference
+  API Reference
 
         </a>
       </li>
@@ -339,7 +347,7 @@
   
     
   
-  📊 Results
+  Results
 
       </a>
     </li>
@@ -501,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    🎯 Getting Started
+    Getting Started
     
   </span>
   
@@ -512,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            🎯 Getting Started
+            Getting Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -566,7 +574,7 @@
   
   
   <span class="md-ellipsis">
-    📚 Guides
+    Guides
     
   </span>
   
@@ -583,7 +591,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
-            📚 Guides
+            Guides
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -601,7 +609,7 @@
   
   
   <span class="md-ellipsis">
-    🏷️ Typing & Type Hints
+    Typing & Type Hints
     
   </span>
   
@@ -631,7 +639,7 @@
   
   
   <span class="md-ellipsis">
-    📝 Documentation
+    Documentation
     
   </span>
   
@@ -644,7 +652,7 @@
   
   
   <span class="md-ellipsis">
-    📝 Documentation
+    Documentation
     
   </span>
   
@@ -811,7 +819,7 @@
   
   
   <span class="md-ellipsis">
-    🎨 Linting & Formatting
+    Linting & Formatting
     
   </span>
   
@@ -834,7 +842,7 @@
   
   
   <span class="md-ellipsis">
-    🔌 Plugins
+    Plugins
     
   </span>
   
@@ -865,7 +873,7 @@
   
   
   <span class="md-ellipsis">
-    ⚡ Quick Start
+    Quick Start
     
   </span>
   
@@ -888,7 +896,7 @@
   
   
   <span class="md-ellipsis">
-    ⚙️ Configuration
+    Configuration
     
   </span>
   
@@ -952,7 +960,7 @@
   
   
   <span class="md-ellipsis">
-    📋 API Reference
+    API Reference
     
   </span>
   
@@ -982,7 +990,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -1024,18 +1032,18 @@
   
 
 
-  <h1>📝 Documentation</h1>
+  <h1>Documentation</h1>
 
-<h2 id="documentation-docstring-standards">Documentation &amp; Docstring Standards<a class="headerlink" href="#documentation-docstring-standards" title="Permanent link">🔗</a></h2>
+<h2 id="documentation-docstring-standards">Documentation &amp; Docstring Standards<a class="headerlink" href="#documentation-docstring-standards" title="Permanent link">Link</a></h2>
 <p>Maintaining clear and consistent documentation is a core principle of Sierra‑SDK. This guide walks you through how to document your code using <strong>NumPy-style docstrings</strong>, and how to generate clean developer documentation using <strong>MkDocs</strong> and <strong>mkdocstrings</strong>.</p>
-<h3 id="why-docstrings-matter">Why Docstrings Matter<a class="headerlink" href="#why-docstrings-matter" title="Permanent link">🔗</a></h3>
+<h3 id="why-docstrings-matter">Why Docstrings Matter<a class="headerlink" href="#why-docstrings-matter" title="Permanent link">Link</a></h3>
 <p>Sierra‑SDK enforces strict standards around function and class documentation. Every public-facing function, method, and class should use <strong>NumPy-style docstrings</strong> to:</p>
 <ul>
 <li>Improve code readability.</li>
 <li>Enable automated documentation generation.</li>
 <li>Ensure consistency across all plugins and modules.</li>
 </ul>
-<h3 id="docstring-format-numpy-style">Docstring Format: NumPy Style<a class="headerlink" href="#docstring-format-numpy-style" title="Permanent link">🔗</a></h3>
+<h3 id="docstring-format-numpy-style">Docstring Format: NumPy Style<a class="headerlink" href="#docstring-format-numpy-style" title="Permanent link">Link</a></h3>
 <p>NumPy-style docstrings are clean, structured, and ideal for static parsing. Below is a canonical example for a function:</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1069,7 +1077,7 @@
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">        A dictionary mapping each word to its occurrence count.</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h4 id="section-ordering">Section Ordering<a class="headerlink" href="#section-ordering" title="Permanent link">🔗</a></h4>
+<h4 id="section-ordering">Section Ordering<a class="headerlink" href="#section-ordering" title="Permanent link">Link</a></h4>
 <p>Follow this order strictly:</p>
 <ol>
 <li>Short Summary</li>
@@ -1080,7 +1088,7 @@
 <li>Examples (if useful)</li>
 <li>See Also / Notes (optional)</li>
 </ol>
-<h4 id="required-fields">Required Fields<a class="headerlink" href="#required-fields" title="Permanent link">🔗</a></h4>
+<h4 id="required-fields">Required Fields<a class="headerlink" href="#required-fields" title="Permanent link">Link</a></h4>
 <ul>
 <li>
 <p>Every parameter must include:</p>
@@ -1098,14 +1106,14 @@
 </li>
 <li>Description</li>
 </ul>
-<h3 id="common-standards">Common Standards<a class="headerlink" href="#common-standards" title="Permanent link">🔗</a></h3>
+<h3 id="common-standards">Common Standards<a class="headerlink" href="#common-standards" title="Permanent link">Link</a></h3>
 <ul>
 <li><strong>Use <code>list[str]</code> not <code>List[str]</code></strong> – always use lowercase generics for modern typing.</li>
 <li><strong>Do not use Markdown inside docstrings.</strong></li>
 <li><strong>Start all descriptions with capital letters</strong> and end sentences with periods.</li>
 </ul>
 <hr />
-<h3 id="mkdocs-integration">MkDocs Integration<a class="headerlink" href="#mkdocs-integration" title="Permanent link">🔗</a></h3>
+<h3 id="mkdocs-integration">MkDocs Integration<a class="headerlink" href="#mkdocs-integration" title="Permanent link">Link</a></h3>
 <p>Sierra‑SDK uses <code>mkdocstrings</code> to render docstrings into clean, searchable documentation pages.</p>
 <p>In <code>mkdocs.yml</code>:</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -1130,7 +1138,7 @@
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">            </span><span class="nt">merge_init_into_class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">            </span><span class="nt">show_signature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span></code></pre></div></td></tr></table></div>
-<h4 id="folder-layout">Folder Layout<a class="headerlink" href="#folder-layout" title="Permanent link">🔗</a></h4>
+<h4 id="folder-layout">Folder Layout<a class="headerlink" href="#folder-layout" title="Permanent link">Link</a></h4>
 <p>Make sure your repo structure supports autodoc discovery:</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
@@ -1154,7 +1162,7 @@
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">🔗</a></h3>
+<h3 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">Link</a></h3>
 <ul>
 <li>Document <strong>every public function</strong> and class.</li>
 <li>Avoid documenting private methods unless necessary.</li>
@@ -1162,7 +1170,7 @@
 <li>Use <strong>imperative voice</strong>: “Return X”, not “Returns X”.</li>
 </ul>
 <hr />
-<h3 id="tools-to-enforce-compliance">Tools to Enforce Compliance<a class="headerlink" href="#tools-to-enforce-compliance" title="Permanent link">🔗</a></h3>
+<h3 id="tools-to-enforce-compliance">Tools to Enforce Compliance<a class="headerlink" href="#tools-to-enforce-compliance" title="Permanent link">Link</a></h3>
 <p>Use <strong>Ruff</strong> to enforce docstring rules:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TOML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
@@ -1172,7 +1180,7 @@
 </span></code></pre></div></td></tr></table></div>
 <p>Use <strong>MyPy</strong> to catch undocumented return values or bad type hints.</p>
 <hr />
-<h3 id="example-documented-invoker-entry-point">Example: Documented Invoker Entry Point<a class="headerlink" href="#example-documented-invoker-entry-point" title="Permanent link">🔗</a></h3>
+<h3 id="example-documented-invoker-entry-point">Example: Documented Invoker Entry Point<a class="headerlink" href="#example-documented-invoker-entry-point" title="Permanent link">Link</a></h3>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -1212,7 +1220,7 @@
 </span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">🔗</a></h3>
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">Link</a></h3>
 <p>Using proper documentation practices ensures:</p>
 <p>✅ Clean auto-generated docs
 ✅ Easier onboarding for contributors
@@ -1256,7 +1264,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../typing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🏷️ Typing &amp; Type Hints">
+          <a href="../typing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Typing &amp; Type Hints">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1266,20 +1274,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                🏷️ Typing & Type Hints
+                Typing & Type Hints
               </div>
             </div>
           </a>
         
         
           
-          <a href="../linting/" class="md-footer__link md-footer__link--next" aria-label="Next: 🎨 Linting &amp; Formatting">
+          <a href="../linting/" class="md-footer__link md-footer__link--next" aria-label="Next: Linting &amp; Formatting">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                🎨 Linting & Formatting
+                Linting & Formatting
               </div>
             </div>
             <div class="md-footer__button md-icon">

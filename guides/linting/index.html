@@ -20,11 +20,14 @@
     
     
       
-        <title>🎨 Linting & Formatting - Sierra Dev</title>
+        <title>Linting & Formatting - Sierra Dev</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -109,7 +112,12 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -157,15 +165,15 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🎨 Linting & Formatting
+              Linting & Formatting
             
           </span>
         </div>
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -284,7 +292,7 @@
   
     
   
-  🎯 Getting Started
+  Getting Started
 
         </a>
       </li>
@@ -316,7 +324,7 @@
   
     
   
-  📋 API Reference
+  API Reference
 
         </a>
       </li>
@@ -339,7 +347,7 @@
   
     
   
-  📊 Results
+  Results
 
       </a>
     </li>
@@ -501,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    🎯 Getting Started
+    Getting Started
     
   </span>
   
@@ -512,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            🎯 Getting Started
+            Getting Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -566,7 +574,7 @@
   
   
   <span class="md-ellipsis">
-    📚 Guides
+    Guides
     
   </span>
   
@@ -583,7 +591,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
-            📚 Guides
+            Guides
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -601,7 +609,7 @@
   
   
   <span class="md-ellipsis">
-    🏷️ Typing & Type Hints
+    Typing & Type Hints
     
   </span>
   
@@ -624,7 +632,7 @@
   
   
   <span class="md-ellipsis">
-    📝 Documentation
+    Documentation
     
   </span>
   
@@ -654,7 +662,7 @@
   
   
   <span class="md-ellipsis">
-    🎨 Linting & Formatting
+    Linting & Formatting
     
   </span>
   
@@ -667,7 +675,7 @@
   
   
   <span class="md-ellipsis">
-    🎨 Linting & Formatting
+    Linting & Formatting
     
   </span>
   
@@ -828,7 +836,7 @@
   
   
   <span class="md-ellipsis">
-    🔌 Plugins
+    Plugins
     
   </span>
   
@@ -859,7 +867,7 @@
   
   
   <span class="md-ellipsis">
-    ⚡ Quick Start
+    Quick Start
     
   </span>
   
@@ -882,7 +890,7 @@
   
   
   <span class="md-ellipsis">
-    ⚙️ Configuration
+    Configuration
     
   </span>
   
@@ -946,7 +954,7 @@
   
   
   <span class="md-ellipsis">
-    📋 API Reference
+    API Reference
     
   </span>
   
@@ -976,7 +984,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -1018,12 +1026,12 @@
   
 
 
-  <h1>🎨 Linting & Formatting</h1>
+  <h1>Linting & Formatting</h1>
 
-<h2 id="linting-guide-ruff">Linting Guide (Ruff)<a class="headerlink" href="#linting-guide-ruff" title="Permanent link">🔗</a></h2>
+<h2 id="linting-guide-ruff">Linting Guide (Ruff)<a class="headerlink" href="#linting-guide-ruff" title="Permanent link">Link</a></h2>
 <p>Sierra‑SDK enforces <strong>strict, automated linting</strong> using <a href="https://docs.astral.sh/ruff/">Ruff</a>. This ensures your code is readable, safe, PEP8-compliant, and production‑ready across all modules, plugins, invokers, and core logic.</p>
 <hr />
-<h3 id="configuration-summary">🔧 Configuration Summary<a class="headerlink" href="#configuration-summary" title="Permanent link">🔗</a></h3>
+<h3 id="configuration-summary">🔧 Configuration Summary<a class="headerlink" href="#configuration-summary" title="Permanent link">Link</a></h3>
 <p>The Ruff config is defined in <code>pyproject.toml</code>:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TOML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1072,7 +1080,7 @@
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="n">docstring-code-format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="enabled-rule-categories">✅ Enabled Rule Categories<a class="headerlink" href="#enabled-rule-categories" title="Permanent link">🔗</a></h3>
+<h3 id="enabled-rule-categories">✅ Enabled Rule Categories<a class="headerlink" href="#enabled-rule-categories" title="Permanent link">Link</a></h3>
 <table>
 <thead>
 <tr>
@@ -1165,7 +1173,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="ignored-rules-temporarily-or-internally-allowed">🚫 Ignored Rules (Temporarily or Internally Allowed)<a class="headerlink" href="#ignored-rules-temporarily-or-internally-allowed" title="Permanent link">🔗</a></h3>
+<h3 id="ignored-rules-temporarily-or-internally-allowed">🚫 Ignored Rules (Temporarily or Internally Allowed)<a class="headerlink" href="#ignored-rules-temporarily-or-internally-allowed" title="Permanent link">Link</a></h3>
 <table>
 <thead>
 <tr>
@@ -1201,7 +1209,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="auto-fixable-rules">🧹 Auto-Fixable Rules<a class="headerlink" href="#auto-fixable-rules" title="Permanent link">🔗</a></h3>
+<h3 id="auto-fixable-rules">🧹 Auto-Fixable Rules<a class="headerlink" href="#auto-fixable-rules" title="Permanent link">Link</a></h3>
 <p>Ruff can automatically fix:</p>
 <ul>
 <li><code>I</code>: Import ordering</li>
@@ -1212,9 +1220,9 @@
 <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ruff<span class="w"> </span>check<span class="w"> </span>.<span class="w"> </span>--fix
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="docstrings-numpy-convention">📚 Docstrings: NumPy Convention<a class="headerlink" href="#docstrings-numpy-convention" title="Permanent link">🔗</a></h3>
+<h3 id="docstrings-numpy-convention">📚 Docstrings: NumPy Convention<a class="headerlink" href="#docstrings-numpy-convention" title="Permanent link">Link</a></h3>
 <p>Use <strong>NumPy-style docstrings</strong> in all modules. Ruff validates your structure, spacing, and style.</p>
-<h4 id="correct">✅ Correct<a class="headerlink" href="#correct" title="Permanent link">🔗</a></h4>
+<h4 id="correct">✅ Correct<a class="headerlink" href="#correct" title="Permanent link">Link</a></h4>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -1249,7 +1257,7 @@
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </span></code></pre></div></td></tr></table></div>
-<h4 id="incorrect">❌ Incorrect<a class="headerlink" href="#incorrect" title="Permanent link">🔗</a></h4>
+<h4 id="incorrect">❌ Incorrect<a class="headerlink" href="#incorrect" title="Permanent link">Link</a></h4>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -1257,7 +1265,7 @@
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="import-order-one-per-line">📦 Import Order: One Per Line<a class="headerlink" href="#import-order-one-per-line" title="Permanent link">🔗</a></h3>
+<h3 id="import-order-one-per-line">📦 Import Order: One Per Line<a class="headerlink" href="#import-order-one-per-line" title="Permanent link">Link</a></h3>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
@@ -1271,7 +1279,7 @@
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="best-practices-summary">🧠 Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Permanent link">🔗</a></h3>
+<h3 id="best-practices-summary">🧠 Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Permanent link">Link</a></h3>
 <table>
 <thead>
 <tr>
@@ -1303,7 +1311,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="run-linting">🧪 Run Linting<a class="headerlink" href="#run-linting" title="Permanent link">🔗</a></h3>
+<h3 id="run-linting">🧪 Run Linting<a class="headerlink" href="#run-linting" title="Permanent link">Link</a></h3>
 <p>Check your code:</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>ruff<span class="w"> </span>check<span class="w"> </span>.
 </span></code></pre></div></td></tr></table></div>
@@ -1311,7 +1319,7 @@
 <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>ruff<span class="w"> </span>check<span class="w"> </span>.<span class="w"> </span>--fix
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="reminder">📌 Reminder<a class="headerlink" href="#reminder" title="Permanent link">🔗</a></h3>
+<h3 id="reminder">📌 Reminder<a class="headerlink" href="#reminder" title="Permanent link">Link</a></h3>
 <p>Ruff runs <strong>fast</strong>, has no runtime cost, and gives <strong>immediate feedback</strong>. Use it constantly to enforce code health and Sierra‑SDK quality.</p>
 
 
@@ -1350,7 +1358,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../documentation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 📝 Documentation">
+          <a href="../documentation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Documentation">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1360,20 +1368,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                📝 Documentation
+                Documentation
               </div>
             </div>
           </a>
         
         
           
-          <a href="../plugins/" class="md-footer__link md-footer__link--next" aria-label="Next: 🔌 Plugins">
+          <a href="../plugins/" class="md-footer__link md-footer__link--next" aria-label="Next: Plugins">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                🔌 Plugins
+                Plugins
               </div>
             </div>
             <div class="md-footer__button md-icon">

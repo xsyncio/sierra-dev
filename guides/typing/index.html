@@ -20,11 +20,14 @@
     
     
       
-        <title>🏷️ Typing & Type Hints - Sierra Dev</title>
+        <title>Typing & Type Hints - Sierra Dev</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -109,7 +112,12 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -157,15 +165,15 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🏷️ Typing & Type Hints
+              Typing & Type Hints
             
           </span>
         </div>
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -284,7 +292,7 @@
   
     
   
-  🎯 Getting Started
+  Getting Started
 
         </a>
       </li>
@@ -316,7 +324,7 @@
   
     
   
-  📋 API Reference
+  API Reference
 
         </a>
       </li>
@@ -339,7 +347,7 @@
   
     
   
-  📊 Results
+  Results
 
       </a>
     </li>
@@ -501,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    🎯 Getting Started
+    Getting Started
     
   </span>
   
@@ -512,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            🎯 Getting Started
+            Getting Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -566,7 +574,7 @@
   
   
   <span class="md-ellipsis">
-    📚 Guides
+    Guides
     
   </span>
   
@@ -583,7 +591,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
-            📚 Guides
+            Guides
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -608,7 +616,7 @@
   
   
   <span class="md-ellipsis">
-    🏷️ Typing & Type Hints
+    Typing & Type Hints
     
   </span>
   
@@ -621,7 +629,7 @@
   
   
   <span class="md-ellipsis">
-    🏷️ Typing & Type Hints
+    Typing & Type Hints
     
   </span>
   
@@ -788,7 +796,7 @@
   
   
   <span class="md-ellipsis">
-    📝 Documentation
+    Documentation
     
   </span>
   
@@ -811,7 +819,7 @@
   
   
   <span class="md-ellipsis">
-    🎨 Linting & Formatting
+    Linting & Formatting
     
   </span>
   
@@ -834,7 +842,7 @@
   
   
   <span class="md-ellipsis">
-    🔌 Plugins
+    Plugins
     
   </span>
   
@@ -865,7 +873,7 @@
   
   
   <span class="md-ellipsis">
-    ⚡ Quick Start
+    Quick Start
     
   </span>
   
@@ -888,7 +896,7 @@
   
   
   <span class="md-ellipsis">
-    ⚙️ Configuration
+    Configuration
     
   </span>
   
@@ -952,7 +960,7 @@
   
   
   <span class="md-ellipsis">
-    📋 API Reference
+    API Reference
     
   </span>
   
@@ -982,7 +990,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -1024,12 +1032,12 @@
   
 
 
-  <h1>🏷️ Typing & Type Hints</h1>
+  <h1>Typing & Type Hints</h1>
 
-<h2 id="typing-type-hinting">Typing &amp; Type Hinting<a class="headerlink" href="#typing-type-hinting" title="Permanent link">🔗</a></h2>
+<h2 id="typing-type-hinting">Typing &amp; Type Hinting<a class="headerlink" href="#typing-type-hinting" title="Permanent link">Link</a></h2>
 <p>Sierra‑SDK uses <strong>strict static typing</strong> to ensure safety, clarity, and predictability in all components. This guide helps you apply best practices using <code>mypy</code>, <code>pyright</code>, and Python’s <code>typing</code> system across scripts, invokers, and plugins.</p>
 <hr />
-<h3 id="type-annotations-the-basics">✅ Type Annotations: The Basics<a class="headerlink" href="#type-annotations-the-basics" title="Permanent link">🔗</a></h3>
+<h3 id="type-annotations-the-basics">✅ Type Annotations: The Basics<a class="headerlink" href="#type-annotations-the-basics" title="Permanent link">Link</a></h3>
 <p>Use fully annotated function signatures. Avoid implicit <code>Any</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -1038,8 +1046,8 @@
 <p>✔️ Always declare return types
 ✔️ Prefer <code>str</code>, <code>int</code>, <code>bool</code>, <code>float</code>, <code>None</code>, <code>list[str]</code>, <code>dict[str, int]</code>, etc.</p>
 <hr />
-<h3 id="advanced-typing-in-sierra">✅ Advanced Typing in Sierra<a class="headerlink" href="#advanced-typing-in-sierra" title="Permanent link">🔗</a></h3>
-<h4 id="sierraparam"><code>sierra.Param[...]</code><a class="headerlink" href="#sierraparam" title="Permanent link">🔗</a></h4>
+<h3 id="advanced-typing-in-sierra">✅ Advanced Typing in Sierra<a class="headerlink" href="#advanced-typing-in-sierra" title="Permanent link">Link</a></h3>
+<h4 id="sierraparam"><code>sierra.Param[...]</code><a class="headerlink" href="#sierraparam" title="Permanent link">Link</a></h4>
 <p>Wrap input parameters using <code>Param[T, SierraOption]</code>. This supports type-checked command-line inputs.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
@@ -1059,7 +1067,7 @@
 </span></code></pre></div></td></tr></table></div>
 <p>💡 Sierra type-wrappers are fully compatible with MyPy and Pyright.</p>
 <hr />
-<h3 id="callable-types">✅ Callable Types<a class="headerlink" href="#callable-types" title="Permanent link">🔗</a></h3>
+<h3 id="callable-types">✅ Callable Types<a class="headerlink" href="#callable-types" title="Permanent link">Link</a></h3>
 <p>When registering dependencies, use explicit function signatures.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
@@ -1069,7 +1077,7 @@
 </span></code></pre></div></td></tr></table></div>
 <p>Never leave them untyped—this breaks type checking across invoker dependency graphs.</p>
 <hr />
-<h3 id="use-typeddict-for-json-like-objects">✅ Use TypedDict for JSON-like Objects<a class="headerlink" href="#use-typeddict-for-json-like-objects" title="Permanent link">🔗</a></h3>
+<h3 id="use-typeddict-for-json-like-objects">✅ Use TypedDict for JSON-like Objects<a class="headerlink" href="#use-typeddict-for-json-like-objects" title="Permanent link">Link</a></h3>
 <p>For structured dicts (e.g. plugin config or JSON schemas), use <code>typing.TypedDict</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
@@ -1084,15 +1092,15 @@
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="n">enabled</span><span class="p">:</span> <span class="nb">bool</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="use-literal-for-constrained-values">✅ Use Literal for Constrained Values<a class="headerlink" href="#use-literal-for-constrained-values" title="Permanent link">🔗</a></h3>
+<h3 id="use-literal-for-constrained-values">✅ Use Literal for Constrained Values<a class="headerlink" href="#use-literal-for-constrained-values" title="Permanent link">Link</a></h3>
 <p>Use <code>typing.Literal</code> for fixed string options like <code>"MANDATORY"</code>, <code>"PRIMARY"</code>, etc.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">set_flag</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;MANDATORY&quot;</span><span class="p">,</span> <span class="s2">&quot;OPTIONAL&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>    <span class="o">...</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="mypy-and-pyright">✅ MyPy and Pyright<a class="headerlink" href="#mypy-and-pyright" title="Permanent link">🔗</a></h3>
-<h4 id="configure-mypyini">Configure <code>mypy.ini</code><a class="headerlink" href="#configure-mypyini" title="Permanent link">🔗</a></h4>
+<h3 id="mypy-and-pyright">✅ MyPy and Pyright<a class="headerlink" href="#mypy-and-pyright" title="Permanent link">Link</a></h3>
+<h4 id="configure-mypyini">Configure <code>mypy.ini</code><a class="headerlink" href="#configure-mypyini" title="Permanent link">Link</a></h4>
 <div class="language-ini highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">INI</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
@@ -1105,7 +1113,7 @@
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="na">check_untyped_defs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="na">warn_unused_ignores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
 </span></code></pre></div></td></tr></table></div>
-<h4 id="pyright-config-pyrightconfigjson">Pyright config (<code>pyrightconfig.json</code>)<a class="headerlink" href="#pyright-config-pyrightconfigjson" title="Permanent link">🔗</a></h4>
+<h4 id="pyright-config-pyrightconfigjson">Pyright config (<code>pyrightconfig.json</code>)<a class="headerlink" href="#pyright-config-pyrightconfigjson" title="Permanent link">Link</a></h4>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span>
 <span class="normal"><a href="#__codelineno-6-3">3</a></span>
@@ -1115,7 +1123,7 @@
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
-<h3 id="best-practices-summary">🧠 Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Permanent link">🔗</a></h3>
+<h3 id="best-practices-summary">🧠 Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Permanent link">Link</a></h3>
 <table>
 <thead>
 <tr>
@@ -1147,7 +1155,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="static-safe">🔒 Static = Safe<a class="headerlink" href="#static-safe" title="Permanent link">🔗</a></h3>
+<h3 id="static-safe">🔒 Static = Safe<a class="headerlink" href="#static-safe" title="Permanent link">Link</a></h3>
 <p>Static typing helps Sierra:</p>
 <ul>
 <li>Prevent runtime errors</li>
@@ -1195,7 +1203,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: 📖 Read First">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Read First">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1205,20 +1213,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                📖 Read First
+                Read First
               </div>
             </div>
           </a>
         
         
           
-          <a href="../documentation/" class="md-footer__link md-footer__link--next" aria-label="Next: 📝 Documentation">
+          <a href="../documentation/" class="md-footer__link md-footer__link--next" aria-label="Next: Documentation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                📝 Documentation
+                Documentation
               </div>
             </div>
             <div class="md-footer__button md-icon">

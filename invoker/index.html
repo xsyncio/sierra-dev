@@ -20,11 +20,14 @@
     
     
       
-        <title>⚡ Invoker - Sierra Dev</title>
+        <title>Invoker - Sierra Dev</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -109,7 +112,12 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -157,15 +165,15 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ⚡ Invoker
+              Invoker
             
           </span>
         </div>
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -282,7 +290,7 @@
   
     
   
-  🎯 Getting Started
+  Getting Started
 
         </a>
       </li>
@@ -314,7 +322,7 @@
   
     
   
-  📋 API Reference
+  API Reference
 
         </a>
       </li>
@@ -337,7 +345,7 @@
   
     
   
-  📊 Results
+  Results
 
       </a>
     </li>
@@ -479,7 +487,7 @@
   
   
   <span class="md-ellipsis">
-    📦 Sierra Dev
+    Sierra Dev
     
   </span>
   
@@ -509,7 +517,7 @@
   
   
   <span class="md-ellipsis">
-    ⚡ Invoker
+    Invoker
     
   </span>
   
@@ -522,7 +530,7 @@
   
   
   <span class="md-ellipsis">
-    ⚡ Invoker
+    Invoker
     
   </span>
   
@@ -656,7 +664,7 @@
   
   
   <span class="md-ellipsis">
-    🚀 Installation
+    Installation
     
   </span>
   
@@ -718,7 +726,7 @@
   
   
   <span class="md-ellipsis">
-    🎯 Getting Started
+    Getting Started
     
   </span>
   
@@ -782,7 +790,7 @@
   
   
   <span class="md-ellipsis">
-    📋 API Reference
+    API Reference
     
   </span>
   
@@ -812,7 +820,7 @@
   
   
   <span class="md-ellipsis">
-    📊 Results
+    Results
     
   </span>
   
@@ -854,12 +862,12 @@
   
 
 
-  <h1>⚡ Invoker</h1>
+  <h1>Invoker</h1>
 
-<h2 id="sierra-invoker">SIERRA Invoker<a class="headerlink" href="#sierra-invoker" title="Permanent link">🔗</a></h2>
+<h2 id="sierra-invoker">SIERRA Invoker<a class="headerlink" href="#sierra-invoker" title="Permanent link">Link</a></h2>
 <p>This document walks you through creating custom Invoker scripts to extend SIERRA’s functionality and automate tasks in your investigations.</p>
 <hr />
-<h3 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">🔗</a></h3>
+<h3 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">Link</a></h3>
 <p>Invoker scripts in SIERRA allow you to integrate external tools and scripts (Python, Bash, PowerShell, etc.) into the SIERRA interface. You define each script with a simple YAML configuration file that describes:</p>
 <ul>
 <li>Where to find your script files (<code>PATHS</code>)</li>
@@ -869,7 +877,7 @@
 </ul>
 <p>Once invoked, your script must return JSON-formatted results in a prescribed structure so SIERRA can visualize them in the investigation graph.</p>
 <hr />
-<h3 id="2-invoker-script-structure">2. Invoker Script Structure<a class="headerlink" href="#2-invoker-script-structure" title="Permanent link">🔗</a></h3>
+<h3 id="2-invoker-script-structure">2. Invoker Script Structure<a class="headerlink" href="#2-invoker-script-structure" title="Permanent link">Link</a></h3>
 <p>Each Invoker script is configured via a YAML file with the following sections:</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -919,9 +927,9 @@
 <li><strong>Command</strong> (mandatory): The shell command to execute, with parameter placeholders like <code>{Domain}</code>.</li>
 </ul>
 <hr />
-<h3 id="3-result-formats">3. Result Formats<a class="headerlink" href="#3-result-formats" title="Permanent link">🔗</a></h3>
+<h3 id="3-result-formats">3. Result Formats<a class="headerlink" href="#3-result-formats" title="Permanent link">Link</a></h3>
 <p>Your script must output a JSON object that SIERRA can parse. There are three supported formats:</p>
-<h4 id="31-tree-type">3.1 Tree Type<a class="headerlink" href="#31-tree-type" title="Permanent link">🔗</a></h4>
+<h4 id="31-tree-type">3.1 Tree Type<a class="headerlink" href="#31-tree-type" title="Permanent link">Link</a></h4>
 <p>Use for hierarchical results.</p>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
@@ -945,7 +953,7 @@
 <li><code>type</code>: must be <code>Tree</code></li>
 <li><code>results</code>: array of strings or nested objects (parent � children)</li>
 </ul>
-<h4 id="32-network-type">3.2 Network Type<a class="headerlink" href="#32-network-type" title="Permanent link">🔗</a></h4>
+<h4 id="32-network-type">3.2 Network Type<a class="headerlink" href="#32-network-type" title="Permanent link">Link</a></h4>
 <p>Use for graph/network relationships.</p>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
@@ -979,13 +987,13 @@
 <li><code>nodes</code>: array of <code>{id, content}</code> objects</li>
 <li><code>edges</code>: array of <code>{source, target, label}</code></li>
 </ul>
-<h4 id="33-error-type">3.3 Error Type<a class="headerlink" href="#33-error-type" title="Permanent link">🔗</a></h4>
+<h4 id="33-error-type">3.3 Error Type<a class="headerlink" href="#33-error-type" title="Permanent link">Link</a></h4>
 <p>On errors, return:</p>
 <div class="language-json highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error description&quot;</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>SIERRA will display the error and halt the script execution gracefully.</p>
 <hr />
-<h3 id="4-example-invoker-configuration">4. Example Invoker Configuration<a class="headerlink" href="#4-example-invoker-configuration" title="Permanent link">🔗</a></h3>
+<h3 id="4-example-invoker-configuration">4. Example Invoker Configuration<a class="headerlink" href="#4-example-invoker-configuration" title="Permanent link">Link</a></h3>
 <p>Below is a full example of a subdomain lookup Invoker:</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
@@ -1019,7 +1027,7 @@
 </span></code></pre></div></td></tr></table></div>
 <p>When invoked, SIERRA will locate <code>subfinder.py</code> in the given <code>PATHS</code>, pass the <code>{Domain}</code> argument, and expect a Tree or Network JSON output.</p>
 <hr />
-<h3 id="5-tips-best-practices">5. Tips &amp; Best Practices<a class="headerlink" href="#5-tips-best-practices" title="Permanent link">🔗</a></h3>
+<h3 id="5-tips-best-practices">5. Tips &amp; Best Practices<a class="headerlink" href="#5-tips-best-practices" title="Permanent link">Link</a></h3>
 <ul>
 <li><strong>Validate Input</strong>: Check parameter presence and types, returning an <code>Error</code> JSON if invalid.</li>
 <li><strong>Timeouts</strong>: Ensure long-running scripts implement timeouts to avoid blocking SIERRA.</li>
@@ -1065,7 +1073,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../sierra-dev/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 📦 Sierra Dev">
+          <a href="../sierra-dev/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sierra Dev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1075,20 +1083,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                📦 Sierra Dev
+                Sierra Dev
               </div>
             </div>
           </a>
         
         
           
-          <a href="../installation/" class="md-footer__link md-footer__link--next" aria-label="Next: 🚀 Installation">
+          <a href="../installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                🚀 Installation
+                Installation
               </div>
             </div>
             <div class="md-footer__button md-icon">
