@@ -4,13 +4,6 @@
    ==================================== */
 
 :root {
-  /* Light Theme Colors */
-  --md-primary-fg-color: #ff0000;        /* Bright Red */
-  --md-primary-fg-color--light: #ff3333;
-  --md-primary-fg-color--dark: #cc0000;
-  --md-accent-fg-color: #00ff00;         /* Bright Green */
-  --md-accent-fg-color--transparent: rgba(0, 255, 0, 0.1);
-  
   /* Custom brand colors */
   --sierra-red: #ff0000;
   --sierra-green: #00ff00;
@@ -18,7 +11,7 @@
   --sierra-white: #ffffff;
 }
 
-/* Dark Theme Overrides */
+/* Dark Theme Variables */
 [data-md-color-scheme="slate"] {
   --md-default-bg-color: #000000;        /* Pure Black Background */
   --md-default-fg-color: #ffffff;        /* Pure White Text */
@@ -490,7 +483,7 @@ html {
    ENSURE SOURCE & SEARCH ICONS VISIBLE IN DARK (SLATE) MODE
    ============================================================================= */
 
-/* GitHub / “Source” link icon */
+/* GitHub / "Source" link icon */
 [data-md-color-scheme="slate"] .md-source__icon,
 [data-md-color-scheme="slate"] .md-source__icon .md-icon,
 [data-md-color-scheme="slate"] .md-source__icon svg {
@@ -507,7 +500,7 @@ html {
   stroke: var(--md-default-fg-color) !important;
 }
 
-/* Search field “clear” / close icon (if present) */
+/* Search field "clear" / close icon (if present) */
 [data-md-color-scheme="slate"] .md-search__button .md-icon {
   color: var(--md-default-fg-color) !important;
   fill:  var(--md-default-fg-color) !important;
