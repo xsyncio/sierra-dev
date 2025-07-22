@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/xsyncio/sierra-dev",
     project_urls={
-        "Documentation": "https://sierra-dev.readthedocs.io",
+        "Documentation": "https://xsyncio.github.io/sierra-dev",
         "Source": "https://github.com/xsyncio/sierra-dev",
         "Tracker": "https://github.com/xsyncio/sierra-dev/issues",
     },
