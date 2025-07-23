@@ -1,0 +1,2 @@
+setuptools==80.9.0
+ruff==0.12.4
