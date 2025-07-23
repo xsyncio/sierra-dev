@@ -31,7 +31,7 @@ mkdocs_requirements: list[str] = [
 
 dev_requirements: list[str] = ["setuptools==80.9.0", "ruff==0.12.4"]
 
-requirements: list[str] = ["colorama==0.4.6httpx==0.28.1"]
+requirements: list[str] = ["colorama==0.4.6", "httpx==0.28.1"]
 setup(
     name="sierra-dev",
     version="0.1.0",
