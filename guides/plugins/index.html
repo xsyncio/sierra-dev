@@ -980,19 +980,27 @@
 <h2 id="plugin-development">Plugin Development<a class="headerlink" href="#plugin-development" title="Permanent link">Link</a></h2>
 <p>Learn how to build and register a standalone invoker script using the Sierra‑SDK plugin system. This guide walks you through defining dependencies, input parameters, result outputs, and the plugin loader function.</p>
 <h3 id="step-1-import-sierra">Step 1 — Import Sierra<a class="headerlink" href="#step-1-import-sierra" title="Permanent link">Link</a></h3>
-<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sierra</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sierra</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Use the core <code>sierra</code> module to access all plugin interfaces, decorators, parameter wrappers, and result constructors.</p>
 <hr />
 <h3 id="step-2-define-an-invokerscript">Step 2 — Define an <code>InvokerScript</code><a class="headerlink" href="#step-2-define-an-invokerscript" title="Permanent link">Link</a></h3>
-<p>Start by creating an <code>InvokerScript</code> object. This acts as the root definition of your plugin logic.</p>
+<p>Start by creating an <code>InvokerScript</code> object. This acts as the root definition of your plugin logic. And putting in requirements inside <code>invoker.requirement</code></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">invoker</span> <span class="o">=</span> <span class="n">sierra</span><span class="o">.</span><span class="n">InvokerScript</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">invoker</span> <span class="o">=</span> <span class="n">sierra</span><span class="o">.</span><span class="n">InvokerScript</span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;greet&quot;</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Prints a personalized greeting message.&quot;</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="n">invoker</span><span class="o">.</span><span class="n">requirement</span><span class="p">([</span><span class="s2">&quot;requests&quot;</span><span class="p">])</span>
 </span></code></pre></div></td></tr></table></div>
 <hr />
 <h3 id="step-3-register-dependencies">Step 3 — Register Dependencies<a class="headerlink" href="#step-3-register-dependencies" title="Permanent link">Link</a></h3>
