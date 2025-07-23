@@ -80,9 +80,9 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
             "Compile: Generating YAML configuration", "debug"
         )
         env = self.client.environment
-        invokers_dir = env.invokers_path
+        invokers_dir = str(env.invokers_path)
         lines: list[str] = []
-
+        print(invokers_dir)
         # PATHS
         lines.append("PATHS:")
         lines.append(f"  - {invokers_dir}")

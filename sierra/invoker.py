@@ -1,4 +1,5 @@
 import inspect
+import pathlib
 import typing
 
 import sierra.abc.sierra as sierra_abc_sierra
@@ -46,7 +47,7 @@ class InvokerScript:
         self.deps: list[_TCallable] = []
         self.requirements: list[str] = []
         self.command: str = ""
-        self.filename = ""
+        self.filename: pathlib.Path
 
     @staticmethod
     def verify_signature(func: _TCallable) -> None:
@@ -96,7 +97,7 @@ class InvokerScript:
         _TCallable
             The original function (unchanged).
         """
-        self.filename = inspect.getfile(func)
+        self.filename = pathlib.Path(inspect.getfile(func))
         self.verify_signature(func)
         self._entry_point = func
         # Extract parameter metadata

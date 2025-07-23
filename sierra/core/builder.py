@@ -1,9 +1,11 @@
 import ast
 import inspect
+import subprocess
 import typing
 
 import sierra.abc.sierra as sierra_abc_sierra
 import sierra.core.base as sierra_core_base
+import sierra.internal.errors as sierra_internal_errors
 import sierra.invoker as sierra_invoker
 
 if typing.TYPE_CHECKING:
@@ -46,7 +48,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             f"Starting command generation for {invoker.name}", "debug"
         )
         python_path: "pathlib.Path" = (
-            self.client.environment.venv_path / "bin" / "python"
+            self.client.environment._get_venv_executable("python")  # type: ignore
         )
         self.client.logger.log(
             f"Path to virtualenv python interpreter: {python_path}", "debug"
@@ -582,6 +584,47 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             The full standalone script.
         """
         parts: list[str] = []
+        pip_path: pathlib.Path = self.client.environment._get_venv_executable(  # type: ignore
+            "pip"
+        )
+        python_path: pathlib.Path = (
+            self.client.environment._get_venv_executable(  # type: ignore
+                "python"
+            )
+        )
+        self.client.logger.log(f"Pip executable path: {pip_path}", "debug")
+        if not pip_path.exists():
+            self.client.logger.log(
+                "Pip not found in virtual environment", "error"
+            )
+            raise sierra_internal_errors.SierraExecutionError(
+                "pip not found in virtual environment."
+            )
+
+        requirements = ", ".join(invoker.requirements)
+        self.client.logger.log(
+            f"Installing dependencies: {requirements}", "info"
+        )
+        if requirements:
+            try:
+                subprocess.run(
+                    [str(python_path), str(pip_path), "install", requirements],
+                    check=True,
+                    capture_output=True,
+                )
+                self.client.logger.log(
+                    "Dependencies installed successfully", "info"
+                )
+            except subprocess.CalledProcessError as error:
+                self.client.logger.log(
+                    f"Error during dependency installation: {error.stderr.decode('utf-8')}",
+                    "error",
+                )
+                raise sierra_internal_errors.SierraExecutionError(
+                    f"Failed to install dependencies: {error.stderr.decode('utf-8')}"
+                )
+        else:
+            self.client.logger.log("No dependencies to install", "info")
         self.client.logger.log("Generating file header", "debug")
         parts.append(self.generate_file_header(invoker))
         self.client.logger.log("Generating essential imports", "debug")
@@ -637,8 +680,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         lines: list[str] = [
             '"""',
             f"Standalone Sierra Invoker Script: {invoker.name}",
-            f"Generated from: {invoker.filename}",
-            "",  # blank
+            f"Generated from: {invoker.filename.as_posix()}\n",
         ]
         for param in invoker.params:
             req = (

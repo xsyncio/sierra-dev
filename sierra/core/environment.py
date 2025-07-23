@@ -1,4 +1,5 @@
 import pathlib
+import platform
 import shutil
 import subprocess
 import sys
@@ -44,6 +45,8 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
 
         # Step 2: Set name and path
         self.name: str = kwrags.get("name", "sierra_config")
+        if " " in self.name:
+            raise ValueError("Environment name cannot contain spaces")
         self.client.logger.log(f"Environment name set to {self.name}", "debug")
         self.path: pathlib.Path = kwrags.get("path", pathlib.Path.cwd())
         self.client.logger.log(f"Base path set to {self.path}", "debug")
@@ -61,7 +64,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         )
         self.invokers_path: pathlib.Path = self.sierra_env_path / "invokers"
         self.client.logger.log(f"Invokers path {self.invokers_path}", "debug")
-        self.os_type: str = sys.platform.lower()
+        self.os_type: str = platform.system().lower()
         self.client.logger.log(f"OS type {self.os_type}", "debug")
 
         super().__init__(client)

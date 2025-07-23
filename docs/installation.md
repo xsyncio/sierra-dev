@@ -25,12 +25,14 @@ pip install .
 
 ```python
 import sierra
-
+import requests
 # Define an InvokerScript
 invoker = sierra.InvokerScript(
     name="greet",
     description="Prints a personalized greeting message."
 )
+
+invoker.requirement(["requests"])
 
 # Dependency functions
 @invoker.dependency

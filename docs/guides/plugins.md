@@ -6,6 +6,7 @@ Learn how to build and register a standalone invoker script using the Sierra‑S
 
 ```python
 import sierra
+import requests
 ```
 
 Use the core `sierra` module to access all plugin interfaces, decorators, parameter wrappers, and result constructors.
@@ -14,13 +15,16 @@ Use the core `sierra` module to access all plugin interfaces, decorators, parame
 
 ## Step 2 — Define an `InvokerScript`
 
-Start by creating an `InvokerScript` object. This acts as the root definition of your plugin logic.
+Start by creating an `InvokerScript` object. This acts as the root definition of your plugin logic. And putting in requirements inside `invoker.requirement`
 
 ```python
 invoker = sierra.InvokerScript(
     name="greet",
     description="Prints a personalized greeting message."
 )
+
+
+invoker.requirement(["requests"])
 ```
 
 ---
