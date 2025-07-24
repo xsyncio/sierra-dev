@@ -1,6 +1,5 @@
 # Sierra‑SDK
 
-
 🚀 **Overview**
 ---------------
 
@@ -8,37 +7,44 @@ Sierra‑SDK is a Python framework for building and managing invoker scripts tha
 
 ### Project Goals
 
-*   Provide a robust and flexible framework for managing invoker scripts
-*   Offer a simple and intuitive API for building and compiling Sierra applications
-*   Support extensibility through plugins and custom configurations
+* Provide a robust and flexible framework for managing invoker scripts
+* Offer a simple and intuitive API for building and compiling Sierra applications
+* Support extensibility through plugins and custom configurations
 
 ### Key Features
 
-*   **Modular Design**: Sierra‑SDK is built with a modular architecture, allowing for easy extension and customization
-*   **Invoker Script Management**: Easily build, compile, and load invoker scripts across different nodes in Sierra
-*   **Plugin Support**: Extend the functionality of Sierra‑SDK through custom plugins
+* **Modular Design**: Sierra‑SDK is built with a modular architecture, allowing for easy extension and customization
+* **Invoker Script Management**: Easily build, compile, and load invoker scripts across different nodes in Sierra
+* **Plugin Support**: Extend the functionality of Sierra‑SDK through custom plugins
 
 ## ⚙️ Installation
+
 -----------------
 
 ### pip Installation
 
 You can install Sierra‑SDK using pip:
+
 ```bash
 pip install sierra-dev
 ```
+
 ### Installation from Source
 
 To install Sierra‑SDK from source, clone the repository and run the following command:
+
 ```bash
 git clone https://github.com/xsyncio/sierra-dev.git
 cd sierra-dev
 pip install .
 ```
+
 ## 🔧 Usage Examples
+
 -------------------
 
 ### Building an Invoker Script
+
 ```python
 import sierra
 
@@ -125,6 +131,7 @@ def load(client: sierra.SierraDevelopmentClient) -> None:
 ```
 
 ### Compiling
+
 ```python
 import sierra
 
@@ -145,27 +152,30 @@ client.compiler.compile()
 ```
 
 ## 📦 API Highlights
+
 -------------------
 
-*   `sierra.core.builder`: Builder for invoker scripts
-*   `sierra.core.compiler`: Compiler for invoker scripts
-*   `sierra.core.loader`: Loader for compiled scripts
-*   `sierra.abc.sierra`: Abstract base classes for Sierra components
-*   `sierra.invoker`: Invoker script definitions
+* `sierra.core.builder`: Builder for invoker scripts
+* `sierra.core.compiler`: Compiler for invoker scripts
+* `sierra.core.loader`: Loader for compiled scripts
+* `sierra.abc.sierra`: Abstract base classes for Sierra components
+* `sierra.invoker`: Invoker script definitions
 
 ## 🛠️ Configuration & Extensibility
+
 ------------------------------------
 
 Sierra‑SDK supports extensibility through plugins and custom configurations. You can add custom plugins by creating a new folder in the `plugins/` directory and adding your plugin code.
 
 ### Plugin Folders
 
-*   `plugins/`: Folder for custom plugins
-*   `core/`: Folder for core Sierra‑SDK components
-*   `abc/`: Folder for abstract base classes
-*   `invoker/`: Folder for invoker script definitions
+* `plugins/`: Folder for custom plugins
+* `core/`: Folder for core Sierra‑SDK components
+* `abc/`: Folder for abstract base classes
+* `invoker/`: Folder for invoker script definitions
 
 ## 💡 Contributing Guidelines & Code of Conduct
+
 ---------------------------------------------
 
 We welcome contributions to Sierra‑SDK! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute.
@@ -175,10 +185,11 @@ We welcome contributions to Sierra‑SDK! Please see our [CONTRIBUTING.md](CONTR
 We follow the [Python Code of Conduct](https://www.python.org/psf/conduct/).
 
 ## 📝 License & Authors
+
 -----------------------
 
 Sierra‑SDK is licensed under the [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE).
 
 ### Authors
 
-*   [Xsyncio](https://github.com/xsyncio)
+* [Xsyncio](https://github.com/xsyncio)
