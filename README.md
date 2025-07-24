@@ -48,6 +48,10 @@ invoker = sierra.InvokerScript(
     description="Prints a personalized greeting message."
 )
 
+
+invoker.requirement(["requests"])
+
+
 # ─── Dependency functions ──────────────────────────────────────────────────────
 @invoker.dependancy
 def random_function_one(param: int) -> int:
