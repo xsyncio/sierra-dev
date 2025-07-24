@@ -1,4 +1,12 @@
+import re
+import subprocess
+import typing
+
 import sierra.core.base as sierra_core_base
+import sierra.internal.errors as sierra_internal_errors
+
+if typing.TYPE_CHECKING:
+    import pathlib
 
 
 class SierraCompiler(sierra_core_base.SierraCoreObject):
@@ -82,7 +90,6 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         env = self.client.environment
         invokers_dir = str(env.invokers_path)
         lines: list[str] = []
-        print(invokers_dir)
         # PATHS
         lines.append("PATHS:")
         lines.append(f"  - {invokers_dir}")
@@ -108,6 +115,69 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         yaml_str = "\n".join(lines)
         return yaml_str
 
+    def merge_deduplicate_sorted_latest(self, *lists: list[str]) -> list[str]:
+        """
+        Merge multiple lists of strings, remove duplicates, and retain only the highest version
+        of versioned entries like 'package==x.y.z'. The final result is sorted alphabetically.
+
+        Parameters
+        ----------
+        *lists : list of list of str
+            Multiple input lists containing string elements.
+
+        Returns
+        -------
+        list of str
+            Combined, deduplicated, and sorted list retaining highest package versions.
+        """
+        self.client.logger.log(
+            "Compile: Merging and deduplicating package lists", "debug"
+        )
+        versioned_pattern = re.compile(
+            r"^(?P<name>[a-zA-Z0-9_\-]+)==(?P<version>[0-9\.]+)$"
+        )
+
+        latest_packages: dict[str, str] = {}
+        plain_strings: set[str] = set()
+
+        self.client.logger.log("Compile: Iterating over input lists", "debug")
+        for sublist in lists:
+            self.client.logger.log(
+                f"Compile: Processing sublist: {sublist}", "debug"
+            )
+            for item in sublist:
+                match = versioned_pattern.match(item)
+                if match:
+                    self.client.logger.log(
+                        f"Compile: Found versioned item: {item}", "debug"
+                    )
+                    name = match.group("name")
+                    version = match.group("version")
+                    existing = latest_packages.get(name)
+                    if existing is None or tuple(
+                        map(int, version.split("."))
+                    ) > tuple(map(int, existing.split("."))):
+                        self.client.logger.log(
+                            f"Compile: Updating latest version for {name} to {version}",
+                            "debug",
+                        )
+                        latest_packages[name] = version
+                else:
+                    self.client.logger.log(
+                        f"Compile: Found plain string: {item}", "debug"
+                    )
+                    plain_strings.add(item)
+
+        self.client.logger.log(
+            "Compile: Merging plain strings and latest packages", "debug"
+        )
+        result: set[str] = set(plain_strings)
+        for name, version in latest_packages.items():
+            result.add(f"{name}=={version}")
+
+        self.client.logger.log("Compile: Sorting final list", "debug")
+        return sorted(result)
+
     def compile(self) -> None:
         """Complete compilation process:
         1. Generate CLI command strings for invokers
@@ -128,4 +198,64 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         config_path.parent.mkdir(parents=True, exist_ok=True)
         with config_path.open("w", encoding="utf-8") as f:
             f.write(yaml_content)
+        pip_path: pathlib.Path = self.client.environment._get_venv_executable(  # type: ignore
+            "pip"
+        )
+        python_path: pathlib.Path = (
+            self.client.environment._get_venv_executable(  # type: ignore
+                "python"
+            )
+        )
+        self.client.logger.log(f"Pip executable path: {pip_path}", "debug")
+        if not pip_path.exists():
+            self.client.logger.log(
+                "Pip not found in virtual environment", "error"
+            )
+            raise sierra_internal_errors.SierraExecutionError(
+                "pip not found in virtual environment."
+            )
+        self.client.logger.log(
+            f"Python executable path: {python_path}", "debug"
+        )
+        if not python_path.exists():
+            self.client.logger.log(
+                "Python not found in virtual environment", "error"
+            )
+            raise sierra_internal_errors.SierraExecutionError(
+                "python not found in virtual environment."
+            )
+        # 4. Install dependencies
+        list_of_requirements: list[list[str]] = []
+        for invoker in self.client.invokers:
+            list_of_requirements.append(invoker.requirements)
+        self.client.logger.log(
+            "Merging and deduplicating requirements", "debug"
+        )
+        reqs = self.merge_deduplicate_sorted_latest(*list_of_requirements)
+        cmd = [*([str(python_path), str(pip_path), "install"]), *reqs]
+        self.client.logger.log(
+            f"Installing dependencies with command: {' '.join(cmd)}", "debug"
+        )
+        subprocess.run(cmd, check=True, capture_output=True)
+
+        if reqs:
+            try:
+                subprocess.run(
+                    cmd,
+                    check=True,
+                    capture_output=True,
+                )
+                self.client.logger.log(
+                    "Dependencies installed successfully", "info"
+                )
+            except subprocess.CalledProcessError as error:
+                self.client.logger.log(
+                    f"Error during dependency installation: {error.stderr.decode('utf-8')}",
+                    "error",
+                )
+                raise sierra_internal_errors.SierraExecutionError(
+                    f"Failed to install dependencies: {error.stderr.decode('utf-8')}"
+                )
+        else:
+            self.client.logger.log("No dependencies to install", "info")
         self.client.logger.log("Compile: Completed process", "info")
