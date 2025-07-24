@@ -555,7 +555,6 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         args = ", ".join(names)
         lines.append("    try:")
         lines.append(f"        result = {entry}({args})")
-        lines.append("        print(result)")
         lines.append("    except Exception as e:")
         self.client.logger.log("Handling exceptions", "debug")
         lines.append(

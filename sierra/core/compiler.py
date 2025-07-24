@@ -232,12 +232,11 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
             "Merging and deduplicating requirements", "debug"
         )
         reqs = self.merge_deduplicate_sorted_latest(*list_of_requirements)
+        reqs.append("sierra-dev")
         cmd = [*([str(python_path), str(pip_path), "install"]), *reqs]
         self.client.logger.log(
             f"Installing dependencies with command: {' '.join(cmd)}", "debug"
         )
-        subprocess.run(cmd, check=True, capture_output=True)
-
         if reqs:
             try:
                 subprocess.run(
