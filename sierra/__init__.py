@@ -31,6 +31,7 @@ This package provides a comprehensive framework for building, compiling, and loa
 This package is designed to be used as a foundation for building complex Sierra applications, providing a robust and flexible framework for managing invoker scripts across different nodes.
 """
 
+import json
 import typing
 
 from sierra._about import *
@@ -44,7 +45,7 @@ from sierra.options import *
 
 def create_tree_result(
     results: list[typing.Union[str, dict[str, list[str]]]],
-) -> dict[str, typing.Any]:
+) -> str:
     """
     Create a Tree type result.
 
@@ -55,21 +56,21 @@ def create_tree_result(
 
     Returns
     -------
-    TreeResult
+    str
         The formatted tree result.
     """
     result: dict[str, typing.Any] = {
         "type": "Tree",
         "results": results,
     }
-    return result
+    return json.dumps(result, indent=4)
 
 
 def create_network_result(
     origins: list[str],
     nodes: list[dict[str, str]],
     edges: list[dict[str, str]],
-) -> dict[str, str]:
+) -> str:
     """
     Create a Network type result.
 
@@ -84,7 +85,7 @@ def create_network_result(
 
     Returns
     -------
-    NetworkResult
+    str
         The formatted network result.
     """
     result: dict[str, typing.Any] = {
@@ -93,10 +94,11 @@ def create_network_result(
         "nodes": nodes,
         "edges": edges,
     }
-    return result
+
+    return json.dumps(result, indent=4)
 
 
-def create_error_result(message: str) -> dict[str, str]:
+def create_error_result(message: str) -> str:
     """
     Create an Error type result.
 
@@ -107,7 +109,7 @@ def create_error_result(message: str) -> dict[str, str]:
 
     Returns
     -------
-    ErrorResult
+    str
         The formatted error result.
     """
     result: dict[str, typing.Any] = {
@@ -115,4 +117,4 @@ def create_error_result(message: str) -> dict[str, str]:
         "message": message,
     }
 
-    return result
+    return json.dumps(result, indent=4)

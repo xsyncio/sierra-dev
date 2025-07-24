@@ -61,7 +61,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             f"{{{param.get('Name')}}}" for param in invoker.params
         )
         self.client.logger.log(f"Flags for invoker script: {flags}", "debug")
-        command = f"{python_path} {script_path} {flags}"
+        command = f"'{self.client.compiler.to_double_quoted_string(str(python_path))} {self.client.compiler.to_double_quoted_string(str(script_path))} {flags}'"
         self.client.logger.log(f"Generated command: {command}", "debug")
         return command
 

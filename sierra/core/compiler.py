@@ -43,6 +43,43 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         3. Write config.yaml in the root of the environment.
     """
 
+    @classmethod
+    def to_double_quoted_string(cls, text: str) -> str:
+        r"""
+        Return the given string wrapped in double quotes.
+
+        This function ensures the output string is always enclosed with a
+        starting and ending double-quote character (`"`), even if the input
+        string already includes quotes.
+
+        Parameters
+        ----------
+        text : str
+            The input string to be quoted.
+
+        Returns
+        -------
+        str
+            The input string wrapped with double quotes. Any existing surrounding
+            quotes are ignored, and only one set of double quotes will be present
+            at the start and end.
+
+        Examples
+        --------
+        >>> to_double_quoted_string("hello")
+        '"hello"'
+        >>> to_double_quoted_string('"world"')
+        '"world"'
+        >>> to_double_quoted_string("'quoted'")
+        '"\'quoted\'"'
+        """
+        # Remove surrounding quotes if any, then wrap with double quotes
+        stripped: str = text
+        if stripped.startswith('"') and stripped.endswith('"'):
+            stripped = stripped[1:-1]
+
+        return f'"{stripped}"'
+
     def set_invoker_commands(self) -> None:
         """Generate and set the CLI command string for each registered invoker."""
         self.client.logger.log("Compile: Generating invoker commands", "debug")
@@ -92,7 +129,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         lines: list[str] = []
         # PATHS
         lines.append("PATHS:")
-        lines.append(f"  - {invokers_dir}")
+        lines.append(f"  - '{self.to_double_quoted_string(invokers_dir)}'")
 
         # SCRIPTS
         lines.append("SCRIPTS:")
