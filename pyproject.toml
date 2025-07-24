@@ -1,3 +1,10 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
 [tool.ruff]
 # Paths and exclusions
 extend-exclude = ["examples/*", ".venv/*"]

@@ -1,8 +1,6 @@
 from setuptools import find_packages
 from setuptools import setup
 
-import sierra._about as _about
-
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
@@ -37,7 +35,7 @@ requirements: list[str] = ["colorama==0.4.6", "httpx==0.28.1"]
 
 setup(
     name="sierra-dev",
-    version=_about.__version__,
+    version="0.1.1",
     author="Xsyncio",
     description="A framework for building and managing invoker scripts across different nodes in Sierra.",
     long_description=long_description,
