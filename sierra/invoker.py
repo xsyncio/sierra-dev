@@ -46,7 +46,7 @@ class InvokerScript:
         self._entry_point: _TCallable
         self.deps: list[_TCallable] = []
         self.requirements: list[str] = []
-        self.command: str = ""
+        self.command: str
         self.filename: pathlib.Path
 
     @staticmethod
