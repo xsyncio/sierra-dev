@@ -35,7 +35,7 @@ requirements: list[str] = ["colorama==0.4.6", "httpx==0.28.1"]
 
 setup(
     name="sierra-dev",
-    version="0.1.1",
+    version="0.1.2",
     author="Xsyncio",
     description="A framework for building and managing invoker scripts across different nodes in Sierra.",
     long_description=long_description,
