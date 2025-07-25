@@ -129,7 +129,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         lines: list[str] = []
         # PATHS
         lines.append("PATHS:")
-        lines.append(f"  - '{self.to_double_quoted_string(invokers_dir)}'")
+        lines.append(f"  - '{invokers_dir}'")
 
         # SCRIPTS
         lines.append("SCRIPTS:")
