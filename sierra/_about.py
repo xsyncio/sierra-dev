@@ -1,7 +1,7 @@
 import typing
 
 __author__: typing.Final = "Xsyncio"
-__version__: typing.Final = "0.1.4"
+__version__: typing.Final = "0.1.5"
 __license__: typing.Final = "MIT"
 __github__: typing.Final = "https://github.com/xsyncio/sierra-dev"
 __description__: typing.Final = "Sierra  is a framework for building and managing invoker scripts that can be used across different nodes in Sierra during any investigation."
