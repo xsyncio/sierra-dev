@@ -47,17 +47,18 @@ def create_tree_result(
     results: list[typing.Union[str, dict[str, list[str]]]],
 ) -> str:
     """
-    Create a Tree type result.
+    Create a tree result containing a list of results.
 
     Parameters
     ----------
     results : list[Union[str, dict[str, list[str]]]]
-        The tree results.
+        List of results, where each result is either a string or a dictionary with a single key-value pair.
+        The key in the dictionary must be "children" and the value is a list of strings.
 
     Returns
     -------
     str
-        The formatted tree result.
+        A JSON-formatted string containing the tree result.
     """
     result: dict[str, typing.Any] = {
         "type": "Tree",
@@ -72,21 +73,23 @@ def create_network_result(
     edges: list[dict[str, str]],
 ) -> str:
     """
-    Create a Network type result.
+    Create a network result containing a list of nodes and edges.
 
     Parameters
     ----------
     origins : list[str]
         List of origin node IDs.
     nodes : list[dict[str, str]]
-        List of node definitions.
+        List of node definitions, where each node is a dictionary with a single key-value pair.
+        The key in the dictionary must be "id" and the value is a string representing the node ID.
     edges : list[dict[str, str]]
-        List of edge definitions.
+        List of edge definitions, where each edge is a dictionary with two key-value pairs.
+        The keys in the dictionary must be "from" and "to", and the values are strings representing the node IDs.
 
     Returns
     -------
     str
-        The formatted network result.
+        A JSON-formatted string containing the network result.
     """
     result: dict[str, typing.Any] = {
         "type": "Network",
@@ -94,13 +97,12 @@ def create_network_result(
         "nodes": nodes,
         "edges": edges,
     }
-
     return json.dumps(result, indent=4)
 
 
 def create_error_result(message: str) -> str:
     """
-    Create an Error type result.
+    Create an error result containing a message.
 
     Parameters
     ----------
@@ -110,11 +112,10 @@ def create_error_result(message: str) -> str:
     Returns
     -------
     str
-        The formatted error result.
+        A JSON-formatted string containing the error result.
     """
     result: dict[str, typing.Any] = {
         "type": "Error",
         "message": message,
     }
-
     return json.dumps(result, indent=4)
