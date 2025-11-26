@@ -6,10 +6,10 @@
       
       
       
-        <link rel="prev" href="../invoker/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../package-manager/">
+        <link rel="next" href="../concepts/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -122,7 +122,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installation" class="md-skip">
+        <a href="#installation-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -251,13 +251,35 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href=".." class="md-tabs__link">
+        <a href="../welcome/" class="md-tabs__link">
           
   
   
     
   
   Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quickstart/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorials
 
         </a>
       </li>
@@ -294,7 +316,22 @@
   
     
     
+      <li class="md-tabs__item">
+        <a href="../cli-reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
       
+        
   
   
   
@@ -308,13 +345,10 @@
   
     
   
-  Getting Started
+  Guides
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -348,25 +382,6 @@
   
 
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../results/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Results
-
-      </a>
-    </li>
   
 
       
@@ -434,9 +449,9 @@
     
       
         
-          
-        
       
+        
+          
         
       
         
@@ -494,20 +509,18 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../osint-tools/" class="md-nav__link">
+      <a href="../welcome/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    OSINT Tools
+    Welcome
     
   </span>
   
@@ -518,50 +531,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sierra-dev/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Sierra SDK
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../invoker/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Invoker
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -617,56 +586,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#installation-guide" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ Installation
+      📥 Installation Guide
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="⚙️ Installation">
+    <nav class="md-nav" aria-label="📥 Installation Guide">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pypi" class="md-nav__link">
+  <a href="#quick-installation" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 PyPI
+      🎯 Quick Installation
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#from-source" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠️ From Source
+      📋 Prerequisites
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usage-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Usage Examples
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔧 Usage Examples">
+    <nav class="md-nav" aria-label="📋 Prerequisites">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-building-an-invoker-script" class="md-nav__link">
+  <a href="#required" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Building an Invoker Script
+      Required
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-compiling-running" class="md-nav__link">
+  <a href="#optional-but-recommended" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Compiling &amp; Running
+      Optional (but recommended)
     </span>
   </a>
   
@@ -678,36 +638,204 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api-highlights" class="md-nav__link">
+  <a href="#detailed-installation-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 API Highlights
+      🔍 Detailed Installation Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Detailed Installation Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-install-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Install Python
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuration-extensibility" class="md-nav__link">
+  <a href="#step-2-install-git" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠️ Configuration &amp; Extensibility
+      Step 2: Install Git
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#contributing-code-of-conduct" class="md-nav__link">
+  <a href="#step-3-clone-sierra-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      💡 Contributing &amp; Code of Conduct
+      Step 3: Clone Sierra SDK
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#license-authors" class="md-nav__link">
+  <a href="#step-4-create-virtual-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      📝 License &amp; Authors
+      Step 4: Create Virtual Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-install-sierra-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Install Sierra SDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-verify-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Verify Installation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 Post-Installation Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Post-Installation Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-add-to-system-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Add to System PATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-your-first-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Your First Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-more-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting More Help
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting More Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable Debug Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-python-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify Python Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-sierra-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Updating Sierra SDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstalling" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗑️ Uninstalling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Verification Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Next Steps
     </span>
   </a>
   
@@ -727,8 +855,114 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sierra-dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sierra SDK Info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../quickstart/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -805,6 +1039,66 @@
       
         
       
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cli-reference/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -827,16 +1121,12 @@
   
   
   
-    
-  
-  
-  
     <a href="../guides/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    Getting Started
+    Guides
     
   </span>
   
@@ -845,8 +1135,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
   
 
       
@@ -920,28 +1208,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../results/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Results
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -976,24 +1242,85 @@
 
   <h1>Installation</h1>
 
-<h2 id="installation">⚙️ Installation<a class="headerlink" href="#installation" title="Permanent link">Link</a></h2>
-<h3 id="pypi">📦 PyPI<a class="headerlink" href="#pypi" title="Permanent link">Link</a></h3>
-<p>Install from PyPI:</p>
-<!-- termynal -->
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>sierra-dev
+<h2 id="installation-guide">📥 Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">Link</a></h2>
+<p>Get Sierra SDK up and running on your system in minutes.</p>
+<h3 id="quick-installation">🎯 Quick Installation<a class="headerlink" href="#quick-installation" title="Permanent link">Link</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Copy-Paste Friendly</p>
+<p>These commands will get you started. We'll explain what each does below!</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="quick-installation-linux--macos" name="__tabbed_1" type="radio"><input id="quick-installation-windows" name="__tabbed_1" type="radio"><input id="quick-installation-using-conda" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="quick-installation-linux--macos">Linux / macOS</label><label for="quick-installation-windows">Windows</label><label for="quick-installation-using-conda">Using conda</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># Navigate to where you want Sierra</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>~/Projects<span class="w">  </span><span class="c1"># or your preferred directory</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># Clone the repository</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/xsyncio/sierra-dev
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nb">cd</span><span class="w"> </span>sierra-dev
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1"># Create virtual environment</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="c1"># Install Sierra SDK</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="c1"># Verify installation</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>sierra-sdk<span class="w"> </span>--help
 </span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="from-source">🛠️ From Source<a class="headerlink" href="#from-source" title="Permanent link">Link</a></h3>
-<!-- termynal -->
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/xsyncio/sierra-dev.git
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>sierra-dev
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>pip<span class="w"> </span>install<span class="w"> </span>.
+</div>
+<div class="tabbed-block">
+<div class="language-powershell highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">PowerShell</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c"># Navigate to where you want Sierra  </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">Projects</span>  <span class="c"># or your preferred directory</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c"># Clone the repository</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">xsyncio</span><span class="p">/</span><span class="n">sierra-dev</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="nb">cd </span><span class="n">sierra-dev</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c"># Create virtual environment</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">venv</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="c"># Install Sierra SDK</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="p">.</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="c"># Verify installation</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="n">sierra-sdk</span> <span class="p">-</span><span class="n">-help</span>
 </span></code></pre></div></td></tr></tbody></table></div>
-<hr>
-<h3 id="usage-examples">🔧 Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">Link</a></h3>
-<h4 id="1-building-an-invoker-script">1. Building an Invoker Script<a class="headerlink" href="#1-building-an-invoker-script" title="Permanent link">Link</a></h4>
-<div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
@@ -1003,142 +1330,382 @@
 <span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#__codelineno-2-31">31</a></span>
-<span class="normal"><a href="#__codelineno-2-32">32</a></span>
-<span class="normal"><a href="#__codelineno-2-33">33</a></span>
-<span class="normal"><a href="#__codelineno-2-34">34</a></span>
-<span class="normal"><a href="#__codelineno-2-35">35</a></span>
-<span class="normal"><a href="#__codelineno-2-36">36</a></span>
-<span class="normal"><a href="#__codelineno-2-37">37</a></span>
-<span class="normal"><a href="#__codelineno-2-38">38</a></span>
-<span class="normal"><a href="#__codelineno-2-39">39</a></span>
-<span class="normal"><a href="#__codelineno-2-40">40</a></span>
-<span class="normal"><a href="#__codelineno-2-41">41</a></span>
-<span class="normal"><a href="#__codelineno-2-42">42</a></span>
-<span class="normal"><a href="#__codelineno-2-43">43</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sierra</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># Define an InvokerScript</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">invoker</span> <span class="o">=</span> <span class="n">sierra</span><span class="o">.</span><span class="n">InvokerScript</span><span class="p">(</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"greet"</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Prints a personalized greeting message."</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="p">)</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="n">invoker</span><span class="o">.</span><span class="n">requirement</span><span class="p">([</span><span class="s2">"requests"</span><span class="p">])</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1"># Dependency functions</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="nd">@invoker</span><span class="o">.</span><span class="n">dependency</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">random_function_one</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="k">return</span> <span class="n">param</span> <span class="o">*</span> <span class="mi">2</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="nd">@invoker</span><span class="o">.</span><span class="n">dependency</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">random_function_two</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="c1"># Entry point</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="nd">@invoker</span><span class="o">.</span><span class="n">entry_point</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>    <span class="n">name</span><span class="p">:</span> <span class="n">sierra</span><span class="o">.</span><span class="n">Param</span><span class="p">[</span>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>        <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>        <span class="n">sierra</span><span class="o">.</span><span class="n">SierraOption</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Name of the person to greet."</span><span class="p">,</span> <span class="n">mandatory</span><span class="o">=</span><span class="s2">"MANDATORY"</span><span class="p">)</span>
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>    <span class="p">],</span>
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a>    <span class="n">polite</span><span class="p">:</span> <span class="n">sierra</span><span class="o">.</span><span class="n">Param</span><span class="p">[</span>
-</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>        <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>        <span class="n">sierra</span><span class="o">.</span><span class="n">SierraOption</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Include polite greeting?"</span><span class="p">,</span> <span class="n">mandatory</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>    <span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">sierra</span><span class="o">.</span><span class="n">create_error_result</span><span class="p">(</span><span class="s2">"Missing mandatory parameter: name"</span><span class="p">)</span>
-</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a>        <span class="n">greeting</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
-</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>        <span class="k">if</span> <span class="n">polite</span><span class="p">:</span>
-</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a>            <span class="n">greeting</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Good day to you, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
-</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">sierra</span><span class="o">.</span><span class="n">create_tree_result</span><span class="p">([</span><span class="n">greeting</span><span class="p">])</span>
-</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a>
-</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="c1"># Loader function</span>
-</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">sierra</span><span class="o">.</span><span class="n">SierraDevelopmentClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a>    <span class="n">client</span><span class="o">.</span><span class="n">load_invoker</span><span class="p">(</span><span class="n">invoker</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Create conda environment</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>sierra<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>sierra
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># Clone and install</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/xsyncio/sierra-dev
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="nb">cd</span><span class="w"> </span>sierra-dev
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1"># Verify</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>sierra-sdk<span class="w"> </span>--help
 </span></code></pre></div></td></tr></tbody></table></div>
-<h4 id="2-compiling-running">2. Compiling &amp; Running<a class="headerlink" href="#2-compiling-running" title="Permanent link">Link</a></h4>
-<div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sierra</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1"># Initialize the Sierra development client</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">sierra</span><span class="o">.</span><span class="n">SierraDevelopmentClient</span><span class="p">(</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="n">environment_name</span><span class="o">=</span><span class="s2">"default_env"</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="n">logger</span><span class="o">=</span><span class="n">sierra</span><span class="o">.</span><span class="n">UniversalLogger</span><span class="p">(</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">"Sierra"</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>        <span class="n">level</span><span class="o">=</span><span class="n">sierra</span><span class="o">.</span><span class="n">sierra_internal_logger</span><span class="o">.</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">DEBUG</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>    <span class="p">),</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="p">)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1"># Discover and register invokers</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="n">client</span><span class="o">.</span><span class="n">load_invokers_from_scripts</span><span class="p">()</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="c1"># Compile all invoker scripts and generate config.yaml</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="n">client</span><span class="o">.</span><span class="n">compiler</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+</div>
+</div>
+</div>
+<hr>
+<h3 id="prerequisites">📋 Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">Link</a></h3>
+<p>Before installing, make sure you have:</p>
+<h4 id="required">Required<a class="headerlink" href="#required" title="Permanent link">Link</a></h4>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Minimum Version</th>
+<th>Check Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.10+</td>
+<td><code>python --version</code></td>
+</tr>
+<tr>
+<td><strong>pip</strong></td>
+<td>20.0+</td>
+<td><code>pip --version</code></td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>2.0+</td>
+<td><code>git --version</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-but-recommended">Optional (but recommended)<a class="headerlink" href="#optional-but-recommended" title="Permanent link">Link</a></h4>
+<ul>
+<li><strong>Text Editor</strong> - VS Code, PyCharm, or any code editor</li>
+<li><strong>Terminal</strong> - Comfortable with command line basics</li>
+</ul>
+<hr>
+<h3 id="detailed-installation-steps">🔍 Detailed Installation Steps<a class="headerlink" href="#detailed-installation-steps" title="Permanent link">Link</a></h3>
+<h4 id="step-1-install-python">Step 1: Install Python<a class="headerlink" href="#step-1-install-python" title="Permanent link">Link</a></h4>
+<div class="admonition question">
+<p class="admonition-title">Do I have Python installed?</p>
+<p>Run <code>python --version</code> or <code>python3 --version</code> in your terminal.</p>
+<ul>
+<li>✅ Shows <code>Python 3.10.x</code> or higher → You're good!</li>
+<li>❌ Command not found → Install Python below</li>
+</ul>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="step-1-install-python-ubuntudebian" name="__tabbed_2" type="radio"><input id="step-1-install-python-macos" name="__tabbed_2" type="radio"><input id="step-1-install-python-windows" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="step-1-install-python-ubuntudebian">Ubuntu/Debian</label><label for="step-1-install-python-macos">macOS</label><label for="step-1-install-python-windows">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv
+</span></code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># Using Homebrew</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>brew<span class="w"> </span>install<span class="w"> </span>python@3.10
+</span></code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Download from <a href="https://www.python.org/downloads/">python.org</a></li>
+<li>Run installer</li>
+<li>✅ Check "Add Python to PATH"</li>
+<li>Click Install</li>
+</ol>
+</div>
+</div>
+</div>
+<h4 id="step-2-install-git">Step 2: Install Git<a class="headerlink" href="#step-2-install-git" title="Permanent link">Link</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="step-2-install-git-ubuntudebian" name="__tabbed_3" type="radio"><input id="step-2-install-git-macos" name="__tabbed_3" type="radio"><input id="step-2-install-git-windows" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="step-2-install-git-ubuntudebian">Ubuntu/Debian</label><label for="step-2-install-git-macos">macOS</label><label for="step-2-install-git-windows">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+</span></code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># Using Homebrew</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>brew<span class="w"> </span>install<span class="w"> </span>git
+</span></code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<p>Download from <a href="https://git-scm.com/download/win">git-scm.com</a></p>
+</div>
+</div>
+</div>
+<h4 id="step-3-clone-sierra-sdk">Step 3: Clone Sierra SDK<a class="headerlink" href="#step-3-clone-sierra-sdk" title="Permanent link">Link</a></h4>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># Choose a location (examples)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>~/Projects<span class="w">          </span><span class="c1"># macOS/Linux</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\P</span>rojects<span class="w">         </span><span class="c1"># Windows</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="c1"># Clone the repository</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/xsyncio/sierra-dev
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="nb">cd</span><span class="w"> </span>sierra-dev
+</span></code></pre></div></td></tr></tbody></table></div>
+<p><strong>What This Does:</strong>
+- Downloads Sierra SDK source code
+- Creates a <code>sierra-dev/</code> folder
+- Changes into that folder</p>
+<h4 id="step-4-create-virtual-environment">Step 4: Create Virtual Environment<a class="headerlink" href="#step-4-create-virtual-environment" title="Permanent link">Link</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Why Virtual Environment?</p>
+<p>Keeps Sierra's dependencies separate from your system Python. This prevents conflicts and makes everything cleaner!</p>
+</div>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w">  </span><span class="c1"># Linux/macOS</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w">   </span><span class="c1"># Windows</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p><strong>Activate it:</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="step-4-create-virtual-environment-linux--macos" name="__tabbed_4" type="radio"><input id="step-4-create-virtual-environment-windows-cmd" name="__tabbed_4" type="radio"><input id="step-4-create-virtual-environment-windows-powershell" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="step-4-create-virtual-environment-linux--macos">Linux / macOS</label><label for="step-4-create-virtual-environment-windows-cmd">Windows CMD</label><label for="step-4-create-virtual-environment-windows-powershell">Windows PowerShell</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>You should see <code>(venv)</code> in your terminal prompt.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>venv\Scripts\activate
+</span></code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-powershell highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">PowerShell</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>If you get an error about execution policy:
+</p><div class="language-powershell highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">PowerShell</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</div>
+</div>
+</div>
+<h4 id="step-5-install-sierra-sdk">Step 5: Install Sierra SDK<a class="headerlink" href="#step-5-install-sierra-sdk" title="Permanent link">Link</a></h4>
+<p>With your virtual environment <strong>activated</strong>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span></code></pre></div></td></tr></tbody></table></div>
+<p><strong>What This Does:</strong>
+- Installs Sierra SDK in "editable" mode (<code>-e</code>)
+- Installs all required dependencies
+- Makes <code>sierra-sdk</code> command available</p>
+<p><strong>This will install:</strong>
+- Core Sierra framework
+- Package manager
+- CLI tools
+- All dependencies (httpx, beautifulsoup4, etc.)</p>
+<h4 id="step-6-verify-installation">Step 6: Verify Installation<a class="headerlink" href="#step-6-verify-installation" title="Permanent link">Link</a></h4>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-sdk<span class="w"> </span>--help
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>You should see:</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span>
+<span class="normal"><a href="#__codelineno-15-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>usage: sierra-sdk [-h] {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list} ...
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>Sierra SDK - Invoker Package Manager
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>positional arguments:
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>  {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list}
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>    init                Initialize a new project
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>    build               Build and compile invokers
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>    ...
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>✅ <strong>Success!</strong> Sierra SDK is installed.</p>
+<hr>
+<h3 id="post-installation-setup">🎨 Post-Installation Setup<a class="headerlink" href="#post-installation-setup" title="Permanent link">Link</a></h3>
+<h4 id="optional-add-to-system-path">Optional: Add to System PATH<a class="headerlink" href="#optional-add-to-system-path" title="Permanent link">Link</a></h4>
+<p>If you want to use <code>sierra-sdk</code> from any directory without activating venv:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="optional-add-to-system-path-linux--macos" name="__tabbed_5" type="radio"><input id="optional-add-to-system-path-windows" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="optional-add-to-system-path-linux--macos">Linux / macOS</label><label for="optional-add-to-system-path-windows">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Add to <code>~/.bashrc</code> or <code>~/.zshrc</code>:
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/Projects/sierra-dev/venv/bin"</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+<p>Then reload:
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc<span class="w">  </span><span class="c1"># or ~/.zshrc</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Search "Environment Variables" in Start Menu</li>
+<li>Click "Environment Variables"</li>
+<li>Under "User variables", select <code>Path</code> → Edit</li>
+<li>Add New: <code>C:\Projects\sierra-dev\venv\Scripts</code></li>
+<li>Click OK on all dialogs</li>
+</ol>
+</div>
+</div>
+</div>
+<h4 id="create-your-first-environment">Create Your First Environment<a class="headerlink" href="#create-your-first-environment" title="Permanent link">Link</a></h4>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_first_project
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>This creates:
+</p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>my_first_project/
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>├── scripts/       # Your invoker source code goes here
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>├── config.yaml    # Auto-generated configuration
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a>└── source         # Package source metadata
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+<hr>
+<h3 id="troubleshooting">🔧 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">Link</a></h3>
+<h4 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">Link</a></h4>
+<details class="error">
+<summary>Command not found: sierra-sdk</summary>
+<p><strong>Problem:</strong> Sierra SDK not in PATH or venv not activated</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>
+<p>Make sure virtual environment is activated:
+    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># Linux/macOS</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">     </span><span class="c1"># Windows</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</li>
+<li>
+<p>Or use full path:
+    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>./venv/bin/sierra-sdk<span class="w">  </span><span class="c1"># Linux/macOS</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>venv<span class="se">\S</span>cripts<span class="se">\s</span>ierra-sdk<span class="w"> </span><span class="c1"># Windows</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</li>
+</ol>
+</details>
+<details class="error">
+<summary>Python version too old</summary>
+<p><strong>Problem:</strong> <code>ERROR: Python 3.10 or higher required</code></p>
+<p><strong>Solution:</strong> Install Python 3.10+</p>
+<p>Check current version:
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>python<span class="w"> </span>--version
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+<p>Install newer version and recreate venv:
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>python3.10<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</details>
+<details class="error">
+<summary>Permission denied</summary>
+<p><strong>Problem:</strong> Don't have write access</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>Don't use <code>sudo</code> with pip (bad practice)</li>
+<li>Install in your home directory instead</li>
+<li>Use virtual environment (recommended)</li>
+</ol>
+</details>
+<details class="error">
+<summary>ModuleNotFoundError: No module named 'sierra'</summary>
+<p><strong>Problem:</strong> Imported sierra in wrong context</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>
+<p>Make sure you're in the venv:
+    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>which<span class="w"> </span>python<span class="w">  </span><span class="c1"># Should show venv path</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</li>
+<li>
+<p>Reinstall if needed:
+    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</li>
+</ol>
+</details>
+<details class="error">
+<summary>git: command not found</summary>
+<p><strong>Problem:</strong> Git not installed</p>
+<p><strong>Solution:</strong> Install Git (see Step 2 above)</p>
+</details>
+<details class="error">
+<summary>SSL Certificate Error</summary>
+<p><strong>Problem:</strong> Corporate proxy or firewall</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>
+<p>Use <code>--trusted-host</code>:
+    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--trusted-host<span class="w"> </span>pypi.org<span class="w"> </span>--trusted-host<span class="w"> </span>files.pythonhosted.org
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</li>
+<li>
+<p>Or configure proxy:
+    </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://proxy.company.com:8080
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>http://proxy.company.com:8080
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+</li>
+</ol>
+</details>
+<h4 id="getting-more-help">Getting More Help<a class="headerlink" href="#getting-more-help" title="Permanent link">Link</a></h4>
+<h5 id="enable-debug-mode">Enable Debug Mode<a class="headerlink" href="#enable-debug-mode" title="Permanent link">Link</a></h5>
+<p>For detailed installation logs:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--verbose
+</span></code></pre></div></td></tr></tbody></table></div>
+<h5 id="check-dependencies">Check Dependencies<a class="headerlink" href="#check-dependencies" title="Permanent link">Link</a></h5>
+<p>List installed packages:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>pip<span class="w"> </span>list
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Should include:
+- sierra-sdk (installed in editable mode)
+- httpx
+- beautifulsoup4
+- dnspython
+- And more...</p>
+<h5 id="verify-python-environment">Verify Python Environment<a class="headerlink" href="#verify-python-environment" title="Permanent link">Link</a></h5>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sierra; print(sierra.__version__)"</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Should print version number (e.g., <code>2.0.0</code>)</p>
+<hr>
+<h3 id="updating-sierra-sdk">🔄 Updating Sierra SDK<a class="headerlink" href="#updating-sierra-sdk" title="Permanent link">Link</a></h3>
+<p>Pull latest changes and reinstall:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="nb">cd</span><span class="w"> </span>sierra-dev
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>git<span class="w"> </span>pull
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--upgrade
 </span></code></pre></div></td></tr></tbody></table></div>
 <hr>
-<h3 id="api-highlights">📦 API Highlights<a class="headerlink" href="#api-highlights" title="Permanent link">Link</a></h3>
-<ul>
-<li><code>sierra.core.builder</code>: Build invoker scripts programmatically</li>
-<li><code>sierra.core.compiler</code>: Compile and package scripts</li>
-<li><code>sierra.core.loader</code>: Load compiled scripts into the runtime</li>
-<li><code>sierra.invoker</code>: Define script actions, dependencies, and parameters</li>
-<li><code>sierra.options</code>: Parameter and option definitions</li>
-<li><code>sierra.SierraDevelopmentClient</code>: High-level orchestration client</li>
+<h3 id="uninstalling">🗑️ Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">Link</a></h3>
+<p>Remove Sierra SDK:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>sierra-sdk
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Remove entire directory:
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
+<span class="normal"><a href="#__codelineno-33-2">2</a></span>
+<span class="normal"><a href="#__codelineno-33-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>sierra-dev<span class="w">  </span><span class="c1"># Linux/macOS</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a>rmdir<span class="w"> </span>/s<span class="w"> </span>sierra-dev<span class="w">  </span><span class="c1"># Windows</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+<hr>
+<h3 id="verification-checklist">✅ Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">Link</a></h3>
+<p>Make sure everything works:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>sierra-sdk --help</code> shows help message</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>sierra-sdk init test</code> creates a project</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>python -c "import sierra"</code> runs without error</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Virtual environment activates successfully</li>
 </ul>
 <hr>
-<h3 id="configuration-extensibility">🛠️ Configuration &amp; Extensibility<a class="headerlink" href="#configuration-extensibility" title="Permanent link">Link</a></h3>
-<ul>
-<li><strong>Configuration File</strong>: Customize paths, logging, and plugins via <code>sierra.config.yaml</code></li>
-<li><strong>Plugin Directory</strong>: Drop custom plugins into the <code>plugins/</code> folder</li>
-<li><strong>Abstract Base Classes</strong>: Implement new Sierra components by extending <code>sierra.abc.sierra</code></li>
-</ul>
-<hr>
-<h3 id="contributing-code-of-conduct">💡 Contributing &amp; Code of Conduct<a class="headerlink" href="#contributing-code-of-conduct" title="Permanent link">Link</a></h3>
-<p>We welcome contributions! Please review <a href="../CONTRIBUTING/">CONTRIBUTING.md</a> and adhere to the <a href="https://www.python.org/psf/conduct/">Python Code of Conduct</a>.</p>
-<hr>
-<h3 id="license-authors">📝 License &amp; Authors<a class="headerlink" href="#license-authors" title="Permanent link">Link</a></h3>
-<p>sierra-dev is released under the <a href="../LICENSE">GNU Affero General Public License</a>.</p>
-<p><strong>Authors:</strong></p>
-<ul>
-<li><a href="https://github.com/xsyncio">Xsyncio</a></li>
-</ul>
+<h3 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">Link</a></h3>
+<p>Now that Sierra SDK is installed:</p>
+<ol>
+<li><strong><a href="../concepts/">Learn Core Concepts</a></strong> - Understand how it all works</li>
+<li><strong><a href="../quickstart/">Quick Start Tutorial</a></strong> - Build your first invoker</li>
+<li><strong><a href="../cli-reference/">CLI Reference</a></strong> - Master all commands</li>
+</ol>
+<div style="text-align: center; padding: 2em; background: linear-gradient(135deg, rgba(0,243,255,0.1), rgba(188,19,254,0.1)); border-radius: 8px; margin: 2em 0;">
+    <p style="font-size: 1.2em; color: var(--neon-cyan);">
+        🎉 Installation Complete!
+    </p>
+    <p style="margin-top: 1em;">
+        <a href="../quickstart/" class="md-button md-button--primary">Start Building →</a>
+    </p>
+</div>
 
 
 
@@ -1176,7 +1743,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../invoker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Invoker">
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1186,20 +1753,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Invoker
+                Overview
               </div>
             </div>
           </a>
         
         
           
-          <a href="../package-manager/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../concepts/" class="md-footer__link md-footer__link--next" aria-label="Next: Core Concepts">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Core Concepts
               </div>
             </div>
             <div class="md-footer__button md-icon">
