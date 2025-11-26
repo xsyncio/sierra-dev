@@ -1199,7 +1199,7 @@
 </div>
 <p>Open your terminal and run:</p>
 <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_first_project
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>my_first_project
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>my_first_project
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>✅ <strong>You now have:</strong>
@@ -1407,7 +1407,7 @@
 <hr>
 <h3 id="step-3-build-compile-your-invoker-30-seconds">Step 3: Build (Compile) Your Invoker (30 seconds)<a class="headerlink" href="#step-3-build-compile-your-invoker-30-seconds" title="Permanent link">Link</a></h3>
 <p>This converts your source code into a standalone tool:</p>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project
 </span></code></pre></div></td></tr></tbody></table></div>
 <p><strong>What happens:</strong></p>
 <pre class="mermaid"><code>graph LR
@@ -1535,7 +1535,7 @@
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Rebuild and test:
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 </div>
 <div class="tabbed-block">
@@ -1566,16 +1566,16 @@
 <span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-17-10">10</a></span>
 <span class="normal"><a href="#__codelineno-17-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1"># Add package repository</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="c1"># Search for tools</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span>domain
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span>domain
 </span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a>
 </span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="c1"># Install a tool</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois_lookup
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois_lookup
 </span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a>
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="c1"># Build</span>
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project
 </span></code></pre></div></td></tr></tbody></table></div>
 </div>
 </div>
@@ -1622,7 +1622,7 @@
 <li>❌ No entry point → Add <code>@invoker.entry_point</code></li>
 </ul>
 <p>Run with <code>--verbose</code> for details:
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project<span class="w"> </span>--verbose
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_first_project<span class="w"> </span>--verbose
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 </details>
 <details class="error">
@@ -1637,7 +1637,7 @@
 <summary>How do I modify the invoker?</summary>
 <ol>
 <li>Edit <code>scripts/url_analyzer.py</code></li>
-<li>Run <code>sierra-sdk build --env my_first_project</code> again</li>
+<li>Run <code>sierra-dev build --env my_first_project</code> again</li>
 <li>Test the <code>invokers/url_analyzer.py</code> version</li>
 </ol>
 </details>

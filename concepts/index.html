@@ -1445,7 +1445,7 @@
 <li><strong>Portability</strong> - Share the entire environment</li>
 </ul>
 <p>Creating an environment:</p>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_project
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>my_project
 </span></code></pre></div></td></tr></tbody></table></div>
 <hr>
 <h3 id="the-compilation-process">⚙️ The Compilation Process<a class="headerlink" href="#the-compilation-process" title="Permanent link">Link</a></h3>
@@ -1483,7 +1483,7 @@
 <li><strong>Output</strong> - Writes compiled script and YAML config</li>
 </ol>
 <h4 id="running-compilation">Running Compilation<a class="headerlink" href="#running-compilation" title="Permanent link">Link</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_project
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_project
 </span></code></pre></div></td></tr></tbody></table></div>
 <hr>
 <h3 id="result-types">📊 Result Types<a class="headerlink" href="#result-types" title="Permanent link">Link</a></h3>
@@ -1590,16 +1590,16 @@
 <span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-6-10">10</a></span>
 <span class="normal"><a href="#__codelineno-6-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># Add a repository of packages</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1"># Search for packages</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span>domain
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span>domain
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="c1"># Install a package</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="c1"># Build to compile the installed package</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>sierra-sdk<span class="w"> </span>build
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>sierra-dev<span class="w"> </span>build
 </span></code></pre></div></td></tr></tbody></table></div>
 <h4 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">Link</a></h4>
 <ol>
@@ -1694,13 +1694,13 @@
 <span class="normal"><a href="#__codelineno-12-3">3</a></span>
 <span class="normal"><a href="#__codelineno-12-4">4</a></span>
 <span class="normal"><a href="#__codelineno-12-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># Create environment if needed</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>test_env
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>test_env
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="c1"># Place script in scripts/</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>cp<span class="w"> </span>my_tool.py<span class="w"> </span>test_env/scripts/
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>3. Compile</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>test_env
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>test_env
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>4. Test Compiled Version</strong>
 </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>test_env/venv/bin/python<span class="w"> </span>test_env/invokers/my_tool.py<span class="w"> </span>--help
@@ -1751,7 +1751,7 @@
 </details>
 <details class="question">
 <summary>How do I debug my invoker?</summary>
-<p>Use <code>sierra-sdk build --env myenv --verbose</code> for detailed logs. Check validation errors before compilation.</p>
+<p>Use <code>sierra-dev build --env myenv --verbose</code> for detailed logs. Check validation errors before compilation.</p>
 </details>
 <details class="question">
 <summary>Can compiled invokers run on other machines?</summary>

@@ -1282,7 +1282,7 @@
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="c1"># Verify installation</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>sierra-sdk<span class="w"> </span>--help
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>sierra-dev<span class="w"> </span>--help
 </span></code></pre></div></td></tr></tbody></table></div>
 </div>
 <div class="tabbed-block">
@@ -1316,7 +1316,7 @@
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="p">.</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="c"># Verify installation</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="n">sierra-sdk</span> <span class="p">-</span><span class="n">-help</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="n">sierra-dev</span> <span class="p">-</span><span class="n">-help</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 </div>
 <div class="tabbed-block">
@@ -1340,7 +1340,7 @@
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1"># Verify</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>sierra-sdk<span class="w"> </span>--help
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>sierra-dev<span class="w"> </span>--help
 </span></code></pre></div></td></tr></tbody></table></div>
 </div>
 </div>
@@ -1489,14 +1489,14 @@
 <p><strong>What This Does:</strong>
 - Installs Sierra SDK in "editable" mode (<code>-e</code>)
 - Installs all required dependencies
-- Makes <code>sierra-sdk</code> command available</p>
+- Makes <code>sierra-dev</code> command available</p>
 <p><strong>This will install:</strong>
 - Core Sierra framework
 - Package manager
 - CLI tools
 - All dependencies (httpx, beautifulsoup4, etc.)</p>
 <h4 id="step-6-verify-installation">Step 6: Verify Installation<a class="headerlink" href="#step-6-verify-installation" title="Permanent link">Link</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-sdk<span class="w"> </span>--help
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-dev<span class="w"> </span>--help
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>You should see:</p>
 <div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
@@ -1507,7 +1507,7 @@
 <span class="normal"><a href="#__codelineno-15-6">6</a></span>
 <span class="normal"><a href="#__codelineno-15-7">7</a></span>
 <span class="normal"><a href="#__codelineno-15-8">8</a></span>
-<span class="normal"><a href="#__codelineno-15-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>usage: sierra-sdk [-h] {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list} ...
+<span class="normal"><a href="#__codelineno-15-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>usage: sierra-dev [-h] {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list} ...
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>Sierra SDK - Invoker Package Manager
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>
@@ -1521,7 +1521,7 @@
 <hr>
 <h3 id="post-installation-setup">🎨 Post-Installation Setup<a class="headerlink" href="#post-installation-setup" title="Permanent link">Link</a></h3>
 <h4 id="optional-add-to-system-path">Optional: Add to System PATH<a class="headerlink" href="#optional-add-to-system-path" title="Permanent link">Link</a></h4>
-<p>If you want to use <code>sierra-sdk</code> from any directory without activating venv:</p>
+<p>If you want to use <code>sierra-dev</code> from any directory without activating venv:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="optional-add-to-system-path-linux--macos" name="__tabbed_5" type="radio"><input id="optional-add-to-system-path-windows" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="optional-add-to-system-path-linux--macos">Linux / macOS</label><label for="optional-add-to-system-path-windows">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1544,7 +1544,7 @@
 </div>
 </div>
 <h4 id="create-your-first-environment">Create Your First Environment<a class="headerlink" href="#create-your-first-environment" title="Permanent link">Link</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_first_project
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>my_first_project
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>This creates:
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
@@ -1559,7 +1559,7 @@
 <h3 id="troubleshooting">🔧 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">Link</a></h3>
 <h4 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">Link</a></h4>
 <details class="error">
-<summary>Command not found: sierra-sdk</summary>
+<summary>Command not found: sierra-dev</summary>
 <p><strong>Problem:</strong> Sierra SDK not in PATH or venv not activated</p>
 <p><strong>Solutions:</strong></p>
 <ol>
@@ -1573,8 +1573,8 @@
 <li>
 <p>Or use full path:
     </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
-<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>./venv/bin/sierra-sdk<span class="w">  </span><span class="c1"># Linux/macOS</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>venv<span class="se">\S</span>cripts<span class="se">\s</span>ierra-sdk<span class="w"> </span><span class="c1"># Windows</span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>./venv/bin/sierra-dev<span class="w">  </span><span class="c1"># Linux/macOS</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>venv<span class="se">\S</span>cripts<span class="se">\s</span>ierra-dev<span class="w"> </span><span class="c1"># Windows</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 </li>
 </ol>
@@ -1651,7 +1651,7 @@
 <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>pip<span class="w"> </span>list
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Should include:
-- sierra-sdk (installed in editable mode)
+- sierra-dev (installed in editable mode)
 - httpx
 - beautifulsoup4
 - dnspython
@@ -1672,7 +1672,7 @@
 <hr>
 <h3 id="uninstalling">🗑️ Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">Link</a></h3>
 <p>Remove Sierra SDK:</p>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>sierra-sdk
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>sierra-dev
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Remove entire directory:
 </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
@@ -1685,8 +1685,8 @@
 <h3 id="verification-checklist">✅ Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">Link</a></h3>
 <p>Make sure everything works:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>sierra-sdk --help</code> shows help message</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>sierra-sdk init test</code> creates a project</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>sierra-dev --help</code> shows help message</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>sierra-dev init test</code> creates a project</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> <code>python -c "import sierra"</code> runs without error</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Virtual environment activates successfully</li>
 </ul>

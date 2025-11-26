@@ -1288,52 +1288,52 @@
 <tr>
 <td><code>init</code></td>
 <td>Create new environment</td>
-<td><code>sierra-sdk init my_project</code></td>
+<td><code>sierra-dev init my_project</code></td>
 </tr>
 <tr>
 <td><code>build</code></td>
 <td>Compile invokers</td>
-<td><code>sierra-sdk build</code></td>
+<td><code>sierra-dev build</code></td>
 </tr>
 <tr>
 <td><code>check</code></td>
 <td>Run validation</td>
-<td><code>sierra-sdk check</code></td>
+<td><code>sierra-dev check</code></td>
 </tr>
 <tr>
 <td><code>health</code></td>
 <td>Environment status</td>
-<td><code>sierra-sdk health</code></td>
+<td><code>sierra-dev health</code></td>
 </tr>
 <tr>
 <td><code>repo add</code></td>
 <td>Add package source</td>
-<td><code>sierra-sdk repo add &lt;url&gt;</code></td>
+<td><code>sierra-dev repo add &lt;url&gt;</code></td>
 </tr>
 <tr>
 <td><code>search</code></td>
 <td>Find packages</td>
-<td><code>sierra-sdk search osint</code></td>
+<td><code>sierra-dev search osint</code></td>
 </tr>
 <tr>
 <td><code>install</code></td>
 <td>Install package</td>
-<td><code>sierra-sdk install tool-name</code></td>
+<td><code>sierra-dev install tool-name</code></td>
 </tr>
 <tr>
 <td><code>update</code></td>
 <td>Update packages</td>
-<td><code>sierra-sdk update --all</code></td>
+<td><code>sierra-dev update --all</code></td>
 </tr>
 <tr>
 <td><code>list</code></td>
 <td>List packages</td>
-<td><code>sierra-sdk list --installed</code></td>
+<td><code>sierra-dev list --installed</code></td>
 </tr>
 <tr>
 <td><code>remove</code></td>
 <td>Uninstall package</td>
-<td><code>sierra-sdk remove tool-name</code></td>
+<td><code>sierra-dev remove tool-name</code></td>
 </tr>
 </tbody>
 </table>
@@ -1351,7 +1351,7 @@
 <h4 id="init-initialize-environment"><code>init</code> - Initialize Environment<a class="headerlink" href="#init-initialize-environment" title="Permanent link">Link</a></h4>
 <p>Create a new Sierra environment for your projects.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>name<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>name<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Arguments:</strong>
 - <code>name</code> - Environment name (default: <code>default_env</code>)
@@ -1365,13 +1365,13 @@
 <span class="normal"><a href="#__codelineno-2-6">6</a></span>
 <span class="normal"><a href="#__codelineno-2-7">7</a></span>
 <span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Create default environment</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>sierra-sdk<span class="w"> </span>init
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>sierra-dev<span class="w"> </span>init
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># Create named environment</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_osint_tools
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>my_osint_tools
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># Force recreate existing</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_project<span class="w"> </span>--force
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>my_project<span class="w"> </span>--force
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>What It Creates:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
@@ -1386,7 +1386,7 @@
 <h4 id="clean-clean-environment"><code>clean</code> - Clean Environment<a class="headerlink" href="#clean-clean-environment" title="Permanent link">Link</a></h4>
 <p>Remove generated files from an environment.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>sierra-sdk<span class="w"> </span>clean<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>sierra-dev<span class="w"> </span>clean<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>What It Removes:</strong>
 - <code>config.yaml</code>
@@ -1398,17 +1398,17 @@
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
 <span class="normal"><a href="#__codelineno-5-4">4</a></span>
 <span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># Clean default environment</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>sierra-sdk<span class="w"> </span>clean
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>sierra-dev<span class="w"> </span>clean
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># Clean specific environment</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>sierra-sdk<span class="w"> </span>clean<span class="w"> </span>--env<span class="w"> </span>test_env
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>sierra-dev<span class="w"> </span>clean<span class="w"> </span>--env<span class="w"> </span>test_env
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h3 id="build-commands">🏗️ Build Commands<a class="headerlink" href="#build-commands" title="Permanent link">Link</a></h3>
 <h4 id="build-compile-invokers"><code>build</code> - Compile Invokers<a class="headerlink" href="#build-compile-invokers" title="Permanent link">Link</a></h4>
 <p>Compile source invokers into standalone scripts.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Options:</strong>
 - <code>--env</code> - Environment to build (default: <code>default_env</code>)
@@ -1422,13 +1422,13 @@
 <span class="normal"><a href="#__codelineno-7-6">6</a></span>
 <span class="normal"><a href="#__codelineno-7-7">7</a></span>
 <span class="normal"><a href="#__codelineno-7-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># Build with default settings</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>sierra-sdk<span class="w"> </span>build
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>sierra-dev<span class="w"> </span>build
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1"># Build with debug output</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--verbose
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--verbose
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1"># Build specific environment</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>production
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>production
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Process:</strong></p>
 <pre class="mermaid"><code>graph LR
@@ -1447,7 +1447,7 @@
 <h4 id="check-validate-invokers"><code>check</code> - Validate Invokers<a class="headerlink" href="#check-validate-invokers" title="Permanent link">Link</a></h4>
 <p>Run comprehensive validation checks without building.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sierra-sdk<span class="w"> </span>check<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sierra-dev<span class="w"> </span>check<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Checks:</strong>
 - ✅ Type annotations present
@@ -1461,10 +1461,10 @@
 <span class="normal"><a href="#__codelineno-9-3">3</a></span>
 <span class="normal"><a href="#__codelineno-9-4">4</a></span>
 <span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1"># Check current environment</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>sierra-sdk<span class="w"> </span>check
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>sierra-dev<span class="w"> </span>check
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1"># Check with details</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>sierra-sdk<span class="w"> </span>check<span class="w"> </span>--verbose
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>sierra-dev<span class="w"> </span>check<span class="w"> </span>--verbose
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output Example:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
@@ -1493,7 +1493,7 @@
 <h4 id="health-environment-health"><code>health</code> - Environment Health<a class="headerlink" href="#health-environment-health" title="Permanent link">Link</a></h4>
 <p>Check overall health of your Sierra environment.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>sierra-sdk<span class="w"> </span>health<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>sierra-dev<span class="w"> </span>health<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV_NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Checks:</strong>
 - Scripts directory exists
@@ -1501,7 +1501,7 @@
 - Dependencies installed
 - Config file valid</p>
 <p><strong>Examples:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>sierra-sdk<span class="w"> </span>health
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>sierra-dev<span class="w"> </span>health
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
@@ -1531,7 +1531,7 @@
 <h4 id="repo-add-add-repository"><code>repo add</code> - Add Repository<a class="headerlink" href="#repo-add-add-repository" title="Permanent link">Link</a></h4>
 <p>Add a GitHub repository as a package source.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;url&gt;<span class="w"> </span><span class="o">[</span>--name<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--branch<span class="w"> </span>BRANCH<span class="o">]</span><span class="w"> </span><span class="o">[</span>--priority<span class="w"> </span>PRIORITY<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;url&gt;<span class="w"> </span><span class="o">[</span>--name<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--branch<span class="w"> </span>BRANCH<span class="o">]</span><span class="w"> </span><span class="o">[</span>--priority<span class="w"> </span>PRIORITY<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Arguments:</strong>
 - <code>url</code> - GitHub repository URL
@@ -1547,19 +1547,19 @@
 <span class="normal"><a href="#__codelineno-15-6">6</a></span>
 <span class="normal"><a href="#__codelineno-15-7">7</a></span>
 <span class="normal"><a href="#__codelineno-15-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="c1"># Add official repository</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="c1"># Add with custom name</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/user/tools<span class="w"> </span>--name<span class="w"> </span>custom-tools
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/user/tools<span class="w"> </span>--name<span class="w"> </span>custom-tools
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="c1"># Add development branch</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/user/tools<span class="w"> </span>--branch<span class="w"> </span>dev
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/user/tools<span class="w"> </span>--branch<span class="w"> </span>dev
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h4 id="repo-list-list-repositories"><code>repo list</code> - List Repositories<a class="headerlink" href="#repo-list-list-repositories" title="Permanent link">Link</a></h4>
 <p>Show all configured package sources.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>list
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>list
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
@@ -1586,7 +1586,7 @@
 <h4 id="repo-update-update-registry"><code>repo update</code> - Update Registry<a class="headerlink" href="#repo-update-update-registry" title="Permanent link">Link</a></h4>
 <p>Update package registry from repositories.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>source<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>source<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Arguments:</strong>
 - <code>source</code> - Specific source to update (optional)</p>
@@ -1596,25 +1596,25 @@
 <span class="normal"><a href="#__codelineno-19-3">3</a></span>
 <span class="normal"><a href="#__codelineno-19-4">4</a></span>
 <span class="normal"><a href="#__codelineno-19-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="c1"># Update all sources</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>update
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="c1"># Update specific source</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>update<span class="w"> </span>xsyncio/sierra-invokers
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>update<span class="w"> </span>xsyncio/sierra-invokers
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h4 id="repo-remove-remove-repository"><code>repo remove</code> - Remove Repository<a class="headerlink" href="#repo-remove-remove-repository" title="Permanent link">Link</a></h4>
 <p>Remove a package source.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>&lt;name&gt;
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>&lt;name&gt;
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Examples:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>custom-tools
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>custom-tools
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h4 id="search-search-packages"><code>search</code> - Search Packages<a class="headerlink" href="#search-search-packages" title="Permanent link">Link</a></h4>
 <p>Find packages across all repositories.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span>&lt;query&gt;<span class="w"> </span><span class="o">[</span>--tag<span class="w"> </span>TAG<span class="o">]</span><span class="w"> </span><span class="o">[</span>--category<span class="w"> </span>CATEGORY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--source<span class="w"> </span>SOURCE<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span>&lt;query&gt;<span class="w"> </span><span class="o">[</span>--tag<span class="w"> </span>TAG<span class="o">]</span><span class="w"> </span><span class="o">[</span>--category<span class="w"> </span>CATEGORY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--source<span class="w"> </span>SOURCE<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Options:</strong>
 - <code>--tag</code> - Filter by tag
@@ -1632,16 +1632,16 @@
 <span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-23-10">10</a></span>
 <span class="normal"><a href="#__codelineno-23-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="c1"># Search for domain tools</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span>domain
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span>domain
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="c1"># Filter by category</span>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span><span class="s2">""</span><span class="w"> </span>--category<span class="w"> </span>network
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span><span class="s2">""</span><span class="w"> </span>--category<span class="w"> </span>network
 </span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="c1"># Filter by tag</span>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span>osint<span class="w"> </span>--tag<span class="w"> </span>investigation
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span>osint<span class="w"> </span>--tag<span class="w"> </span>investigation
 </span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a>
 </span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="c1"># Combine filters</span>
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span><span class="s2">""</span><span class="w"> </span>--category<span class="w"> </span>web<span class="w"> </span>--source<span class="w"> </span>xsyncio/sierra-invokers
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span><span class="s2">""</span><span class="w"> </span>--category<span class="w"> </span>web<span class="w"> </span>--source<span class="w"> </span>xsyncio/sierra-invokers
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
@@ -1674,10 +1674,10 @@
 <h4 id="info-package-information"><code>info</code> - Package Information<a class="headerlink" href="#info-package-information" title="Permanent link">Link</a></h4>
 <p>Show detailed information about a package.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>sierra-sdk<span class="w"> </span>info<span class="w"> </span>&lt;package&gt;
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>sierra-dev<span class="w"> </span>info<span class="w"> </span>&lt;package&gt;
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Examples:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>sierra-sdk<span class="w"> </span>info<span class="w"> </span>whois-lookup
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>sierra-dev<span class="w"> </span>info<span class="w"> </span>whois-lookup
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
@@ -1712,13 +1712,13 @@
 </span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14"></a>  - dnspython
 </span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15"></a>
 </span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16"></a>Installation:
-</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17"></a>  sierra-sdk install whois-lookup
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17"></a>  sierra-dev install whois-lookup
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h4 id="install-install-package"><code>install</code> - Install Package<a class="headerlink" href="#install-install-package" title="Permanent link">Link</a></h4>
 <p>Install packages into your environment.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>&lt;packages...&gt;<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span><span class="w"> </span><span class="o">[</span>--skip-validation<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>&lt;packages...&gt;<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span><span class="w"> </span><span class="o">[</span>--skip-validation<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Options:</strong>
 - <code>--env</code> - Target environment (default: <code>test_env</code>)
@@ -1739,31 +1739,31 @@
 <span class="normal"><a href="#__codelineno-29-12">12</a></span>
 <span class="normal"><a href="#__codelineno-29-13">13</a></span>
 <span class="normal"><a href="#__codelineno-29-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="c1"># Install single package</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="c1"># Install multiple packages</span>
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>dns-analyzer<span class="w"> </span>port-scanner
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>dns-analyzer<span class="w"> </span>port-scanner
 </span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a>
 </span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a><span class="c1"># Force reinstall</span>
-</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>--force
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>--force
 </span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9"></a>
 </span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10"></a><span class="c1"># Install to specific environment</span>
-</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>--env<span class="w"> </span>production
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>--env<span class="w"> </span>production
 </span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12"></a>
 </span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13"></a><span class="c1"># Skip validation (not recommended)</span>
-</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>--skip-validation
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>--skip-validation
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Process:</strong>
 1. Downloads package from source
 2. Validates type safety (unless skipped)
 3. Installs to <code>ENV/scripts/</code>
 4. Updates package metadata</p>
-<p><strong>Important:</strong> After installing, run <code>sierra-sdk build</code> to compile!</p>
+<p><strong>Important:</strong> After installing, run <code>sierra-dev build</code> to compile!</p>
 <hr>
 <h4 id="list-list-packages"><code>list</code> - List Packages<a class="headerlink" href="#list-list-packages" title="Permanent link">Link</a></h4>
 <p>List available or installed packages.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>sierra-sdk<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>--installed<span class="o">]</span><span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>sierra-dev<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>--installed<span class="o">]</span><span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Options:</strong>
 - <code>--installed</code> - Show only installed packages
@@ -1777,13 +1777,13 @@
 <span class="normal"><a href="#__codelineno-31-6">6</a></span>
 <span class="normal"><a href="#__codelineno-31-7">7</a></span>
 <span class="normal"><a href="#__codelineno-31-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="c1"># List all available packages</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>sierra-sdk<span class="w"> </span>list
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>sierra-dev<span class="w"> </span>list
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a>
 </span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="c1"># List installed packages</span>
-</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a>sierra-sdk<span class="w"> </span>list<span class="w"> </span>--installed
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a>sierra-dev<span class="w"> </span>list<span class="w"> </span>--installed
 </span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6"></a>
 </span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7"></a><span class="c1"># Check specific environment</span>
-</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8"></a>sierra-sdk<span class="w"> </span>list<span class="w"> </span>--installed<span class="w"> </span>--env<span class="w"> </span>production
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8"></a>sierra-dev<span class="w"> </span>list<span class="w"> </span>--installed<span class="w"> </span>--env<span class="w"> </span>production
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output (Available):</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
@@ -1829,7 +1829,7 @@
 <h4 id="update-update-packages"><code>update</code> - Update Packages<a class="headerlink" href="#update-update-packages" title="Permanent link">Link</a></h4>
 <p>Update installed packages to latest versions.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a>sierra-sdk<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>package<span class="o">]</span><span class="w"> </span><span class="o">[</span>--all<span class="o">]</span><span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>package<span class="o">]</span><span class="w"> </span><span class="o">[</span>--all<span class="o">]</span><span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Options:</strong>
 - <code>--all</code> - Update all packages
@@ -1843,13 +1843,13 @@
 <span class="normal"><a href="#__codelineno-35-6">6</a></span>
 <span class="normal"><a href="#__codelineno-35-7">7</a></span>
 <span class="normal"><a href="#__codelineno-35-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="c1"># Update specific package</span>
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a>sierra-sdk<span class="w"> </span>update<span class="w"> </span>whois-lookup
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span>whois-lookup
 </span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a>
 </span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="c1"># Update all packages</span>
-</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a>sierra-sdk<span class="w"> </span>update<span class="w"> </span>--all
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span>--all
 </span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6"></a>
 </span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="c1"># Update in specific environment</span>
-</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8"></a>sierra-sdk<span class="w"> </span>update<span class="w"> </span>--all<span class="w"> </span>--env<span class="w"> </span>production
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span>--all<span class="w"> </span>--env<span class="w"> </span>production
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1"> 1</a></span>
@@ -1872,16 +1872,16 @@
 </span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8"></a>dns-analyzer: 1.0.5 (up to date)
 </span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9"></a>
 </span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10"></a>✅ Successfully updated 1/2 packages
-</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11"></a>🔨 Run 'sierra-sdk build' to rebuild
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11"></a>🔨 Run 'sierra-dev build' to rebuild
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h4 id="upgradable-list-upgradable"><code>upgradable</code> - List Upgradable<a class="headerlink" href="#upgradable-list-upgradable" title="Permanent link">Link</a></h4>
 <p>Show packages with available updates.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a>sierra-sdk<span class="w"> </span>upgradable<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a>sierra-dev<span class="w"> </span>upgradable<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Examples:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a>sierra-sdk<span class="w"> </span>upgradable
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a>sierra-dev<span class="w"> </span>upgradable
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1"> 1</a></span>
@@ -1908,13 +1908,13 @@
 </span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10"></a>  Available: 3.1.0
 </span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11"></a>  Source: xsyncio/sierra-invokers
 </span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12"></a>
-</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13"></a>Run 'sierra-sdk update --all' to upgrade all packages
+</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13"></a>Run 'sierra-dev update --all' to upgrade all packages
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h4 id="remove-uninstall-package"><code>remove</code> - Uninstall Package<a class="headerlink" href="#remove-uninstall-package" title="Permanent link">Link</a></h4>
 <p>Remove an installed package.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>sierra-sdk<span class="w"> </span>remove<span class="w"> </span>&lt;package&gt;<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>sierra-dev<span class="w"> </span>remove<span class="w"> </span>&lt;package&gt;<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Examples:</strong>
 </p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
@@ -1922,10 +1922,10 @@
 <span class="normal"><a href="#__codelineno-41-3">3</a></span>
 <span class="normal"><a href="#__codelineno-41-4">4</a></span>
 <span class="normal"><a href="#__codelineno-41-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="c1"># Remove package</span>
-</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2"></a>sierra-sdk<span class="w"> </span>remove<span class="w"> </span>whois-lookup
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2"></a>sierra-dev<span class="w"> </span>remove<span class="w"> </span>whois-lookup
 </span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3"></a>
 </span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="c1"># Remove from specific environment</span>
-</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5"></a>sierra-sdk<span class="w"> </span>remove<span class="w"> </span>whois-lookup<span class="w"> </span>--env<span class="w"> </span>production
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5"></a>sierra-dev<span class="w"> </span>remove<span class="w"> </span>whois-lookup<span class="w"> </span>--env<span class="w"> </span>production
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Output:</strong>
 </p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
@@ -1934,7 +1934,7 @@
 <span class="normal"><a href="#__codelineno-42-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a>🗑️  Removing whois-lookup...
 </span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a>✅ Removed successfully
 </span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3"></a>
-</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a>🔨 Run 'sierra-sdk build' to rebuild
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a>🔨 Run 'sierra-dev build' to rebuild
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <hr>
 <h3 id="common-workflows">💡 Common Workflows<a class="headerlink" href="#common-workflows" title="Permanent link">Link</a></h3>
@@ -1953,19 +1953,19 @@
 <span class="normal"><a href="#__codelineno-43-12">12</a></span>
 <span class="normal"><a href="#__codelineno-43-13">13</a></span>
 <span class="normal"><a href="#__codelineno-43-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="c1"># 1. Initialize environment</span>
-</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>my_investigation
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>my_investigation
 </span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a>
 </span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="c1"># 2. Add package sources</span>
-</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/xsyncio/sierra-invokers
 </span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6"></a>
 </span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7"></a><span class="c1"># 3. Search for tools</span>
-</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8"></a>sierra-sdk<span class="w"> </span>search<span class="w"> </span>osint
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8"></a>sierra-dev<span class="w"> </span>search<span class="w"> </span>osint
 </span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9"></a>
 </span><span id="__span-43-10"><a id="__codelineno-43-10" name="__codelineno-43-10"></a><span class="c1"># 4. Install tools</span>
-</span><span id="__span-43-11"><a id="__codelineno-43-11" name="__codelineno-43-11"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>dns-analyzer
+</span><span id="__span-43-11"><a id="__codelineno-43-11" name="__codelineno-43-11"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span>dns-analyzer
 </span><span id="__span-43-12"><a id="__codelineno-43-12" name="__codelineno-43-12"></a>
 </span><span id="__span-43-13"><a id="__codelineno-43-13" name="__codelineno-43-13"></a><span class="c1"># 5. Build environment</span>
-</span><span id="__span-43-14"><a id="__codelineno-43-14" name="__codelineno-43-14"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_investigation
+</span><span id="__span-43-14"><a id="__codelineno-43-14" name="__codelineno-43-14"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>my_investigation
 </span></code></pre></div></td></tr></tbody></table></div>
 <h4 id="developing-an-invoker">Developing an Invoker<a class="headerlink" href="#developing-an-invoker" title="Permanent link">Link</a></h4>
 <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1"> 1</a></span>
@@ -1982,16 +1982,16 @@
 <span class="normal"><a href="#__codelineno-44-12">12</a></span>
 <span class="normal"><a href="#__codelineno-44-13">13</a></span>
 <span class="normal"><a href="#__codelineno-44-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="c1"># 1. Create environment</span>
-</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span>dev_env
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a>sierra-dev<span class="w"> </span>init<span class="w"> </span>dev_env
 </span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a>
 </span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4"></a><span class="c1"># 2. Write invoker in dev_env/scripts/my_tool.py</span>
 </span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5"></a><span class="c1"># (use your text editor)</span>
 </span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6"></a>
 </span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7"></a><span class="c1"># 3. Validate</span>
-</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8"></a>sierra-sdk<span class="w"> </span>check<span class="w"> </span>--env<span class="w"> </span>dev_env
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8"></a>sierra-dev<span class="w"> </span>check<span class="w"> </span>--env<span class="w"> </span>dev_env
 </span><span id="__span-44-9"><a id="__codelineno-44-9" name="__codelineno-44-9"></a>
 </span><span id="__span-44-10"><a id="__codelineno-44-10" name="__codelineno-44-10"></a><span class="c1"># 4. Build</span>
-</span><span id="__span-44-11"><a id="__codelineno-44-11" name="__codelineno-44-11"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>dev_env<span class="w"> </span>--verbose
+</span><span id="__span-44-11"><a id="__codelineno-44-11" name="__codelineno-44-11"></a>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>dev_env<span class="w"> </span>--verbose
 </span><span id="__span-44-12"><a id="__codelineno-44-12" name="__codelineno-44-12"></a>
 </span><span id="__span-44-13"><a id="__codelineno-44-13" name="__codelineno-44-13"></a><span class="c1"># 5. Test</span>
 </span><span id="__span-44-14"><a id="__codelineno-44-14" name="__codelineno-44-14"></a>dev_env/venv/bin/python<span class="w"> </span>dev_env/invokers/my_tool.py<span class="w"> </span>--help
@@ -2008,16 +2008,16 @@
 <span class="normal"><a href="#__codelineno-45-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-45-10">10</a></span>
 <span class="normal"><a href="#__codelineno-45-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="c1"># Check for updates</span>
-</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a>sierra-sdk<span class="w"> </span>upgradable
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a>sierra-dev<span class="w"> </span>upgradable
 </span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a>
 </span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4"></a><span class="c1"># Update all</span>
-</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5"></a>sierra-sdk<span class="w"> </span>update<span class="w"> </span>--all
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span>--all
 </span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6"></a>
 </span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7"></a><span class="c1"># Rebuild</span>
-</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8"></a>sierra-sdk<span class="w"> </span>build
+</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8"></a>sierra-dev<span class="w"> </span>build
 </span><span id="__span-45-9"><a id="__codelineno-45-9" name="__codelineno-45-9"></a>
 </span><span id="__span-45-10"><a id="__codelineno-45-10" name="__codelineno-45-10"></a><span class="c1"># Verify health</span>
-</span><span id="__span-45-11"><a id="__codelineno-45-11" name="__codelineno-45-11"></a>sierra-sdk<span class="w"> </span>health
+</span><span id="__span-45-11"><a id="__codelineno-45-11" name="__codelineno-45-11"></a>sierra-dev<span class="w"> </span>health
 </span></code></pre></div></td></tr></tbody></table></div>
 <hr>
 <h3 id="advanced-usage">🔧 Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permanent link">Link</a></h3>
@@ -2035,7 +2035,7 @@
 <h4 id="chaining-commands">Chaining Commands<a class="headerlink" href="#chaining-commands" title="Permanent link">Link</a></h4>
 <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
 <span class="normal"><a href="#__codelineno-47-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="c1"># Install and build in one go</span>
-</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a>sierra-sdk<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sierra-sdk<span class="w"> </span>build
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a>sierra-dev<span class="w"> </span>install<span class="w"> </span>whois-lookup<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sierra-dev<span class="w"> </span>build
 </span></code></pre></div></td></tr></tbody></table></div>
 <h4 id="scripting">Scripting<a class="headerlink" href="#scripting" title="Permanent link">Link</a></h4>
 <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
@@ -2047,10 +2047,10 @@
 <span class="normal"><a href="#__codelineno-48-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="c1"># Auto-update script</span>
 </span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3"></a>
-</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a>sierra-sdk<span class="w"> </span>repo<span class="w"> </span>update
-</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5"></a>sierra-sdk<span class="w"> </span>update<span class="w"> </span>--all
-</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6"></a>sierra-sdk<span class="w"> </span>build
-</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7"></a>sierra-sdk<span class="w"> </span>check
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a>sierra-dev<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span>--all
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6"></a>sierra-dev<span class="w"> </span>build
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7"></a>sierra-dev<span class="w"> </span>check
 </span></code></pre></div></td></tr></tbody></table></div>
 <hr>
 <h3 id="exit-codes">🚨 Exit Codes<a class="headerlink" href="#exit-codes" title="Permanent link">Link</a></h3>
@@ -2083,7 +2083,7 @@
 <span class="normal"><a href="#__codelineno-49-3">3</a></span>
 <span class="normal"><a href="#__codelineno-49-4">4</a></span>
 <span class="normal"><a href="#__codelineno-49-5">5</a></span>
-<span class="normal"><a href="#__codelineno-49-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="k">if</span><span class="w"> </span>sierra-sdk<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>prod<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="normal"><a href="#__codelineno-49-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="k">if</span><span class="w"> </span>sierra-dev<span class="w"> </span>build<span class="w"> </span>--env<span class="w"> </span>prod<span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Build successful"</span>
 </span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3"></a><span class="k">else</span>
 </span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Build failed"</span>
