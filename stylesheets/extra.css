@@ -1,557 +1,391 @@
-/* ====================================
-   Sierra Dev - PURE BLACK THEME
-   Colors: Pure Black, Bright Red, Bright Green
-   ==================================== */
+/* 
+   Neon Cyberpunk Theme for Sierra SDK Documentation
+   Author: Xsyncio (via Antigravity)
+   Version: 2.0
+*/
+
+/* Import Futuristic Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  /* Custom brand colors */
-  --sierra-red: #ff0000;
-  --sierra-green: #00ff00;
-  --sierra-black: #000000;
-  --sierra-white: #ffffff;
+  /* Core Neon Palette */
+  --neon-cyan: #00f3ff;
+  --neon-pink: #ff00ff;
+  --neon-purple: #bc13fe;
+  --neon-green: #0aff00;
+  --neon-yellow: #fcee0a;
+
+  /* Cyber Dark Palette */
+  --cyber-bg-dark: #05050a;
+  --cyber-bg-panel: #0a0a12;
+  --cyber-text-main: #e0e0e0;
+  --cyber-text-muted: #a0a0a0;
+
+  /* Glassmorphism */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(10, 10, 18, 0.7);
+  --glass-blur: blur(12px);
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Dark Theme Variables */
+/* ==========================================================================
+   Global Typography & Layout
+   ========================================================================== */
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+code,
+kbd,
+pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ==========================================================================
+   Dark Mode (Slate) - The Full Cyberpunk Experience
+   ========================================================================== */
+
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #000000;        /* Pure Black Background */
-  --md-default-fg-color: #ffffff;        /* Pure White Text */
-  --md-default-bg-color--light: #111111;
-  --md-default-bg-color--lighter: #222222;
-  --md-default-bg-color--lightest: #ffffff;
-  
-  /* Navigation colors */
-  --md-nav-bg-color: #e600ff;
-  --md-nav-fg-color: #ffffff;
-  
-  /* Code block styling */
-  --md-code-bg-color: #111111;
-  --md-code-fg-color: #00ff00;           /* Bright Green for code */
-  
-  /* Card and surface colors */
-  --md-primary-bg-color: #000000;
-  --md-primary-bg-color--light: #111111;
+  --md-hue: 260;
+  --md-default-bg-color: var(--cyber-bg-dark);
+  --md-default-fg-color: var(--cyber-text-main);
+  --md-default-fg-color--light: var(--cyber-text-muted);
+  --md-default-fg-color--lighter: var(--cyber-text-muted);
+
+  /* Primary Colors */
+  --md-primary-fg-color: var(--neon-cyan);
+  --md-primary-fg-color--light: var(--neon-purple);
+  --md-primary-fg-color--dark: var(--neon-cyan);
+
+  /* Accent Colors */
+  --md-accent-fg-color: var(--neon-pink);
+
+  /* Code Blocks */
+  --md-code-bg-color: #0d0d15;
+  --md-code-fg-color: #e0e0e0;
+
+  /* Admonitions */
+  --md-admonition-bg-color: rgba(0, 243, 255, 0.05);
 }
 
-/* ====================================
-   HEADER CUSTOMIZATION - FIXED
-   ==================================== */
+[data-md-color-scheme="slate"] body {
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(188, 19, 254, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.08), transparent 25%);
+  background-attachment: fixed;
+}
 
-/* Header with cleaner background */
+/* ==========================================================================
+   Light Mode (Default) - High-Tech Lab Aesthetic
+   ========================================================================== */
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #f8f9fa;
+  --md-default-fg-color: #1a1a2e;
+
+  /* Primary Colors */
+  --md-primary-fg-color: #2a2a4a;
+  --md-primary-fg-color--light: #bc13fe;
+  --md-primary-fg-color--dark: #00f3ff;
+
+  /* Accent Colors */
+  --md-accent-fg-color: #ff0055;
+}
+
+/* ==========================================================================
+   Header & Navigation (Glassmorphism)
+   ========================================================================== */
+
 .md-header {
-  background: var(--sierra-black);
-  border-bottom: 1px solid rgba(0, 255, 0, 0.3);
-  box-shadow: 0 2px 10px rgba(245, 245, 245, 0.5);
+  background-color: rgba(5, 5, 10, 0.85) !important;
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-speed) ease;
 }
 
-/* Logo with subtle glow */
-.md-header__button.md-logo img,
-.md-header__button.md-logo svg {
-  filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5));
-  transition: all 0.3s ease;
-}
-
-.md-header__button.md-logo:hover img,
-.md-header__button.md-logo:hover svg {
-  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.8));
-  transform: scale(1.02);
-}
-
-/* Header title - more readable */
 .md-header__title {
-  color: var(--sierra-white);
-  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
 }
 
-.md-header__title:hover {
-  color: var(--sierra-green);
-}
-
-/* ====================================
-   NAVIGATION STYLING - FIXED
-   ==================================== */
-
-/* Navigation tabs with better contrast */
-.md-tabs__list {
-  background: var(--sierra-black);
-  border-bottom: 1px solid rgba(0, 255, 0, 0.3);
-}
-
-.md-tabs__item {
-  transition: all 0.3s ease;
-}
-
-.md-tabs__item:hover {
-  background: rgba(0, 255, 0, 0.1);
+/* Tabs / Navigation Bar */
+.md-tabs {
+  background-color: rgba(10, 10, 18, 0.9) !important;
+  border-bottom: 1px solid rgba(188, 19, 254, 0.2);
+  backdrop-filter: blur(5px);
 }
 
 .md-tabs__link {
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
-  transition: all 0.3s ease;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.md-tabs__link:hover {
-  color: var(--sierra-green);
-}
-
+.md-tabs__link:hover,
 .md-tabs__link--active {
-  color: var(--sierra-red);
-  border-bottom: 2px solid var(--sierra-green);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan);
 }
 
-/* Sidebar navigation - FIXED */
-.md-nav {
-  background: var(--sierra-black);
-}
-
-.md-nav__item--active > .md-nav__link {
-  color: var(--sierra-green);
-  border-left: 3px solid var(--sierra-green);
-  background: rgba(0, 255, 200, 0.08);
-  padding-left: 13px;
+/* Sidebar */
+.md-sidebar {
+  background: transparent;
 }
 
 .md-nav__link {
-  color: rgba(255, 255, 255, 0.8);
   transition: all 0.2s ease;
 }
 
 .md-nav__link:hover {
-  color: var(--sierra-white);
-  background: rgba(255, 0, 0, 0.08);
-  padding-left: 16px;
-}
-
-/* ====================================
-   CONTENT STYLING - FIXED
-   ==================================== */
-
-/* Main content area */
-.md-main__inner {
-  margin-top: 0;
-}
-
-/* Article styling with better spacing */
-.md-content__inner {
-  padding-bottom: 2rem;
-  background: var(--sierra-black);
-  color: var(--sierra-white);
-}
-
-/* Headings - more readable */
-.md-content h1 {
-  color: var(--sierra-green);
-  border-bottom: 2px solid var(--sierra-green);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.md-content h2 {
-  color: var(--sierra-red);
-  border-left: 4px solid var(--sierra-red);
-  padding-left: 1rem;
-  margin-left: 0;
-  background: rgba(255, 0, 0, 0.05);
-}
-
-.md-content h3 {
-  color: var(--sierra-green);
-  position: relative;
-}
-
-.md-content h3::before {
-  content: "▶";
-  color: var(--sierra-red);
-  margin-right: 0.5rem;
-}
-
-/* Better text contrast */
-.md-content p,
-.md-content li {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* ====================================
-   CODE BLOCKS & SYNTAX HIGHLIGHTING - FIXED
-   ==================================== */
-
-/* Code blocks with better contrast */
-.md-typeset .highlight {
-  background: #111111;
-  border: 1px solid rgba(0, 255, 0, 0.3);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.md-typeset .highlight pre {
-  background: #111111;
-  color: var(--sierra-white);
-}
-
-.md-typeset .highlight code {
-  color: var(--sierra-white);
-  background: transparent;
-}
-
-/* Syntax highlighting colors */
-.md-typeset .highlight .k,
-.md-typeset .highlight .kd,
-.md-typeset .highlight .kn { color: var(--sierra-red); }
-
-.md-typeset .highlight .s,
-.md-typeset .highlight .s1,
-.md-typeset .highlight .s2 { color: var(--sierra-green); }
-
-.md-typeset .highlight .n,
-.md-typeset .highlight .nv { color: rgba(255, 255, 255, 0.9); }
-
-.md-typeset .highlight .c,
-.md-typeset .highlight .c1 { color: rgba(253, 0, 0, 0.6); }
-
-.md-typeset .highlight .nb { color: #00ffff; }
-
-/* Inline code - more readable */
-.md-typeset code {
-  background: rgba(0, 0, 0, 0.8);
-  color: var(--sierra-green);
-  border: 1px solid rgba(0, 255, 0, 0.2);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-weight: 500;
-}
-
-/* Copy code button */
-.md-clipboard {
-  background: rgba(0, 255, 0, 0.2);
-  color: var(--sierra-green);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.md-clipboard:hover {
-  background: rgba(0, 255, 0, 0.3);
-}
-
-/* ====================================
-   ADMONITIONS & CALLOUTS
-   ==================================== */
-
-/* Custom admonition styling */
-.md-typeset .admonition {
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.md-typeset .admonition:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Tip admonition */
-.md-typeset .admonition.tip {
-  border-left: 4px solid var(--sierra-green);
-  background: rgba(0, 255, 0, 0.05);
-}
-
-.md-typeset .admonition.tip .admonition-title {
-  background: rgba(0, 255, 0, 0.1);
-  color: var(--sierra-green);
-}
-
-/* Warning admonition */
-.md-typeset .admonition.warning {
-  border-left: 4px solid var(--sierra-red);
-  background: rgba(255, 0, 0, 0.05);
-}
-
-.md-typeset .admonition.warning .admonition-title {
-  background: rgba(255, 0, 0, 0.1);
-  color: var(--sierra-red);
-}
-
-/* ====================================
-   BUTTONS & INTERACTIVE ELEMENTS
-   ==================================== */
-
-/* Enhanced buttons */
-.md-button {
-  color: var(--sierra-white);
-  border: none;
-  border-radius: 25px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-}
-
-.md-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(255, 0, 0, 0.5);
-  filter: brightness(1.1);
-}
-
-/* Search input */
-.md-search__input {
-  background: var(--sierra-black);
-  border: 2px solid var(--sierra-green);
-  color: var(--sierra-white);
-  border-radius: 25px;
-}
-
-.md-search__input:focus {
-  border-color: var(--sierra-red);
-  box-shadow: 0 0 15px rgba(248, 248, 248, 0.3);
-}
-
-/* ====================================
-   TABLES & DATA PRESENTATION
-   ==================================== */
-
-/* Enhanced table styling - FIXED */
-.md-typeset table:not([class]) {
-  border: 1px solid rgba(0, 255, 0, 0.3);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--sierra-black);
-}
-
-.md-typeset table:not([class]) th {
-  background: rgba(0, 255, 0, 0.1);
-  color: var(--sierra-green);
-  font-weight: 600;
-  border-bottom: 2px solid var(--sierra-green);
-  padding: 12px 16px;
-}
-
-.md-typeset table:not([class]) td {
-  background: var(--sierra-black);
-  color: var(--sierra-white);
-  border-bottom: 1px solid rgba(0, 255, 0, 0.1);
-  padding: 12px 16px;
-}
-
-.md-typeset table:not([class]) tr:hover td {
-  background: rgba(0, 255, 0, 0.05);
-}
-
-/* ====================================
-   FOOTER CUSTOMIZATION
-   ==================================== */
-
-/* Footer with gradient */
-.md-footer {
-  background: linear-gradient(135deg, var(--sierra-black) 0%, #111111 50%, var(--sierra-black) 100%);
-  border-top: 2px solid var(--sierra-green);
-  color: var(--sierra-white);
-}
-
-.md-footer-meta {
-  background: rgba(0, 255, 0, 0.1);
-}
-
-/* ====================================
-   ANIMATIONS & EFFECTS
-   ==================================== */
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Fade-in animation for content */
-.md-content {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Pulse animation for active elements */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+  color: var(--neon-pink) !important;
+  transform: translateX(4px);
 }
 
 .md-nav__link--active {
-  animation: pulse 2s infinite;
+  color: var(--neon-cyan) !important;
+  font-weight: 700;
+  border-left: 2px solid var(--neon-cyan);
+  padding-left: 8px;
 }
 
-/* ====================================
-   RESPONSIVE DESIGN
-   ==================================== */
+/* ==========================================================================
+   Content Area & Typography
+   ========================================================================== */
 
-/* Mobile optimizations */
+/* Headings with Neon Underline */
+h1 {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--neon-cyan), transparent) 1;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  color: var(--neon-purple);
+  border-left: 3px solid var(--neon-purple);
+  padding-left: 10px;
+}
+
+h3 {
+  color: var(--neon-pink);
+}
+
+/* Links */
+a {
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+/* Buttons */
+.md-button {
+  border-radius: 2px;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+  transition: all 0.3s var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--md-primary-fg-color);
+}
+
+.md-button--primary {
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan)) !important;
+  border: none;
+  color: #000 !important;
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Code Blocks & Admonitions
+   ========================================================================== */
+
+/* Code Blocks */
+.md-typeset pre>code {
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+/* Inline Code */
+.md-typeset code {
+  color: var(--neon-pink);
+  background: rgba(255, 0, 255, 0.1);
+  border-radius: 3px;
+  padding: 0 4px;
+}
+
+/* Admonitions (Alerts) */
+.md-typeset .admonition,
+.md-typeset details {
+  background: rgba(10, 10, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left-width: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background: rgba(255, 255, 255, 0.03);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Specific Admonition Glows */
+.admonition.note {
+  border-left-color: var(--neon-cyan) !important;
+}
+
+.admonition.tip {
+  border-left-color: var(--neon-green) !important;
+}
+
+.admonition.warning {
+  border-left-color: var(--neon-yellow) !important;
+}
+
+.admonition.danger {
+  border-left-color: var(--neon-pink) !important;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.md-typeset table:not([class]) {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.md-typeset table:not([class]) th {
+  background: rgba(0, 243, 255, 0.1);
+  color: var(--neon-cyan);
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.md-footer {
+  background-color: #020205 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.md-footer__title {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* ==========================================================================
+   Animations & Effects
+   ========================================================================== */
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px var(--neon-cyan);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 10px var(--neon-purple);
+  }
+
+  100% {
+    box-shadow: 0 0 5px var(--neon-cyan);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05050a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Search Bar */
+.md-search__input {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(0, 243, 255, 0.3) !important;
+  color: var(--neon-cyan) !important;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.md-search__input:focus {
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+/* Mobile Responsiveness Polish */
 @media screen and (max-width: 76.1875em) {
-  .md-header__title {
-    font-size: 1.2rem;
+  .md-nav--primary .md-nav__title {
+    background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
+    font-family: 'Orbitron', sans-serif;
   }
-  
-  .md-tabs__link {
-    font-size: 0.9rem;
-    color: #ffffff;
-  }
-}
-
-@media screen and (max-width: 44.9375em) {
-  .md-content h1 {
-    font-size: 1.8rem;
-  }
-  
-  .md-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* ====================================
-   ACCESSIBILITY ENHANCEMENTS
-   ==================================== */
-
-/* Focus indicators */
-*:focus {
-  outline: 2px solid var(--sierra-green);
-  outline-offset: 2px;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  :root {
-    --sierra-red: #ff3333;
-    --sierra-green: #33ff33;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Make sure active or focused tabs stay bright in dark mode */
-[data-md-color-scheme="slate"] .md-tabs__link--active,
-[data-md-color-scheme="slate"] .md-tabs__link:focus {
-  color: var(--sierra-green) !important;
-  background: rgba(0, 255, 0, 0.1) !important;
-}
-
-/* Force active tab text visible in dark (slate) mode */
-[data-md-color-scheme="slate"] .md-tabs__item--active > .md-tabs__link {
-  color: var(--sierra-green) !important;
-}
-
-/* And even when you hover/focus it */
-[data-md-color-scheme="slate"] .md-tabs__item--active > .md-tabs__link:hover,
-[data-md-color-scheme="slate"] .md-tabs__item--active > .md-tabs__link:focus {
-  color: var(--sierra-green) !important;
-  background: rgba(0, 255, 0, 0.1) !important;
-}
-
-/* Force search input text & placeholder visible in dark (slate) mode */
-[data-md-color-scheme="slate"] .md-search__input {
-  color: var(--md-default-fg-color) !important;
-  background-color: var(--md-default-bg-color) !important;
-  caret-color: var(--sierra-green) !important;
-}
-
-/* Placeholder text */
-[data-md-color-scheme="slate"] .md-search__input::placeholder {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* When focused, keep border & shadow consistent */
-[data-md-color-scheme="slate"] .md-search__input:focus {
-  border-color: var(--sierra-green) !important;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3) !important;
-}
-
-/* =============================================================================
-   ENSURE SOURCE & SEARCH ICONS VISIBLE IN DARK (SLATE) MODE
-   ============================================================================= */
-
-/* GitHub / "Source" link icon */
-[data-md-color-scheme="slate"] .md-source__icon,
-[data-md-color-scheme="slate"] .md-source__icon .md-icon,
-[data-md-color-scheme="slate"] .md-source__icon svg {
-  color: var(--md-default-fg-color) !important;
-  fill:  var(--md-default-fg-color) !important;
-  stroke: var(--md-default-fg-color) !important;
-}
-
-/* Search toggle button icon (magnifier) */
-[data-md-color-scheme="slate"] .md-header__button.md-toggle[data-md-toggle="search"] .md-icon,
-[data-md-color-scheme="slate"] .md-search .md-icon {
-  color: var(--md-default-fg-color) !important;
-  fill:  var(--md-default-fg-color) !important;
-  stroke: var(--md-default-fg-color) !important;
-}
-
-/* Search field "clear" / close icon (if present) */
-[data-md-color-scheme="slate"] .md-search__button .md-icon {
-  color: var(--md-default-fg-color) !important;
-  fill:  var(--md-default-fg-color) !important;
-  stroke: var(--md-default-fg-color) !important;
-}
-
-[data-md-color-scheme="slate"] .md-tabs,
-[data-md-color-scheme="slate"] .md-tabs .md-grid {
-  background-color: #000 !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-}
-
-/* --- Header layout fix for slate (dark mode) --- */
-[data-md-color-scheme="slate"] .md-header__inner {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-  max-width: none !important;
-}
-
-[data-md-color-scheme="slate"] .md-header__inner::before,
-[data-md-color-scheme="slate"] .md-header__inner::after {
-  content: '' !important;
-  flex: 1 !important;
-}
-
-[data-md-color-scheme="slate"] .md-header__button.md-logo,
-[data-md-color-scheme="slate"] .md-header__title {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-}
-
-[data-md-color-scheme="slate"] .md-search {
-  flex-grow: 1 !important;
-  max-width: 500px !important;
-  margin: 0 auto !important;
-}
-
-[data-md-color-scheme="slate"] .md-header__source {
-  display: flex !important;
-  align-items: center !important;
-  margin-left: auto !important;
-}
-
-[data-md-color-scheme="slate"] .md-grid {
-  max-width: none !important;
-  padding: 0 1rem !important;
-  width: 100% !important;
 }
