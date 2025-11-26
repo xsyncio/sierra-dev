@@ -55,7 +55,6 @@ setup(
     author="Xsyncio",
     author_email="dev@xsyncio.com",
     description="Sierra Dev - Modern Invoker Package Manager and Development Framework",
-    description="Modern framework for building investigation invoker scripts with APT-like package management",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/xsyncio/sierra-dev",
