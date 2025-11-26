@@ -117,7 +117,7 @@ These tools are included in the `example/` directory of the Sierra SDK.
 
 3.  **Build:**
     ```bash
-    sierra-sdk build --env your_env
+    sierra-dev build --env your_env
     ```
 
 ## 📝 Creating Your Own Tools

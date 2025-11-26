@@ -6,12 +6,12 @@ This is the complete reference for all **14 Sierra SDK CLI commands**. These com
 
 Manage the sources where Sierra SDK looks for packages.
 
-### `sierra-sdk repo add`
+### `sierra-dev repo add`
 Add a GitHub repository as a package source.
 
 **Syntax:**
 ```bash
-sierra-sdk repo add <url> [options]
+sierra-dev repo add <url> [options]
 ```
 
 **Options:**
@@ -21,18 +21,18 @@ sierra-sdk repo add <url> [options]
 
 **Examples:**
 ```bash
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
-sierra-sdk repo add https://github.com/my-org/private-tools --name private --priority 1
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev repo add https://github.com/my-org/private-tools --name private --priority 1
 ```
 
 ---
 
-### `sierra-sdk repo list`
+### `sierra-dev repo list`
 List all configured repositories and their status.
 
 **Syntax:**
 ```bash
-sierra-sdk repo list
+sierra-dev repo list
 ```
 
 **Output:**
@@ -40,12 +40,12 @@ Displays a table of sources, their URLs, priorities, and enabled status.
 
 ---
 
-### `sierra-sdk repo update`
+### `sierra-dev repo update`
 Fetch the latest package registries from all configured sources.
 
 **Syntax:**
 ```bash
-sierra-sdk repo update [source]
+sierra-dev repo update [source]
 ```
 
 **Arguments:**
@@ -53,18 +53,18 @@ sierra-sdk repo update [source]
 
 **Examples:**
 ```bash
-sierra-sdk repo update          # Update all
-sierra-sdk repo update official # Update only 'official'
+sierra-dev repo update          # Update all
+sierra-dev repo update official # Update only 'official'
 ```
 
 ---
 
-### `sierra-sdk repo remove`
+### `sierra-dev repo remove`
 Remove a repository source.
 
 **Syntax:**
 ```bash
-sierra-sdk repo remove <name>
+sierra-dev repo remove <name>
 ```
 
 ---
@@ -73,12 +73,12 @@ sierra-sdk repo remove <name>
 
 Find and explore available packages.
 
-### `sierra-sdk search`
+### `sierra-dev search`
 Search for packages across all repositories.
 
 **Syntax:**
 ```bash
-sierra-sdk search <query> [options]
+sierra-dev search <query> [options]
 ```
 
 **Options:**
@@ -88,18 +88,18 @@ sierra-sdk search <query> [options]
 
 **Examples:**
 ```bash
-sierra-sdk search email
-sierra-sdk search --tag vulnerability
+sierra-dev search email
+sierra-dev search --tag vulnerability
 ```
 
 ---
 
-### `sierra-sdk info`
+### `sierra-dev info`
 Show detailed information about a specific package.
 
 **Syntax:**
 ```bash
-sierra-sdk info <package>
+sierra-dev info <package>
 ```
 
 **Output:**
@@ -111,12 +111,12 @@ Displays description, author, version, source, tags, and installation instructio
 
 Install, update, and remove packages.
 
-### `sierra-sdk install`
+### `sierra-dev install`
 Install one or more packages into your environment.
 
 **Syntax:**
 ```bash
-sierra-sdk install <package>... [options]
+sierra-dev install <package>... [options]
 ```
 
 **Options:**
@@ -126,18 +126,18 @@ sierra-sdk install <package>... [options]
 
 **Examples:**
 ```bash
-sierra-sdk install digital-footprint
-sierra-sdk install pkg1 pkg2 pkg3 --env production
+sierra-dev install digital-footprint
+sierra-dev install pkg1 pkg2 pkg3 --env production
 ```
 
 ---
 
-### `sierra-sdk update`
+### `sierra-dev update`
 Update installed packages to the latest version.
 
 **Syntax:**
 ```bash
-sierra-sdk update [package] [--all]
+sierra-dev update [package] [--all]
 ```
 
 **Options:**
@@ -146,38 +146,38 @@ sierra-sdk update [package] [--all]
 
 **Examples:**
 ```bash
-sierra-sdk update digital-footprint
-sierra-sdk update --all
+sierra-dev update digital-footprint
+sierra-dev update --all
 ```
 
 ---
 
-### `sierra-sdk upgradable`
+### `sierra-dev upgradable`
 List all packages that have updates available.
 
 **Syntax:**
 ```bash
-sierra-sdk upgradable
+sierra-dev upgradable
 ```
 
 ---
 
-### `sierra-sdk remove`
+### `sierra-dev remove`
 Uninstall a package.
 
 **Syntax:**
 ```bash
-sierra-sdk remove <package>
+sierra-dev remove <package>
 ```
 
 ---
 
-### `sierra-sdk list`
+### `sierra-dev list`
 List available or installed packages.
 
 **Syntax:**
 ```bash
-sierra-sdk list [options]
+sierra-dev list [options]
 ```
 
 **Options:**
@@ -190,31 +190,31 @@ sierra-sdk list [options]
 
 Maintain and validate your environment.
 
-### `sierra-sdk init`
+### `sierra-dev init`
 Initialize a new Sierra environment.
 
 ```bash
-sierra-sdk init [name] [--force]
+sierra-dev init [name] [--force]
 ```
 
 - `name`: Name of the environment directory (default: `default_env`)
 - `--force`: Overwrite existing configuration if present
 
-### `sierra-sdk clean`
+### `sierra-dev clean`
 Clean generated files from the environment.
 
 ```bash
-sierra-sdk clean [--env ENV]
+sierra-dev clean [--env ENV]
 ```
 
 - `--env`: Target environment (default: `default_env`)
 
-### `sierra-sdk build`
+### `sierra-dev build`
 Compile invoker scripts and generate configuration.
 
 **Syntax:**
 ```bash
-sierra-sdk build [options]
+sierra-dev build [options]
 ```
 
 **Options:**
@@ -223,12 +223,12 @@ sierra-sdk build [options]
 
 ---
 
-### `sierra-sdk check`
+### `sierra-dev check`
 Run comprehensive validation checks on your invokers.
 
 **Syntax:**
 ```bash
-sierra-sdk check [options]
+sierra-dev check [options]
 ```
 
 **Checks Performed:**
@@ -239,12 +239,12 @@ sierra-sdk check [options]
 
 ---
 
-### `sierra-sdk health`
+### `sierra-dev health`
 Check the overall health of the Sierra SDK environment.
 
 **Syntax:**
 ```bash
-sierra-sdk health
+sierra-dev health
 ```
 
 **Checks Performed:**
@@ -264,6 +264,6 @@ These options apply to all commands:
 
 ## 💡 Tips
 
-- Use `sierra-sdk repo update` frequently to get the latest package versions.
-- Use `sierra-sdk check` before building to catch errors early.
-- Combine `sierra-sdk search` with tags for precise discovery.
+- Use `sierra-dev repo update` frequently to get the latest package versions.
+- Use `sierra-dev check` before building to catch errors early.
+- Combine `sierra-dev search` with tags for precise discovery.

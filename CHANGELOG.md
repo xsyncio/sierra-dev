@@ -33,20 +33,20 @@ Sierra SDK v2.0 is a major release that transforms the framework into a comprehe
 - Type safety validation for all packages
 
 #### CLI Commands (14 total)
-- `sierra-sdk repo add` - Add GitHub repository as package source
-- `sierra-sdk repo list` - List configured repositories
-- `sierra-sdk repo update` - Update package registries
-- `sierra-sdk repo remove` - Remove repository source
-- `sierra-sdk search` - Search for packages
-- `sierra-sdk info` - Show package information
-- `sierra-sdk install` - Install packages
-- `sierra-sdk update` - Update installed packages
-- `sierra-sdk upgradable` - List packages with updates
-- `sierra-sdk remove` - Uninstall packages
-- `sierra-sdk list` - List available/installed packages
-- `sierra-sdk build` - Build invoker environment
-- `sierra-sdk check` - Run validation checks
-- `sierra-sdk health` - Check environment health
+- `sierra-dev repo add` - Add GitHub repository as package source
+- `sierra-dev repo list` - List configured repositories
+- `sierra-dev repo update` - Update package registries
+- `sierra-dev repo remove` - Remove repository source
+- `sierra-dev search` - Search for packages
+- `sierra-dev info` - Show package information
+- `sierra-dev install` - Install packages
+- `sierra-dev update` - Update installed packages
+- `sierra-dev upgradable` - List packages with updates
+- `sierra-dev remove` - Uninstall packages
+- `sierra-dev list` - List available/installed packages
+- `sierra-dev build` - Build invoker environment
+- `sierra-dev check` - Run validation checks
+- `sierra-dev health` - Check environment health
 
 #### OSINT Tools (15+ production-ready examples)
 - **Domain & DNS**: subdomain_enumerator, dns_analyzer, whois_lookup, crt_sh
@@ -132,8 +132,8 @@ Sierra SDK v2.0 is a major release that transforms the framework into a comprehe
 ⚠️ **Version 2.0 introduces breaking changes:**
 
 1. **Python Version**: Now requires Python 3.12 or higher
-2. **Package Name**: Changed from `sierra-dev` to `sierra-sdk`
-3. **CLI Entry Point**: Changed from `sierra` to `sierra-sdk`
+2. **Package Name**: Changed from `sierra-dev` to `sierra-dev`
+3. **CLI Entry Point**: Changed from `sierra` to `sierra-dev`
 4. **Import Structure**: New package_manager module
 5. **Configuration**: Enhanced config.yaml structure
 
@@ -146,15 +146,15 @@ Sierra SDK v2.0 is a major release that transforms the framework into a comprehe
 pip uninstall sierra-dev
 
 # Install new version
-pip install sierra-sdk
+pip install sierra-dev
 
 # Update CLI usage
 sierra build      # OLD
-sierra-sdk build  # NEW
+sierra-dev build  # NEW
 
 # Install packages
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
-sierra-sdk install digital-footprint
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev install digital-footprint
 ```
 
 ### Contributors

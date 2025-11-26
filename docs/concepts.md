@@ -118,7 +118,7 @@ default_env/                 # Your environment
 Creating an environment:
 
 ```bash
-sierra-sdk init my_project
+sierra-dev init my_project
 ```
 
 ---
@@ -165,7 +165,7 @@ graph TD
 ### Running Compilation
 
 ```bash
-sierra-sdk build --env my_project
+sierra-dev build --env my_project
 ```
 
 ---
@@ -238,16 +238,16 @@ graph LR
 
 ```bash
 # Add a repository of packages
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
 
 # Search for packages
-sierra-sdk search domain
+sierra-dev search domain
 
 # Install a package
-sierra-sdk install whois-lookup
+sierra-dev install whois-lookup
 
 # Build to compile the installed package
-sierra-sdk build
+sierra-dev build
 ```
 
 ### How It Works
@@ -352,7 +352,7 @@ invoker = sierra.InvokerScript(name="my_tool", ...)
 **2. Test Locally**
 ```bash
 # Create environment if needed
-sierra-sdk init test_env
+sierra-dev init test_env
 
 # Place script in scripts/
 cp my_tool.py test_env/scripts/
@@ -360,7 +360,7 @@ cp my_tool.py test_env/scripts/
 
 **3. Compile**
 ```bash
-sierra-sdk build --env test_env
+sierra-dev build --env test_env
 ```
 
 **4. Test Compiled Version**
@@ -415,7 +415,7 @@ Common questions beginners ask:
     * **Compiled** (`invokers/`) - Standalone version that runs anywhere
 
 ??? question "How do I debug my invoker?"
-    Use `sierra-sdk build --env myenv --verbose` for detailed logs. Check validation errors before compilation.
+    Use `sierra-dev build --env myenv --verbose` for detailed logs. Check validation errors before compilation.
 
 ??? question "Can compiled invokers run on other machines?"
     Yes, but they need Python and the dependencies installed. The environment's `venv/` contains everything needed.

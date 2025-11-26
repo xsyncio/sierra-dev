@@ -28,7 +28,7 @@ We're building `url_analyzer` - a simple tool that:
 Open your terminal and run:
 
 ```bash
-sierra-sdk init my_first_project
+sierra-dev init my_first_project
 cd my_first_project
 ```
 
@@ -170,7 +170,7 @@ Create a new file `scripts/url_analyzer.py`:
 This converts your source code into a standalone tool:
 
 ```bash
-sierra-sdk build --env my_first_project
+sierra-dev build --env my_first_project
 ```
 
 **What happens:**
@@ -271,7 +271,7 @@ my_first_project/venv/bin/python my_first_project/invokers/url_analyzer.py \
     
     Rebuild and test:
     ```bash
-    sierra-sdk build --env my_first_project
+    sierra-dev build --env my_first_project
     ```
 
 === "Try Different Result Types"
@@ -295,16 +295,16 @@ my_first_project/venv/bin/python my_first_project/invokers/url_analyzer.py \
     
     ```bash
     # Add package repository
-    sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
+    sierra-dev repo add https://github.com/xsyncio/sierra-invokers
     
     # Search for tools
-    sierra-sdk search domain
+    sierra-dev search domain
     
     # Install a tool
-    sierra-sdk install whois_lookup
+    sierra-dev install whois_lookup
     
     # Build
-    sierra-sdk build --env my_first_project
+    sierra-dev build --env my_first_project
     ```
 
 ### Deep Dive Documentation
@@ -330,7 +330,7 @@ my_first_project/venv/bin/python my_first_project/invokers/url_analyzer.py \
     
     Run with `--verbose` for details:
     ```bash
-    sierra-sdk build --env my_first_project --verbose
+    sierra-dev build --env my_first_project --verbose
     ```
 
 ??? error "ImportError: No module named 'sierra'"
@@ -343,7 +343,7 @@ my_first_project/venv/bin/python my_first_project/invokers/url_analyzer.py \
 
 ??? question "How do I modify the invoker?"
     1. Edit `scripts/url_analyzer.py`
-    2. Run `sierra-sdk build --env my_first_project` again
+    2. Run `sierra-dev build --env my_first_project` again
     3. Test the `invokers/url_analyzer.py` version
 
 ---

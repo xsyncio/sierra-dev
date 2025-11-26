@@ -504,8 +504,8 @@ def setup_client(args: argparse.Namespace) -> typing.Any:
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        prog="sierra-sdk",
-        description="Sierra SDK - Invoker Package Manager"
+        prog="sierra-dev",
+        description="Sierra Dev - Invoker Package Manager",
     )
     
     subparsers = parser.add_subparsers(dest="command", help="Available commands")

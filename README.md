@@ -207,7 +207,13 @@ mkdocs serve
 
 ## 🙏 Acknowledgments
 
+<<<<<<< HEAD
 - built with the help of Gemini by Xsyncio  
+=======
+- Built by Xsyncio
+- Powered by Python, MkDocs, and GitHub
+
+>>>>>>> 97efa77 (Usage back to normal 'sierra-dev' instead of sdk. \nReason: Name reservation issue.)
 ---
 
 **Sierra SDK** - Modern investigation tooling made simple.

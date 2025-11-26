@@ -6,16 +6,16 @@ Complete reference for all Sierra SDK command-line tools.
 
 | Command | Purpose | Example |
 |---------|---------|---------|
-| `init` | Create new environment | `sierra-sdk init my_project` |
-| `build` | Compile invokers | `sierra-sdk build` |
-| `check` | Run validation | `sierra-sdk check` |
-| `health` | Environment status | `sierra-sdk health` |
-| `repo add` | Add package source | `sierra-sdk repo add <url>` |
-| `search` | Find packages | `sierra-sdk search osint` |
-| `install` | Install package | `sierra-sdk install tool-name` |
-| `update` | Update packages | `sierra-sdk update --all` |
-| `list` | List packages | `sierra-sdk list --installed` |
-| `remove` | Uninstall package | `sierra-sdk remove tool-name` |
+| `init` | Create new environment | `sierra-dev init my_project` |
+| `build` | Compile invokers | `sierra-dev build` |
+| `check` | Run validation | `sierra-dev check` |
+| `health` | Environment status | `sierra-dev health` |
+| `repo add` | Add package source | `sierra-dev repo add <url>` |
+| `search` | Find packages | `sierra-dev search osint` |
+| `install` | Install package | `sierra-dev install tool-name` |
+| `update` | Update packages | `sierra-dev update --all` |
+| `list` | List packages | `sierra-dev list --installed` |
+| `remove` | Uninstall package | `sierra-dev remove tool-name` |
 
 ---
 
@@ -39,7 +39,7 @@ Create a new Sierra environment for your projects.
 
 **Syntax:**
 ```bash
-sierra-sdk init [name] [--force]
+sierra-dev init [name] [--force]
 ```
 
 **Arguments:**
@@ -49,13 +49,13 @@ sierra-sdk init [name] [--force]
 **Examples:**
 ```bash
 # Create default environment
-sierra-sdk init
+sierra-dev init
 
 # Create named environment
-sierra-sdk init my_osint_tools
+sierra-dev init my_osint_tools
 
 # Force recreate existing
-sierra-sdk init my_project --force
+sierra-dev init my_project --force
 ```
 
 **What It Creates:**
@@ -74,7 +74,7 @@ Remove generated files from an environment.
 
 **Syntax:**
 ```bash
-sierra-sdk clean [--env ENV_NAME]
+sierra-dev clean [--env ENV_NAME]
 ```
 
 **What It Removes:**
@@ -85,10 +85,10 @@ sierra-sdk clean [--env ENV_NAME]
 **Examples:**
 ```bash
 # Clean default environment
-sierra-sdk clean
+sierra-dev clean
 
 # Clean specific environment
-sierra-sdk clean --env test_env
+sierra-dev clean --env test_env
 ```
 
 ---
@@ -101,7 +101,7 @@ Compile source invokers into standalone scripts.
 
 **Syntax:**
 ```bash
-sierra-sdk build [--env ENV_NAME] [-v]
+sierra-dev build [--env ENV_NAME] [-v]
 ```
 
 **Options:**
@@ -111,13 +111,13 @@ sierra-sdk build [--env ENV_NAME] [-v]
 **Examples:**
 ```bash
 # Build with default settings
-sierra-sdk build
+sierra-dev build
 
 # Build with debug output
-sierra-sdk build --verbose
+sierra-dev build --verbose
 
 # Build specific environment
-sierra-sdk build --env production
+sierra-dev build --env production
 ```
 
 **Process:**
@@ -146,7 +146,7 @@ Run comprehensive validation checks without building.
 
 **Syntax:**
 ```bash
-sierra-sdk check [--env ENV_NAME] [-v]
+sierra-dev check [--env ENV_NAME] [-v]
 ```
 
 **Checks:**
@@ -159,10 +159,10 @@ sierra-sdk check [--env ENV_NAME] [-v]
 **Examples:**
 ```bash
 # Check current environment
-sierra-sdk check
+sierra-dev check
 
 # Check with details
-sierra-sdk check --verbose
+sierra-dev check --verbose
 ```
 
 **Output Example:**
@@ -188,7 +188,7 @@ Check overall health of your Sierra environment.
 
 **Syntax:**
 ```bash
-sierra-sdk health [--env ENV_NAME] [-v]
+sierra-dev health [--env ENV_NAME] [-v]
 ```
 
 **Checks:**
@@ -199,7 +199,7 @@ sierra-sdk health [--env ENV_NAME] [-v]
 
 **Examples:**
 ```bash
-sierra-sdk health
+sierra-dev health
 ```
 
 **Output:**
@@ -227,7 +227,7 @@ Add a GitHub repository as a package source.
 
 **Syntax:**
 ```bash
-sierra-sdk repo add <url> [--name NAME] [--branch BRANCH] [--priority PRIORITY]
+sierra-dev repo add <url> [--name NAME] [--branch BRANCH] [--priority PRIORITY]
 ```
 
 **Arguments:**
@@ -239,13 +239,13 @@ sierra-sdk repo add <url> [--name NAME] [--branch BRANCH] [--priority PRIORITY]
 **Examples:**
 ```bash
 # Add official repository
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
 
 # Add with custom name
-sierra-sdk repo add https://github.com/user/tools --name custom-tools
+sierra-dev repo add https://github.com/user/tools --name custom-tools
 
 # Add development branch
-sierra-sdk repo add https://github.com/user/tools --branch dev
+sierra-dev repo add https://github.com/user/tools --branch dev
 ```
 
 ---
@@ -256,7 +256,7 @@ Show all configured package sources.
 
 **Syntax:**
 ```bash
-sierra-sdk repo list
+sierra-dev repo list
 ```
 
 **Output:**
@@ -281,7 +281,7 @@ Update package registry from repositories.
 
 **Syntax:**
 ```bash
-sierra-sdk repo update [source]
+sierra-dev repo update [source]
 ```
 
 **Arguments:**
@@ -290,10 +290,10 @@ sierra-sdk repo update [source]
 **Examples:**
 ```bash
 # Update all sources
-sierra-sdk repo update
+sierra-dev repo update
 
 # Update specific source
-sierra-sdk repo update xsyncio/sierra-invokers
+sierra-dev repo update xsyncio/sierra-invokers
 ```
 
 ---
@@ -304,12 +304,12 @@ Remove a package source.
 
 **Syntax:**
 ```bash
-sierra-sdk repo remove <name>
+sierra-dev repo remove <name>
 ```
 
 **Examples:**
 ```bash
-sierra-sdk repo remove custom-tools
+sierra-dev repo remove custom-tools
 ```
 
 ---
@@ -320,7 +320,7 @@ Find packages across all repositories.
 
 **Syntax:**
 ```bash
-sierra-sdk search <query> [--tag TAG] [--category CATEGORY] [--source SOURCE]
+sierra-dev search <query> [--tag TAG] [--category CATEGORY] [--source SOURCE]
 ```
 
 **Options:**
@@ -331,16 +331,16 @@ sierra-sdk search <query> [--tag TAG] [--category CATEGORY] [--source SOURCE]
 **Examples:**
 ```bash
 # Search for domain tools
-sierra-sdk search domain
+sierra-dev search domain
 
 # Filter by category
-sierra-sdk search "" --category network
+sierra-dev search "" --category network
 
 # Filter by tag
-sierra-sdk search osint --tag investigation
+sierra-dev search osint --tag investigation
 
 # Combine filters
-sierra-sdk search "" --category web --source xsyncio/sierra-invokers
+sierra-dev search "" --category web --source xsyncio/sierra-invokers
 ```
 
 **Output:**
@@ -368,12 +368,12 @@ Show detailed information about a package.
 
 **Syntax:**
 ```bash
-sierra-sdk info <package>
+sierra-dev info <package>
 ```
 
 **Examples:**
 ```bash
-sierra-sdk info whois-lookup
+sierra-dev info whois-lookup
 ```
 
 **Output:**
@@ -394,7 +394,7 @@ Dependencies:
   - dnspython
 
 Installation:
-  sierra-sdk install whois-lookup
+  sierra-dev install whois-lookup
 ```
 
 ---
@@ -405,7 +405,7 @@ Install packages into your environment.
 
 **Syntax:**
 ```bash
-sierra-sdk install <packages...> [--env ENV] [--force] [--skip-validation]
+sierra-dev install <packages...> [--env ENV] [--force] [--skip-validation]
 ```
 
 **Options:**
@@ -416,19 +416,19 @@ sierra-sdk install <packages...> [--env ENV] [--force] [--skip-validation]
 **Examples:**
 ```bash
 # Install single package
-sierra-sdk install whois-lookup
+sierra-dev install whois-lookup
 
 # Install multiple packages
-sierra-sdk install whois-lookup dns-analyzer port-scanner
+sierra-dev install whois-lookup dns-analyzer port-scanner
 
 # Force reinstall
-sierra-sdk install whois-lookup --force
+sierra-dev install whois-lookup --force
 
 # Install to specific environment
-sierra-sdk install whois-lookup --env production
+sierra-dev install whois-lookup --env production
 
 # Skip validation (not recommended)
-sierra-sdk install whois-lookup --skip-validation
+sierra-dev install whois-lookup --skip-validation
 ```
 
 **Process:**
@@ -437,7 +437,7 @@ sierra-sdk install whois-lookup --skip-validation
 3. Installs to `ENV/scripts/`
 4. Updates package metadata
 
-**Important:** After installing, run `sierra-sdk build` to compile!
+**Important:** After installing, run `sierra-dev build` to compile!
 
 ---
 
@@ -447,7 +447,7 @@ List available or installed packages.
 
 **Syntax:**
 ```bash
-sierra-sdk list [--installed] [--env ENV]
+sierra-dev list [--installed] [--env ENV]
 ```
 
 **Options:**
@@ -457,13 +457,13 @@ sierra-sdk list [--installed] [--env ENV]
 **Examples:**
 ```bash
 # List all available packages
-sierra-sdk list
+sierra-dev list
 
 # List installed packages
-sierra-sdk list --installed
+sierra-dev list --installed
 
 # Check specific environment
-sierra-sdk list --installed --env production
+sierra-dev list --installed --env production
 ```
 
 **Output (Available):**
@@ -501,7 +501,7 @@ Update installed packages to latest versions.
 
 **Syntax:**
 ```bash
-sierra-sdk update [package] [--all] [--env ENV]
+sierra-dev update [package] [--all] [--env ENV]
 ```
 
 **Options:**
@@ -511,13 +511,13 @@ sierra-sdk update [package] [--all] [--env ENV]
 **Examples:**
 ```bash
 # Update specific package
-sierra-sdk update whois-lookup
+sierra-dev update whois-lookup
 
 # Update all packages
-sierra-sdk update --all
+sierra-dev update --all
 
 # Update in specific environment
-sierra-sdk update --all --env production
+sierra-dev update --all --env production
 ```
 
 **Output:**
@@ -532,7 +532,7 @@ whois-lookup: 1.2.0 → 1.3.0
 dns-analyzer: 1.0.5 (up to date)
 
 ✅ Successfully updated 1/2 packages
-🔨 Run 'sierra-sdk build' to rebuild
+🔨 Run 'sierra-dev build' to rebuild
 ```
 
 ---
@@ -543,12 +543,12 @@ Show packages with available updates.
 
 **Syntax:**
 ```bash
-sierra-sdk upgradable [--env ENV]
+sierra-dev upgradable [--env ENV]
 ```
 
 **Examples:**
 ```bash
-sierra-sdk upgradable
+sierra-dev upgradable
 ```
 
 **Output:**
@@ -565,7 +565,7 @@ port-scanner
   Available: 3.1.0
   Source: xsyncio/sierra-invokers
 
-Run 'sierra-sdk update --all' to upgrade all packages
+Run 'sierra-dev update --all' to upgrade all packages
 ```
 
 ---
@@ -576,16 +576,16 @@ Remove an installed package.
 
 **Syntax:**
 ```bash
-sierra-sdk remove <package> [--env ENV]
+sierra-dev remove <package> [--env ENV]
 ```
 
 **Examples:**
 ```bash
 # Remove package
-sierra-sdk remove whois-lookup
+sierra-dev remove whois-lookup
 
 # Remove from specific environment
-sierra-sdk remove whois-lookup --env production
+sierra-dev remove whois-lookup --env production
 ```
 
 **Output:**
@@ -593,7 +593,7 @@ sierra-sdk remove whois-lookup --env production
 🗑️  Removing whois-lookup...
 ✅ Removed successfully
 
-🔨 Run 'sierra-sdk build' to rebuild
+🔨 Run 'sierra-dev build' to rebuild
 ```
 
 ---
@@ -604,35 +604,35 @@ sierra-sdk remove whois-lookup --env production
 
 ```bash
 # 1. Initialize environment
-sierra-sdk init my_investigation
+sierra-dev init my_investigation
 
 # 2. Add package sources
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
 
 # 3. Search for tools
-sierra-sdk search osint
+sierra-dev search osint
 
 # 4. Install tools
-sierra-sdk install whois-lookup dns-analyzer
+sierra-dev install whois-lookup dns-analyzer
 
 # 5. Build environment
-sierra-sdk build --env my_investigation
+sierra-dev build --env my_investigation
 ```
 
 ### Developing an Invoker
 
 ```bash
 # 1. Create environment
-sierra-sdk init dev_env
+sierra-dev init dev_env
 
 # 2. Write invoker in dev_env/scripts/my_tool.py
 # (use your text editor)
 
 # 3. Validate
-sierra-sdk check --env dev_env
+sierra-dev check --env dev_env
 
 # 4. Build
-sierra-sdk build --env dev_env --verbose
+sierra-dev build --env dev_env --verbose
 
 # 5. Test
 dev_env/venv/bin/python dev_env/invokers/my_tool.py --help
@@ -642,16 +642,16 @@ dev_env/venv/bin/python dev_env/invokers/my_tool.py --help
 
 ```bash
 # Check for updates
-sierra-sdk upgradable
+sierra-dev upgradable
 
 # Update all
-sierra-sdk update --all
+sierra-dev update --all
 
 # Rebuild
-sierra-sdk build
+sierra-dev build
 
 # Verify health
-sierra-sdk health
+sierra-dev health
 ```
 
 ---
@@ -672,7 +672,7 @@ export SIERRA_CONFIG=/path/to/config
 
 ```bash
 # Install and build in one go
-sierra-sdk install whois-lookup && sierra-sdk build
+sierra-dev install whois-lookup && sierra-dev build
 ```
 
 ### Scripting
@@ -681,10 +681,10 @@ sierra-sdk install whois-lookup && sierra-sdk build
 #!/bin/bash
 # Auto-update script
 
-sierra-sdk repo update
-sierra-sdk update --all
-sierra-sdk build
-sierra-sdk check
+sierra-dev repo update
+sierra-dev update --all
+sierra-dev build
+sierra-dev check
 ```
 
 ---
@@ -701,7 +701,7 @@ Commands return standard exit codes:
 
 Use in scripts:
 ```bash
-if sierra-sdk build --env prod; then
+if sierra-dev build --env prod; then
     echo "Build successful"
 else
     echo "Build failed"

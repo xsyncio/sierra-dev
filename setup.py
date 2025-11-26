@@ -50,10 +50,11 @@ requirements: list[str] = [
 ]
 
 setup(
-    name="sierra-sdk",
-    version="2.0.0",
+    name="sierra-dev",
+    version="2.1.0",
     author="Xsyncio",
     author_email="dev@xsyncio.com",
+    description="Sierra Dev - Modern Invoker Package Manager and Development Framework",
     description="Modern framework for building investigation invoker scripts with APT-like package management",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -100,11 +101,11 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "sierra-sdk=sierra.cli:main",
+            "sierra-dev=sierra.cli:main",
         ],
     },
     keywords=[
-        "sierra-sdk",
+        "sierra-dev",
         "sierra",
         "invoker",
         "script",

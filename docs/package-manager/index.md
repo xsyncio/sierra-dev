@@ -124,7 +124,7 @@ Sierra SDK maintains its state in the user's home directory (`~/.sierra/`):
 Sierra SDK can check for updates across all installed packages and upgrade them with a single command:
 
 ```bash
-sierra-sdk update --all
+sierra-dev update --all
 ```
 
 ### 🛡️ Type Safety
@@ -132,9 +132,9 @@ Every script is validated before installation. If a script lacks type hints or u
 
 ### 🔍 Smart Search
 Search is fuzzy and context-aware. You can search by:
-- **Keyword**: `sierra-sdk search osint`
-- **Tag**: `sierra-sdk search --tag email`
-- **Category**: `sierra-sdk search --category recon`
+- **Keyword**: `sierra-dev search osint`
+- **Tag**: `sierra-dev search --tag email`
+- **Category**: `sierra-dev search --category recon`
 
 ### 📦 Dependency Management
 Packages can declare dependencies (e.g., Python libraries). Sierra SDK will notify you of required dependencies upon installation.

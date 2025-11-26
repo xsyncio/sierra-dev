@@ -47,9 +47,9 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -e .
 
 # Your first invoker in 3 commands
-sierra-sdk init my_project
+sierra-dev init my_project
 cd my_project
-sierra-sdk build
+sierra-dev build
 ```
 
 [→ CLI Reference](cli-reference.md){ .md-button .md-button--primary }
@@ -60,14 +60,14 @@ Want to use tools right away?
 
 ```bash
 # Add package repository
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
 
 # Find tools
-sierra-sdk search domain
+sierra-dev search domain
 
 # Install and use
-sierra-sdk install whois_lookup
-sierra-sdk build
+sierra-dev install whois_lookup
+sierra-dev build
 ```
 
 [→ OSINT Tools Guide](osint-tools.md){ .md-button }

@@ -24,7 +24,7 @@ Get Sierra SDK up and running on your system in minutes.
     pip install -e .
     
     # Verify installation
-    sierra-sdk --help
+    sierra-dev --help
     ```
 
 === "Windows"
@@ -44,7 +44,7 @@ Get Sierra SDK up and running on your system in minutes.
     pip install -e .
     
     # Verify installation
-    sierra-sdk --help
+    sierra-dev --help
     ```
 
 === "Using conda"
@@ -59,7 +59,7 @@ Get Sierra SDK up and running on your system in minutes.
     pip install -e .
     
     # Verify
-    sierra-sdk --help
+    sierra-dev --help
     ```
 
 ---
@@ -189,7 +189,7 @@ pip install -e .
 **What This Does:**
 - Installs Sierra SDK in "editable" mode (`-e`)
 - Installs all required dependencies
-- Makes `sierra-sdk` command available
+- Makes `sierra-dev` command available
 
 **This will install:**
 - Core Sierra framework
@@ -200,13 +200,13 @@ pip install -e .
 ### Step 6: Verify Installation
 
 ```bash
-sierra-sdk --help
+sierra-dev --help
 ```
 
 You should see:
 
 ```
-usage: sierra-sdk [-h] {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list} ...
+usage: sierra-dev [-h] {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list} ...
 
 Sierra SDK - Invoker Package Manager
 
@@ -225,7 +225,7 @@ positional arguments:
 
 ### Optional: Add to System PATH
 
-If you want to use `sierra-sdk` from any directory without activating venv:
+If you want to use `sierra-dev` from any directory without activating venv:
 
 === "Linux / macOS"
     Add to `~/.bashrc` or `~/.zshrc`:
@@ -248,7 +248,7 @@ If you want to use `sierra-sdk` from any directory without activating venv:
 ### Create Your First Environment
 
 ```bash
-sierra-sdk init my_first_project
+sierra-dev init my_first_project
 ```
 
 This creates:
@@ -265,7 +265,7 @@ my_first_project/
 
 ### Common Issues
 
-??? error "Command not found: sierra-sdk"
+??? error "Command not found: sierra-dev"
     **Problem:** Sierra SDK not in PATH or venv not activated
     
     **Solutions:**
@@ -278,8 +278,8 @@ my_first_project/
     
     2. Or use full path:
         ```bash
-        ./venv/bin/sierra-sdk  # Linux/macOS
-        venv\Scripts\sierra-sdk # Windows
+        ./venv/bin/sierra-dev  # Linux/macOS
+        venv\Scripts\sierra-dev # Windows
         ```
 
 ??? error "Python version too old"
@@ -361,7 +361,7 @@ pip list
 ```
 
 Should include:
-- sierra-sdk (installed in editable mode)
+- sierra-dev (installed in editable mode)
 - httpx
 - beautifulsoup4
 - dnspython
@@ -394,7 +394,7 @@ pip install -e . --upgrade
 Remove Sierra SDK:
 
 ```bash
-pip uninstall sierra-sdk
+pip uninstall sierra-dev
 ```
 
 Remove entire directory:
@@ -410,8 +410,8 @@ rmdir /s sierra-dev  # Windows
 
 Make sure everything works:
 
-- [ ] `sierra-sdk --help` shows help message
-- [ ] `sierra-sdk init test` creates a project
+- [ ] `sierra-dev --help` shows help message
+- [ ] `sierra-dev init test` creates a project
 - [ ] `python -c "import sierra"` runs without error
 - [ ] Virtual environment activates successfully
 
