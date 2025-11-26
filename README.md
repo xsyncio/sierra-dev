@@ -36,16 +36,16 @@ pip install -e .
 
 ```bash
 # Add a package repository
-sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
+sierra-dev repo add https://github.com/xsyncio/sierra-invokers
 
 # Search for packages
-sierra-sdk search osint
+sierra-dev search osint
 
 # Install a package
-sierra-sdk install digital-footprint
+sierra-dev install digital-footprint
 
 # Build your environment
-sierra-sdk build --env test_env
+sierra-dev build --env test_env
 ```
 
 ## 📦 Package Manager
@@ -54,26 +54,26 @@ Sierra Dev provides an APT-like package management system:
 
 ### Repository Management
 ```bash
-sierra-sdk repo add <url>      # Add repository
-sierra-sdk repo list            # List sources
-sierra-sdk repo update          # Update registries
-sierra-sdk repo remove <name>   # Remove source
+sierra-dev repo add <url>      # Add repository
+sierra-dev repo list            # List sources
+sierra-dev repo update          # Update registries
+sierra-dev repo remove <name>   # Remove source
 ```
 
 ### Package Operations
 ```bash
-sierra-sdk search <query>       # Find packages
-sierra-sdk install <pkg>        # Install package
-sierra-sdk update --all         # Update all
-sierra-sdk remove <pkg>         # Uninstall
-sierra-sdk list --installed     # List installed
+sierra-dev search <query>       # Find packages
+sierra-dev install <pkg>        # Install package
+sierra-dev update --all         # Update all
+sierra-dev remove <pkg>         # Uninstall
+sierra-dev list --installed     # List installed
 ```
 
 ### Development
 ```bash
-sierra-sdk build                # Compile invokers
-sierra-sdk check                # Run validation
-sierra-sdk health               # Environment status
+sierra-dev build                # Compile invokers
+sierra-dev check                # Run validation
+sierra-dev health               # Environment status
 ```
 
 ## 🏗️ Project Structure
@@ -136,7 +136,7 @@ respond(Table(
 
 ### 1. Initialize Project
 ```bash
-sierra-sdk init my_project
+sierra-dev init my_project
 cd my_project
 ```
 
@@ -161,13 +161,13 @@ def run(target: str) -> None:
 
 ```bash
 # Validate your invokers
-sierra-sdk check --env test_env
+sierra-dev check --env test_env
 
 # Build with verbose output
-sierra-sdk build --env test_env -v
+sierra-dev build --env test_env -v
 
 # Check health
-sierra-sdk health --env test_env
+sierra-dev health --env test_env
 ```
 
 ## 📊 Statistics

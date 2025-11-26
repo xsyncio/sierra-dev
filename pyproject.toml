@@ -3,7 +3,7 @@ requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sierra-sdk"
+name = "sierra-dev"
 version = "2.0.0"
 description = "Modern framework for building investigation invoker scripts with APT-like package management"
 readme = "README.md"
@@ -65,7 +65,7 @@ Issues = "https://github.com/xsyncio/sierra-dev/issues"
 Changelog = "https://github.com/xsyncio/sierra-dev/blob/main/CHANGELOG.md"
 
 [project.scripts]
-sierra-sdk = "sierra.cli:main"
+sierra-dev = "sierra.cli:main"
 
 [tool.setuptools]
 packages = ["sierra", "sierra.core", "sierra.internal", "sierra.package_manager", "sierra.abc"]
