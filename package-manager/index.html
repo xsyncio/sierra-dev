@@ -17,7 +17,7 @@
     
     
       
-        <title>Overview - Sierra SDK</title>
+        <title>Overview - Sierra Dev</title>
       
     
     
@@ -142,7 +142,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Sierra SDK" class="md-header__button md-logo" aria-label="Sierra SDK" data-md-component="logo">
+    <a href=".." title="Sierra Dev" class="md-header__button md-logo" aria-label="Sierra Dev" data-md-component="logo">
       
   <img src="../assets/logo.png" alt="logo">
 
@@ -155,7 +155,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Sierra SDK
+            Sierra Dev
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,12 +415,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Sierra SDK" class="md-nav__button md-logo" aria-label="Sierra SDK" data-md-component="logo">
+    <a href=".." title="Sierra Dev" class="md-nav__button md-logo" aria-label="Sierra Dev" data-md-component="logo">
       
   <img src="../assets/logo.png" alt="logo">
 
     </a>
-    Sierra SDK
+    Sierra Dev
   </label>
   
     <div class="md-nav__source">
@@ -875,7 +875,7 @@
   <h1>Overview</h1>
 
 <h2 id="package-manager-overview">Package Manager Overview<a class="headerlink" href="#package-manager-overview" title="Permanent link">Link</a></h2>
-<p>Sierra SDK's package manager provides <strong>APT-like functionality</strong> for installing, managing, and updating invoker scripts from GitHub repositories. It is designed to be robust, type-safe, and easy to use.</p>
+<p>Sierra Dev's package manager provides <strong>APT-like functionality</strong> for installing, managing, and updating invoker scripts from GitHub repositories. It is designed to be robust, type-safe, and easy to use.</p>
 <h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">Link</a></h3>
 <p>The package manager consists of several modular components working together:</p>
 <pre class="mermaid"><code>graph LR
@@ -931,7 +931,7 @@
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">installer</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"digital-footprint"</span><span class="p">,</span> <span class="n">registry</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <h4 id="4-type-validator">4. Type Validator<a class="headerlink" href="#4-type-validator" title="Permanent link">Link</a></h4>
-<p>Ensures that all installed scripts meet Sierra SDK's strict quality standards:
+<p>Ensures that all installed scripts meet Sierra Dev's strict quality standards:
 - <strong>AST-based analysis</strong>: Checks code without executing it
 - <strong>Type annotations</strong>: Verifies arguments and return types
 - <strong>Safety checks</strong>: Detects unsafe patterns</p>
@@ -942,7 +942,7 @@
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">is_valid</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> <span class="n">validate_invoker_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">)</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <h3 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">Link</a></h3>
-<p>A Sierra SDK repository on GitHub follows a strict structure to ensure compatibility:</p>
+<p>A Sierra Dev repository on GitHub follows a strict structure to ensure compatibility:</p>
 <div class="language-text highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -995,7 +995,7 @@
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <h3 id="local-storage">Local Storage<a class="headerlink" href="#local-storage" title="Permanent link">Link</a></h3>
-<p>Sierra SDK maintains its state in the user's home directory (<code>~/.sierra/</code>):</p>
+<p>Sierra Dev maintains its state in the user's home directory (<code>~/.sierra/</code>):</p>
 <ul>
 <li><strong><code>sources.json</code></strong>: List of configured repositories and their priorities.</li>
 <li><strong><code>installed.json</code></strong>: Manifest of all installed packages and their versions.</li>
@@ -1003,23 +1003,23 @@
 </ul>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">Link</a></h3>
 <h4 id="auto-updates">🔄 Auto-Updates<a class="headerlink" href="#auto-updates" title="Permanent link">Link</a></h4>
-<p>Sierra SDK can check for updates across all installed packages and upgrade them with a single command:</p>
+<p>Sierra Dev can check for updates across all installed packages and upgrade them with a single command:</p>
 <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sierra-dev<span class="w"> </span>update<span class="w"> </span>--all
 </span></code></pre></div></td></tr></tbody></table></div>
 <h4 id="type-safety">🛡️ Type Safety<a class="headerlink" href="#type-safety" title="Permanent link">Link</a></h4>
-<p>Every script is validated before installation. If a script lacks type hints or uses unsafe patterns, Sierra SDK will warn you or refuse installation (unless <code>--force</code> is used).</p>
+<p>Every script is validated before installation. If a script lacks type hints or uses unsafe patterns, Sierra Dev will warn you or refuse installation (unless <code>--force</code> is used).</p>
 <h4 id="smart-search">🔍 Smart Search<a class="headerlink" href="#smart-search" title="Permanent link">Link</a></h4>
 <p>Search is fuzzy and context-aware. You can search by:
 - <strong>Keyword</strong>: <code>sierra-dev search osint</code>
 - <strong>Tag</strong>: <code>sierra-dev search --tag email</code>
 - <strong>Category</strong>: <code>sierra-dev search --category recon</code></p>
 <h4 id="dependency-management">📦 Dependency Management<a class="headerlink" href="#dependency-management" title="Permanent link">Link</a></h4>
-<p>Packages can declare dependencies (e.g., Python libraries). Sierra SDK will notify you of required dependencies upon installation.</p>
+<p>Packages can declare dependencies (e.g., Python libraries). Sierra Dev will notify you of required dependencies upon installation.</p>
 <h3 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">Link</a></h3>
 <ul>
 <li><a href="commands/">CLI Commands Reference</a> - Master the 14 CLI commands</li>
 <li><a href="../development/">Creating Invokers</a> - Learn to build your own packages</li>
-<li><a href="../sierra/client/">API Reference</a> - Integrate Sierra SDK into your Python tools</li>
+<li><a href="../sierra/client/">API Reference</a> - Integrate Sierra Dev into your Python tools</li>
 </ul>
 
 

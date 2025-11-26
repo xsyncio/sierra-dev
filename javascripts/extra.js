@@ -5,7 +5,7 @@
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("🚀 Sierra SDK: EXTREME CYBERPUNK MODE ACTIVATED");
+    console.log("🚀 Sierra Dev: EXTREME CYBERPUNK MODE ACTIVATED");
 
     // ==========================================================================
     // 1. Dynamic Title Glitch Effect
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("🚀 Sierra SDK: Cyberpunk Theme Loaded");
+    console.log("🚀 Sierra Dev: Cyberpunk Theme Loaded");
 
     // ==========================================================================
     // 1. Dynamic Title Glitch Effect
