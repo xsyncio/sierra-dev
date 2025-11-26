@@ -73,25 +73,28 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         >>> to_double_quoted_string("'quoted'")
         '"\'quoted\'"'
         """
-        # Remove surrounding quotes if any, then wrap with double quotes
+        # Remove surrounding quotes if any
         stripped: str = text
         if stripped.startswith('"') and stripped.endswith('"'):
             stripped = stripped[1:-1]
-
-        return f'"{stripped}"'
+        
+        # Only quote if there are spaces
+        if " " in stripped:
+            return f'"{stripped}"'
+        return stripped
 
     def set_invoker_commands(self) -> None:
         """Generate and set the CLI command string for each registered invoker."""
         self.client.logger.log("Compile: Generating invoker commands", "debug")
         for invoker in self.client.invokers:
-            command_string = self.client.builder.generate_command(
+            command = self.client.builder.generate_command(
                 invoker=invoker
             )
             self.client.logger.log(
-                f"Compile: Generated command for invoker {invoker.name}: {command_string}",
+                f"Compile: Generated command for invoker {invoker.name}: {command}",
                 "debug",
             )
-            invoker.set_command(command_string=command_string)
+            invoker.set_command(command=command)
 
     def build_and_save_scripts(self) -> None:
         """Write each invoker's generated standalone script to the invokers directory."""
@@ -143,11 +146,26 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
                 pdesc = param.get("Description") or ""
                 lines.append(f"      - Name: {name}")
                 lines.append(f"        Description: {pdesc}")
-                lines.append("        Type: STRING")
+                
+                type_obj = param.get("Type")
+                # Check for Path type (either class or string representation)
+                is_file = False
+                if isinstance(type_obj, type):
+                    if type_obj.__name__ == "Path" or type_obj.__module__ == "pathlib":
+                        is_file = True
+                elif str(type_obj) == "Path" or "pathlib.Path" in str(type_obj):
+                    is_file = True
+                
+                if is_file:
+                    lines.append("        Type: FILE")
+                else:
+                    lines.append("        Type: STRING")
+                    
                 if param.get("Options") == "MANDATORY":
                     lines.append("        Options:")
                     lines.append("          - MANDATORY")
-            lines.append(f"    Command: {inv.command}")
+            
+            lines.append(f"    Command: >{inv.command}")
 
         yaml_str = "\n".join(lines)
         return yaml_str
@@ -269,7 +287,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
             "Merging and deduplicating requirements", "debug"
         )
         reqs = self.merge_deduplicate_sorted_latest(*list_of_requirements)
-        reqs.append("sierra-dev")
+        # reqs.append("sierra-sdk")
         cmd = [*([str(python_path), str(pip_path), "install"]), *reqs]
         self.client.logger.log(
             f"Installing dependencies with command: {' '.join(cmd)}", "debug"

@@ -1,2 +1,20 @@
+# Sierra SDK v2.0 - Core Runtime Requirements
+# ============================================
+
+# Terminal colors and formatting
 colorama==0.4.6
+
+# HTTP client for package manager
 httpx==0.28.1
+
+# DNS operations for OSINT tools
+dnspython==2.6.1
+
+# HTTP requests library (for OSINT tools compatibility)
+requests==2.32.0
+
+# HTML parsing for technology detection
+beautifulsoup4==4.12.3
+
+# YAML parsing for configuration
+PyYAML==6.0.1

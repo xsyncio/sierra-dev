@@ -1,16 +1,20 @@
-site_name: "Sierra Dev"
+site_name: "Sierra SDK"
 repo_url: https://github.com/xsyncio/sierra-dev
+
 theme:
+  name: material
   favicon: assets/logo.png
   logo: assets/logo.png
-  name: material
+
   palette:
     scheme: slate
     primary: deep purple
     accent: purple
+
   font:
     text: Inter
     code: JetBrains Mono
+
   icon:
     logo: assets/logo.png
     repo: fontawesome/brands/github-alt
@@ -39,7 +43,7 @@ theme:
     - content.code.select
     - content.tabs.link
     - content.tooltips
-    
+
     # Navigation features
     - navigation.expand
     - navigation.footer
@@ -54,62 +58,77 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
-    
+
     # Search features
     - search.highlight
     - search.share
     - search.suggest
-    
+
     # Table of contents
     - toc.follow
     - toc.integrate
-    
+
     # Announcement
     - announce.dismiss
 
-# Enhanced navigation structure with better organization
 nav:
   - Home:
+      - "Welcome": welcome.md
       - "Overview": index.md
-      - "Sierra Dev": sierra-dev.md
-      - "Invoker": invoker.md
       - "Installation": installation.md
-  
-  - "Getting Started":
-      - "Guides":
-          - "Read First": guides/index.md
-          - "Typing & Type Hints": guides/typing.md
-          - "Documentation": guides/documentation.md
-          - "Linting & Formatting": guides/linting.md
-          - "Plugins": guides/plugins.md
-      - "Quick Start": quickstart.md
+      - "Core Concepts": concepts.md
+      - "Sierra SDK Info": sierra-dev.md
+
+  - Tutorials:
+      - "Your First 5 Minutes": quickstart.md
+      - "Results Guide": results-guide.md
+      - "Result Types (Original)": results.md
+      - "Invoker Anatomy": invoker.md
+      - "OSINT Tools": osint-tools.md
+
+  - "Package Manager":
+      - "Overview": package-manager/index.md
+      - "CLI Commands": package-manager/commands.md
+
+  - "Reference":
+      - "CLI Reference": cli-reference.md
       - "Configuration": configuration.md
-  
+      - "Development Guide": development.md
+
+  - "Guides":
+      - "Read First": guides/index.md
+      - "Typing & Type Hints": guides/typing.md
+      - "Documentation": guides/documentation.md
+      - "Linting & Formatting": guides/linting.md
+      - "Plugins": guides/plugins.md
+
   - "API Reference":
       - "Core Components":
           - "Sierra Client": sierra/client.md
           - "Invoker": sierra/invoker.md
           - "Options": sierra/options.md
-      
+
       - "Core Architecture":
           - "Loader": sierra/core/loader.md
           - "Environment": sierra/core/environment.md
           - "Compiler": sierra/core/compiler.md
           - "Builder": sierra/core/builder.md
           - "Checker": sierra/core/checker.md
-      
+
+      - "Package Manager":
+          - "Repository": sierra/package_manager/repository.md
+          - "Installer": sierra/package_manager/installer.md
+          - "Registry": sierra/package_manager/registry.md
+
       - "Internal Systems":
           - "Cache": sierra/internal/cache.md
           - "Errors": sierra/internal/errors.md
           - "Logger": sierra/internal/logger.md
-      
+
       - "Abstract Base Classes":
           - "Base ABC": sierra/abc/base.md
           - "Sierra ABC": sierra/abc/sierra.md
-  
-  - "Results": results.md
 
-# Enhanced markdown extensions for better rendering
 markdown_extensions:
   # Core extensions
   - admonition
@@ -122,56 +141,72 @@ markdown_extensions:
       permalink: "Link"
       baselevel: 2
       separator: "-"
-      
+
   # PyMdown extensions for enhanced features
   - pymdownx.arithmatex:
       generic: true
+
   - pymdownx.betterem:
       smart_enable: all
+
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.details
+
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
       auto_title: true
       linenums: true
+
   - pymdownx.inlinehilite
   - pymdownx.keys
+
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: xsyncio
       repo: sierra-dev
+
   - pymdownx.smartsymbols
+
   - pymdownx.snippets:
       check_paths: true
+
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+        # Provide a terminal-style fence (replacement for termynal plugin)
+        - name: terminal
+          class: term
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
   - pymdownx.tabbed:
       alternate_style: true
       combine_header_slug: true
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
+
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
 
-# Enhanced plugins configuration
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
       lang: en
+
   - privacy:
       enabled: !ENV [CI, false]
+
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -186,7 +221,7 @@ plugins:
             group_by_category: true
             docstring_section_style: spacy
             docstring_style: numpy
-            
+
             # Display options
             inherited_members: true
             merge_init_into_class: true
@@ -204,17 +239,17 @@ plugins:
             show_root_members_full_path: false
             show_object_full_path: false
             show_if_no_docstring: true
-            
-            # Extensions
-            extensions:
-              - griffe_inherited_docstrings
-            
+
+            # Extensions: (removed griffe_inherited_docstrings because it is not a separately installable module)
+            extensions: []
+
             # Filters to exclude private methods
             filters:
               - "!^_"
               - "!^__init_subclass__"
               - "!^__new__"
               - "!^__class_getitem__"
+
   - glightbox:
       touchNavigation: true
       loop: false
@@ -229,15 +264,18 @@ plugins:
       background: white
       shadow: true
       manual: false
-  - termynal:
-      title: "Terminal"
-      buttons: macos
-      prompt_literal_start:
-        - "$"
-        - ">"
-        - ">>>"
 
-# Additional configuration for better performance and SEO
+  # termynal plugin was previously referenced but has no reliable PyPI repo.
+  # If you have a local or forked termynal plugin, add it here; otherwise the
+  # terminal-style code blocks are provided via pymdownx.superfences above.
+  # - termynal:
+  #     title: "Terminal"
+  #     buttons: macos
+  #     prompt_literal_start:
+  #       - "$"
+  #       - ">"
+  #       - ">>>"
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -246,17 +284,15 @@ extra:
     - icon: fontawesome/solid/book
       link: https://xsyncio.github.io/sierra-dev/
       name: Documentation
-  
+
   version:
     provider: mike
     default: latest
-  
+
   generator: false
 
-# Custom CSS for pure black theme and bright colors
 extra_css:
   - stylesheets/extra.css
 
-# JavaScript enhancements
 extra_javascript:
   - javascripts/extra.js

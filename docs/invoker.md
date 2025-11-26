@@ -143,7 +143,7 @@ When invoked, SIERRA will locate `subfinder.py` in the given `PATHS`, pass the `
 
 * **Validate Input**: Check parameter presence and types, returning an `Error` JSON if invalid.
 * **Timeouts**: Ensure long-running scripts implement timeouts to avoid blocking SIERRA.
-* **Logging**: Write logs to `stderr` or a separate file to aid debugging without polluting JSON output.
+* **Strict Output**: Use `sierra.respond(result)` to output the final JSON result. Do NOT use `print()` or `sys.stderr.write()` for logging or debugging, as this will break the integration.
 * **Reusability**: Modularize code so dependency functions can be shared across multiple Invokers.
 
 ---

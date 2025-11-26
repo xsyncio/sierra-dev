@@ -6,8 +6,8 @@ import requests
 import sierra
 
 invoker = sierra.InvokerScript(
-    name="digital-footprint-analyzer",
-    description="Advanced OSINT tool that analyzes digital footprints across multiple sources including breach data, social media, and domain associations",
+    name="digital_footprint_analyzer",
+    description="Advanced OSINT tool that analyzes digital footprints across multiple sources including breach data social media and domain associations",
 )
 
 invoker.requirement(["requests"])
@@ -195,7 +195,7 @@ def run(
     """
     if target is None:
         result = sierra.create_error_result("Missing target parameter")
-        print(result)
+        sierra.respond(result)
         return
 
     tree_data: list[str | dict[str, list[str]]] = []
@@ -301,7 +301,7 @@ def run(
     )
 
     result = sierra.create_tree_result(tree_data)
-    print(result)
+    sierra.respond(result)
 
 
 def load(client: sierra.SierraDevelopmentClient) -> None:

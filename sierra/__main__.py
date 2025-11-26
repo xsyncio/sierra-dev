@@ -1,6 +1,9 @@
-import sierra._about as sierra_about
+import sierra.cli
 
 
 def cli() -> None:
-    print(f"sierra-dev {sierra_about.__version__}")
-    print(f"Github: {sierra_about.__github__}")
+    sierra.cli.main()
+
+
+if __name__ == "__main__":
+    cli()

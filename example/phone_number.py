@@ -3,7 +3,7 @@ import phonenumbers
 import sierra
 
 invoker = sierra.InvokerScript(
-    name="analyze-phone-number",
+    name="analyze_phone_number",
     description="Extracts offline metadata from a phone number using libphonenumber.",
 )
 
@@ -74,7 +74,7 @@ def run(
             for k, v in data.items():
                 tree_data.append({k: [v]})
             result = sierra.create_tree_result(tree_data)
-    print(result)
+    sierra.respond(result)
 
 
 def load(client: sierra.SierraDevelopmentClient) -> None:

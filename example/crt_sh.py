@@ -6,7 +6,7 @@ import sierra
 
 # Define the InvokerScript for crt.sh subdomain and email lookup
 invoker = sierra.InvokerScript(
-    name="crtsh-extended",
+    name="crtsh_extended",
     description="Lookup subdomains and email addresses via Certificate Search (crt.sh)",
 )
 
@@ -101,7 +101,7 @@ def run(
             tree_data.append("No subdomains or emails found")
 
         result = sierra.create_tree_result(tree_data)
-    print(result)
+    sierra.respond(result)
 
 
 def load(client: sierra.SierraDevelopmentClient) -> None:

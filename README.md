@@ -1,195 +1,219 @@
-# Sierra‑SDK
+# Sierra SDK - Modern Invoker Framework 🚀
 
-🚀 **Overview**
----------------
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://xsyncio.github.io/sierra-dev/)
 
-Sierra‑SDK is a Python framework for building and managing invoker scripts that can be used across different nodes in Sierra during any investigation.
+**Sierra SDK** is a modern, production-grade package manager and development framework for creating and managing investigation invoker scripts for the Sierra platform.
 
-### Project Goals
+## ✨ Key Features
 
-* Provide a robust and flexible framework for managing invoker scripts
-* Offer a simple and intuitive API for building and compiling Sierra applications
-* Support extensibility through plugins and custom configurations
+- **📦 APT-Like Package Manager** - Install invokers from GitHub repositories
+- **🔍 Type Safety Validation** - Automatic AST-based type checking
+- **✅ Comprehensive Validation** - YAML safety, parameter validation, health checks
+- **🎨 Rich CLI** - 14 intuitive commands with emoji output
+- **🔄 Auto-Updates** - Keep  your invokers up-to-date
+- **📚 Built-in Documentation** - Self-documenting invoker scripts
 
-### Key Features
+## 🚀 Quick Start
 
-* **Modular Design**: Sierra‑SDK is built with a modular architecture, allowing for easy extension and customization
-* **Invoker Script Management**: Easily build, compile, and load invoker scripts across different nodes in Sierra
-* **Plugin Support**: Extend the functionality of Sierra‑SDK through custom plugins
-
-## ⚙️ Installation
-
------------------
-
-### pip Installation
-
-You can install Sierra‑SDK using pip:
+### Installation
 
 ```bash
-pip install sierra-dev
-```
-
-### Installation from Source
-
-To install Sierra‑SDK from source, clone the repository and run the following command:
-
-```bash
-git clone https://github.com/xsyncio/sierra-dev.git
+# Clone the repository
+git clone https://github.com/xsyncio/sierra-dev
 cd sierra-dev
-pip install .
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install Sierra SDK
+pip install -e .
 ```
 
-## 🔧 Usage Examples
+### Usage
 
--------------------
+```bash
+# Add a package repository
+sierra-sdk repo add https://github.com/xsyncio/sierra-invokers
 
-### Building an Invoker Script
+# Search for packages
+sierra-sdk search osint
+
+# Install a package
+sierra-sdk install digital-footprint
+
+# Build your environment
+sierra-sdk build --env test_env
+```
+
+## 📦 Package Manager
+
+Sierra SDK provides an APT-like package management system:
+
+### Repository Management
+```bash
+sierra-sdk repo add <url>      # Add repository
+sierra-sdk repo list            # List sources
+sierra-sdk repo update          # Update registries
+sierra-sdk repo remove <name>   # Remove source
+```
+
+### Package Operations
+```bash
+sierra-sdk search <query>       # Find packages
+sierra-sdk install <pkg>        # Install package
+sierra-sdk update --all         # Update all
+sierra-sdk remove <pkg>         # Uninstall
+sierra-sdk list --installed     # List installed
+```
+
+### Development
+```bash
+sierra-sdk build                # Compile invokers
+sierra-sdk check                # Run validation
+sierra-sdk health               # Environment status
+```
+
+## 🏗️ Project Structure
+
+```
+sierra-dev/
+├── sierra/                  # Main package
+│   ├── package_manager/    # Package management
+│   ├── core/               # Build & compile
+│   ├── internal/           # Utilities
+│   └── cli.py             # CLI interface
+├── docs/                   # Documentation
+├── test_env/              # Example env
+└── mkdocs.yml            # Docs config
+```
+
+## 📚 Documentation
+
+- **[Quick Start Guide](https://xsyncio.github.io/sierra-dev/quickstart/)** - Get started in 5 minutes
+- **[Package Manager](https://xsyncio.github.io/sierra-dev/package-manager/)** - Learn the package system
+- **[CLI Commands](https://xsyncio.github.io/sierra-dev/package-manager/commands/)** - Complete command reference
+- **[API Reference](https://xsyncio.github.io/sierra-dev/api/client/)** - Python API documentation
+
+## 🎯 Features
+
+### Type Safety Enforcement
+Automatic validation ensures all invokers have proper type annotations:
+
+```python
+# ✅ Valid - Will pass validation
+def analyze_target(domain: str, check_breach: bool = False) -> dict:
+    """Analyze a target domain."""
+    return {"domain": domain, "found": True}
+
+# ❌ Invalid - Will fail validation
+def analyze_target(domain, check_breach=False):  # Missing type annotations
+    return {"domain": domain}
+```
+
+### Rich Result Types
+Built-in support for complex data visualization:
+
+```python
+from sierra import Table, Timeline, Chart, Tree, respond
+
+# Output rich results
+respond(Table(
+    headers=["IP", "Port", "Service"],
+    rows=[["192.168.1.1", "80", "HTTP"]]
+))
+```
+
+### Comprehensive Validation
+- YAML safety checks
+- Parameter validation
+- Type annotation enforcement
+- Health diagnostics
+
+## 🛠️ Development
+
+### 1. Initialize Project
+```bash
+sierra-sdk init my_project
+cd my_project
+```
+
+### 2. Create an Invoker
 
 ```python
 import sierra
 
-# ─── Define the Invoker ────────────────────────────────────────────────────────
 invoker = sierra.InvokerScript(
-    name="greet",
-    description="Prints a personalized greeting message."
+    name="my_tool",
+    description="Analyze a target"
 )
 
-
-invoker.requirement(["requests"])
-
-
-# ─── Dependency functions ──────────────────────────────────────────────────────
-@invoker.dependancy
-def random_function_one(param: int) -> int:
-    return param * 2
-
-@invoker.dependancy
-def random_function_two(message: str) -> str:
-    return message.upper()
-
-@invoker.dependancy
-def random_function_three(value: float) -> float:
-    return value / 3.14
-
-@invoker.dependancy
-def random_function_four(flag: bool) -> bool:
-    return not flag
-
-# ─── Entry point ───────────────────────────────────────────────────────────────
 @invoker.entry_point
-def run(
-    name: sierra.Param[
-        str | None,
-        sierra.SierraOption(
-            description="The name of the person to greet.",
-            mandatory="MANDATORY"
-        )
-    ],
-    polite: sierra.Param[
-        bool | None,
-        sierra.SierraOption(
-            description="Whether to include a polite phrase in the greeting.",
-            mandatory=None
-        )
-    ] = False,
-) -> None:
-    """
-    Greet the specified user by name, optionally politely.
-
-    Parameters
-    ----------
-    name : str
-        Name of the user (mandatory).
-    polite : bool, optional
-        If True, includes a polite prefix.
-    """
-    if name is None:
-        # Missing mandatory parameter
-        result = sierra.create_error_result("Missing mandatory parameter: name")
-    else:
-        # Build greeting
-        greeting = f"Hello, {name}!"
-        if polite:
-            greeting = f"Good day to you, {name}!"
-        # Wrap the greeting in a TreeResult
-        result = sierra.create_tree_result([greeting])
-
-    # Print the structured result
-    print(result)
-
-# ─── Loader ────────────────────────────────────────────────────────────────────
-def load(client: sierra.SierraDevelopmentClient) -> None:
-    """
-    Register this invoker with the given Sierra client.
-
-    Parameters
-    ----------
-    client : SierraDevelopmentClient
-        The Sierra client instance.
-    """
-    client.load_invoker(invoker)
+def run(target: str) -> None:
+    """Analyze a target."""
+    result = {"target": target, "status": "analyzed"}
+    sierra.respond(result)
 ```
 
-### Compiling
+### Building
 
-```python
-import sierra
+```bash
+# Validate your invokers
+sierra-sdk check --env test_env
 
-# Initialize Sierra client with DEBUG‑level logging
-client = sierra.SierraDevelopmentClient(
-    environment_name="idd",
-    logger=sierra.UniversalLogger(
-        name="Sierra",
-        level=sierra.sierra_internal_logger.LogLevel.DEBUG,
-    ),
-)
+# Build with verbose output
+sierra-sdk build --env test_env -v
 
-# Discover and register all invoker scripts
-client.load_invokers_from_scripts()
-
-# Generate standalone scripts and config.yaml
-client.compiler.compile()
+# Check health
+sierra-sdk health --env test_env
 ```
 
-## 📦 API Highlights
+## 📊 Statistics
 
--------------------
+- **14 CLI Commands** - Comprehensive package management
+- **6 Package Manager Modules** - Full-featured package system
+- **Type Safety Validation** - AST-based automatic checking
+- **GitHub Integration** - Use existing infrastructure
 
-* `sierra.core.builder`: Builder for invoker scripts
-* `sierra.core.compiler`: Compiler for invoker scripts
-* `sierra.core.loader`: Loader for compiled scripts
-* `sierra.abc.sierra`: Abstract base classes for Sierra components
-* `sierra.invoker`: Invoker script definitions
+## 🤝 Contributing
 
-## 🛠️ Configuration & Extensibility
+Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md).
 
-------------------------------------
+### Development Setup
 
-Sierra‑SDK supports extensibility through plugins and custom configurations. You can add custom plugins by creating a new folder in the `plugins/` directory and adding your plugin code.
+```bash
+# Clone repository
+git clone https://github.com/xsyncio/sierra-dev
+cd sierra-dev
 
-### Plugin Folders
+# Install in development mode
+pip install -e ".[dev]"
 
-* `plugins/`: Folder for custom plugins
-* `core/`: Folder for core Sierra‑SDK components
-* `abc/`: Folder for abstract base classes
-* `invoker/`: Folder for invoker script definitions
+# Run tests
+pytest
 
-## 💡 Contributing Guidelines & Code of Conduct
+# Build documentation
+mkdocs serve
+```
 
----------------------------------------------
+## 📝 License
 
-We welcome contributions to Sierra‑SDK! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Code of Conduct
+## 🔗 Links
 
-We follow the [Python Code of Conduct](https://www.python.org/psf/conduct/).
+- **Documentation**: https://xsyncio.github.io/sierra-dev/
+- **Repository**: https://github.com/xsyncio/sierra-dev
+- **Issue Tracker**: https://github.com/xsyncio/sierra-dev/issues
+- **Discussions**: https://github.com/xsyncio/sierra-dev/discussions
 
-## 📝 License & Authors
+## 🙏 Acknowledgments
 
------------------------
+- Built with ❤️ by the Sierra SDK Team
+- Powered by Python, MkDocs, and GitHub
 
-Sierra‑SDK is licensed under the [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE).
+---
 
-### Authors
-
-* [Xsyncio](https://github.com/xsyncio)
+**Sierra SDK** - Modern investigation tooling made simple.

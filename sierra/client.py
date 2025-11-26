@@ -5,6 +5,7 @@ import typing
 import httpx
 
 import sierra.core.builder as sierra_core_builder
+import sierra.core.checker as sierra_core_checker
 import sierra.core.compiler as sierra_core_compiler
 import sierra.core.environment as sierra_core_environment
 import sierra.core.loader as sierra_core_loader
@@ -17,11 +18,8 @@ import sierra.invoker as sierra_invoker
 class InvokerWithLoad(typing.Protocol):
     """
     Protocol for invoker scripts with a load method.
-
-    Parameters
-    ----------
-    client : SierraDevelopmentClient
-        The client instance to use for loading the invoker script.
+    
+    The load method accepts a SierraDevelopmentClient instance.
     """
 
     def load(self, client: "SierraDevelopmentClient") -> None:
@@ -127,6 +125,8 @@ class SierraDevelopmentClient:
         self.logger.log("Initializing invoker builder", "debug")
         self.compiler = sierra_core_compiler.SierraCompiler(client=self)
         self.logger.log("Initializing compiler", "debug")
+        self.checker = sierra_core_checker.SierraChecker(client=self)
+        self.logger.log("Initializing validation checker", "debug")
 
         self.logger.log(
             "Sierra Development Client initialization complete", "info"

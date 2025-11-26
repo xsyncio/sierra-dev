@@ -349,7 +349,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         pathlib.Path
             The path to the executable within the virtual environment.
         """
-        self.client.logger.log("Locating executable", "info")
+        self.client.logger.log("Locating executable", "debug")
         if "windows" in self.os_type:
             path = self.venv_path / "Scripts" / f"{name}.exe"
         else:

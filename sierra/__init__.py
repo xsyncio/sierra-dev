@@ -41,6 +41,7 @@ from sierra.core import *
 from sierra.internal import *
 from sierra.invoker import *
 from sierra.options import *
+from sierra.results import Tree, Network, Table, Timeline, Chart
 
 
 def create_tree_result(
@@ -101,21 +102,26 @@ def create_network_result(
 
 
 def create_error_result(message: str) -> str:
-    """
-    Create an error result containing a message.
+    """Create an error JSON result."""
+    return json.dumps({"type": "Error", "message": message}, indent=4)
 
-    Parameters
-    ----------
-    message : str
-        The error message.
+def respond(result: str) -> None:
+    """Print the result to stdout."""
+    print(result)
 
-    Returns
-    -------
-    str
-        A JSON-formatted string containing the error result.
-    """
-    result: dict[str, typing.Any] = {
-        "type": "Error",
-        "message": message,
-    }
-    return json.dumps(result, indent=4)
+__all__ = [
+    "InvokerScript",
+    "Param",
+    "SierraOption",
+    "dependancy",
+    "entry_point",
+    "Tree",
+    "Network",
+    "Table",
+    "Timeline",
+    "Chart",
+    "SierraDevelopmentClient",
+    "SierraError",
+    "create_error_result",
+    "respond",
+]

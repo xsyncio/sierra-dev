@@ -1,54 +1,165 @@
 [build-system]
-requires = [
-    "setuptools>=61.0",
-    "wheel",
-]
+requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.ruff]
-# Paths and exclusions
-extend-exclude = ["examples/*", ".venv/*"]
-line-length = 79
+[project]
+name = "sierra-sdk"
+version = "2.0.0"
+description = "Modern framework for building investigation invoker scripts with APT-like package management"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "AGPL-3.0"}
+authors = [
+    {name = "Xsyncio", email = "dev@xsyncio.com"}
+]
+keywords = [
+    "sierra",
+    "invoker",
+    "osint",
+    "package-manager",
+    "investigation",
+    "security",
+    "automation",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Security",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
 
-# Strict PEP8 conformity with linting
+dependencies = [
+    "colorama>=0.4.6",
+    "httpx>=0.28.0",
+    "dnspython>=2.6.0",
+    "requests>=2.32.0",
+    "beautifulsoup4>=4.12.0",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "black>=24.0.0",
+    "ruff>=0.12.0",
+    "mypy>=1.8.0",
+]
+
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/xsyncio/sierra-dev"
+Documentation = "https://xsyncio.github.io/sierra-dev"
+Repository = "https://github.com/xsyncio/sierra-dev"
+Issues = "https://github.com/xsyncio/sierra-dev/issues"
+Changelog = "https://github.com/xsyncio/sierra-dev/blob/main/CHANGELOG.md"
+
+[project.scripts]
+sierra-sdk = "sierra.cli:main"
+
+[tool.setuptools]
+packages = ["sierra", "sierra.core", "sierra.internal", "sierra.package_manager", "sierra.abc"]
+
+[tool.setuptools.package-data]
+sierra = ["py.typed"]
+
+# Black configuration
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | \.eggs
+)/
+'''
+
+# Ruff configuration
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
 [tool.ruff.lint]
 select = [
-    "E",  # Pycodestyle errors (PEP8)
-    "F",  # Pyflakes (errors like undefined names)
-    "I",  # isort (import ordering)
-    "TCH",  # Type-checking violations
-    "C",  # Complexity (Cyclomatic, McCabe)
-    "N",  # Naming conventions
-    "D2",  # Pydocstyle: blank lines after summary
-    "D3",  # Pydocstyle: multi-line docstring formatting
-    "D415",  # Pydocstyle: sections should end with a colon
-    "D417",  # Pydocstyle: arguments in docstring match signature
-    "D418",  # Pydocstyle: section capitalization
-    "D419",  # Pydocstyle: final newline in docstring
-    "ASYNC",  # async-specific linting
-    "Q",  # Quotes consistency
-    "RSE",  # Raise statement correctness
-    "SIM",  # Simplification rules
-    "RUF"  # Ruff-specific rules
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
 ]
 ignore = [
-    "F405",  # Allow imported names via wildcard for internal purposes only
-    "F403",  # Allow 'from module import *' but only internally, not externally
-    "E501",  # Disable strict line-length enforcement (handled separately)
-    "D205",  # Disable 1 blank line between summary and description
-    "D417",  # Allow some mismatches in argument names
-    "C901"   # Allow higher complexity temporarily for legacy code
+    "E501",  # line too long (handled by black)
+    "B008",  # do not perform function calls in argument defaults
 ]
-fixable = ["I", "TCH", "D"]
 
-# Pydocstyle settings for strict NumPy docstring compliance
-[tool.ruff.lint.pydocstyle]
-convention = "numpy"
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # unused imports
+"tests/*" = ["B011"]  # assert false
 
-# isort strict single-line imports
-[tool.ruff.lint.isort]
-force-single-line = true
+# MyPy configuration
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+strict_equality = true
 
-# Formatter settings
-[tool.ruff.format]
-docstring-code-format = true
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+# Pytest configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --strict-markers --tb=short --cov=sierra"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow running tests",
+    "network: Tests requiring network access",
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["sierra"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/venv/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]

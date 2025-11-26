@@ -5,7 +5,7 @@ import requests
 import sierra
 
 invoker = sierra.InvokerScript(
-    name="whois-email-extractor",
+    name="whois_email_extractor",
     description="Extract emails from WHOIS records",
 )
 
@@ -56,7 +56,7 @@ def run(
         for email in emails:
             tree_data.append({"📧 Email": [email]})
         result = sierra.create_tree_result(tree_data)
-    print(result)
+    sierra.respond(result)
 
 
 def load(client: sierra.SierraDevelopmentClient) -> None:

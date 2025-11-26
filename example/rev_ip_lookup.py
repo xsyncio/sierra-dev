@@ -3,7 +3,7 @@ import requests
 import sierra
 
 invoker = sierra.InvokerScript(
-    name="reverse-ip",
+    name="reverse_ip",
     description="Perform reverse IP lookup using HackerTarget API",
 )
 
@@ -51,7 +51,7 @@ def run(
         for domain in domains:
             tree_data.append({"🌐 Domain": [domain]})
         result = sierra.create_tree_result(tree_data)
-    print(result)
+    sierra.respond(result)
 
 
 def load(client: sierra.SierraDevelopmentClient) -> None:

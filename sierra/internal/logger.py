@@ -94,7 +94,7 @@ class LoggerConfig(typing.TypedDict, total=False):
 
 @dataclasses.dataclass(frozen=True)
 class LogColor:
-    """ANSI color codes for log message components."""
+    """ANSI color codes and emoji icons for log message components."""
 
     INFO: str = colorama.Fore.GREEN
     WARNING: str = colorama.Fore.YELLOW
@@ -102,6 +102,12 @@ class LogColor:
     ERROR: str = colorama.Fore.RED
     TIMESTAMP: str = colorama.Fore.CYAN
     RESET: str = colorama.Fore.RESET
+    
+    # Emoji icons for visual enhancement
+    ICON_INFO: str = "✅"
+    ICON_WARNING: str = "⚠️"
+    ICON_DEBUG: str = "🔍"
+    ICON_ERROR: str = "❌"
 
 
 class LogBuffer:
@@ -160,10 +166,14 @@ class UniversalLogger:
     """
     Main logger class integrating console, file, and buffer outputs.
 
-    Parameters
+    Attributes
     ----------
-    **config : LoggerConfig
-        Configuration options unpacked via typing.Unpack[LoggerConfig].
+    name : str
+        Logger name (required in __init__ kwargs).
+    level : LogLevel
+        Minimum log level to display.
+    clean_logs : bool
+        Whether to use emoji-free output.
 
     Raises
     ------
@@ -254,10 +264,12 @@ class UniversalLogger:
         """
         level_cap: str = typ.capitalize()
         ts: str = self._timestamp()
+        icon: str = getattr(self.colors, f"ICON_{typ.upper()}", "")
+        
         if self.enable_colors:
             color_code: str = getattr(self.colors, typ.upper())
-            return f"{self.name}: {ts} - {level_cap} - {color_code}{msg}{self.colors.RESET}"
-        return f"{self.name}: {ts} - {level_cap} - {msg}"
+            return f"{self.name}: {ts} - {icon} {level_cap} - {color_code}{msg}{self.colors.RESET}"
+        return f"{self.name}: {ts} - {icon} {level_cap} - {msg}"
 
     def _should_log(self, typ: LogTypeLiteral) -> bool:
         """
