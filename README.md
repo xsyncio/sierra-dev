@@ -211,9 +211,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Built with ❤️ by the Sierra SDK Team
-- Powered by Python, MkDocs, and GitHub
-
+- built with the help of Gemini by Xsyncio  
 ---
 
 **Sierra SDK** - Modern investigation tooling made simple.
