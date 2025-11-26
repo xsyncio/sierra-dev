@@ -1,4 +1,4 @@
-# 🚀 Your First 5 Minutes with Sierra SDK
+# 🚀 Your First 5 Minutes with Sierra Dev
 
 Build your first investigation tool from scratch in 5 minutes!
 
@@ -22,7 +22,7 @@ We're building `url_analyzer` - a simple tool that:
 
 ## Step 1: Create Environment (30 seconds)
 
-!!! tip "Make sure Sierra SDK is installed first!"
+!!! tip "Make sure Sierra Dev is installed first!"
     If you haven't installed it yet, see the [Installation Guide](installation.md).
 
 Open your terminal and run:
@@ -127,7 +127,7 @@ Create a new file `scripts/url_analyzer.py`:
         description="Analyze and extract information from a URL"
     )
     ```
-    - Import Sierra SDK
+    - Import Sierra Dev
     - Create an invoker with name and description
     
     **2. Helper Function (Optional)**
@@ -368,7 +368,7 @@ Ready to practice? Try building these:
 
 <div style="text-align: center; padding: 2em; background: linear-gradient(135deg, rgba(0,243,255,0.1), rgba(188,19,254,0.1)); border-radius: 8px; margin: 2em 0;">
     <p style="font-size: 1.3em; font-family: 'Orbitron', sans-serif; color: var(--neon-cyan);">
-        🚀 You're now a Sierra SDK developer!
+        🚀 You're now a Sierra Dev developer!
     </p>
     <p style="margin-top: 1em;">
         <a href="../concepts/" class="md-button md-button--primary">Learn Core Concepts →</a>

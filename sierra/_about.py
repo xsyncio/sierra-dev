@@ -1,9 +1,9 @@
 """
-Sierra SDK version and metadata.
+Sierra Dev version and metadata.
 """
 
 __version__ = "2.0.0"
-__title__ = "Sierra SDK"
+__title__ = "Sierra Dev"
 __description__ = "Modern framework for building and managing investigation invoker scripts for the Sierra platform"
 __url__ = "https://github.com/xsyncio/sierra-dev"
 __author__ = "Xsyncio"
@@ -29,7 +29,7 @@ FEATURES = {
 
 # Release notes
 RELEASE_NOTES = """
-Sierra SDK v2.0.0 - Major Release
+Sierra Dev v2.0.0 - Major Release
 
 New Features:
 - 📦 APT-like package manager with GitHub integration

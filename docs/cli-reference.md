@@ -1,6 +1,6 @@
 # 📘 CLI Reference
 
-Complete reference for all Sierra SDK command-line tools.
+Complete reference for all Sierra Dev command-line tools.
 
 ## 🚀 Quick Reference
 

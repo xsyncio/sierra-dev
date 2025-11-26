@@ -1,5 +1,5 @@
 """
-Shared fixtures and utilities for Sierra SDK tests.
+Shared fixtures and utilities for Sierra Dev tests.
 """
 import pytest
 import pathlib

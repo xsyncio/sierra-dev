@@ -1,6 +1,6 @@
-# Sierra SDK - Test Suite
+# Sierra Dev - Test Suite
 
-Comprehensive test suite for Sierra SDK covering all modules and features.
+Comprehensive test suite for Sierra Dev covering all modules and features.
 
 ## 📊 Test Coverage
 

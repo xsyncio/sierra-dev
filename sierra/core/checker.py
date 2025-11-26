@@ -53,7 +53,7 @@ class ValidationIssue:
 
 class SierraChecker(sierra_core_base.SierraCoreObject):
     """
-    Comprehensive validation and safety checker for Sierra SDK.
+    Comprehensive validation and safety checker for Sierra Dev.
     
     Validates:
     - Type safety of parameters

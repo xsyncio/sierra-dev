@@ -1,10 +1,10 @@
 # CLI Commands Reference
 
-This is the complete reference for all **14 Sierra SDK CLI commands**. These commands allow you to manage repositories, install packages, and maintain your environment.
+This is the complete reference for all **14 Sierra Dev CLI commands**. These commands allow you to manage repositories, install packages, and maintain your environment.
 
 ## 📦 Repository Commands
 
-Manage the sources where Sierra SDK looks for packages.
+Manage the sources where Sierra Dev looks for packages.
 
 ### `sierra-dev repo add`
 Add a GitHub repository as a package source.
@@ -240,7 +240,7 @@ sierra-dev check [options]
 ---
 
 ### `sierra-dev health`
-Check the overall health of the Sierra SDK environment.
+Check the overall health of the Sierra Dev environment.
 
 **Syntax:**
 ```bash

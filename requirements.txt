@@ -1,4 +1,4 @@
-# Sierra SDK v2.0 - Core Runtime Requirements
+# Sierra Dev v2.0 - Core Runtime Requirements
 # ============================================
 
 # Terminal colors and formatting

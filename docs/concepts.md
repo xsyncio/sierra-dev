@@ -19,7 +19,7 @@ graph LR
     style G fill:#0aff0020
 ```
 
-Sierra SDK has **three main workflows**:
+Sierra Dev has **three main workflows**:
 
 1. **Create** - Build your own investigation tools
 2. **Use** - Install and run community tools  
@@ -132,7 +132,7 @@ sierra-dev init my_project
 
 Your source invoker imports `sierra` and uses its features. But the compiled script:
 
-- ✅ Runs without Sierra SDK installed
+- ✅ Runs without Sierra Dev installed
 - ✅ Has all dependencies bundled
 - ✅ Includes command-line argument parsing
 - ✅ Can be shared as a single file

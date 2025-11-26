@@ -1,6 +1,6 @@
 # OSINT Tools Collection
 
-Sierra SDK v2.0 includes a comprehensive collection of **15+ production-ready OSINT tools**. These tools demonstrate the power of the Sierra SDK framework and provide immediate value for investigators.
+Sierra Dev v2.0 includes a comprehensive collection of **15+ production-ready OSINT tools**. These tools demonstrate the power of the Sierra Dev framework and provide immediate value for investigators.
 
 ## 🚀 Available Tools
 
@@ -101,7 +101,7 @@ Sierra SDK v2.0 includes a comprehensive collection of **15+ production-ready OS
 
 ## 🛠️ Installation
 
-These tools are included in the `example/` directory of the Sierra SDK.
+These tools are included in the `example/` directory of the Sierra Dev.
 
 1.  **Install Dependencies:**
     ```bash
@@ -109,7 +109,7 @@ These tools are included in the `example/` directory of the Sierra SDK.
     ```
 
 2.  **Add to Environment:**
-    Copy the scripts to your Sierra SDK environment's `scripts` directory or symlink them.
+    Copy the scripts to your Sierra Dev environment's `scripts` directory or symlink them.
 
     ```bash
     cp example/*.py /path/to/your/sierra-env/scripts/

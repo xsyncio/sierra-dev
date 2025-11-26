@@ -1,10 +1,10 @@
-# Sierra SDK - Modern Invoker Framework 🚀
+# Sierra Dev - Modern Invoker Framework 🚀
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://xsyncio.github.io/sierra-dev/)
 
-**Sierra SDK** is a modern, production-grade package manager and development framework for creating and managing investigation invoker scripts for the Sierra platform.
+**Sierra Dev** is a modern, production-grade package manager and development framework for creating and managing investigation invoker scripts for the Sierra platform.
 
 ## ✨ Key Features
 
@@ -28,7 +28,7 @@ cd sierra-dev
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Install Sierra SDK
+# Install Sierra Dev
 pip install -e .
 ```
 
@@ -50,7 +50,7 @@ sierra-sdk build --env test_env
 
 ## 📦 Package Manager
 
-Sierra SDK provides an APT-like package management system:
+Sierra Dev provides an APT-like package management system:
 
 ### Repository Management
 ```bash
@@ -198,6 +198,10 @@ pytest
 mkdocs serve
 ```
 
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## 🔗 Links
 
 - **Documentation**: https://xsyncio.github.io/sierra-dev/
@@ -205,15 +209,5 @@ mkdocs serve
 - **Issue Tracker**: https://github.com/xsyncio/sierra-dev/issues
 - **Discussions**: https://github.com/xsyncio/sierra-dev/discussions
 
-## 🙏 Acknowledgments
 
-<<<<<<< HEAD
-- built with the help of Gemini by Xsyncio  
-=======
-- Built by Xsyncio
-- Powered by Python, MkDocs, and GitHub
-
->>>>>>> 97efa77 (Usage back to normal 'sierra-dev' instead of sdk. \nReason: Name reservation issue.)
----
-
-**Sierra SDK** - Modern investigation tooling made simple.
+**Sierra Dev** - Modern investigation tooling made simple.

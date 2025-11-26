@@ -1,4 +1,4 @@
-# Sierra SDK v2.0 - Development Requirements
+# Sierra Dev v2.0 - Development Requirements
 # ===========================================
 
 # Build and packaging

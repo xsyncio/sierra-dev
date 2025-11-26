@@ -1,6 +1,6 @@
 # 📊 Results Guide
 
-Master Sierra SDK's powerful result visualization system.
+Master Sierra Dev's powerful result visualization system.
 
 ## 🎯 What Are Results?
 

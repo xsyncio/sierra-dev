@@ -1,6 +1,6 @@
-# Sierra SDK v2.0.0 - Changelog
+# Sierra Dev v2.0.0 - Changelog
 
-All notable changes to Sierra SDK will be documented in this file.
+All notable changes to Sierra Dev will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🎉 Major Release - Complete Rewrite
 
-Sierra SDK v2.0 is a major release that transforms the framework into a comprehensive OSINT and investigation toolkit with package management capabilities.
+Sierra Dev v2.0 is a major release that transforms the framework into a comprehensive OSINT and investigation toolkit with package management capabilities.
 
 ### Added
 
@@ -176,4 +176,4 @@ See git history for changes in v1.x releases.
 
 ---
 
-**Sierra SDK v2.0** - Modern investigation tooling made simple.
+**Sierra Dev v2.0** - Modern investigation tooling made simple.

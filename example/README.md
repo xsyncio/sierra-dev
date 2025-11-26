@@ -197,7 +197,7 @@ All tools include:
 
 ## 📦 Installation
 
-### 1. Install Sierra SDK
+### 1. Install Sierra Dev
 ```bash
 cd /path/to/sierra-dev
 pip install -e .
@@ -386,4 +386,4 @@ These examples are provided as-is for educational and research purposes.
 
 ---
 
-**Built with ❤️ using the Sierra SDK**
+**Built with ❤️ using the Sierra Dev**

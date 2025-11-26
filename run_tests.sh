@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Sierra SDK Test Runner
+# Sierra Dev Test Runner
 # Runs comprehensive test suite with coverage
 
 set -e
 
-echo "🧪 Sierra SDK Test Suite"
+echo "🧪 Sierra Dev Test Suite"
 echo "========================"
 echo ""
 

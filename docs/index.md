@@ -1,9 +1,9 @@
-# Sierra SDK - Modern Invoker Framework
+# Sierra Dev - Modern Invoker Framework
 
-**Sierra SDK** is a modern, production-grade package manager and development framework for creating and managing investigation invoker scripts for the Sierra platform.
+**Sierra Dev** is a modern, production-grade package manager and development framework for creating and managing investigation invoker scripts for the Sierra platform.
 
 !!! tip "First Time Here?"
-    👋 **New to Sierra SDK?** Start with our [Welcome Guide](welcome.md) - it's designed for complete beginners!
+    👋 **New to Sierra Dev?** Start with our [Welcome Guide](welcome.md) - it's designed for complete beginners!
 
 ## 🚀 Key Features
 
@@ -30,7 +30,7 @@
 
 New to programming or OSINT? Follow our progressive learning path:
 
-1. **[Welcome Guide](welcome.md)** - Understand what Sierra SDK is
+1. **[Welcome Guide](welcome.md)** - Understand what Sierra Dev is
 2. **[Installation](installation.md)** - Get set up in 5 minutes
 3. **[Core Concepts](concepts.md)** - Learn the fundamentals
 4. **[Your First 5 Minutes](quickstart.md)** - Build your first tool!
@@ -40,7 +40,7 @@ New to programming or OSINT? Follow our progressive learning path:
 Already know Python? Jump right in:
 
 ```bash
-# Install Sierra SDK
+# Install Sierra Dev
 git clone https://github.com/xsyncio/sierra-dev
 cd sierra-dev && python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
@@ -111,7 +111,7 @@ Choose your path based on your goal:
     3. [Package Manager](package-manager/index.md)
     4. [CLI Commands](cli-reference.md)
 
-## 🌟 Why Sierra SDK?
+## 🌟 Why Sierra Dev?
 
 ### For Users
 - ✅ **Easy Discovery** - Find investigation tools quickly

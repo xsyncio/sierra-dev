@@ -1,6 +1,6 @@
 # Package Manager Overview
 
-Sierra SDK's package manager provides **APT-like functionality** for installing, managing, and updating invoker scripts from GitHub repositories. It is designed to be robust, type-safe, and easy to use.
+Sierra Dev's package manager provides **APT-like functionality** for installing, managing, and updating invoker scripts from GitHub repositories. It is designed to be robust, type-safe, and easy to use.
 
 ## Architecture
 
@@ -62,7 +62,7 @@ installer.install("digital-footprint", registry)
 ```
 
 ### 4. Type Validator
-Ensures that all installed scripts meet Sierra SDK's strict quality standards:
+Ensures that all installed scripts meet Sierra Dev's strict quality standards:
 - **AST-based analysis**: Checks code without executing it
 - **Type annotations**: Verifies arguments and return types
 - **Safety checks**: Detects unsafe patterns
@@ -75,7 +75,7 @@ is_valid, report = validate_invoker_script(script_path)
 
 ## Repository Structure
 
-A Sierra SDK repository on GitHub follows a strict structure to ensure compatibility:
+A Sierra Dev repository on GitHub follows a strict structure to ensure compatibility:
 
 ```
 sierra-invokers/
@@ -112,7 +112,7 @@ sierra-invokers/
 
 ## Local Storage
 
-Sierra SDK maintains its state in the user's home directory (`~/.sierra/`):
+Sierra Dev maintains its state in the user's home directory (`~/.sierra/`):
 
 - **`sources.json`**: List of configured repositories and their priorities.
 - **`installed.json`**: Manifest of all installed packages and their versions.
@@ -121,14 +121,14 @@ Sierra SDK maintains its state in the user's home directory (`~/.sierra/`):
 ## Key Features
 
 ### 🔄 Auto-Updates
-Sierra SDK can check for updates across all installed packages and upgrade them with a single command:
+Sierra Dev can check for updates across all installed packages and upgrade them with a single command:
 
 ```bash
 sierra-dev update --all
 ```
 
 ### 🛡️ Type Safety
-Every script is validated before installation. If a script lacks type hints or uses unsafe patterns, Sierra SDK will warn you or refuse installation (unless `--force` is used).
+Every script is validated before installation. If a script lacks type hints or uses unsafe patterns, Sierra Dev will warn you or refuse installation (unless `--force` is used).
 
 ### 🔍 Smart Search
 Search is fuzzy and context-aware. You can search by:
@@ -137,10 +137,10 @@ Search is fuzzy and context-aware. You can search by:
 - **Category**: `sierra-dev search --category recon`
 
 ### 📦 Dependency Management
-Packages can declare dependencies (e.g., Python libraries). Sierra SDK will notify you of required dependencies upon installation.
+Packages can declare dependencies (e.g., Python libraries). Sierra Dev will notify you of required dependencies upon installation.
 
 ## Next Steps
 
 - [CLI Commands Reference](commands.md) - Master the 14 CLI commands
 - [Creating Invokers](../development.md) - Learn to build your own packages
-- [API Reference](../sierra/client.md) - Integrate Sierra SDK into your Python tools
+- [API Reference](../sierra/client.md) - Integrate Sierra Dev into your Python tools

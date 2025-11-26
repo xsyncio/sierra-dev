@@ -1,12 +1,12 @@
-# 🌟 Welcome to Sierra SDK
+# 🌟 Welcome to Sierra Dev
 
 <div class="cyber-hero-text" style="font-size: 1.2em; margin: 2em 0; padding: 1em; background: linear-gradient(135deg, rgba(0,243,255,0.1), rgba(188,19,254,0.1)); border-left: 3px solid var(--neon-cyan); border-radius: 4px;">
-Sierra SDK is your gateway to building powerful investigation tools and OSINT (Open Source Intelligence) scripts with ease.
+Sierra Dev is your gateway to building powerful investigation tools and OSINT (Open Source Intelligence) scripts with ease.
 </div>
 
-## 🎯 What is Sierra SDK?
+## 🎯 What is Sierra Dev?
 
-Think of Sierra SDK as a **smart framework** that helps you:
+Think of Sierra Dev as a **smart framework** that helps you:
 
 1. **Build investigation tools** - Create scripts that gather, analyze, and visualize data
 2. **Package and share** - Distribute your tools like apps in an app store
@@ -23,14 +23,14 @@ Imagine you want to investigate a website. Instead of manually checking:
 
 You can run **one command** that does all of this automatically and presents results in a beautiful table!
 
-## 🤔 Why Sierra SDK?
+## 🤔 Why Sierra Dev?
 
 ### For Complete Beginners
 
 !!! tip "No Coding Experience? No Problem!"
-    Sierra SDK is designed to be your first step into the world of OSINT and automation. We'll guide you every step of the way.
+    Sierra Dev is designed to be your first step into the world of OSINT and automation. We'll guide you every step of the way.
 
-**What makes Sierra SDK beginner-friendly:**
+**What makes Sierra Dev beginner-friendly:**
 
 - **📖 Clear Documentation** - You're reading it! Every concept explained from scratch
 - **🎓 Step-by-Step Tutorials** - Follow along and build your first tool in 5 minutes
@@ -74,7 +74,7 @@ You can run **one command** that does all of this automatically and presents res
 We've designed a progressive learning path:
 
 ### 1️⃣ **Getting Started** *(You are here!)*
-- Understand what Sierra SDK is
+- Understand what Sierra Dev is
 - Install the framework
 - Run your first command
 
@@ -111,7 +111,7 @@ Choose your path:
 === "I'm New to Programming"
     **Start here:**
     
-    1. [Installation Guide](installation.md) - Get Sierra SDK running
+    1. [Installation Guide](installation.md) - Get Sierra Dev running
     2. [Core Concepts](concepts.md) - Understand the fundamentals
     3. [Your First 5 Minutes](quickstart.md) - Build something real!
 
@@ -125,7 +125,7 @@ Choose your path:
 === "I Want to Use Tools"
     **Get investigating:**
     
-    1. [Install Sierra SDK](installation.md)
+    1. [Install Sierra Dev](installation.md)
     2. [OSINT Tools Guide](osint-tools.md)
     3. [Package Manager](package-manager/index.md)
 

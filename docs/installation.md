@@ -1,6 +1,6 @@
 # 📥 Installation Guide
 
-Get Sierra SDK up and running on your system in minutes.
+Get Sierra Dev up and running on your system in minutes.
 
 ## 🎯 Quick Installation
 
@@ -20,7 +20,7 @@ Get Sierra SDK up and running on your system in minutes.
     python3 -m venv venv
     source venv/bin/activate
     
-    # Install Sierra SDK
+    # Install Sierra Dev
     pip install -e .
     
     # Verify installation
@@ -40,7 +40,7 @@ Get Sierra SDK up and running on your system in minutes.
     python -m venv venv
     venv\Scripts\activate
     
-    # Install Sierra SDK
+    # Install Sierra Dev
     pip install -e .
     
     # Verify installation
@@ -127,7 +127,7 @@ Before installing, make sure you have:
 === "Windows"
     Download from [git-scm.com](https://git-scm.com/download/win)
 
-### Step 3: Clone Sierra SDK
+### Step 3: Clone Sierra Dev
 
 ```bash
 # Choose a location (examples)
@@ -140,7 +140,7 @@ cd sierra-dev
 ```
 
 **What This Does:**
-- Downloads Sierra SDK source code
+- Downloads Sierra Dev source code
 - Creates a `sierra-dev/` folder
 - Changes into that folder
 
@@ -178,7 +178,7 @@ python -m venv venv   # Windows
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
 
-### Step 5: Install Sierra SDK
+### Step 5: Install Sierra Dev
 
 With your virtual environment **activated**:
 
@@ -187,7 +187,7 @@ pip install -e .
 ```
 
 **What This Does:**
-- Installs Sierra SDK in "editable" mode (`-e`)
+- Installs Sierra Dev in "editable" mode (`-e`)
 - Installs all required dependencies
 - Makes `sierra-dev` command available
 
@@ -208,7 +208,7 @@ You should see:
 ```
 usage: sierra-dev [-h] {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list} ...
 
-Sierra SDK - Invoker Package Manager
+Sierra Dev - Invoker Package Manager
 
 positional arguments:
   {init,clean,build,check,health,repo,search,info,install,update,upgradable,remove,list}
@@ -217,7 +217,7 @@ positional arguments:
     ...
 ```
 
-✅ **Success!** Sierra SDK is installed.
+✅ **Success!** Sierra Dev is installed.
 
 ---
 
@@ -266,7 +266,7 @@ my_first_project/
 ### Common Issues
 
 ??? error "Command not found: sierra-dev"
-    **Problem:** Sierra SDK not in PATH or venv not activated
+    **Problem:** Sierra Dev not in PATH or venv not activated
     
     **Solutions:**
     
@@ -377,7 +377,7 @@ Should print version number (e.g., `2.0.0`)
 
 ---
 
-## 🔄 Updating Sierra SDK
+## 🔄 Updating Sierra Dev
 
 Pull latest changes and reinstall:
 
@@ -391,7 +391,7 @@ pip install -e . --upgrade
 
 ## 🗑️ Uninstalling
 
-Remove Sierra SDK:
+Remove Sierra Dev:
 
 ```bash
 pip uninstall sierra-dev
@@ -419,7 +419,7 @@ Make sure everything works:
 
 ## 🚀 Next Steps
 
-Now that Sierra SDK is installed:
+Now that Sierra Dev is installed:
 
 1. **[Learn Core Concepts](concepts.md)** - Understand how it all works
 2. **[Quick Start Tutorial](quickstart.md)** - Build your first invoker
