@@ -768,6 +768,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sierra-sdk-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      sierra-sdk init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sierra-sdk-clean" class="md-nav__link">
+    <span class="md-ellipsis">
+      sierra-sdk clean
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sierra-sdk-build" class="md-nav__link">
     <span class="md-ellipsis">
       sierra-sdk build
@@ -1149,10 +1167,25 @@ Displays description, author, version, source, tags, and installation instructio
 <hr>
 <h3 id="development-health">🛠️ Development &amp; Health<a class="headerlink" href="#development-health" title="Permanent link">Link</a></h3>
 <p>Maintain and validate your environment.</p>
+<h4 id="sierra-sdk-init"><code>sierra-sdk init</code><a class="headerlink" href="#sierra-sdk-init" title="Permanent link">Link</a></h4>
+<p>Initialize a new Sierra environment.</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>sierra-sdk<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>name<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li><code>name</code>: Name of the environment directory (default: <code>default_env</code>)</li>
+<li><code>--force</code>: Overwrite existing configuration if present</li>
+</ul>
+<h4 id="sierra-sdk-clean"><code>sierra-sdk clean</code><a class="headerlink" href="#sierra-sdk-clean" title="Permanent link">Link</a></h4>
+<p>Clean generated files from the environment.</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>sierra-sdk<span class="w"> </span>clean<span class="w"> </span><span class="o">[</span>--env<span class="w"> </span>ENV<span class="o">]</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li><code>--env</code>: Target environment (default: <code>default_env</code>)</li>
+</ul>
 <h4 id="sierra-sdk-build"><code>sierra-sdk build</code><a class="headerlink" href="#sierra-sdk-build" title="Permanent link">Link</a></h4>
 <p>Compile invoker scripts and generate configuration.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-sdk<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Options:</strong>
 - <code>--env &lt;name&gt;</code>: Target environment.
@@ -1161,7 +1194,7 @@ Displays description, author, version, source, tags, and installation instructio
 <h4 id="sierra-sdk-check"><code>sierra-sdk check</code><a class="headerlink" href="#sierra-sdk-check" title="Permanent link">Link</a></h4>
 <p>Run comprehensive validation checks on your invokers.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>sierra-sdk<span class="w"> </span>check<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>sierra-sdk<span class="w"> </span>check<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Checks Performed:</strong>
 - YAML configuration validity
@@ -1172,7 +1205,7 @@ Displays description, author, version, source, tags, and installation instructio
 <h4 id="sierra-sdk-health"><code>sierra-sdk health</code><a class="headerlink" href="#sierra-sdk-health" title="Permanent link">Link</a></h4>
 <p>Check the overall health of the Sierra SDK environment.</p>
 <p><strong>Syntax:</strong>
-</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sierra-sdk<span class="w"> </span>health
+</p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>sierra-sdk<span class="w"> </span>health
 </span></code></pre></div></td></tr></tbody></table></div><p></p>
 <p><strong>Checks Performed:</strong>
 - Configuration existence

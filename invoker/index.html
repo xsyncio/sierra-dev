@@ -1134,7 +1134,7 @@
 <ul>
 <li><strong>Validate Input</strong>: Check parameter presence and types, returning an <code>Error</code> JSON if invalid.</li>
 <li><strong>Timeouts</strong>: Ensure long-running scripts implement timeouts to avoid blocking SIERRA.</li>
-<li><strong>Logging</strong>: Write logs to <code>stderr</code> or a separate file to aid debugging without polluting JSON output.</li>
+<li><strong>Strict Output</strong>: Use <code>sierra.respond(result)</code> to output the final JSON result. Do NOT use <code>print()</code> or <code>sys.stderr.write()</code> for logging or debugging, as this will break the integration.</li>
 <li><strong>Reusability</strong>: Modularize code so dependency functions can be shared across multiple Invokers.</li>
 </ul>
 <hr>
