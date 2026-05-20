@@ -27,7 +27,7 @@ class CacheEntry:
     key: str
     value: typing.Any
     created_at: float
-    expires_at: typing.Optional[float] = None
+    expires_at: float | None = None
     compression: CompressionType = CompressionType.NONE
     size_bytes: int = 0
     access_count: int = 0
@@ -52,7 +52,7 @@ class CacheManager:
 
     def __init__(
         self,
-        cache_dir: typing.Optional[pathlib.Path] = None,
+        cache_dir: pathlib.Path | None = None,
         max_memory_entries: int = 1000,
         cleanup_interval: float = 3600,  # 1 hour
         auto_cleanup: bool = True,
@@ -71,7 +71,7 @@ class CacheManager:
         auto_cleanup : bool
             Whether to automatically clean up expired entries.
         """
-        self._memory_cache: typing.Dict[str, CacheEntry] = {}
+        self._memory_cache: dict[str, CacheEntry] = {}
         self._lock = threading.RLock()
         self._max_memory_entries = max_memory_entries
         self._cleanup_interval = cleanup_interval
@@ -93,11 +93,7 @@ class CacheManager:
         if sys.platform.startswith("darwin"):
             return pathlib.Path.home() / "Library" / "Caches" / "sierra"
         elif sys.platform.startswith("win"):
-            return (
-                pathlib.Path(os.environ.get("LOCALAPPDATA", "."))
-                / "sierra"
-                / "Cache"
-            )
+            return pathlib.Path(os.environ.get("LOCALAPPDATA", ".")) / "sierra" / "Cache"
         else:
             return pathlib.Path.home() / ".cache" / "sierra"
 
@@ -143,9 +139,7 @@ class CacheManager:
         if self._should_cleanup():
             self._cleanup_expired()
 
-    def _serialize_value(
-        self, value: typing.Any, compression: CompressionType
-    ) -> bytes:
+    def _serialize_value(self, value: typing.Any, compression: CompressionType) -> bytes:
         """Serialize and optionally compress a value."""
         json_data = json.dumps(value, default=str).encode("utf-8")
 
@@ -154,9 +148,7 @@ class CacheManager:
         else:
             return json_data
 
-    def _deserialize_value(
-        self, data: bytes, compression: CompressionType
-    ) -> typing.Any:
+    def _deserialize_value(self, data: bytes, compression: CompressionType) -> typing.Any:
         """Deserialize and decompress a value."""
         if compression == CompressionType.GZIP:
             json_data = gzip.decompress(data)
@@ -171,9 +163,7 @@ class CacheManager:
             return
 
         # Sort by last_accessed and remove oldest entries
-        sorted_entries = sorted(
-            self._memory_cache.items(), key=lambda x: x[1].last_accessed
-        )
+        sorted_entries = sorted(self._memory_cache.items(), key=lambda x: x[1].last_accessed)
 
         # Remove oldest entries to get back to max size
         excess_count = len(self._memory_cache) - self._max_memory_entries
@@ -181,7 +171,7 @@ class CacheManager:
             key = sorted_entries[i][0]
             del self._memory_cache[key]
 
-    def _load_from_disk(self, key: str) -> typing.Optional[CacheEntry]:
+    def _load_from_disk(self, key: str) -> CacheEntry | None:
         """Load a cache entry from disk."""
         with sqlite3.connect(self._db_path) as conn:
             cursor = conn.execute(
@@ -240,7 +230,7 @@ class CacheManager:
         self,
         key: str,
         value: typing.Any,
-        ttl: typing.Optional[float] = None,
+        ttl: float | None = None,
         persist: bool = True,
         compress: bool = False,
     ) -> None:
@@ -265,9 +255,7 @@ class CacheManager:
 
             now = self._now()
             expires_at = now + ttl if ttl else None
-            compression = (
-                CompressionType.GZIP if compress else CompressionType.NONE
-            )
+            compression = CompressionType.GZIP if compress else CompressionType.NONE
 
             # Serialize the value
             serialized_data = self._serialize_value(value, compression)
@@ -298,7 +286,7 @@ class CacheManager:
                 with sqlite3.connect(self._db_path) as conn:
                     conn.execute(
                         """
-                        INSERT OR REPLACE INTO cache_entries 
+                        INSERT OR REPLACE INTO cache_entries
                         (key, created_at, expires_at, compression, size_bytes, access_count, last_accessed)
                         VALUES (?, ?, ?, ?, ?, ?, ?)
                     """,
@@ -314,7 +302,7 @@ class CacheManager:
                     )
                     conn.commit()
 
-    def get(self, key: str) -> typing.Optional[typing.Any]:
+    def get(self, key: str) -> typing.Any | None:
         """
         Retrieve a value from the cache.
 
@@ -446,7 +434,7 @@ class CacheManager:
                 conn.execute("DELETE FROM cache_entries")
                 conn.commit()
 
-    def keys(self, include_expired: bool = False) -> typing.List[str]:
+    def keys(self, include_expired: bool = False) -> list[str]:
         """
         Get all cache keys.
 
@@ -528,7 +516,7 @@ class CacheManager:
         """
         return self._cleanup_expired()
 
-    def stats(self) -> typing.Dict[str, typing.Any]:
+    def stats(self) -> dict[str, typing.Any]:
         """
         Get cache statistics.
 
@@ -564,9 +552,7 @@ class CacheManager:
                 "database_path": str(self._db_path),
             }
 
-    def get_entry_info(
-        self, key: str
-    ) -> typing.Optional[typing.Dict[str, typing.Any]]:
+    def get_entry_info(self, key: str) -> dict[str, typing.Any] | None:
         """
         Get detailed information about a cache entry.
 

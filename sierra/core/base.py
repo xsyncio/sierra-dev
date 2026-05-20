@@ -22,9 +22,7 @@ class SierraCoreObject:
         Client instance used for operations, providing logger and HTTP access.
     """
 
-    def __init__(
-        self, client: "sierra_client.SierraDevelopmentClient"
-    ) -> None:
+    def __init__(self, client: "sierra_client.SierraDevelopmentClient") -> None:
         """
         Initialize a SierraCoreObject.
 

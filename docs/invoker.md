@@ -148,4 +148,53 @@ When invoked, SIERRA will locate `subfinder.py` in the given `PATHS`, pass the `
 
 ---
 
+## 6. Advanced Validation Constraints & Async Invokers
+
+### 6.1 Asynchronous Entry Points
+SIERRA natively supports asynchronous entry point functions. If your invoker script is non-blocking or uses `async`/`await` (e.g. for concurrent web scraping or API calls), simply define the entry point with `async def`:
+
+```python
+import asyncio
+import sierra
+
+invoker = sierra.InvokerScript(name="async_scanner", protocol="V2")
+
+@invoker.entry_point
+async def run(target: str) -> None:
+    # Run async tasks concurrently
+    await asyncio.sleep(1)
+    sierra.emit_progress("Scanning target...")
+```
+SIERRA automatically compiles async scripts to use `asyncio.run()` in their standalone CLI scripts.
+
+### 6.2 Parameter Constraints Validation
+You can define compile-time and runtime value assertions for parameters using `SierraOption` metadata parameters:
+
+* `min_value` (int/float): The minimum numeric threshold.
+* `max_value` (int/float): The maximum numeric threshold.
+* `choices` (list): Enforces that the parameter value is one of the listed options.
+* `pattern` (str): Regular expression pattern that the parameter value must match.
+
+#### Example
+
+```python
+from sierra import InvokerScript, SierraOption, Param
+
+invoker = InvokerScript(name="port_scanner")
+
+@invoker.entry_point
+def run(
+    port: Param[int, SierraOption(description="Port to scan", min_value=1, max_value=65535)],
+    protocol: Param[str, SierraOption(description="Network protocol", choices=["TCP", "UDP"])],
+    target: Param[str, SierraOption(description="Target hostname", pattern="^[a-zA-Z0-9.-]+$")],
+) -> None:
+    pass
+```
+
+SIERRA compiled standalone scripts will automatically:
+1. Enforce these constraints at runtime before executing the entry point.
+2. Terminate execution with an `Error` JSON payload if the input values violate any of these validations.
+
+---
+
 Harness the power of SIERRA Invoker scripts to automate your investigative workflows and integrate your favorite tools seamlessly into the SIERRA platform.

@@ -10,7 +10,7 @@ This module provides comprehensive validation for:
 
 Usage:
     from sierra.core.checker import SierraChecker
-    
+
     checker = SierraChecker(client)
     issues = checker.validate_all()
     if issues:
@@ -25,22 +25,20 @@ from pathlib import Path
 
 import sierra.abc.sierra as sierra_abc_sierra
 import sierra.core.base as sierra_core_base
+import sierra.internal.logger as sierra_internal_logger
 import sierra.invoker as sierra_invoker
-
-if typing.TYPE_CHECKING:
-    import pathlib
 
 
 @dataclass
 class ValidationIssue:
     """Represents a validation issue found during checking."""
-    
+
     severity: str  # "error", "warning", "info"
     component: str  # "invoker", "parameter", "yaml", "config"
     name: str  # Name of the invoker/parameter/file
     message: str  # Description of the issue
     suggestion: str = ""  # Optional suggestion to fix
-    
+
     def __str__(self) -> str:
         """Format issue for display."""
         icon = {"error": "❌", "warning": "⚠️", "info": "ℹ️"}.get(self.severity, "•")
@@ -54,19 +52,19 @@ class ValidationIssue:
 class SierraChecker(sierra_core_base.SierraCoreObject):
     """
     Comprehensive validation and safety checker for Sierra Dev.
-    
+
     Validates:
     - Type safety of parameters
     - YAML-unsafe characters in strings
     - Parameter naming conventions
     - Configuration file structure
     - Invoker health and completeness
-    
+
     Parameters
     ----------
     client : SierraClient
         The Sierra client instance.
-    
+
     Attributes
     ----------
     client : SierraClient
@@ -74,7 +72,7 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
     issues : list[ValidationIssue]
         Collected validation issues.
     """
-    
+
     # YAML-unsafe characters that can break parsing
     YAML_UNSAFE_CHARS = {
         ":": "colon (breaks key-value parsing)",
@@ -95,53 +93,63 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
         "@": "at-sign (reserved)",
         "`": "backtick (reserved)",
     }
-    
+
     # Reserved parameter names that could conflict
     RESERVED_NAMES = {
-        "self", "client", "args", "kwargs", "config", "environment",
-        "logger", "result", "output", "input", "type", "name"
+        "self",
+        "client",
+        "args",
+        "kwargs",
+        "config",
+        "environment",
+        "logger",
+        "result",
+        "output",
+        "input",
+        "type",
+        "name",
     }
-    
+
     # Valid Python identifier pattern
-    PYTHON_IDENTIFIER = re.compile(r'^[a-z_][a-z0-9_]*$', re.IGNORECASE)
-    
+    PYTHON_IDENTIFIER = re.compile(r"^[a-z_][a-z0-9_]*$", re.IGNORECASE)
+
     def __init__(self, client: typing.Any) -> None:
         """Initialize the checker with a Sierra client."""
         super().__init__(client)
         self.issues: list[ValidationIssue] = []
-    
+
     def clear_issues(self) -> None:
         """Clear all collected issues."""
         self.issues = []
-    
+
     def add_issue(
-        self,
-        severity: str,
-        component: str,
-        name: str,
-        message: str,
-        suggestion: str = ""
+        self, severity: str, component: str, name: str, message: str, suggestion: str = ""
     ) -> None:
         """Add a validation issue to the collection."""
-        self.issues.append(
-            ValidationIssue(severity, component, name, message, suggestion)
-        )
+        self.issues.append(ValidationIssue(severity, component, name, message, suggestion))
+        # Map severity to a valid log_type; "info" is not a severity we log at warning+
+        _LOG_TYPE_MAP: dict[str, sierra_internal_logger.LogTypeLiteral] = {
+            "error": "error",
+            "warning": "warning",
+            "info": "debug",
+        }
+        log_type = _LOG_TYPE_MAP.get(severity, "debug")
         self.client.logger.log(
             f"Validation {severity}: {component}.{name} - {message}",
-            "debug" if severity == "info" else severity
+            log_type,
         )
-    
+
     def check_yaml_safety(self, text: str, context: str = "") -> list[str]:
         """
         Check if text contains YAML-unsafe characters.
-        
+
         Parameters
         ----------
         text : str
             The text to check.
         context : str
             Context information for error messages.
-        
+
         Returns
         -------
         list[str]
@@ -152,16 +160,16 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
             if char in text:
                 unsafe.append(f"'{char}' ({description})")
         return unsafe
-    
+
     def sanitize_yaml_text(self, text: str) -> str:
         """
         Sanitize text for safe YAML usage.
-        
+
         Parameters
         ----------
         text : str
             The text to sanitize.
-        
+
         Returns
         -------
         str
@@ -175,31 +183,31 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
             "[": "(",
             "]": ")",
         }
-        
+
         result = text
         for char, replacement in replacements.items():
             result = result.replace(char, replacement)
-        
+
         return result
-    
+
     def validate_parameter_name(self, name: str, invoker_name: str) -> bool:
         """
         Validate that a parameter name follows best practices.
-        
+
         Parameters
         ----------
         name : str
             Parameter name to validate.
         invoker_name : str
             Name of the invoker (for context).
-        
+
         Returns
         -------
         bool
             True if valid, False otherwise.
         """
         is_valid = True
-        
+
         # Check if it's a valid Python identifier
         if not self.PYTHON_IDENTIFIER.match(name):
             self.add_issue(
@@ -207,10 +215,10 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "parameter",
                 f"{invoker_name}.{name}",
                 f"Invalid parameter name '{name}' - must be a valid Python identifier",
-                "Use lowercase letters, numbers, and underscores only"
+                "Use lowercase letters, numbers, and underscores only",
             )
             is_valid = False
-        
+
         # Check if it's reserved
         if name.lower() in self.RESERVED_NAMES:
             self.add_issue(
@@ -218,9 +226,9 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "parameter",
                 f"{invoker_name}.{name}",
                 f"Parameter name '{name}' is reserved/commonly used",
-                "Consider using a more specific name to avoid conflicts"
+                "Consider using a more specific name to avoid conflicts",
             )
-        
+
         # Check naming conventions
         if name.startswith("_"):
             self.add_issue(
@@ -228,29 +236,26 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "parameter",
                 f"{invoker_name}.{name}",
                 f"Parameter name '{name}' starts with underscore (private convention)",
-                "Remove leading underscore for public parameters"
+                "Remove leading underscore for public parameters",
             )
-        
+
         if name.isupper():
             self.add_issue(
                 "warning",
                 "parameter",
                 f"{invoker_name}.{name}",
                 f"Parameter name '{name}' is all uppercase (constant convention)",
-                "Use lowercase or snake_case for parameters"
+                "Use lowercase or snake_case for parameters",
             )
-        
+
         return is_valid
-    
+
     def validate_parameter_description(
-        self,
-        description: str,
-        param_name: str,
-        invoker_name: str
+        self, description: str, param_name: str, invoker_name: str
     ) -> bool:
         """
         Validate parameter description for YAML safety.
-        
+
         Parameters
         ----------
         description : str
@@ -259,7 +264,7 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
             Name of the parameter.
         invoker_name : str
             Name of the invoker.
-        
+
         Returns
         -------
         bool
@@ -271,10 +276,10 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "parameter",
                 f"{invoker_name}.{param_name}",
                 "Missing parameter description",
-                "Add a description in the docstring"
+                "Add a description in the docstring",
             )
             return False
-        
+
         unsafe_chars = self.check_yaml_safety(description)
         if unsafe_chars:
             sanitized = self.sanitize_yaml_text(description)
@@ -283,27 +288,25 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "parameter",
                 f"{invoker_name}.{param_name}",
                 f"Description contains YAML-unsafe characters: {', '.join(unsafe_chars)}",
-                f"Use: '{sanitized}' instead"
+                f"Use: '{sanitized}' instead",
             )
             return False
-        
+
         return True
-    
+
     def validate_type_safety(
-        self,
-        param: sierra_abc_sierra.SierraInvokerParam,
-        invoker_name: str
+        self, param: sierra_abc_sierra.SierraInvokerParam, invoker_name: str
     ) -> bool:
         """
         Validate type annotations for parameters.
-        
+
         Parameters
         ----------
         param : SierraInvokerParam
             The parameter to validate.
         invoker_name : str
             Name of the invoker.
-        
+
         Returns
         -------
         bool
@@ -311,7 +314,7 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
         """
         param_name = param.get("Name")
         param_type = param.get("Type")
-        
+
         # Check if type is specified
         if param_type is None:
             self.add_issue(
@@ -319,43 +322,45 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "parameter",
                 f"{invoker_name}.{param_name}",
                 "Missing type annotation",
-                "Add type hint to parameter"
+                "Add type hint to parameter",
             )
             return False
-        
-        # Check for supported types
+
+        # Check for supported types (including Image)
         supported_types = {int, str, float, bool, Path, type(None)}
-        
+
         # Get the actual type (unwrap Optional if needed)
         actual_type = param_type
         if hasattr(param_type, "__args__"):  # Union/Optional type
             args = typing.get_args(param_type)
             actual_type = args[0] if args else param_type
-        
+
         # Validate type is supported
-        if actual_type not in supported_types and not (
-            hasattr(actual_type, "__name__") and actual_type.__name__ == "Path"
-        ):
+        is_path_or_image = hasattr(actual_type, "__name__") and actual_type.__name__ in (
+            "Path",
+            "Image",
+        )
+        if actual_type not in supported_types and not is_path_or_image:
             type_name = getattr(actual_type, "__name__", str(actual_type))
             self.add_issue(
                 "warning",
                 "parameter",
                 f"{invoker_name}.{param_name}",
                 f"Type '{type_name}' may not be fully supported",
-                "Use: str, int, float, bool, or pathlib.Path"
+                "Use: str, int, float, bool, pathlib.Path, or sierra.Image",
             )
-        
+
         return True
-    
+
     def validate_invoker(self, invoker: "sierra_invoker.InvokerScript") -> bool:
         """
         Validate a complete invoker script.
-        
+
         Parameters
         ----------
         invoker : InvokerScript
             The invoker to validate.
-        
+
         Returns
         -------
         bool
@@ -363,9 +368,9 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
         """
         all_valid = True
         invoker_name = invoker.name
-        
+
         self.client.logger.log(f"🔍 Validating invoker: {invoker_name}", "debug")
-        
+
         # Validate invoker name
         if not self.PYTHON_IDENTIFIER.match(invoker_name):
             self.add_issue(
@@ -373,10 +378,10 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "invoker",
                 invoker_name,
                 f"Invalid invoker name '{invoker_name}'",
-                "Use only lowercase letters, numbers, and underscores"
+                "Use only lowercase letters, numbers, and underscores",
             )
             all_valid = False
-        
+
         # Validate description
         if not invoker.description or invoker.description.strip() == "":
             self.add_issue(
@@ -384,7 +389,7 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "invoker",
                 invoker_name,
                 "Missing invoker description",
-                "Add a description when creating InvokerScript"
+                "Add a description when creating InvokerScript",
             )
         else:
             unsafe_chars = self.check_yaml_safety(invoker.description)
@@ -395,10 +400,10 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                     "invoker",
                     invoker_name,
                     f"Description has YAML-unsafe characters: {', '.join(unsafe_chars)}",
-                    f"Use: '{sanitized}'"
+                    f"Use: '{sanitized}'",
                 )
                 all_valid = False
-        
+
         # Validate parameters
         if not invoker.params:
             self.add_issue(
@@ -406,49 +411,86 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "invoker",
                 invoker_name,
                 "No parameters defined",
-                "Add at least one parameter to the entry_point function"
+                "Add at least one parameter to the entry_point function",
             )
-        
+
         for param in invoker.params:
-            param_name = param.get("Name")
-            param_desc = param.get("Description", "")
-            
+            param_name = param.get("Name", "")
+            param_desc = param.get("Description") or ""
+
             # Validate parameter name
             if not self.validate_parameter_name(param_name, invoker_name):
                 all_valid = False
-            
+
             # Validate parameter description
-            if not self.validate_parameter_description(
-                param_desc, param_name, invoker_name
-            ):
+            if not self.validate_parameter_description(param_desc, param_name, invoker_name):
                 all_valid = False
-            
+
             # Validate type safety
             if not self.validate_type_safety(param, invoker_name):
                 all_valid = False
-        
+
+            # Validate Options list integrity
+            options = param.get("Options")
+            if isinstance(options, list):
+                valid_flags = {"MANDATORY", "PRIMARY"}
+                for flag in options:
+                    if flag not in valid_flags:
+                        self.add_issue(
+                            "warning",
+                            "parameter",
+                            f"{invoker_name}.{param_name}",
+                            f"Unknown option flag: '{flag}'",
+                            f"Supported flags: {sorted(valid_flags)}",
+                        )
+
         # Check for entry point
-        if not hasattr(invoker, '_entry_point') or invoker._entry_point is None:
+        if not hasattr(invoker, "_entry_point") or invoker._entry_point is None:
             self.add_issue(
                 "error",
                 "invoker",
                 invoker_name,
                 "No entry point defined",
-                "Add @invoker.entry_point decorator to a function"
+                "Add @invoker.entry_point decorator to a function",
             )
             all_valid = False
-        
+
+        # Validate protocol constraints
+        if getattr(invoker, "protocol", "V1") == "V2":
+            self.add_issue(
+                "info",
+                "invoker",
+                invoker_name,
+                "V2 streaming protocol enabled",
+                "Ensure stdout emits single-line JSON events and all debug output goes to stderr",
+            )
+
+        # Check PRIMARY flag uniqueness — only one param should be PRIMARY
+        primary_count = 0
+        for param in invoker.params:
+            options = param.get("Options")
+            if isinstance(options, list) and "PRIMARY" in options:
+                primary_count += 1
+        if primary_count > 1:
+            self.add_issue(
+                "warning",
+                "invoker",
+                invoker_name,
+                f"Multiple PRIMARY parameters found ({primary_count})",
+                "Only one parameter should be PRIMARY per invoker script",
+            )
+
         return all_valid
-    
+
     def validate_config_yaml(self, config_path: Path) -> bool:
         """
         Validate the generated config.yaml file.
-        
+
         Parameters
         ----------
         config_path : Path
             Path to config.yaml file.
-        
+
         Returns
         -------
         bool
@@ -460,22 +502,23 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                 "config",
                 str(config_path),
                 "Config file does not exist",
-                "Run 'python -m sierra build' to generate"
+                "Run 'python -m sierra build' to generate",
             )
             return False
-        
+
         try:
             import yaml
-            with open(config_path, 'r') as f:
+
+            with open(config_path) as f:
                 config_data = yaml.safe_load(f)
-            
+
             if config_data is None:
                 self.add_issue(
                     "error",
                     "config",
                     str(config_path),
                     "Config file is empty",
-                    "Regenerate config with build command"
+                    "Regenerate config with build command",
                 )
                 return False
 
@@ -486,84 +529,80 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
                     "config",
                     str(config_path),
                     "Missing PATHS section",
-                    "Regenerate config with build command"
+                    "Regenerate config with build command",
                 )
                 return False
-            
+
             if "SCRIPTS" not in config_data:
                 self.add_issue(
                     "error",
                     "config",
                     str(config_path),
                     "Missing SCRIPTS section",
-                    "Regenerate config with build command"
+                    "Regenerate config with build command",
                 )
                 return False
-            
-            self.client.logger.log(
-                f"✅ Config YAML validated successfully: {config_path}",
-                "info"
-            )
+
+            self.client.logger.log(f"✅ Config YAML validated successfully: {config_path}", "info")
             return True
-            
+
         except Exception as e:
             self.add_issue(
                 "error",
                 "config",
                 str(config_path),
                 f"YAML parsing error: {str(e)}",
-                "Check for syntax errors, especially colons in descriptions"
+                "Check for syntax errors, especially colons in descriptions",
             )
             return False
-    
+
     def validate_all(self) -> list[ValidationIssue]:
         """
         Run all validations on registered invokers.
-        
+
         Returns
         -------
         list[ValidationIssue]
             All issues found during validation.
         """
         self.clear_issues()
-        
+
         self.client.logger.log("🔍 Starting comprehensive validation", "info")
-        
+
         # Validate all invokers
         for invoker in self.client.invokers:
             self.validate_invoker(invoker)
-        
+
         # Validate config if it exists
         config_path = self.client.environment.config_path / "config.yaml"
         if config_path.exists():
             self.validate_config_yaml(config_path)
-        
+
+        invoker_yaml_path = self.client.environment.config_path / "invoker.yaml"
+        if invoker_yaml_path.exists():
+            self.validate_config_yaml(invoker_yaml_path)
+
         # Summary
         error_count = sum(1 for issue in self.issues if issue.severity == "error")
         warning_count = sum(1 for issue in self.issues if issue.severity == "warning")
-        
+
         if error_count > 0:
             self.client.logger.log(
-                f"❌ Validation failed: {error_count} errors, {warning_count} warnings",
-                "error"
+                f"❌ Validation failed: {error_count} errors, {warning_count} warnings", "error"
             )
         elif warning_count > 0:
             self.client.logger.log(
-                f"⚠️ Validation passed with warnings: {warning_count} warnings",
-                "warning"
+                f"⚠️ Validation passed with warnings: {warning_count} warnings", "warning"
             )
         else:
-            self.client.logger.log(
-                "✅ All validations passed successfully",
-                "info"
-            )
-        
+            self.client.logger.log("✅ All validations passed successfully", "info")
+
         return self.issues
-    
+
     def health_check(self) -> dict[str, typing.Any]:
         """
         Perform a health check on the Sierra environment.
-        
+
         Returns
         -------
         dict
@@ -572,37 +611,29 @@ class SierraChecker(sierra_core_base.SierraCoreObject):
         health = {
             "status": "healthy",
             "invokers_count": len(self.client.invokers),
-            "issues": {
-                "errors": 0,
-                "warnings": 0,
-                "info": 0
-            },
-            "checks": {}
+            "issues": {"errors": 0, "warnings": 0, "info": 0},
+            "checks": {},
         }
-        
+
         issues = self.validate_all()
-        
+
         # Count issues by severity
         for issue in issues:
             health["issues"][issue.severity + "s"] = (
                 health["issues"].get(issue.severity + "s", 0) + 1
             )
-        
+
         # Determine overall status
         if health["issues"]["errors"] > 0:
             health["status"] = "unhealthy"
         elif health["issues"]["warnings"] > 0:
             health["status"] = "degraded"
-        
+
         # Add specific checks
         health["checks"]["config_exists"] = (
             self.client.environment.config_path / "config.yaml"
-        ).exists()
-        health["checks"]["invokers_path_exists"] = (
-            self.client.environment.invokers_path.exists()
-        )
-        health["checks"]["venv_exists"] = (
-            self.client.environment.venv_path.exists()
-        )
-        
+        ).exists() or (self.client.environment.config_path / "invoker.yaml").exists()
+        health["checks"]["invokers_path_exists"] = self.client.environment.invokers_path.exists()
+        health["checks"]["venv_exists"] = self.client.environment.venv_path.exists()
+
         return health

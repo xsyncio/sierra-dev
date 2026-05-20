@@ -1,14 +1,16 @@
 """
 Shared fixtures and utilities for Sierra Dev tests.
 """
-import pytest
+
 import pathlib
-import tempfile
 import shutil
-from unittest.mock import Mock, MagicMock
+import tempfile
+from unittest.mock import Mock
+
+import pytest
 
 import sierra
-from sierra.internal.logger import UniversalLogger, LogLevel
+from sierra.internal.logger import UniversalLogger
 
 
 @pytest.fixture
@@ -38,41 +40,32 @@ def sierra_client(temp_dir, mock_logger):
     (env_path / "config").mkdir()
     (env_path / "venv").mkdir()
     (env_path / "venv" / "bin").mkdir()
-    
+
     # Create minimal config.yaml
     config_file = env_path / "config" / "config.yaml"
     config_file.write_text("invokers: {}")
-    
+
     client = sierra.SierraDevelopmentClient(
-        environment_path=temp_dir,
-        environment_name="test_env",
-        logger=mock_logger
+        environment_path=temp_dir, environment_name="test_env", logger=mock_logger
     )
-    
+
     return client
 
 
 @pytest.fixture
 def sample_invoker():
     """Create a sample invoker for testing."""
-    invoker = sierra.InvokerScript(
-        name="test-invoker",
-        description="Test invoker for unit tests"
-    )
-    
+    invoker = sierra.InvokerScript(name="test-invoker", description="Test invoker for unit tests")
+
     @invoker.entry_point
     def run(
         param1: sierra.Param[
-            str | None,
-            sierra.SierraOption(
-                description="Test parameter",
-                mandatory="MANDATORY"
-            )
-        ]
+            str | None, sierra.SierraOption(description="Test parameter", mandatory="MANDATORY")
+        ],
     ) -> None:
         """Test entry point."""
         print(f"Test: {param1}")
-    
+
     return invoker
 
 
@@ -84,10 +77,10 @@ def mock_requests(monkeypatch):
     mock_response.json.return_value = {}
     mock_response.text = ""
     mock_response.headers = {}
-    
+
     mock_get = Mock(return_value=mock_response)
     monkeypatch.setattr("requests.get", mock_get)
-    
+
     return mock_get
 
 
@@ -105,13 +98,13 @@ def package_registry_data():
                 "author": "Test Author",
                 "tags": ["test", "example"],
                 "category": "testing",
-                "path": "invokers/test-package"
+                "path": "invokers/test-package",
             }
-        }
+        },
     }
 
 
-@pytest.fixture  
+@pytest.fixture
 def installed_packages_data():
     """Sample installed packages data."""
     return {
@@ -124,14 +117,15 @@ def installed_packages_data():
                 "metadata": {
                     "description": "Test package",
                     "author": "Test Author",
-                    "tags": ["test"]
-                }
+                    "tags": ["test"],
+                },
             }
         }
     }
 
 
 # Helper functions
+
 
 def create_mock_script(content: str, path: pathlib.Path) -> None:
     """Create a mock Python script file."""

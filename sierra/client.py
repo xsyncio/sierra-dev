@@ -18,7 +18,7 @@ import sierra.invoker as sierra_invoker
 class InvokerWithLoad(typing.Protocol):
     """
     Protocol for invoker scripts with a load method.
-    
+
     The load method accepts a SierraDevelopmentClient instance.
     """
 
@@ -78,14 +78,14 @@ class SierraDevelopmentClient:
             "logger", sierra_internal_logger.UniversalLogger()
         )
         self.logger.log("Logger initialized", "debug")
-        self.logger.log(
-            "Starting Sierra Development Client initialization", "info"
-        )
+        self.logger.log("Starting Sierra Development Client initialization", "info")
 
-        self.environment: sierra_core_environment.SierraDevelopmentEnvironment = sierra_core_environment.SierraDevelopmentEnvironment(
-            client=self,
-            name=environment_name,
-            path=environment_path,
+        self.environment: sierra_core_environment.SierraDevelopmentEnvironment = (
+            sierra_core_environment.SierraDevelopmentEnvironment(
+                client=self,
+                name=environment_name,
+                path=environment_path,
+            )
         )
         self.logger.log(
             f"Environment created: name={self.environment.name}, path={self.environment.path}",
@@ -97,19 +97,15 @@ class SierraDevelopmentClient:
 
         self.cache: sierra_internal_cache.CacheManager = kwargs.get(
             "cache",
-            sierra_internal_cache.CacheManager(
-                cache_dir=self.environment.config_path / "cache"
-            ),
+            sierra_internal_cache.CacheManager(cache_dir=self.environment.config_path / "cache"),
         )
         self.logger.log("Cache manager initialized", "debug")
 
-        self.http_client: httpx.Client = httpx.Client(
-            headers={"User-Agent": "Sierra-dev/1.0"}
-        )
+        self.http_client: httpx.Client = httpx.Client(headers={"User-Agent": "Sierra-dev/1.0"})
         self.logger.log("HTTP client initialized", "debug")
 
-        self.loader: sierra_core_loader.SierraSideloader = (
-            sierra_core_loader.SierraSideloader(client=self)
+        self.loader: sierra_core_loader.SierraSideloader = sierra_core_loader.SierraSideloader(
+            client=self
         )
         self.logger.log("Initializing sideloader", "debug")
         self.loader.populate()
@@ -128,9 +124,7 @@ class SierraDevelopmentClient:
         self.checker = sierra_core_checker.SierraChecker(client=self)
         self.logger.log("Initializing validation checker", "debug")
 
-        self.logger.log(
-            "Sierra Development Client initialization complete", "info"
-        )
+        self.logger.log("Sierra Development Client initialization complete", "info")
 
     def load_invoker(self, invoker: "sierra_invoker.InvokerScript") -> None:
         """
@@ -145,9 +139,7 @@ class SierraDevelopmentClient:
             self.invokers.append(invoker)
             self.logger.log(f"Invoker {invoker.name} registered", "debug")
         else:
-            self.logger.log(
-                f"Invoker {invoker.name} already registered", "warning"
-            )
+            self.logger.log(f"Invoker {invoker.name} already registered", "warning")
 
     def unload_invoker(self, invoker: "sierra_invoker.InvokerScript") -> None:
         """
@@ -170,9 +162,7 @@ class SierraDevelopmentClient:
         from .py files in the environment's scripts directory.
         """
         script_dir: pathlib.Path = self.environment.scripts_path.resolve()
-        self.logger.log(
-            f"Loading invokers from directory: {script_dir}", "info"
-        )
+        self.logger.log(f"Loading invokers from directory: {script_dir}", "info")
 
         if not script_dir.is_dir():
             raise sierra_internal_errors.SierraClientPathError(
@@ -181,9 +171,7 @@ class SierraDevelopmentClient:
 
         for file_path in script_dir.iterdir():
             if not file_path.is_file() or file_path.suffix != ".py":
-                self.logger.log(
-                    f"Skipping non-Python file: {file_path.name}", "debug"
-                )
+                self.logger.log(f"Skipping non-Python file: {file_path.name}", "debug")
                 continue
 
             self.logger.log(f"Processing file: {file_path.name}", "debug")
@@ -195,9 +183,7 @@ class SierraDevelopmentClient:
                     "error",
                 )
 
-    def _load_invoker_file(
-        self, path_to_invoker: typing.Union[str, pathlib.Path]
-    ) -> None:
+    def _load_invoker_file(self, path_to_invoker: str | pathlib.Path) -> None:
         """
         Load a Python module containing one or more InvokerScript instances.
 

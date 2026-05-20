@@ -28,13 +28,7 @@ def fetch_whois_emails(domain: str) -> list[str]:
         Extracted email addresses.
     """
     res = requests.get(f"https://api.hackertarget.com/whois/?q={domain}")
-    return list(
-        set(
-            re.findall(
-                r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", res.text
-            )
-        )
-    )
+    return list(set(re.findall(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", res.text)))
 
 
 @invoker.entry_point

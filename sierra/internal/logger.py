@@ -14,7 +14,7 @@ colorama.init(autoreset=True)
 LogTypeLiteral = typing.Literal["info", "warning", "debug", "error"]
 
 
-class LogLevel(str, enum.Enum):
+class LogLevel(enum.StrEnum):
     """
     Logging verbosity levels.
 
@@ -36,7 +36,7 @@ class LogLevel(str, enum.Enum):
     DEBUG = "debug"
 
 
-class LogType(str, enum.Enum):
+class LogType(enum.StrEnum):
     """
     Types of log messages.
 
@@ -84,7 +84,7 @@ class LoggerConfig(typing.TypedDict, total=False):
 
     name: str
     level: LogLevel
-    log_file: typing.Union[str, pathlib.Path, None]
+    log_file: str | pathlib.Path | None
     clean_logs: bool
     enable_colors: bool
     timestamp_format: str
@@ -102,7 +102,7 @@ class LogColor:
     ERROR: str = colorama.Fore.RED
     TIMESTAMP: str = colorama.Fore.CYAN
     RESET: str = colorama.Fore.RESET
-    
+
     # Emoji icons for visual enhancement
     ICON_INFO: str = "✅"
     ICON_WARNING: str = "⚠️"
@@ -195,17 +195,13 @@ class UniversalLogger:
         self.name: str = name
         # Apply defaults
         self.level: LogLevel = kwargs.get("level", LogLevel.BASIC)  # type: ignore[arg-type]
-        raw_log_file: typing.Union[str, pathlib.Path, None] = kwargs.get(
-            "log_file"
-        )  # type: ignore[assignment]
-        self.log_file_path: typing.Optional[pathlib.Path] = (
+        raw_log_file: str | pathlib.Path | None = kwargs.get("log_file")  # type: ignore[assignment]
+        self.log_file_path: pathlib.Path | None = (
             pathlib.Path(raw_log_file) if raw_log_file else None
         )
         self.clean_logs: bool = kwargs.get("clean_logs", True)  # type: ignore[arg-type]
         self.enable_colors: bool = kwargs.get("enable_colors", True)  # type: ignore[arg-type]
-        self.timestamp_format: str = kwargs.get(
-            "timestamp_format", "%Y-%m-%d %H:%M:%S"
-        )  # type: ignore[arg-type]
+        self.timestamp_format: str = kwargs.get("timestamp_format", "%Y-%m-%d %H:%M:%S")  # type: ignore[arg-type]
         self.buffer_size: int = kwargs.get("buffer_size", 1000)  # type: ignore[arg-type]
         self.auto_flush: bool = kwargs.get("auto_flush", True)  # type: ignore[arg-type]
 
@@ -237,11 +233,7 @@ class UniversalLogger:
         str
             Timestamp, colored if enabled.
         """
-        now: str = (
-            datetime.datetime.now()
-            .astimezone()
-            .strftime(self.timestamp_format)
-        )
+        now: str = datetime.datetime.now().astimezone().strftime(self.timestamp_format)
         if self.enable_colors:
             return f"{self.colors.TIMESTAMP}{now}{self.colors.RESET}"
         return now
@@ -265,7 +257,7 @@ class UniversalLogger:
         level_cap: str = typ.capitalize()
         ts: str = self._timestamp()
         icon: str = getattr(self.colors, f"ICON_{typ.upper()}", "")
-        
+
         if self.enable_colors:
             color_code: str = getattr(self.colors, typ.upper())
             return f"{self.name}: {ts} - {icon} {level_cap} - {color_code}{msg}{self.colors.RESET}"

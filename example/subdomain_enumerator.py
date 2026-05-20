@@ -3,17 +3,15 @@ Advanced Subdomain Enumeration Tool.
 
 Combines multiple techniques for comprehensive subdomain discovery.
 """
-import typing
-import requests
+
 import dns.resolver
-import ssl
-import socket
+import requests
 
 import sierra
 
 invoker = sierra.InvokerScript(
     name="subdomain_enumerator",
-    description="Advanced subdomain discovery using multiple techniques"
+    description="Advanced subdomain discovery using multiple techniques",
 )
 
 invoker.requirement(["requests", "dnspython"])
@@ -66,15 +64,15 @@ def bruteforce_common(domain: str, wordlist: list[str]) -> set[str]:
     resolver = dns.resolver.Resolver()
     resolver.timeout = 2
     resolver.lifetime = 2
-    
+
     for word in wordlist:
         subdomain = f"{word}.{domain}"
         try:
-            resolver.resolve(subdomain, 'A')
+            resolver.resolve(subdomain, "A")
             subdomains.add(subdomain)
         except Exception:
             pass
-    
+
     return subdomains
 
 
@@ -83,21 +81,19 @@ def run(
     domain: sierra.Param[
         str | None,
         sierra.SierraOption(
-            description="Target domain for subdomain enumeration",
-            mandatory="MANDATORY"
-        )
+            description="Target domain for subdomain enumeration", mandatory="MANDATORY"
+        ),
     ],
     wordlist: sierra.Param[
         str | None,
         sierra.SierraOption(
-            description="Use bruteforce with common wordlist (slow)",
-            mandatory="OPTIONAL"
-        )
-    ] = None
+            description="Use bruteforce with common wordlist (slow)", mandatory="OPTIONAL"
+        ),
+    ] = None,
 ) -> None:
     """
     Advanced subdomain enumeration tool.
-    
+
     Combines multiple techniques:
     - Certificate Transparency (crt.sh)
     - HackerTarget API
@@ -107,39 +103,50 @@ def run(
         result = sierra.create_error_result("Missing mandatory parameter: domain")
         sierra.respond(result)
         return
-    
-    
+
     # Collect subdomains from all sources
     all_subdomains: set[str] = set()
-    
+
     # CRT.SH
     crtsh_subs = check_crtsh(domain)
     all_subdomains.update(crtsh_subs)
-    
+
     # HackerTarget
     ht_subs = check_hackertarget(domain)
     all_subdomains.update(ht_subs)
-    
+
     # Optional bruteforce
     if wordlist:
         common_names = [
-            "www", "mail", "remote", "blog", "webmail", "server",
-            "ns1", "ns2", "smtp", "secure", "vpn", "admin",
-            "portal", "ftp", "api", "dev", "staging", "test"
+            "www",
+            "mail",
+            "remote",
+            "blog",
+            "webmail",
+            "server",
+            "ns1",
+            "ns2",
+            "smtp",
+            "secure",
+            "vpn",
+            "admin",
+            "portal",
+            "ftp",
+            "api",
+            "dev",
+            "staging",
+            "test",
         ]
         brute_subs = bruteforce_common(domain, common_names)
         all_subdomains.update(brute_subs)
-    
+
     # Build result table
     if all_subdomains:
         rows = [[subdomain] for subdomain in sorted(all_subdomains)]
-        result = sierra.Table(
-            headers=["Subdomain"],
-            rows=rows
-        )
+        result = sierra.Table(headers=["Subdomain"], rows=rows)
     else:
         result = sierra.create_error_result(f"No subdomains found for {domain}")
-    
+
     sierra.respond(result)
 
 

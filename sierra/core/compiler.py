@@ -4,6 +4,7 @@ import typing
 
 import sierra.core.base as sierra_core_base
 import sierra.internal.errors as sierra_internal_errors
+import sierra.invoker as sierra_invoker
 
 if typing.TYPE_CHECKING:
     import pathlib
@@ -77,7 +78,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         stripped: str = text
         if stripped.startswith('"') and stripped.endswith('"'):
             stripped = stripped[1:-1]
-        
+
         # Only quote if there are spaces
         if " " in stripped:
             return f'"{stripped}"'
@@ -87,9 +88,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         """Generate and set the CLI command string for each registered invoker."""
         self.client.logger.log("Compile: Generating invoker commands", "debug")
         for invoker in self.client.invokers:
-            command = self.client.builder.generate_command(
-                invoker=invoker
-            )
+            command = self.client.builder.generate_command(invoker=invoker)
             self.client.logger.log(
                 f"Compile: Generated command for invoker {invoker.name}: {command}",
                 "debug",
@@ -119,14 +118,15 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         Construct a YAML configuration string for all registered invokers
         without relying on external YAML libraries.
 
+        Supports the full Options list format (``MANDATORY``, ``PRIMARY``),
+        the ``IMAGE`` parameter type, and the ``V2`` streaming protocol.
+
         Returns
         -------
         str
             YAML-formatted configuration.
         """
-        self.client.logger.log(
-            "Compile: Generating YAML configuration", "debug"
-        )
+        self.client.logger.log("Compile: Generating YAML configuration", "debug")
         env = self.client.environment
         invokers_dir = str(env.invokers_path)
         lines: list[str] = []
@@ -140,31 +140,58 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
             lines.append(f"  - Name: {inv.name}")
             desc = inv.description or ""
             lines.append(f"    Description: {desc}")
+            if getattr(inv, "protocol", "V1") == "V2":
+                lines.append("    Protocol: V2")
             lines.append("    Params:")
             for param in inv.params:
                 name = param.get("Name")
                 pdesc = param.get("Description") or ""
                 lines.append(f"      - Name: {name}")
                 lines.append(f"        Description: {pdesc}")
-                
+
                 type_obj = param.get("Type")
-                # Check for Path type (either class or string representation)
-                is_file = False
-                if isinstance(type_obj, type):
-                    if type_obj.__name__ == "Path" or type_obj.__module__ == "pathlib":
-                        is_file = True
-                elif str(type_obj) == "Path" or "pathlib.Path" in str(type_obj):
-                    is_file = True
-                
-                if is_file:
+                # Use InvokerScript helpers for consistent type detection
+                if sierra_invoker.InvokerScript._is_image_type(type_obj):
+                    lines.append("        Type: IMAGE")
+                elif sierra_invoker.InvokerScript._is_path_type(type_obj):
                     lines.append("        Type: FILE")
                 else:
                     lines.append("        Type: STRING")
-                    
-                if param.get("Options") == "MANDATORY":
-                    lines.append("        Options:")
-                    lines.append("          - MANDATORY")
-            
+
+                # Options is now a list of flags (MANDATORY, PRIMARY)
+                options = param.get("Options")
+                if options:
+                    # Support both legacy string format and new list format
+                    if isinstance(options, str):
+                        option_flags = [options]
+                    elif isinstance(options, list):
+                        option_flags = options
+                    else:
+                        option_flags = []
+
+                    if option_flags:
+                        lines.append("        Options:")
+                        for flag in option_flags:
+                            lines.append(f"          - {flag}")
+
+                min_val = param.get("MinValue")
+                if min_val is not None:
+                    lines.append(f"        MinValue: {min_val}")
+
+                max_val = param.get("MaxValue")
+                if max_val is not None:
+                    lines.append(f"        MaxValue: {max_val}")
+
+                choices_val = param.get("Choices")
+                if choices_val is not None:
+                    lines.append("        Choices:")
+                    for c in choices_val:
+                        lines.append(f"          - {c}")
+
+                pattern_val = param.get("Pattern")
+                if pattern_val is not None:
+                    lines.append(f"        Pattern: '{pattern_val}'")
+
             lines.append(f"    Command: >{inv.command}")
 
         yaml_str = "\n".join(lines)
@@ -185,47 +212,35 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         list of str
             Combined, deduplicated, and sorted list retaining highest package versions.
         """
-        self.client.logger.log(
-            "Compile: Merging and deduplicating package lists", "debug"
-        )
-        versioned_pattern = re.compile(
-            r"^(?P<name>[a-zA-Z0-9_\-]+)==(?P<version>[0-9\.]+)$"
-        )
+        self.client.logger.log("Compile: Merging and deduplicating package lists", "debug")
+        versioned_pattern = re.compile(r"^(?P<name>[a-zA-Z0-9_\-]+)==(?P<version>[0-9\.]+)$")
 
         latest_packages: dict[str, str] = {}
         plain_strings: set[str] = set()
 
         self.client.logger.log("Compile: Iterating over input lists", "debug")
         for sublist in lists:
-            self.client.logger.log(
-                f"Compile: Processing sublist: {sublist}", "debug"
-            )
+            self.client.logger.log(f"Compile: Processing sublist: {sublist}", "debug")
             for item in sublist:
                 match = versioned_pattern.match(item)
                 if match:
-                    self.client.logger.log(
-                        f"Compile: Found versioned item: {item}", "debug"
-                    )
+                    self.client.logger.log(f"Compile: Found versioned item: {item}", "debug")
                     name = match.group("name")
                     version = match.group("version")
                     existing = latest_packages.get(name)
-                    if existing is None or tuple(
-                        map(int, version.split("."))
-                    ) > tuple(map(int, existing.split("."))):
+                    if existing is None or tuple(map(int, version.split("."))) > tuple(
+                        map(int, existing.split("."))
+                    ):
                         self.client.logger.log(
                             f"Compile: Updating latest version for {name} to {version}",
                             "debug",
                         )
                         latest_packages[name] = version
                 else:
-                    self.client.logger.log(
-                        f"Compile: Found plain string: {item}", "debug"
-                    )
+                    self.client.logger.log(f"Compile: Found plain string: {item}", "debug")
                     plain_strings.add(item)
 
-        self.client.logger.log(
-            "Compile: Merging plain strings and latest packages", "debug"
-        )
+        self.client.logger.log("Compile: Merging plain strings and latest packages", "debug")
         result: set[str] = set(plain_strings)
         for name, version in latest_packages.items():
             result.add(f"{name}=={version}")
@@ -247,35 +262,31 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         # 3. Generate YAML
         yaml_content = self.make_invoker_yaml()
         config_path = self.client.environment.config_path / "config.yaml"
+        invoker_yaml_path = self.client.environment.config_path / "invoker.yaml"
         self.client.logger.log(
-            f"Compile: Writing config.yaml to: {config_path}", "info"
+            f"Compile: Writing config.yaml to: {config_path} and invoker.yaml to: {invoker_yaml_path}",
+            "info",
         )
         config_path.parent.mkdir(parents=True, exist_ok=True)
         with config_path.open("w", encoding="utf-8") as f:
             f.write(yaml_content)
+        with invoker_yaml_path.open("w", encoding="utf-8") as f:
+            f.write(yaml_content)
         pip_path: pathlib.Path = self.client.environment._get_venv_executable(  # type: ignore
             "pip"
         )
-        python_path: pathlib.Path = (
-            self.client.environment._get_venv_executable(  # type: ignore
-                "python"
-            )
+        python_path: pathlib.Path = self.client.environment._get_venv_executable(  # type: ignore
+            "python"
         )
         self.client.logger.log(f"Pip executable path: {pip_path}", "debug")
         if not pip_path.exists():
-            self.client.logger.log(
-                "Pip not found in virtual environment", "error"
-            )
+            self.client.logger.log("Pip not found in virtual environment", "error")
             raise sierra_internal_errors.SierraExecutionError(
                 "pip not found in virtual environment."
             )
-        self.client.logger.log(
-            f"Python executable path: {python_path}", "debug"
-        )
+        self.client.logger.log(f"Python executable path: {python_path}", "debug")
         if not python_path.exists():
-            self.client.logger.log(
-                "Python not found in virtual environment", "error"
-            )
+            self.client.logger.log("Python not found in virtual environment", "error")
             raise sierra_internal_errors.SierraExecutionError(
                 "python not found in virtual environment."
             )
@@ -283,15 +294,11 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
         list_of_requirements: list[list[str]] = []
         for invoker in self.client.invokers:
             list_of_requirements.append(invoker.requirements)
-        self.client.logger.log(
-            "Merging and deduplicating requirements", "debug"
-        )
+        self.client.logger.log("Merging and deduplicating requirements", "debug")
         reqs = self.merge_deduplicate_sorted_latest(*list_of_requirements)
         # reqs.append("sierra-dev")
         cmd = [*([str(python_path), str(pip_path), "install"]), *reqs]
-        self.client.logger.log(
-            f"Installing dependencies with command: {' '.join(cmd)}", "debug"
-        )
+        self.client.logger.log(f"Installing dependencies with command: {' '.join(cmd)}", "debug")
         if reqs:
             try:
                 subprocess.run(
@@ -299,9 +306,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
                     check=True,
                     capture_output=True,
                 )
-                self.client.logger.log(
-                    "Dependencies installed successfully", "info"
-                )
+                self.client.logger.log("Dependencies installed successfully", "info")
             except subprocess.CalledProcessError as error:
                 self.client.logger.log(
                     f"Error during dependency installation: {error.stderr.decode('utf-8')}",
@@ -309,7 +314,7 @@ class SierraCompiler(sierra_core_base.SierraCoreObject):
                 )
                 raise sierra_internal_errors.SierraExecutionError(
                     f"Failed to install dependencies: {error.stderr.decode('utf-8')}"
-                )
+                ) from error
         else:
             self.client.logger.log("No dependencies to install", "info")
         self.client.logger.log("Compile: Completed process", "info")

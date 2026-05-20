@@ -21,12 +21,8 @@ def extract_info(number: str) -> dict[str, str]:
     info["International"] = phonenumbers.format_number(
         parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL
     )
-    info["E.164"] = phonenumbers.format_number(
-        parsed, phonenumbers.PhoneNumberFormat.E164
-    )
-    info["National"] = phonenumbers.format_number(
-        parsed, phonenumbers.PhoneNumberFormat.NATIONAL
-    )
+    info["E.164"] = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)
+    info["National"] = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.NATIONAL)
     info["Country Code"] = str(parsed.country_code)
     info["Region"] = phonenumbers.region_code_for_number(parsed) or "Unknown"
     info["Valid"] = str(phonenumbers.is_valid_number(parsed))

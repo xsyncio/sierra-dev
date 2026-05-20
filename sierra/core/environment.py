@@ -59,9 +59,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         self.scripts_path: pathlib.Path = self.config_path / "scripts"
         self.client.logger.log(f"Scripts path {self.scripts_path}", "debug")
         self.sierra_env_path: pathlib.Path = self.config_path
-        self.client.logger.log(
-            f"Sierra env path {self.sierra_env_path}", "debug"
-        )
+        self.client.logger.log(f"Sierra env path {self.sierra_env_path}", "debug")
         self.invokers_path: pathlib.Path = self.sierra_env_path / "invokers"
         self.client.logger.log(f"Invokers path {self.invokers_path}", "debug")
         self.os_type: str = platform.system().lower()
@@ -78,9 +76,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         """
         self.client.logger.log("Initializing environment", "info")
         if self.config_path.exists():
-            self.client.logger.log(
-                "Config path exists, skipping creation", "warning"
-            )
+            self.client.logger.log("Config path exists, skipping creation", "warning")
         else:
             self.client.logger.log("Creating config directory", "debug")
             self.config_path.mkdir(parents=True, exist_ok=False)
@@ -88,9 +84,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         self.client.logger.log("Creating scripts directory", "debug")
         self._create_scripts_dir()
 
-        self.client.logger.log(
-            "Creating sierra environment directories", "debug"
-        )
+        self.client.logger.log("Creating sierra environment directories", "debug")
         self._create_sierra_env_dir()
 
         self.client.logger.log("Creating virtualenv", "debug")
@@ -111,18 +105,15 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
             self.client.logger.log("Scripts directory created", "debug")
             self.client.logger.log("Writing source file", "debug")
             (self.config_path / "config.yaml").touch(exist_ok=True)
+            (self.config_path / "invoker.yaml").touch(exist_ok=True)
             with (self.config_path / "source").open("w") as source_file:
-                source_file.write(
-                    "https://api.github.com/repos/xsyncio/sierra-source/contents\n"
-                )
+                source_file.write("https://api.github.com/repos/xsyncio/sierra-source/contents\n")
             self.client.logger.log("Source file written", "debug")
         except Exception as error:
-            self.client.logger.log(
-                f"Error creating scripts directory: {error}", "error"
-            )
+            self.client.logger.log(f"Error creating scripts directory: {error}", "error")
             raise sierra_internal_errors.SierraExecutionError(
                 f"Failed to create scripts directory: {error}"
-            )
+            ) from error
 
     def _create_sierra_env_dir(self) -> None:
         """
@@ -133,14 +124,10 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         If the directory does not exist, create it and its subdirectories.
         If an exception occurs, log the error and raise a SierraExecutionError.
         """
-        self.client.logger.log(
-            "Creating sierra environment directory", "debug"
-        )
+        self.client.logger.log("Creating sierra environment directory", "debug")
         try:
             self.sierra_env_path.mkdir(parents=False, exist_ok=True)
-            self.client.logger.log(
-                "Sierra environment directory created", "debug"
-            )
+            self.client.logger.log("Sierra environment directory created", "debug")
             self.invokers_path.mkdir(parents=False, exist_ok=True)
             self.client.logger.log("Invokers directory created", "debug")
         except Exception as error:
@@ -149,8 +136,8 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
                 "error",
             )
             raise sierra_internal_errors.SierraExecutionError(
-                "Failed to create sierra environment directory: %s" % error
-            )
+                f"Failed to create sierra environment directory: {error}"
+            ) from error
 
     def _create_virtualenv(self) -> None:
         """
@@ -171,13 +158,12 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
             self.client.logger.log("Virtualenv created", "debug")
         except subprocess.CalledProcessError as error:
             self.client.logger.log(
-                "Error creating virtualenv: %s" % error.stderr.decode("utf-8"),
+                "Error creating virtualenv: {}".format(error.stderr.decode("utf-8")),
                 "error",
             )
             raise sierra_internal_errors.SierraExecutionError(
-                "Failed to create virtualenv: %s"
-                % error.stderr.decode("utf-8")
-            )
+                "Failed to create virtualenv: {}".format(error.stderr.decode("utf-8"))
+            ) from error
 
     def destroy(self) -> None:
         """
@@ -192,21 +178,15 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         """
         self.client.logger.log("destroy: Removing environment", "info")
         if self.config_path.exists():
-            self.client.logger.log(
-                "destroy: Environment directory exists", "debug"
-            )
+            self.client.logger.log("destroy: Environment directory exists", "debug")
             try:
                 shutil.rmtree(self.config_path)
                 self.client.logger.log("destroy: Environment removed", "debug")
             except OSError as error:
-                self.client.logger.log(
-                    "destroy: Error removing environment", "error"
-                )
+                self.client.logger.log("destroy: Error removing environment", "error")
                 raise error
         else:
-            self.client.logger.log(
-                "destroy: Environment directory does not exist", "warning"
-            )
+            self.client.logger.log("destroy: Environment directory does not exist", "warning")
 
     def exists(self) -> bool:
         """
@@ -219,10 +199,10 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         """
         self.client.logger.log("exists: Checking directory existence", "debug")
         result = self.config_path.exists()
-        self.client.logger.log("exists: Result: %s" % result, "debug")
+        self.client.logger.log(f"exists: Result: {result}", "debug")
         return result
 
-    def list_contents(self) -> typing.List[str]:
+    def list_contents(self) -> list[str]:
         """
         List the contents of the environment configuration directory.
 
@@ -236,26 +216,18 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         SierraPathError
             If the configuration directory does not exist.
         """
-        self.client.logger.log(
-            "list_contents: Listing config directory contents", "info"
-        )
+        self.client.logger.log("list_contents: Listing config directory contents", "info")
         if not self.config_path.exists():
             self.client.logger.log("list_contents: Path not found", "error")
             raise sierra_internal_errors.SierraPathError(
                 f"Cannot list contents of non-existent directory: {self.config_path}"
             )
-        self.client.logger.log(
-            "list_contents: Iterating over directory entries", "debug"
-        )
+        self.client.logger.log("list_contents: Iterating over directory entries", "debug")
         contents = [entry.name for entry in self.config_path.iterdir()]
-        self.client.logger.log(
-            f"list_contents: Found entries {contents}", "debug"
-        )
+        self.client.logger.log(f"list_contents: Found entries {contents}", "debug")
         return contents
 
-    def install_dependencies(
-        self, requirements_file: typing.Optional[pathlib.Path] = None
-    ) -> None:
+    def install_dependencies(self, requirements_file: pathlib.Path | None = None) -> None:
         """
         Install dependencies from a requirements file into the virtual environment.
 
@@ -273,17 +245,13 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
         """
         self.client.logger.log("Starting dependency installation", "info")
         if requirements_file is None or not requirements_file.exists():
-            self.client.logger.log(
-                "No requirements file found, skipping installation", "warning"
-            )
+            self.client.logger.log("No requirements file found, skipping installation", "warning")
             return
 
         pip_path: pathlib.Path = self._get_venv_executable("pip")
         self.client.logger.log(f"Pip executable path: {pip_path}", "debug")
         if not pip_path.exists():
-            self.client.logger.log(
-                "Pip not found in virtual environment", "error"
-            )
+            self.client.logger.log("Pip not found in virtual environment", "error")
             raise sierra_internal_errors.SierraExecutionError(
                 "pip not found in virtual environment."
             )
@@ -294,9 +262,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
                 check=True,
                 capture_output=True,
             )
-            self.client.logger.log(
-                "Dependencies installed successfully", "info"
-            )
+            self.client.logger.log("Dependencies installed successfully", "info")
         except subprocess.CalledProcessError as error:
             self.client.logger.log(
                 f"Error during dependency installation: {error.stderr.decode('utf-8')}",
@@ -304,7 +270,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
             )
             raise sierra_internal_errors.SierraExecutionError(
                 f"Failed to install dependencies: {error.stderr.decode('utf-8')}"
-            )
+            ) from error
 
     def activate_instructions(self) -> str:
         """
@@ -326,9 +292,7 @@ class SierraDevelopmentEnvironment(sierra_core_base.SierraCoreObject):
                 f"{self.venv_path}\\Scripts\\activate.bat (CMD)\n"
                 f"{self.venv_path}\\Scripts\\Activate.ps1 (PowerShell)"
             )
-            self.client.logger.log(
-                f"Windows activation command: {cmd}", "debug"
-            )
+            self.client.logger.log(f"Windows activation command: {cmd}", "debug")
             return cmd
 
         cmd = f"source {self.venv_path}/bin/activate"

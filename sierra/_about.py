@@ -2,7 +2,7 @@
 Sierra Dev version and metadata.
 """
 
-__version__ = "2.0.0"
+__version__ = "2.2.0"
 __title__ = "Sierra Dev"
 __description__ = "Modern framework for building and managing investigation invoker scripts for the Sierra platform"
 __url__ = "https://github.com/xsyncio/sierra-dev"
@@ -13,7 +13,7 @@ __copyright__ = "Copyright 2024 Xsyncio"
 
 # Version info
 VERSION_MAJOR = 2
-VERSION_MINOR = 0
+VERSION_MINOR = 2
 VERSION_PATCH = 0
 VERSION_INFO = (VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH)
 

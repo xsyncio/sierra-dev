@@ -42,39 +42,26 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         str
             The constructed command string.
         """
-        self.client.logger.log(
-            f"Starting command generation for {invoker.name}", "debug"
-        )
-        python_path: "pathlib.Path" = (
+        self.client.logger.log(f"Starting command generation for {invoker.name}", "debug")
+        python_path: pathlib.Path = (
             self.client.environment._get_venv_executable("python")  # type: ignore
         )
-        self.client.logger.log(
-            f"Path to virtualenv python interpreter: {python_path}", "debug"
-        )
-        script_path = (
-            self.client.environment.invokers_path / f"{invoker.name}.py"
-        )
-        self.client.logger.log(
-            f"Path to invoker script: {script_path}", "debug"
-        )
+        self.client.logger.log(f"Path to virtualenv python interpreter: {python_path}", "debug")
+        script_path = self.client.environment.invokers_path / f"{invoker.name}.py"
+        self.client.logger.log(f"Path to invoker script: {script_path}", "debug")
         # Create multiline YAML format using folded scalar (>)
         # This provides better readability while still being a single-line command when executed
-        command_parts = [
-            f'\n      "{str(python_path)}"',
-            f'"{str(script_path)}"'
-        ]
+        command_parts = [f'\n      "{str(python_path)}"', f'"{str(script_path)}"']
         for param in invoker.params:
-            param_name = param.get('Name')
+            param_name = param.get("Name")
             command_parts.append(f"--{param_name} {{{param_name}}}")
-            
+
         # Join with newlines and proper indentation for YAML folded scalar format
         command = "\n      ".join(command_parts)
         self.client.logger.log(f"Generated command: >{command}", "debug")
         return command
 
-    def extract_imports(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> list[str]:
+    def extract_imports(self, invoker: "sierra_invoker.InvokerScript") -> list[str]:
         """
         Extract all import statements from an invoker script.
 
@@ -100,9 +87,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         >>> builder.extract_imports(invoker)
         ['import os', 'from sys import path']
         """
-        self.client.logger.log(
-            f"Opening file for invoker: {invoker.filename}", "debug"
-        )
+        self.client.logger.log(f"Opening file for invoker: {invoker.filename}", "debug")
         with open(invoker.filename, encoding="utf-8") as f:
             src = f.read()
 
@@ -118,9 +103,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
                     if alias.asname:
                         stmt += f" as {alias.asname}"
                     imports.append(stmt)
-                    self.client.logger.log(
-                        f"Found import statement: {stmt}", "debug"
-                    )
+                    self.client.logger.log(f"Found import statement: {stmt}", "debug")
             elif isinstance(node, ast.ImportFrom):
                 module = node.module or ""
                 for alias in node.names:
@@ -128,18 +111,12 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
                     if alias.asname:
                         stmt += f" as {alias.asname}"
                     imports.append(stmt)
-                    self.client.logger.log(
-                        f"Found from-import statement: {stmt}", "debug"
-                    )
+                    self.client.logger.log(f"Found from-import statement: {stmt}", "debug")
 
-        self.client.logger.log(
-            "Completed extracting import statements", "debug"
-        )
+        self.client.logger.log("Completed extracting import statements", "debug")
         return imports
 
-    def get_filtered_imports(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> list[str]:
+    def get_filtered_imports(self, invoker: "sierra_invoker.InvokerScript") -> list[str]:
         """
         Retrieve all import statements excluding those from the sierra namespace.
 
@@ -160,17 +137,11 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         """
         self.client.logger.log("Extracting all import statements", "debug")
         all_imports = self.extract_imports(invoker)
-        self.client.logger.log(
-            "Filtering out sierra namespace imports", "debug"
-        )
+        self.client.logger.log("Filtering out sierra namespace imports", "debug")
         filtered_imports = [
-            imp
-            for imp in all_imports
-            if not imp.startswith(("import sierra", "from sierra"))
+            imp for imp in all_imports if not imp.startswith(("import sierra", "from sierra"))
         ]
-        self.client.logger.log(
-            f"Filtered imports: {filtered_imports}", "debug"
-        )
+        self.client.logger.log(f"Filtered imports: {filtered_imports}", "debug")
         return filtered_imports
 
     def get_required_sierra_imports(self) -> list[str]:
@@ -182,9 +153,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             "import json",
         ]
 
-    def remove_sierra_imports(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> str:
+    def remove_sierra_imports(self, invoker: "sierra_invoker.InvokerScript") -> str:
         """
         Strip out all imports from the 'sierra' namespace in a script.
 
@@ -198,15 +167,11 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         str
             The source code of the invoker with all sierra imports removed.
         """
-        self.client.logger.log(
-            f"Removing sierra imports from {invoker.filename}", "debug"
-        )
+        self.client.logger.log(f"Removing sierra imports from {invoker.filename}", "debug")
 
         class _Remover(ast.NodeTransformer):
             def visit_Import(self, node: ast.Import) -> typing.Any:
-                node.names = [
-                    a for a in node.names if not a.name.startswith("sierra")
-                ]
+                node.names = [a for a in node.names if not a.name.startswith("sierra")]
                 return node if node.names else None
 
             def visit_ImportFrom(self, node: ast.ImportFrom) -> typing.Any:
@@ -216,26 +181,16 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
 
         with open(invoker.filename, encoding="utf-8") as f:
             src = f.read()
-        self.client.logger.log(
-            f"Read source code from {invoker.filename}", "debug"
-        )
+        self.client.logger.log(f"Read source code from {invoker.filename}", "debug")
         tree = ast.parse(src)
-        self.client.logger.log(
-            "Parsed source code into Abstract Syntax Tree", "debug"
-        )
+        self.client.logger.log("Parsed source code into Abstract Syntax Tree", "debug")
         cleaned = _Remover().visit(tree)
-        self.client.logger.log(
-            "Removed sierra imports from Abstract Syntax Tree", "debug"
-        )
+        self.client.logger.log("Removed sierra imports from Abstract Syntax Tree", "debug")
         ast.fix_missing_locations(cleaned)
-        self.client.logger.log(
-            "Fixed missing locations in Abstract Syntax Tree", "debug"
-        )
+        self.client.logger.log("Fixed missing locations in Abstract Syntax Tree", "debug")
         return ast.unparse(cleaned)
 
-    def get_deps_source(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> list[str]:
+    def get_deps_source(self, invoker: "sierra_invoker.InvokerScript") -> list[str]:
         """
         Extract the source code for each dependency function and remove
         any decorators.
@@ -251,9 +206,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             A list of source code strings for each dependency function
             without decorators.
         """
-        self.client.logger.log(
-            "Opening invoker file to read source code", "debug"
-        )
+        self.client.logger.log("Opening invoker file to read source code", "debug")
         with open(invoker.filename, encoding="utf-8") as f:
             src = f.read()
 
@@ -262,26 +215,18 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
 
         names = {dep.__name__ for dep in invoker.deps}
         sources: list[str] = []
-        self.client.logger.log(
-            "Iterating over AST nodes to find dependency functions", "debug"
-        )
+        self.client.logger.log("Iterating over AST nodes to find dependency functions", "debug")
         for node in tree.body:
             if isinstance(node, ast.FunctionDef) and node.name in names:
-                self.client.logger.log(
-                    f"Found dependency function: {node.name}", "debug"
-                )
+                self.client.logger.log(f"Found dependency function: {node.name}", "debug")
                 node.decorator_list = []
                 ast.fix_missing_locations(node)
                 sources.append(ast.unparse(node))
 
-        self.client.logger.log(
-            "Completed extracting and cleaning dependency sources", "debug"
-        )
+        self.client.logger.log("Completed extracting and cleaning dependency sources", "debug")
         return sources
 
-    def get_entry_point_source(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> str:
+    def get_entry_point_source(self, invoker: "sierra_invoker.InvokerScript") -> str:
         """
         Extract and rebuild the entry point function with simple type annotations.
 
@@ -295,42 +240,34 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         str
             The source code of the entry point function with simple type annotations.
         """
-        self.client.logger.log(
-            "Retrieving source code of entry point", "debug"
-        )
+        self.client.logger.log("Retrieving source code of entry point", "debug")
         src = inspect.getsource(invoker._entry_point)  # type: ignore
         self.client.logger.log("Parsing source code into AST", "debug")
         tree = ast.parse(src)
 
         self.client.logger.log("Finding entry point function in AST", "debug")
-        fn_node = next(n for n in tree.body if isinstance(n, ast.FunctionDef))
+        fn_node = next(n for n in tree.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)))
         self.client.logger.log("Found entry point function", "debug")
 
         self.client.logger.log("Removing decorators from entry point", "debug")
         fn_node.decorator_list = []
 
-        self.client.logger.log(
-            "Rebuilding entry point signature with plain types", "debug"
-        )
+        self.client.logger.log("Rebuilding entry point signature with plain types", "debug")
         new_args: list[ast.arg] = []
         defaults: list[ast.expr] = []
         for p in invoker.params:
-            self.client.logger.log(
-                f"Processing parameter: {p.get('Name')}", "debug"
-            )
+            self.client.logger.log(f"Processing parameter: {p.get('Name')}", "debug")
             # Retrieve metadata via dict-style access
             name = p.get("Name")
             type_obj = p.get("Type")
             options = p.get("Options")
 
             # Determine type annotation string
-            type_name = (
-                type_obj.__name__
-                if isinstance(type_obj, type)
-                else str(type_obj)
-            )
+            type_name = type_obj.__name__ if isinstance(type_obj, type) else str(type_obj)
             if type_name == "Path":
                 type_name = "pathlib.Path"
+            elif type_name == "Image":
+                type_name = "pathlib.Path"  # Image resolves to a path at runtime
 
             # Create a simple annotated argument
             arg = ast.arg(
@@ -341,7 +278,11 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             new_args.append(arg)
 
             # Determine default values for non-mandatory params
-            if options != "MANDATORY":
+            # Options is now a list — check membership
+            is_mandatory = (
+                isinstance(options, list) and "MANDATORY" in options
+            ) or options == "MANDATORY"
+            if not is_mandatory:
                 self.client.logger.log(
                     f"Setting default for non-mandatory parameter: {name}",
                     "debug",
@@ -351,23 +292,17 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
                 else:
                     defaults.append(ast.Constant(value=None))
 
-        self.client.logger.log(
-            "Setting arguments and defaults for entry point", "debug"
-        )
+        self.client.logger.log("Setting arguments and defaults for entry point", "debug")
         fn_node.args.args = new_args
         fn_node.args.defaults = defaults
 
         # Fix locations and unparse back to source
         self.client.logger.log("Fixing locations for entry point", "debug")
         ast.fix_missing_locations(fn_node)
-        self.client.logger.log(
-            "Unparsing entry point back to source code", "debug"
-        )
+        self.client.logger.log("Unparsing entry point back to source code", "debug")
         return ast.unparse(fn_node)
 
-    def get_parameter_type_string(
-        self, param: sierra_abc_sierra.SierraInvokerParam
-    ) -> str:
+    def get_parameter_type_string(self, param: sierra_abc_sierra.SierraInvokerParam) -> str:
         """
         Get the proper type string for a parameter including Optional wrapper.
 
@@ -381,32 +316,25 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         str
             The type string for the parameter.
         """
-        self.client.logger.log(
-            f"Getting type string for parameter: {param.get('Name')}", "debug"
-        )
+        self.client.logger.log(f"Getting type string for parameter: {param.get('Name')}", "debug")
         type_obj = param.get("Type")
-        name = (
-            type_obj.__name__ if isinstance(type_obj, type) else str(type_obj)
-        )
+        name = type_obj.__name__ if isinstance(type_obj, type) else str(type_obj)
         if name == "Path":
             name = "pathlib.Path"
+        elif name == "Image":
+            name = "pathlib.Path"  # Image resolves to a path at runtime
         required = param.get("Options") == "MANDATORY"
-        self.client.logger.log(
-            f"Checking if parameter is mandatory: {required}", "debug"
-        )
+        if not required:
+            options = param.get("Options")
+            required = isinstance(options, list) and "MANDATORY" in options
+        self.client.logger.log(f"Checking if parameter is mandatory: {required}", "debug")
         if required:
-            self.client.logger.log(
-                "Parameter is mandatory, returning type", "debug"
-            )
+            self.client.logger.log("Parameter is mandatory, returning type", "debug")
             return f"{name}"
-        self.client.logger.log(
-            "Parameter is not mandatory, returning Optional type", "debug"
-        )
+        self.client.logger.log("Parameter is not mandatory, returning Optional type", "debug")
         return f"typing.Optional[{name}]"
 
-    def get_arg_type_checking(
-        self, param: sierra_abc_sierra.SierraInvokerParam
-    ) -> str:
+    def get_arg_type_checking(self, param: sierra_abc_sierra.SierraInvokerParam) -> str:
         """
         Generate runtime presence and type checks for a single parameter.
 
@@ -426,40 +354,70 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         )
         name = param.get("Name")
         type_obj = param.get("Type")
-        type_name = (
-            type_obj.__name__ if isinstance(type_obj, type) else str(type_obj)
-        )
+        type_name = type_obj.__name__ if isinstance(type_obj, type) else str(type_obj)
         if type_name == "Path":
             type_name = "pathlib.Path"
-        required = param.get("Options") == "MANDATORY"
+        elif type_name == "Image":
+            type_name = "pathlib.Path"  # Image resolves to a path at runtime
+        options = param.get("Options")
+        required = (isinstance(options, list) and "MANDATORY" in options) or options == "MANDATORY"
         lines: list[str] = []
         if required:
-            self.client.logger.log(
-                f"Parameter {name} is mandatory, adding check", "debug"
-            )
+            self.client.logger.log(f"Parameter {name} is mandatory, adding check", "debug")
             lines.append(f"if {name} is None:")
             lines.append(
                 f"""    print(create_error_result(message=\"Missing mandatory parameter: {name}\"))"""
             )
             lines.append("    sys.exit(1)")
-        self.client.logger.log(
-            f"Adding type check for parameter: {name}", "debug"
-        )
-        lines.append(
-            f"if {name} is not None and not isinstance({name}, {type_name}):"
-        )
+        self.client.logger.log(f"Adding type check for parameter: {name}", "debug")
+        lines.append(f"if {name} is not None and not isinstance({name}, {type_name}):")
         lines.append(
             f"""    print(create_error_result(message=\"Parameter {name} must be of type {type_name}, got {{type({name}).__name__}}\"))"""
         )
         lines.append("    sys.exit(1)")
-        self.client.logger.log(
-            f"Returning type checking code for parameter: {name}", "debug"
-        )
+
+        min_val = param.get("MinValue")
+        if min_val is not None:
+            self.client.logger.log(f"Adding min_value check for parameter: {name}", "debug")
+            lines.append(f"if {name} is not None and {name} < {min_val}:")
+            lines.append(
+                f"""    print(create_error_result(message=\"Parameter {name} must be >= {min_val}, got {{{name}}}\"))"""
+            )
+            lines.append("    sys.exit(1)")
+
+        max_val = param.get("MaxValue")
+        if max_val is not None:
+            self.client.logger.log(f"Adding max_value check for parameter: {name}", "debug")
+            lines.append(f"if {name} is not None and {name} > {max_val}:")
+            lines.append(
+                f"""    print(create_error_result(message=\"Parameter {name} must be <= {max_val}, got {{{name}}}\"))"""
+            )
+            lines.append("    sys.exit(1)")
+
+        choices_val = param.get("Choices")
+        if choices_val is not None:
+            self.client.logger.log(f"Adding choices check for parameter: {name}", "debug")
+            lines.append(f"if {name} is not None and {name} not in {choices_val!r}:")
+            lines.append(
+                f"""    print(create_error_result(message=\"Parameter {name} must be one of {choices_val}, got {{{name}}}\"))"""
+            )
+            lines.append("    sys.exit(1)")
+
+        pattern_val = param.get("Pattern")
+        if pattern_val is not None:
+            self.client.logger.log(f"Adding pattern check for parameter: {name}", "debug")
+            lines.append(f"if {name} is not None:")
+            lines.append(f"    import re as _re")
+            lines.append(f"    if not _re.match({pattern_val!r}, str({name})):")
+            lines.append(
+                f"""        print(create_error_result(message=\"Parameter {name} does not match pattern '{pattern_val}', got {{{name}}}\"))"""
+            )
+            lines.append("        sys.exit(1)")
+
+        self.client.logger.log(f"Returning type checking code for parameter: {name}", "debug")
         return "\n".join(lines)
 
-    def get_sys_args_parsing(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> list[str]:
+    def get_sys_args_parsing(self, invoker: "sierra_invoker.InvokerScript") -> list[str]:
         """
         Generate sys.argv parsing with proper type conversion and validation.
 
@@ -477,7 +435,9 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         lines: list[str] = []
         lines.append("def parse_arguments():")
         lines.append("    import argparse")
-        lines.append(f"    parser = argparse.ArgumentParser(description='{invoker.description or invoker.name}')")
+        lines.append(
+            f"    parser = argparse.ArgumentParser(description='{invoker.description or invoker.name}')"
+        )
         lines.append("")
         lines.append("    # Helper to handle empty string values")
         lines.append("    def empty_to_none(value, converter=None):")
@@ -485,56 +445,83 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         lines.append("            return None")
         lines.append("        return converter(value) if converter else value")
         lines.append("")
-        
+
         for param in invoker.params:
             name = param.get("Name")
             typ = param.get("Type")
-            required = param.get("Options") == "MANDATORY"
-            
+            options = param.get("Options")
+            required = (
+                isinstance(options, list) and "MANDATORY" in options
+            ) or options == "MANDATORY"
+
             self.client.logger.log(f"Adding argument --{name}", "debug")
-            
+
             # Determine argparse type and configuration
             if typ is int:
                 if required:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, int), required=True)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, int), required=True)"
+                    )
                 else:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, int), nargs='?', const=None, default=None)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, int), nargs='?', const=None, default=None)"
+                    )
             elif typ is float:
                 if required:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, float), required=True)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, float), required=True)"
+                    )
                 else:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, float), nargs='?', const=None, default=None)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, float), nargs='?', const=None, default=None)"
+                    )
             elif typ is bool:
                 # For bool, use nargs='?' with const to handle missing values
-                bool_converter = "lambda x: x.lower() in ('true', '1', 'yes', 'on') if x and x != '' else False"
+                bool_converter = (
+                    "lambda x: x.lower() in ('true', '1', 'yes', 'on') if x and x != '' else False"
+                )
                 if required:
-                    lines.append(f"    parser.add_argument('--{name}', type={bool_converter}, required=True)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type={bool_converter}, required=True)"
+                    )
                 else:
                     # When flag is provided without value, const='' triggers False; with value, uses the value
-                    lines.append(f"    parser.add_argument('--{name}', type={bool_converter}, nargs='?', const='', default=False)")
-            elif str(typ) == "<class 'pathlib.Path'>" or getattr(typ, "__name__", "") == "Path":
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type={bool_converter}, nargs='?', const='', default=False)"
+                    )
+            elif str(typ) == "<class 'pathlib.Path'>" or getattr(typ, "__name__", "") in (
+                "Path",
+                "Image",
+            ):
+                # Both Path and Image types resolve to pathlib.Path at runtime
                 if required:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, pathlib.Path), required=True)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, pathlib.Path), required=True)"
+                    )
                 else:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, pathlib.Path), nargs='?', const=None, default=None)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x, pathlib.Path), nargs='?', const=None, default=None)"
+                    )
             else:
                 # String type
                 if required:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x), required=True)")
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x), required=True)"
+                    )
                 else:
-                    lines.append(f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x), nargs='?', const=None, default=None)")
-        
+                    lines.append(
+                        f"    parser.add_argument('--{name}', type=lambda x: empty_to_none(x), nargs='?', const=None, default=None)"
+                    )
+
         lines.append("")
         lines.append("    args = parser.parse_args()")
         names = [p.get("Name") for p in invoker.params]
         lines.append(f"    return {', '.join([f'args.{n}' for n in names])}")
-        
+
         self.client.logger.log("Completed generating argument parsing", "debug")
         return lines
 
-    def create_type_safe_main(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> str:
+    def create_type_safe_main(self, invoker: "sierra_invoker.InvokerScript") -> str:
         """
         Build a type-safe __main__ guard with comprehensive error handling.
 
@@ -551,6 +538,11 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         self.client.logger.log("Creating type-safe __main__ guard", "debug")
         lines: list[str] = []
         lines.append("""if __name__ == "__main__":""")
+        if getattr(invoker, "protocol", "V1") == "V2":
+            lines.append("    # Redirect stdout to stderr to protect streaming protocol")
+            lines.append("    import sys as _sys")
+            lines.append("    _sys.stdout = StdoutIsolation(_sys.stderr)")
+            lines.append("")
         self.client.logger.log("Adding main guard", "debug")
         lines.append("    # Parse arguments")
         self.client.logger.log("Parsing arguments", "debug")
@@ -559,13 +551,17 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
             lines.append(f"    {', '.join(names)} = parse_arguments()")
         else:
             lines.append("    parse_arguments()")
-        
+
         # Add default value assignment for optional parameters
         self.client.logger.log("Applying default values for None parameters", "debug")
         for p in invoker.params:
-            if p.get("Options") != "MANDATORY":
+            options = p.get("Options")
+            is_mandatory = (
+                isinstance(options, list) and "MANDATORY" in options
+            ) or options == "MANDATORY"
+            if not is_mandatory:
                 name = p.get("Name")
-                typ = p.get("Type")
+                p.get("Type")
                 # Get the default from function signature
                 sig = inspect.signature(invoker._entry_point)
                 param_default = sig.parameters[name].default
@@ -576,7 +572,7 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
                         default_repr = repr(param_default)
                     lines.append(f"    if {name} is None:")
                     lines.append(f"        {name} = {default_repr}")
-        
+
         self.client.logger.log("Validating parameters", "debug")
         lines.append("    # Validate parameters")
         for p in invoker.params:
@@ -588,22 +584,28 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         entry = invoker._entry_point.__name__  # type: ignore
         args = ", ".join(names)
         lines.append("    try:")
-        lines.append(f"        result = {entry}({args})")
+        if inspect.iscoroutinefunction(invoker._entry_point):
+            lines.append(f"        result = asyncio.run({entry}({args}))")
+        else:
+            lines.append(f"        result = {entry}({args})")
         lines.append("    except Exception as e:")
         self.client.logger.log("Handling exceptions", "debug")
-        lines.append(
-            """        print(create_error_result(message=f\"Execution error: {str(e)}\"))"""
-        )
+        if getattr(invoker, "protocol", "V1") == "V2":
+            lines.append(
+                """        print(json.dumps({"version": 2, "type": "error", "message": f"Execution error: {str(e)}"}), flush=True)"""
+            )
+        else:
+            lines.append(
+                """        print(create_error_result(message=f\"Execution error: {str(e)}\"))"""
+            )
         lines.append("        sys.exit(1)")
-        self.client.logger.log(
-            "Completed creating type-safe __main__ guard", "debug"
-        )
+        self.client.logger.log("Completed creating type-safe __main__ guard", "debug")
         return "\n".join(lines)
 
     def get_standalone_helpers(self) -> str:
         """
         Generate standalone helper functions for result building.
-        
+
         Returns
         -------
         str
@@ -611,6 +613,9 @@ class SierraInvokerBuilder(sierra_core_base.SierraCoreObject):
         """
         self.client.logger.log("Generating standalone helper functions", "debug")
         return '''# Standalone helper functions (no external dependencies)
+import sys as _sys
+_original_stdout = _sys.stdout
+
 def create_tree_result(results):
     """Create a tree-structured JSON result."""
     return json.dumps({"type": "Tree", "results": results}, indent=4)
@@ -621,23 +626,24 @@ def create_error_result(message):
 
 def respond(result):
     """Print the result to stdout."""
-    print(result)
+    _original_stdout.write(str(result) + "\n")
+    _original_stdout.flush()
 
 class Tree:
     """Builder for Tree results."""
     def __init__(self, results=None):
         self._results = results or []
-    
+
     def add(self, content):
         """Add a string item."""
         self._results.append(content)
         return self
-    
+
     def add_child(self, parent, children):
         """Add parent with children."""
         self._results.append({parent: children})
         return self
-    
+
     def __str__(self):
         """Return JSON string."""
         return json.dumps({"type": "Tree", "results": self._results}, indent=4)
@@ -648,27 +654,27 @@ class Network:
         self._origins = origins or []
         self._nodes = nodes or []
         self._edges = edges or []
-    
+
     def add_origin(self, node_id):
         """Add an origin node ID."""
         if node_id not in self._origins:
             self._origins.append(node_id)
         return self
-    
+
     def add_node(self, id, content, **kwargs):
         """Add a node to the network."""
         node = {"id": id, "content": content}
         node.update(kwargs)
         self._nodes.append(node)
         return self
-    
+
     def add_edge(self, source, target, label, **kwargs):
         """Add an edge between two nodes."""
         edge = {"source": source, "target": target, "label": label}
         edge.update(kwargs)
         self._edges.append(edge)
         return self
-    
+
     def __str__(self):
         """Return JSON string."""
         return json.dumps({
@@ -683,17 +689,17 @@ class Table:
     def __init__(self, headers=None, rows=None):
         self._headers = headers or []
         self._rows = rows or []
-    
+
     def set_headers(self, headers):
         """Set column headers."""
         self._headers = headers
         return self
-    
+
     def add_row(self, row):
         """Add a data row."""
         self._rows.append(row)
         return self
-    
+
     def __str__(self):
         """Return JSON string."""
         return json.dumps({
@@ -706,14 +712,14 @@ class Timeline:
     """Builder for Timeline results."""
     def __init__(self, events=None):
         self._events = events or []
-    
+
     def add_event(self, timestamp, description, **metadata):
         """Add a timeline event."""
         event = {"timestamp": timestamp, "description": description}
         event.update(metadata)
         self._events.append(event)
         return self
-    
+
     def __str__(self):
         """Return JSON string."""
         return json.dumps({
@@ -726,14 +732,14 @@ class Chart:
     def __init__(self, chart_type="bar", data=None):
         self._chart_type = chart_type
         self._data = data or []
-    
+
     def add_data(self, label, value, **metadata):
         """Add a data point to the chart."""
         point = {"label": label, "value": value}
         point.update(metadata)
         self._data.append(point)
         return self
-    
+
     def __str__(self):
         """Return JSON string."""
         return json.dumps({
@@ -741,6 +747,61 @@ class Chart:
             "chart_type": self._chart_type,
             "data": self._data
         }, indent=4)
+
+# Cross-platform Image parameter type (resolves to pathlib.Path)
+import os as _os
+if _os.name == "nt":
+    class Image(pathlib.WindowsPath):
+        """Represents an image parameter path in SIERRA (Windows)."""
+        pass
+else:
+    class Image(pathlib.PosixPath):
+        """Represents an image parameter path in SIERRA (Unix/macOS)."""
+        pass
+
+def emit(event_type, **kwargs):
+    """Emit a Protocol V2 streaming event."""
+    event = {"version": 2, "type": event_type}
+    event.update(kwargs)
+    filtered = {k: v for k, v in event.items() if v is not None}
+    _original_stdout.write(json.dumps(filtered) + "\n")
+    _original_stdout.flush()
+
+def emit_progress(message):
+    """Emit a Protocol V2 progress update."""
+    emit("progress", message=message)
+
+def emit_result(content, id=None, parent=None):
+    """Emit a Protocol V2 incremental graph node."""
+    emit("result", id=id, content=content, parent=parent)
+
+def emit_end(summary=None):
+    """Emit a Protocol V2 end event."""
+    emit("end", summary=summary)
+
+def emit_error(message):
+    """Emit a Protocol V2 error event."""
+    emit("error", message=message)
+
+def log_stderr(message):
+    """Write diagnostic message to stderr (invisible to SIERRA parser)."""
+    import sys as _sys
+    _sys.stderr.write(f"[SIERRA] {message}\n")
+    _sys.stderr.flush()
+
+class StdoutIsolation:
+    """Redirects standard print/write calls to stderr to isolate V2 streaming events."""
+    def __init__(self, target):
+        self.target = target
+
+    def write(self, data):
+        self.target.write(data)
+
+    def flush(self):
+        self.target.flush()
+
+    def isatty(self):
+        return self.target.isatty()
 
 # Shim for sierra namespace
 class _SierraShim:
@@ -750,9 +811,16 @@ class _SierraShim:
         self.Timeline = Timeline
         self.Chart = Chart
         self.Network = Network
+        self.Image = Image
         self.create_error_result = create_error_result
         self.create_tree_result = create_tree_result
         self.respond = respond
+        self.emit = emit
+        self.emit_progress = emit_progress
+        self.emit_result = emit_result
+        self.emit_end = emit_end
+        self.emit_error = emit_error
+        self.log_stderr = log_stderr
 
 sierra = _SierraShim()
 '''
@@ -776,10 +844,9 @@ sierra = _SierraShim()
         parts.append(self.generate_file_header(invoker))
         self.client.logger.log("Generating essential imports", "debug")
         parts.append("# Essential imports")
-        imports = (
-            self.get_required_sierra_imports()
-            + self.get_filtered_imports(invoker)
-        )
+        imports = self.get_required_sierra_imports() + self.get_filtered_imports(invoker)
+        if inspect.iscoroutinefunction(invoker._entry_point):
+            imports.append("import asyncio")
         seen: set[str] = set()
         for imp in imports:
             if imp not in seen:
@@ -796,22 +863,16 @@ sierra = _SierraShim()
         self.client.logger.log("Generating entry point", "debug")
         parts.append("# Entry point")
         parts.append(self.get_entry_point_source(invoker))
-        self.client.logger.log(
-            "Generating argument parsing and validation", "debug"
-        )
+        self.client.logger.log("Generating argument parsing and validation", "debug")
         parts.append("# Argument parsing and validation")
         parts.extend(self.get_sys_args_parsing(invoker))
         self.client.logger.log("Generating main execution", "debug")
         parts.append("# Main execution")
         parts.append(self.create_type_safe_main(invoker))
-        self.client.logger.log(
-            "Completed generating standalone script", "debug"
-        )
+        self.client.logger.log("Completed generating standalone script", "debug")
         return "\n".join(parts)
 
-    def generate_file_header(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> str:
+    def generate_file_header(self, invoker: "sierra_invoker.InvokerScript") -> str:
         """
         Generate file header with metadata.
 
@@ -832,17 +893,13 @@ sierra = _SierraShim()
             f"Generated from: {invoker.filename.as_posix()}\n",
         ]
         for param in invoker.params:
-            req = (
-                "Required"
-                if param.get("Options") == "MANDATORY"
-                else "Optional"
-            )
-            self.client.logger.log(
-                f"Adding parameter {param.get('Name')}", "debug"
-            )
-            lines.append(
-                f"- {param.get('Name')}: {self.get_parameter_type_string(param)} ({req})"
-            )
+            options = param.get("Options")
+            is_mandatory = (
+                isinstance(options, list) and "MANDATORY" in options
+            ) or options == "MANDATORY"
+            req = "Required" if is_mandatory else "Optional"
+            self.client.logger.log(f"Adding parameter {param.get('Name')}", "debug")
+            lines.append(f"- {param.get('Name')}: {self.get_parameter_type_string(param)} ({req})")
         lines.append('"""')
         self.client.logger.log("Completed generating file header", "debug")
         return "\n".join(lines)
@@ -861,22 +918,16 @@ sierra = _SierraShim()
         bool
             True if the script's syntax is valid, False if a syntax error occurs.
         """
-        self.client.logger.log(
-            "Starting syntax validation for the generated script", "debug"
-        )
+        self.client.logger.log("Starting syntax validation for the generated script", "debug")
         try:
             ast.parse(script)
             self.client.logger.log("Syntax validation passed", "info")
             return True
         except SyntaxError as e:
-            self.client.logger.log(
-                f"Syntax error in generated script: {e}", "error"
-            )
+            self.client.logger.log(f"Syntax error in generated script: {e}", "error")
             return False
 
-    def get_metadata(
-        self, invoker: "sierra_invoker.InvokerScript"
-    ) -> dict[str, typing.Any]:
+    def get_metadata(self, invoker: "sierra_invoker.InvokerScript") -> dict[str, typing.Any]:
         """
         Retrieve metadata about the invoker.
 

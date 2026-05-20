@@ -5,6 +5,14 @@ All notable changes to Sierra Dev will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-05-20
+
+### Added
+- **Async Invoker Support**: Native support for asynchronous entry points (`async def`) inside generated standalone Python CLI scripts.
+- **V2 Stdout Isolation**: Real-time protection shim that prevents standard stdout logs from polluting streaming JSON events.
+- **Concurrent Package Manager Updates**: Configured registries are synchronized in parallel using standard thread pools.
+- **Advanced Parameter Constraints Validation**: Decorators and schema options for `min_value`, `max_value`, `choices`, and regular expression `pattern` constraints compiled directly into the standalone script execution flow.
+
 ## [2.1.0] - 2024-11-26
 
 ### Added

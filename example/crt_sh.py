@@ -76,9 +76,7 @@ def run(
     Retrieves subdomains and emails by querying crt.sh and outputs a tree result for subdomains.
     """
     if domain is None:
-        result = sierra.create_error_result(
-            "Missing mandatory parameter: domain"
-        )
+        result = sierra.create_error_result("Missing mandatory parameter: domain")
     else:
         subdomains, emails = get_crtsh_records(domain)
         # Fix the type issue by creating the correct structure

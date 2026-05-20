@@ -21,9 +21,7 @@ def check_haveibeenpwned(email: str) -> list[str]:
         headers = {
             "User-Agent": "Mozilla/5.0 (compatible; OSINT-Tool/1.0)",
         }
-        url = (
-            f"https://haveibeenpwned.com/api/v3/breachedaccount/{quote(email)}"
-        )
+        url = f"https://haveibeenpwned.com/api/v3/breachedaccount/{quote(email)}"
         response = requests.get(url, headers=headers, timeout=10)
 
         if response.status_code == 200:
@@ -64,9 +62,7 @@ def search_social_mentions(query: str) -> list[dict[str, str]]:
 
     # Search for email in pastebins and leaks (using a search engine approach)
     try:
-        search_query = (
-            f'"{query}" site:pastebin.com OR site:paste.ee OR site:ghostbin.co'
-        )
+        search_query = f'"{query}" site:pastebin.com OR site:paste.ee OR site:ghostbin.co'
         # Note: This would need a proper search API in real implementation
         # For demonstration, we'll simulate some results
         if "@" in query:  # If it's an email
@@ -152,9 +148,7 @@ def check_email_reputation(email: str) -> dict[str, str]:
     reputation = {
         "disposable": "Unknown",
         "mx_valid": "Unknown",
-        "format_valid": "Valid"
-        if re.match(r"^[^@]+@[^@]+\.[^@]+$", email)
-        else "Invalid",
+        "format_valid": "Valid" if re.match(r"^[^@]+@[^@]+\.[^@]+$", email) else "Invalid",
     }
 
     if "@" not in email:
@@ -249,9 +243,7 @@ def run(
                 platform_info += f" ({mention['username']})"
             tree_data.append({platform_info: [mention["profile_url"]]})
     else:
-        tree_data.append(
-            {"Status": ["No obvious social media presence found"]}
-        )
+        tree_data.append({"Status": ["No obvious social media presence found"]})
 
     # Additional OSINT suggestions
     tree_data.append("🔍 Suggested Manual Checks")
@@ -272,11 +264,7 @@ def run(
     tree_data.append("🛡️ Privacy Assessment")
     privacy_score = 100
 
-    if (
-        breaches
-        and "API_ERROR" not in breaches
-        and "CONNECTION_ERROR" not in breaches
-    ):
+    if breaches and "API_ERROR" not in breaches and "CONNECTION_ERROR" not in breaches:
         privacy_score -= len(breaches) * 15
 
     if mentions:
@@ -296,9 +284,7 @@ def run(
     else:
         assessment = "Poor - High digital exposure"
 
-    tree_data.append(
-        {"Privacy Score": [f"{privacy_score}/100 - {assessment}"]}
-    )
+    tree_data.append({"Privacy Score": [f"{privacy_score}/100 - {assessment}"]})
 
     result = sierra.create_tree_result(tree_data)
     sierra.respond(result)

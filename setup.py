@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("README.md", encoding="utf-8") as fh:
     long_description = fh.read()
 
 # MkDocs documentation dependencies
@@ -43,7 +43,7 @@ dev_requirements: list[str] = [
 # Core runtime dependencies
 requirements: list[str] = [
     "colorama==0.4.6",  # Terminal colors
-    "httpx==0.28.1",     # HTTP client for package manager
+    "httpx==0.28.1",  # HTTP client for package manager
     "dnspython==2.6.1",  # DNS operations for OSINT tools
     "requests==2.32.0",  # HTTP requests for OSINT tools
     "beautifulsoup4==4.12.3",  # HTML parsing for tech detection
@@ -51,7 +51,7 @@ requirements: list[str] = [
 
 setup(
     name="sierra-dev",
-    version="2.1.0",
+    version="2.2.0",
     author="Xsyncio",
     author_email="dev@xsyncio.com",
     description="Sierra Dev - Modern Invoker Package Manager and Development Framework",
